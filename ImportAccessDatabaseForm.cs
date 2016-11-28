@@ -820,7 +820,7 @@ namespace TecanPartListManager
                     
                     cmd.Parameters.Clear();
                     imageContents.Dispose();
-                    br.Dispose();
+                    // br.Dispose();
                     docID++;
                     statusProgressBar.Value = statusProgressBar.Value + 1;
                 }
@@ -1017,7 +1017,7 @@ namespace TecanPartListManager
                 }
                 cmd.Parameters.Clear();
                 suppumentalContents.Dispose();
-                br.Dispose();
+                // br.Dispose();
                 docID++;
                 statusProgressBar.Value = statusProgressBar.Value + 1;
             }

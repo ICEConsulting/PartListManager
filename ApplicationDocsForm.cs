@@ -180,7 +180,7 @@ namespace TecanPartListManager
                     }
                     cmd.Parameters.Clear();
                     appDocContents.Dispose();
-                    br.Dispose();
+                    // br.Dispose();
                     docID++;
                 }
                 TecanAppDocDatabase.Close();
@@ -278,7 +278,7 @@ namespace TecanPartListManager
                     }
                     cmd.Parameters.Clear();
                     appDocContents.Dispose();
-                    br.Dispose();
+                    // br.Dispose();
                     docID++;
                 }
 
@@ -320,7 +320,7 @@ namespace TecanPartListManager
                         }
                         cmd.Parameters.Clear();
                         appDocContents.Dispose();
-                        br.Dispose();
+                        // br.Dispose();
                         docID++;
                     }
                 }
@@ -667,7 +667,7 @@ namespace TecanPartListManager
                 cmd.Parameters.Clear();
                 TecanAppDocDatabase.Close();
                 appDocContents.Dispose();
-                br.Dispose();
+                // br.Dispose();
                 loadAppDocs();
 
                 if (DocumenrtPosition == "Header")

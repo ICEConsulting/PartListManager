@@ -656,7 +656,7 @@ namespace TecanPartListManager
                     cmd.ExecuteNonQuery();
                     cmd.Parameters.Clear();
                     imageContents.Dispose();
-                    br.Dispose();
+                    // br.Dispose();
                     TecanDatabase.Close();
 
                     loadImage(sAPIdTextBox.Text);

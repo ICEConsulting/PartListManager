@@ -360,7 +360,7 @@ namespace TecanPartListManager
                 }
                 cmd.Parameters.Clear();
                 suppumentalContents.Dispose();
-                br.Dispose();
+                // br.Dispose();
 
                 // Clear and rebuild the Supp Filelist Display
                 allSuppDocsDataGridView.Rows.Clear();
