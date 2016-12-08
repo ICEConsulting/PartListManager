@@ -426,6 +426,7 @@ namespace TecanPartListManager
             String NotesFromFile = "";
             short SSPCategory;
             String Compatibility;
+            String CADInfo;
            
             openMasterDB();
             cmdMaster = TecanMasterDatabase.CreateCommand();
@@ -433,7 +434,7 @@ namespace TecanPartListManager
             cmdMaster.CommandText = "SELECT [Lab], [SAPId], [OldPartNum], [Priority], [Instrument], [Category], [SubCategory], [SSPCategory]," +
                 " [Description], [SAPDescription], [DetailDescription], [PLDetailDescription], [Grids], [SerialPorts], [USBPorts], [PlPrice]," +
                 " [StandarPrice], [ILP], [ASP], [ManufacturingCost], [SalesType], [X_Dimension], [Y_Dimension], [Z_Dimension], [Z_DimensionNote]," +
-                " [NotMasterPriceList], [ThridParty], [ThridPartyPartNum], [NotesFromFile], [Compatibility]" +
+                " [NotMasterPriceList], [ThridParty], [ThridPartyPartNum], [NotesFromFile], [Compatibility], [CADInfo]" +
                 " FROM [PartsList] WHERE [DBMembership] = " + DBBothValue + " OR [DBMembership] = " + DBC2Value + " ORDER BY [SAPId]";
 
             SqlCeDataReader reader = cmdMaster.ExecuteReader();
@@ -479,17 +480,18 @@ namespace TecanPartListManager
                 NotesFromFile = reader[28].ToString();
 //                NotesFromFile = reader.GetString(28);
                 Compatibility = reader.GetString(29);
+                CADInfo = reader.GetString(30);
 
                 // Insert New Record into Quote Database
                 cmdQuote.CommandText = "INSERT INTO PartsList (Lab, SAPId, OldPartNum, Priority, Instrument, Category, SubCategory, SSPCategory," +
                 " Description, SAPDescription, DetailDescription, Grids, SerialPorts, USBPorts, PlPrice, StandarPrice, ILP, ASP, ManufacturingCost," +
                 " SalesType, X_Dimension, Y_Dimension, Z_Dimension, Z_DimensionNote, NotMasterPriceList, ThridParty, ThridPartyPartNum," +
-                " NotesFromFile, Compatibility)" +
+                " NotesFromFile, Compatibility, CADInfo)" +
                 " Values " +
                 " (@Lab, @SAPId, @OldPartNum, @Priority, @Instrument, @Category, @SubCategory, @SSPCategory, @Description, @SAPDescription," +
                 " @DetailDescription, @Grids, @SerialPorts, @USBPorts, @PlPrice, @StandarPrice, @ILP, @ASP, @ManufacturingCost, @SalesType," +
                 " @X_Dimension, @Y_Dimension, @Z_Dimension, @Z_DimensionNote, @NotMasterPriceList, @ThridParty, @ThridPartyPartNum," +
-                " @NotesFromFile, @Compatibility)";
+                " @NotesFromFile, @Compatibility, @CADInfo)";
 
                 cmdQuote.Parameters.AddWithValue("@Lab", Lab);
                 cmdQuote.Parameters.AddWithValue("@SAPId", SAPId);
@@ -520,6 +522,7 @@ namespace TecanPartListManager
                 cmdQuote.Parameters.AddWithValue("@ThridPartyPartNum", ThridPartyPartNum);
                 cmdQuote.Parameters.AddWithValue("@NotesFromFile", NotesFromFile);
                 cmdQuote.Parameters.AddWithValue("@Compatibility", Compatibility);
+                cmdQuote.Parameters.AddWithValue("@CADInfo", CADInfo);
 
                 cmdQuote.ExecuteNonQuery();
 
