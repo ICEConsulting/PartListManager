@@ -480,7 +480,7 @@ namespace TecanPartListManager
                 NotesFromFile = reader[28].ToString();
 //                NotesFromFile = reader.GetString(28);
                 Compatibility = reader.GetString(29);
-                CADInfo = reader.GetString(30);
+                CADInfo = reader[30].ToString();
 
                 // Insert New Record into Quote Database
                 cmdQuote.CommandText = "INSERT INTO PartsList (Lab, SAPId, OldPartNum, Priority, Instrument, Category, SubCategory, SSPCategory," +

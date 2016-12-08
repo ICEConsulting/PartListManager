@@ -72,6 +72,14 @@ namespace TecanPartListManager
                     TecanDatabase.Open();
                     cmd.CommandText = "DELETE FROM SuppumentalDocs";
                     cmd.ExecuteNonQuery();
+
+                    //TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanAppDocs.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+                    //TecanDatabase.Open();
+                    //cmd.CommandText = "DELETE FROM ApplicationCategories";
+                    //cmd.ExecuteNonQuery();
+                    //cmd.CommandText = "DELETE FROM Documents";
+                    //cmd.ExecuteNonQuery();
+
                 }
                 finally
                 {

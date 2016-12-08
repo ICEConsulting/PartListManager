@@ -80,6 +80,7 @@ namespace TecanPartListManager
             databaseToolsToolStripMenuItem.Enabled = false;
             publishDatabasesToolStripMenuItem.Enabled = false;
             EditLogonPanel.Visible = true;
+            EditPasswordTextBox.Focus();
         }
 
 
