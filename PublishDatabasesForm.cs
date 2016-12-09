@@ -479,7 +479,7 @@ namespace TecanPartListManager
                 ThridPartyPartNum = reader.GetString(27);
                 NotesFromFile = reader[28].ToString();
 //                NotesFromFile = reader.GetString(28);
-                Compatibility = reader.GetString(29);
+                Compatibility = reader[29].ToString();
                 CADInfo = reader[30].ToString();
 
                 // Insert New Record into Quote Database
@@ -813,7 +813,7 @@ namespace TecanPartListManager
                 Z_Dimension = reader.GetString(16);
                 Z_DimensionNote = reader.GetString(17);
                 NotesFromFile = reader[18].ToString();
-                Compatibility = reader.GetString(19);
+                Compatibility = reader[19].ToString();
 
                 // Insert New Record into Quote Database
                 cmdCustomer.CommandText = "INSERT INTO PartsList (SAPId, OldPartNum, Priority, Instrument, Category, SubCategory," +

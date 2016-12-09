@@ -38,11 +38,11 @@ namespace TecanPartListManager
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPartsListDisplay));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tecanPartsListDataSet = new TecanPartListManager.TecanPartsListDataSet();
             this.partsListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.partsListTableAdapter = new TecanPartListManager.TecanPartsListDataSetTableAdapters.PartsListTableAdapter();
@@ -102,6 +102,9 @@ namespace TecanPartListManager
             this.zILR1410ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mM60ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importAccessDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backupRestoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.publishDatabasesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quoteDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customerPartslistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -129,9 +132,14 @@ namespace TecanPartListManager
             this.label7 = new System.Windows.Forms.Label();
             this.EditPasswordTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.backupRestoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.restoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.initalizePanel = new System.Windows.Forms.Panel();
+            this.restoreBackupButton = new System.Windows.Forms.Button();
+            this.getAccessButton = new System.Windows.Forms.Button();
+            this.exitAppButton = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tecanPartsListDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partsListBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partsListBindingNavigator)).BeginInit();
@@ -145,6 +153,7 @@ namespace TecanPartListManager
             ((System.ComponentModel.ISupportInitialize)(this.SSPBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SalesTypeBindingSource)).BeginInit();
             this.EditLogonPanel.SuspendLayout();
+            this.initalizePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // tecanPartsListDataSet
@@ -218,14 +227,15 @@ namespace TecanPartListManager
             this.DescriptionClearButton,
             this.SelectAllToolStripButton,
             this.helpToolStripButton});
-            this.partsListBindingNavigator.Location = new System.Drawing.Point(0, 24);
+            this.partsListBindingNavigator.Location = new System.Drawing.Point(0, 31);
             this.partsListBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.partsListBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.partsListBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
             this.partsListBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.partsListBindingNavigator.Name = "partsListBindingNavigator";
+            this.partsListBindingNavigator.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.partsListBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.partsListBindingNavigator.Size = new System.Drawing.Size(1898, 25);
+            this.partsListBindingNavigator.Size = new System.Drawing.Size(2847, 34);
             this.partsListBindingNavigator.TabIndex = 0;
             this.partsListBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -235,7 +245,7 @@ namespace TecanPartListManager
             this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
             this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 31);
             this.bindingNavigatorAddNewItem.Text = "Add new";
             this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
@@ -253,7 +263,7 @@ namespace TecanPartListManager
             this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
             this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 31);
             this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // bindingNavigatorMoveFirstItem
@@ -262,7 +272,7 @@ namespace TecanPartListManager
             this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
             this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
             this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 31);
             this.bindingNavigatorMoveFirstItem.Text = "Move first";
             // 
             // bindingNavigatorMovePreviousItem
@@ -271,27 +281,27 @@ namespace TecanPartListManager
             this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
             this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
             this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 31);
             this.bindingNavigatorMovePreviousItem.Text = "Move previous";
             // 
             // bindingNavigatorSeparator
             // 
             this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 34);
             // 
             // bindingNavigatorPositionItem
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(73, 31);
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
             // bindingNavigatorSeparator1
             // 
             this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 34);
             // 
             // bindingNavigatorMoveNextItem
             // 
@@ -299,7 +309,7 @@ namespace TecanPartListManager
             this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 31);
             this.bindingNavigatorMoveNextItem.Text = "Move next";
             // 
             // bindingNavigatorMoveLastItem
@@ -308,39 +318,39 @@ namespace TecanPartListManager
             this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 31);
             this.bindingNavigatorMoveLastItem.Text = "Move last";
             // 
             // bindingNavigatorSeparator2
             // 
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 34);
             // 
             // partsListBindingNavigatorSaveItem
             // 
             this.partsListBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.partsListBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("partsListBindingNavigatorSaveItem.Image")));
             this.partsListBindingNavigatorSaveItem.Name = "partsListBindingNavigatorSaveItem";
-            this.partsListBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
+            this.partsListBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 31);
             this.partsListBindingNavigatorSaveItem.Text = "Save Data";
             this.partsListBindingNavigatorSaveItem.Click += new System.EventHandler(this.partsListBindingNavigatorSaveItem_Click);
             // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 34);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Margin = new System.Windows.Forms.Padding(2, 3, 0, 2);
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(38, 20);
+            this.toolStripLabel1.Size = new System.Drawing.Size(59, 29);
             this.toolStripLabel1.Text = "Part #";
             // 
             // PartNumberSearchTextBox
             // 
             this.PartNumberSearchTextBox.Name = "PartNumberSearchTextBox";
-            this.PartNumberSearchTextBox.Size = new System.Drawing.Size(80, 25);
+            this.PartNumberSearchTextBox.Size = new System.Drawing.Size(118, 34);
             this.PartNumberSearchTextBox.TextChanged += new System.EventHandler(this.PartNumberSearchTextBox_TextChanged);
             // 
             // PartNumberClearButton
@@ -351,26 +361,26 @@ namespace TecanPartListManager
             this.PartNumberClearButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PartNumberClearButton.Margin = new System.Windows.Forms.Padding(2, 3, 0, 2);
             this.PartNumberClearButton.Name = "PartNumberClearButton";
-            this.PartNumberClearButton.Size = new System.Drawing.Size(38, 20);
+            this.PartNumberClearButton.Size = new System.Drawing.Size(55, 29);
             this.PartNumberClearButton.Text = "Clear";
             this.PartNumberClearButton.Click += new System.EventHandler(this.PartNumberClearButton_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 34);
             // 
             // toolStripLabel2
             // 
             this.toolStripLabel2.Margin = new System.Windows.Forms.Padding(2, 3, 0, 2);
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(67, 20);
+            this.toolStripLabel2.Size = new System.Drawing.Size(102, 29);
             this.toolStripLabel2.Text = "Description";
             // 
             // DescriptionSearchTextBox
             // 
             this.DescriptionSearchTextBox.Name = "DescriptionSearchTextBox";
-            this.DescriptionSearchTextBox.Size = new System.Drawing.Size(250, 25);
+            this.DescriptionSearchTextBox.Size = new System.Drawing.Size(373, 34);
             this.DescriptionSearchTextBox.TextChanged += new System.EventHandler(this.DescriptionSearchTextBox_TextChanged);
             // 
             // DescriptionClearButton
@@ -381,7 +391,7 @@ namespace TecanPartListManager
             this.DescriptionClearButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DescriptionClearButton.Margin = new System.Windows.Forms.Padding(2, 3, 0, 2);
             this.DescriptionClearButton.Name = "DescriptionClearButton";
-            this.DescriptionClearButton.Size = new System.Drawing.Size(38, 20);
+            this.DescriptionClearButton.Size = new System.Drawing.Size(55, 29);
             this.DescriptionClearButton.Text = "Clear";
             this.DescriptionClearButton.Click += new System.EventHandler(this.DescriptionClearButton_Click);
             // 
@@ -393,7 +403,7 @@ namespace TecanPartListManager
             this.SelectAllToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SelectAllToolStripButton.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
             this.SelectAllToolStripButton.Name = "SelectAllToolStripButton";
-            this.SelectAllToolStripButton.Size = new System.Drawing.Size(59, 20);
+            this.SelectAllToolStripButton.Size = new System.Drawing.Size(87, 29);
             this.SelectAllToolStripButton.Text = "Select All";
             this.SelectAllToolStripButton.Click += new System.EventHandler(this.SelectAllToolStripButton_Click);
             // 
@@ -403,26 +413,26 @@ namespace TecanPartListManager
             this.helpToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripButton.Image")));
             this.helpToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.helpToolStripButton.Name = "helpToolStripButton";
-            this.helpToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.helpToolStripButton.Size = new System.Drawing.Size(23, 31);
             this.helpToolStripButton.Text = "He&lp";
             // 
             // partsListDataGridView
             // 
-            this.partsListDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.partsListDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.partsListDataGridView.AutoGenerateColumns = false;
             this.partsListDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.partsListDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.partsListDataGridView.BackgroundColor = System.Drawing.Color.Linen;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.partsListDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.Tan;
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.partsListDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
             this.partsListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.partsListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.sAPIdDataGridViewTextBoxColumn,
@@ -432,30 +442,31 @@ namespace TecanPartListManager
             this.DBMembership,
             this.descriptionDataGridViewTextBoxColumn});
             this.partsListDataGridView.DataSource = this.partsListBindingSource;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.partsListDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.partsListDataGridView.DefaultCellStyle = dataGridViewCellStyle33;
             this.partsListDataGridView.EnableHeadersVisualStyles = false;
             this.partsListDataGridView.GridColor = System.Drawing.Color.White;
-            this.partsListDataGridView.Location = new System.Drawing.Point(0, 52);
+            this.partsListDataGridView.Location = new System.Drawing.Point(0, 80);
+            this.partsListDataGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.partsListDataGridView.Name = "partsListDataGridView";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Linen;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.partsListDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            this.partsListDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle34.BackColor = System.Drawing.Color.Linen;
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.partsListDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle35.BackColor = System.Drawing.Color.White;
+            this.partsListDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle35;
             this.partsListDataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.LightBlue;
-            this.partsListDataGridView.Size = new System.Drawing.Size(1898, 228);
+            this.partsListDataGridView.Size = new System.Drawing.Size(2847, 351);
             this.partsListDataGridView.TabIndex = 1;
             this.partsListDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.partsListDataGridView_CellDoubleClick);
             // 
@@ -466,7 +477,7 @@ namespace TecanPartListManager
             this.sAPIdDataGridViewTextBoxColumn.HeaderText = "SAPId";
             this.sAPIdDataGridViewTextBoxColumn.Name = "sAPIdDataGridViewTextBoxColumn";
             this.sAPIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.sAPIdDataGridViewTextBoxColumn.Width = 62;
+            this.sAPIdDataGridViewTextBoxColumn.Width = 80;
             // 
             // instrumentDataGridViewTextBoxColumn
             // 
@@ -544,8 +555,8 @@ namespace TecanPartListManager
             // 
             this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "DetailDescription";
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.descriptionDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.descriptionDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle32;
             this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
             // 
@@ -559,7 +570,8 @@ namespace TecanPartListManager
             this.editLogonToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1898, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
+            this.menuStrip1.Size = new System.Drawing.Size(2847, 31);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -574,48 +586,48 @@ namespace TecanPartListManager
             this.salesTypeToolStripMenuItem});
             this.multiplePartDataChangeToolStripMenuItem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.multiplePartDataChangeToolStripMenuItem.Name = "multiplePartDataChangeToolStripMenuItem";
-            this.multiplePartDataChangeToolStripMenuItem.Size = new System.Drawing.Size(162, 20);
+            this.multiplePartDataChangeToolStripMenuItem.Size = new System.Drawing.Size(233, 25);
             this.multiplePartDataChangeToolStripMenuItem.Text = "Multiple Part Data Change";
             // 
             // instrumentToolStripMenuItem
             // 
             this.instrumentToolStripMenuItem.Name = "instrumentToolStripMenuItem";
-            this.instrumentToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.instrumentToolStripMenuItem.Size = new System.Drawing.Size(260, 26);
             this.instrumentToolStripMenuItem.Text = "Instrument";
             this.instrumentToolStripMenuItem.Click += new System.EventHandler(this.instrumentToolStripMenuItem_Click);
             // 
             // categoryToolStripMenuItem
             // 
             this.categoryToolStripMenuItem.Name = "categoryToolStripMenuItem";
-            this.categoryToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.categoryToolStripMenuItem.Size = new System.Drawing.Size(260, 26);
             this.categoryToolStripMenuItem.Text = "Category";
             this.categoryToolStripMenuItem.Click += new System.EventHandler(this.categoryToolStripMenuItem_Click);
             // 
             // subCategoryToolStripMenuItem
             // 
             this.subCategoryToolStripMenuItem.Name = "subCategoryToolStripMenuItem";
-            this.subCategoryToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.subCategoryToolStripMenuItem.Size = new System.Drawing.Size(260, 26);
             this.subCategoryToolStripMenuItem.Text = "Sub Category";
             this.subCategoryToolStripMenuItem.Click += new System.EventHandler(this.subCategoryToolStripMenuItem_Click);
             // 
             // databaseMembershipToolStripMenuItem
             // 
             this.databaseMembershipToolStripMenuItem.Name = "databaseMembershipToolStripMenuItem";
-            this.databaseMembershipToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.databaseMembershipToolStripMenuItem.Size = new System.Drawing.Size(260, 26);
             this.databaseMembershipToolStripMenuItem.Text = "Database Membership";
             this.databaseMembershipToolStripMenuItem.Click += new System.EventHandler(this.databaseMembershipToolStripMenuItem_Click);
             // 
             // sSPCategoryToolStripMenuItem
             // 
             this.sSPCategoryToolStripMenuItem.Name = "sSPCategoryToolStripMenuItem";
-            this.sSPCategoryToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.sSPCategoryToolStripMenuItem.Size = new System.Drawing.Size(260, 26);
             this.sSPCategoryToolStripMenuItem.Text = "SSP Category";
             this.sSPCategoryToolStripMenuItem.Click += new System.EventHandler(this.sSPCategoryToolStripMenuItem_Click);
             // 
             // salesTypeToolStripMenuItem
             // 
             this.salesTypeToolStripMenuItem.Name = "salesTypeToolStripMenuItem";
-            this.salesTypeToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.salesTypeToolStripMenuItem.Size = new System.Drawing.Size(260, 26);
             this.salesTypeToolStripMenuItem.Text = "Sales Type";
             this.salesTypeToolStripMenuItem.Click += new System.EventHandler(this.salesTypeToolStripMenuItem_Click);
             // 
@@ -629,20 +641,20 @@ namespace TecanPartListManager
             this.backupRestoreToolStripMenuItem});
             this.databaseToolsToolStripMenuItem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.databaseToolsToolStripMenuItem.Name = "databaseToolsToolStripMenuItem";
-            this.databaseToolsToolStripMenuItem.Size = new System.Drawing.Size(106, 20);
+            this.databaseToolsToolStripMenuItem.Size = new System.Drawing.Size(147, 25);
             this.databaseToolsToolStripMenuItem.Text = "Database Tools";
             // 
             // associationTablesToolStripMenuItem1
             // 
             this.associationTablesToolStripMenuItem1.Name = "associationTablesToolStripMenuItem1";
-            this.associationTablesToolStripMenuItem1.Size = new System.Drawing.Size(208, 22);
+            this.associationTablesToolStripMenuItem1.Size = new System.Drawing.Size(272, 26);
             this.associationTablesToolStripMenuItem1.Text = "Association Tables";
             this.associationTablesToolStripMenuItem1.Click += new System.EventHandler(this.associationTablesToolStripMenuItem1_Click);
             // 
             // applicationDocumentsToolStripMenuItem
             // 
             this.applicationDocumentsToolStripMenuItem.Name = "applicationDocumentsToolStripMenuItem";
-            this.applicationDocumentsToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.applicationDocumentsToolStripMenuItem.Size = new System.Drawing.Size(272, 26);
             this.applicationDocumentsToolStripMenuItem.Text = "Application Documents";
             this.applicationDocumentsToolStripMenuItem.Click += new System.EventHandler(this.applicationDocumentsToolStripMenuItem_Click);
             // 
@@ -655,50 +667,73 @@ namespace TecanPartListManager
             this.zILR1410ToolStripMenuItem,
             this.mM60ToolStripMenuItem});
             this.importSAPDataToolStripMenuItem1.Name = "importSAPDataToolStripMenuItem1";
-            this.importSAPDataToolStripMenuItem1.Size = new System.Drawing.Size(208, 22);
+            this.importSAPDataToolStripMenuItem1.Size = new System.Drawing.Size(272, 26);
             this.importSAPDataToolStripMenuItem1.Text = "Import SAP Data";
             // 
             // zILRDiscontinuedPartsToolStripMenuItem
             // 
             this.zILRDiscontinuedPartsToolStripMenuItem.Name = "zILRDiscontinuedPartsToolStripMenuItem";
-            this.zILRDiscontinuedPartsToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.zILRDiscontinuedPartsToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
             this.zILRDiscontinuedPartsToolStripMenuItem.Text = "ZILR Discontinued Parts";
             this.zILRDiscontinuedPartsToolStripMenuItem.Click += new System.EventHandler(this.zILRDiscontinuedPartsToolStripMenuItem_Click);
             // 
             // zILR1400ToolStripMenuItem
             // 
             this.zILR1400ToolStripMenuItem.Name = "zILR1400ToolStripMenuItem";
-            this.zILR1400ToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.zILR1400ToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
             this.zILR1400ToolStripMenuItem.Text = "ZILR Price Changes";
             this.zILR1400ToolStripMenuItem.Click += new System.EventHandler(this.zILR1400ToolStripMenuItem_Click);
             // 
             // zILR1401ToolStripMenuItem
             // 
             this.zILR1401ToolStripMenuItem.Name = "zILR1401ToolStripMenuItem";
-            this.zILR1401ToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.zILR1401ToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
             this.zILR1401ToolStripMenuItem.Text = "ASP";
             this.zILR1401ToolStripMenuItem.Click += new System.EventHandler(this.zILR1401ToolStripMenuItem_Click);
             // 
             // zILR1410ToolStripMenuItem
             // 
             this.zILR1410ToolStripMenuItem.Name = "zILR1410ToolStripMenuItem";
-            this.zILR1410ToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.zILR1410ToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
             this.zILR1410ToolStripMenuItem.Text = "Sales Text";
             this.zILR1410ToolStripMenuItem.Click += new System.EventHandler(this.zILR1410ToolStripMenuItem_Click);
             // 
             // mM60ToolStripMenuItem
             // 
             this.mM60ToolStripMenuItem.Name = "mM60ToolStripMenuItem";
-            this.mM60ToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.mM60ToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
             this.mM60ToolStripMenuItem.Text = "MM60";
             this.mM60ToolStripMenuItem.Click += new System.EventHandler(this.mM60ToolStripMenuItem_Click);
             // 
             // importAccessDatabaseToolStripMenuItem
             // 
             this.importAccessDatabaseToolStripMenuItem.Name = "importAccessDatabaseToolStripMenuItem";
-            this.importAccessDatabaseToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.importAccessDatabaseToolStripMenuItem.Size = new System.Drawing.Size(272, 26);
             this.importAccessDatabaseToolStripMenuItem.Text = "Import Access Database";
             this.importAccessDatabaseToolStripMenuItem.Click += new System.EventHandler(this.importAccessDatabaseToolStripMenuItem_Click_1);
+            // 
+            // backupRestoreToolStripMenuItem
+            // 
+            this.backupRestoreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.backupToolStripMenuItem,
+            this.restoreToolStripMenuItem});
+            this.backupRestoreToolStripMenuItem.Name = "backupRestoreToolStripMenuItem";
+            this.backupRestoreToolStripMenuItem.Size = new System.Drawing.Size(272, 26);
+            this.backupRestoreToolStripMenuItem.Text = "Backup / Restore";
+            // 
+            // backupToolStripMenuItem
+            // 
+            this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
+            this.backupToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.backupToolStripMenuItem.Text = "Backup";
+            this.backupToolStripMenuItem.Click += new System.EventHandler(this.backupToolStripMenuItem_Click);
+            // 
+            // restoreToolStripMenuItem
+            // 
+            this.restoreToolStripMenuItem.Name = "restoreToolStripMenuItem";
+            this.restoreToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.restoreToolStripMenuItem.Text = "Restore";
+            this.restoreToolStripMenuItem.Click += new System.EventHandler(this.restoreToolStripMenuItem_Click);
             // 
             // publishDatabasesToolStripMenuItem
             // 
@@ -708,27 +743,27 @@ namespace TecanPartListManager
             this.bothToolStripMenuItem});
             this.publishDatabasesToolStripMenuItem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.publishDatabasesToolStripMenuItem.Name = "publishDatabasesToolStripMenuItem";
-            this.publishDatabasesToolStripMenuItem.Size = new System.Drawing.Size(125, 20);
+            this.publishDatabasesToolStripMenuItem.Size = new System.Drawing.Size(172, 25);
             this.publishDatabasesToolStripMenuItem.Text = "Publish Databases";
             // 
             // quoteDatabaseToolStripMenuItem
             // 
             this.quoteDatabaseToolStripMenuItem.Name = "quoteDatabaseToolStripMenuItem";
-            this.quoteDatabaseToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.quoteDatabaseToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
             this.quoteDatabaseToolStripMenuItem.Text = "Quote Database";
             this.quoteDatabaseToolStripMenuItem.Click += new System.EventHandler(this.quoteDatabaseToolStripMenuItem_Click);
             // 
             // customerPartslistToolStripMenuItem
             // 
             this.customerPartslistToolStripMenuItem.Name = "customerPartslistToolStripMenuItem";
-            this.customerPartslistToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.customerPartslistToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
             this.customerPartslistToolStripMenuItem.Text = "Customer Partslist";
             this.customerPartslistToolStripMenuItem.Click += new System.EventHandler(this.customerPartslistToolStripMenuItem_Click);
             // 
             // bothToolStripMenuItem
             // 
             this.bothToolStripMenuItem.Name = "bothToolStripMenuItem";
-            this.bothToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.bothToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
             this.bothToolStripMenuItem.Text = "Both";
             this.bothToolStripMenuItem.Click += new System.EventHandler(this.bothToolStripMenuItem_Click);
             // 
@@ -736,7 +771,7 @@ namespace TecanPartListManager
             // 
             this.editLogonToolStripMenuItem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editLogonToolStripMenuItem.Name = "editLogonToolStripMenuItem";
-            this.editLogonToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
+            this.editLogonToolStripMenuItem.Size = new System.Drawing.Size(108, 25);
             this.editLogonToolStripMenuItem.Text = "Edit Logon";
             this.editLogonToolStripMenuItem.Click += new System.EventHandler(this.editLogonToolStripMenuItem_Click);
             // 
@@ -756,9 +791,10 @@ namespace TecanPartListManager
             // CategoryListComboBox
             // 
             this.CategoryListComboBox.FormattingEnabled = true;
-            this.CategoryListComboBox.Location = new System.Drawing.Point(993, 2);
+            this.CategoryListComboBox.Location = new System.Drawing.Point(1490, 3);
+            this.CategoryListComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CategoryListComboBox.Name = "CategoryListComboBox";
-            this.CategoryListComboBox.Size = new System.Drawing.Size(155, 21);
+            this.CategoryListComboBox.Size = new System.Drawing.Size(230, 28);
             this.CategoryListComboBox.TabIndex = 3;
             this.CategoryListComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryListComboBox_SelectedIndexChanged);
             this.CategoryListComboBox.Click += new System.EventHandler(this.CategoryListComboBox_Click);
@@ -768,18 +804,20 @@ namespace TecanPartListManager
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.PowderBlue;
             this.label1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(723, 5);
+            this.label1.Location = new System.Drawing.Point(1084, 8);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 15);
+            this.label1.Size = new System.Drawing.Size(93, 21);
             this.label1.TabIndex = 4;
             this.label1.Text = "Instrument";
             // 
             // InstrumentListComboBox
             // 
             this.InstrumentListComboBox.FormattingEnabled = true;
-            this.InstrumentListComboBox.Location = new System.Drawing.Point(795, 2);
+            this.InstrumentListComboBox.Location = new System.Drawing.Point(1192, 3);
+            this.InstrumentListComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.InstrumentListComboBox.Name = "InstrumentListComboBox";
-            this.InstrumentListComboBox.Size = new System.Drawing.Size(130, 21);
+            this.InstrumentListComboBox.Size = new System.Drawing.Size(193, 28);
             this.InstrumentListComboBox.TabIndex = 5;
             this.InstrumentListComboBox.SelectedIndexChanged += new System.EventHandler(this.InstrumentListComboBox_SelectedIndexChanged);
             this.InstrumentListComboBox.Click += new System.EventHandler(this.InstrumentListComboBox_Click);
@@ -789,9 +827,10 @@ namespace TecanPartListManager
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.PowderBlue;
             this.label2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(931, 5);
+            this.label2.Location = new System.Drawing.Point(1396, 8);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 15);
+            this.label2.Size = new System.Drawing.Size(83, 21);
             this.label2.TabIndex = 6;
             this.label2.Text = "Category";
             // 
@@ -800,18 +839,20 @@ namespace TecanPartListManager
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.PowderBlue;
             this.label3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1154, 5);
+            this.label3.Location = new System.Drawing.Point(1731, 8);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 15);
+            this.label3.Size = new System.Drawing.Size(121, 21);
             this.label3.TabIndex = 7;
             this.label3.Text = "Sub-Category";
             // 
             // SubCategoryListComboBox
             // 
             this.SubCategoryListComboBox.FormattingEnabled = true;
-            this.SubCategoryListComboBox.Location = new System.Drawing.Point(1242, 2);
+            this.SubCategoryListComboBox.Location = new System.Drawing.Point(1863, 3);
+            this.SubCategoryListComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SubCategoryListComboBox.Name = "SubCategoryListComboBox";
-            this.SubCategoryListComboBox.Size = new System.Drawing.Size(173, 21);
+            this.SubCategoryListComboBox.Size = new System.Drawing.Size(258, 28);
             this.SubCategoryListComboBox.TabIndex = 8;
             this.SubCategoryListComboBox.SelectedIndexChanged += new System.EventHandler(this.SubCategoryListComboBox_SelectedIndexChanged);
             this.SubCategoryListComboBox.Click += new System.EventHandler(this.SubCategoryListComboBox_Click);
@@ -821,18 +862,20 @@ namespace TecanPartListManager
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.PowderBlue;
             this.label4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(1421, 5);
+            this.label4.Location = new System.Drawing.Point(2132, 8);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 15);
+            this.label4.Size = new System.Drawing.Size(138, 21);
             this.label4.TabIndex = 9;
             this.label4.Text = "DB Membership";
             // 
             // DBMembershipListComboBox
             // 
             this.DBMembershipListComboBox.FormattingEnabled = true;
-            this.DBMembershipListComboBox.Location = new System.Drawing.Point(1523, 2);
+            this.DBMembershipListComboBox.Location = new System.Drawing.Point(2284, 3);
+            this.DBMembershipListComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DBMembershipListComboBox.Name = "DBMembershipListComboBox";
-            this.DBMembershipListComboBox.Size = new System.Drawing.Size(64, 21);
+            this.DBMembershipListComboBox.Size = new System.Drawing.Size(94, 28);
             this.DBMembershipListComboBox.TabIndex = 10;
             this.DBMembershipListComboBox.SelectedIndexChanged += new System.EventHandler(this.DBMembershipListComboBox_SelectedIndexChanged);
             this.DBMembershipListComboBox.Click += new System.EventHandler(this.DBMembershipListComboBox_Click);
@@ -840,9 +883,10 @@ namespace TecanPartListManager
             // ClearFiltersButton
             // 
             this.ClearFiltersButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClearFiltersButton.Location = new System.Drawing.Point(1789, 0);
+            this.ClearFiltersButton.Location = new System.Drawing.Point(2684, 0);
+            this.ClearFiltersButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ClearFiltersButton.Name = "ClearFiltersButton";
-            this.ClearFiltersButton.Size = new System.Drawing.Size(97, 24);
+            this.ClearFiltersButton.Size = new System.Drawing.Size(146, 37);
             this.ClearFiltersButton.TabIndex = 11;
             this.ClearFiltersButton.Text = "Clear Filters";
             this.ClearFiltersButton.UseVisualStyleBackColor = false;
@@ -853,18 +897,20 @@ namespace TecanPartListManager
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.PowderBlue;
             this.label5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(1593, 5);
+            this.label5.Location = new System.Drawing.Point(2390, 8);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 15);
+            this.label5.Size = new System.Drawing.Size(100, 21);
             this.label5.TabIndex = 12;
             this.label5.Text = "Sales Type";
             // 
             // SalesTypeComboBox
             // 
             this.SalesTypeComboBox.FormattingEnabled = true;
-            this.SalesTypeComboBox.Location = new System.Drawing.Point(1666, 2);
+            this.SalesTypeComboBox.Location = new System.Drawing.Point(2499, 3);
+            this.SalesTypeComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SalesTypeComboBox.Name = "SalesTypeComboBox";
-            this.SalesTypeComboBox.Size = new System.Drawing.Size(64, 21);
+            this.SalesTypeComboBox.Size = new System.Drawing.Size(94, 28);
             this.SalesTypeComboBox.TabIndex = 13;
             this.SalesTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.SalesTypeComboBox_SelectedIndexChanged);
             this.SalesTypeComboBox.Click += new System.EventHandler(this.SalesTypeComboBox_Click);
@@ -886,9 +932,10 @@ namespace TecanPartListManager
             this.EditLogonPanel.Controls.Add(this.label7);
             this.EditLogonPanel.Controls.Add(this.EditPasswordTextBox);
             this.EditLogonPanel.Controls.Add(this.label6);
-            this.EditLogonPanel.Location = new System.Drawing.Point(819, 147);
+            this.EditLogonPanel.Location = new System.Drawing.Point(1228, 226);
+            this.EditLogonPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.EditLogonPanel.Name = "EditLogonPanel";
-            this.EditLogonPanel.Size = new System.Drawing.Size(260, 148);
+            this.EditLogonPanel.Size = new System.Drawing.Size(390, 228);
             this.EditLogonPanel.TabIndex = 14;
             this.EditLogonPanel.Visible = false;
             // 
@@ -896,9 +943,10 @@ namespace TecanPartListManager
             // 
             this.NoEditButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.NoEditButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NoEditButton.Location = new System.Drawing.Point(104, 98);
+            this.NoEditButton.Location = new System.Drawing.Point(156, 151);
+            this.NoEditButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NoEditButton.Name = "NoEditButton";
-            this.NoEditButton.Size = new System.Drawing.Size(135, 35);
+            this.NoEditButton.Size = new System.Drawing.Size(202, 54);
             this.NoEditButton.TabIndex = 4;
             this.NoEditButton.Text = "Continue, No Edit";
             this.NoEditButton.UseVisualStyleBackColor = false;
@@ -908,9 +956,10 @@ namespace TecanPartListManager
             // 
             this.EnableEditOKButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.EnableEditOKButton.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EnableEditOKButton.Location = new System.Drawing.Point(38, 98);
+            this.EnableEditOKButton.Location = new System.Drawing.Point(57, 151);
+            this.EnableEditOKButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.EnableEditOKButton.Name = "EnableEditOKButton";
-            this.EnableEditOKButton.Size = new System.Drawing.Size(51, 35);
+            this.EnableEditOKButton.Size = new System.Drawing.Size(76, 54);
             this.EnableEditOKButton.TabIndex = 3;
             this.EnableEditOKButton.Text = "OK";
             this.EnableEditOKButton.UseVisualStyleBackColor = false;
@@ -920,55 +969,138 @@ namespace TecanPartListManager
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(24, 40);
+            this.label7.Location = new System.Drawing.Point(36, 62);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 15);
+            this.label7.Size = new System.Drawing.Size(142, 21);
             this.label7.TabIndex = 2;
             this.label7.Text = "Enter Password:";
             // 
             // EditPasswordTextBox
             // 
-            this.EditPasswordTextBox.Location = new System.Drawing.Point(27, 58);
+            this.EditPasswordTextBox.Location = new System.Drawing.Point(40, 89);
+            this.EditPasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.EditPasswordTextBox.Name = "EditPasswordTextBox";
-            this.EditPasswordTextBox.Size = new System.Drawing.Size(212, 20);
+            this.EditPasswordTextBox.Size = new System.Drawing.Size(316, 26);
             this.EditPasswordTextBox.TabIndex = 1;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(55, 12);
+            this.label6.Location = new System.Drawing.Point(82, 18);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(144, 16);
+            this.label6.Size = new System.Drawing.Size(212, 24);
             this.label6.TabIndex = 0;
             this.label6.Text = "Enable Editing Logon";
             // 
-            // backupRestoreToolStripMenuItem
+            // initalizePanel
             // 
-            this.backupRestoreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.backupToolStripMenuItem,
-            this.restoreToolStripMenuItem});
-            this.backupRestoreToolStripMenuItem.Name = "backupRestoreToolStripMenuItem";
-            this.backupRestoreToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.backupRestoreToolStripMenuItem.Text = "Backup / Restore";
+            this.initalizePanel.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.initalizePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.initalizePanel.Controls.Add(this.label11);
+            this.initalizePanel.Controls.Add(this.label10);
+            this.initalizePanel.Controls.Add(this.label9);
+            this.initalizePanel.Controls.Add(this.label8);
+            this.initalizePanel.Controls.Add(this.exitAppButton);
+            this.initalizePanel.Controls.Add(this.getAccessButton);
+            this.initalizePanel.Controls.Add(this.restoreBackupButton);
+            this.initalizePanel.Location = new System.Drawing.Point(462, 240);
+            this.initalizePanel.Name = "initalizePanel";
+            this.initalizePanel.Size = new System.Drawing.Size(445, 267);
+            this.initalizePanel.TabIndex = 15;
+            this.initalizePanel.Visible = false;
             // 
-            // backupToolStripMenuItem
+            // restoreBackupButton
             // 
-            this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
-            this.backupToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.backupToolStripMenuItem.Text = "Backup";
+            this.restoreBackupButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.restoreBackupButton.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.restoreBackupButton.Location = new System.Drawing.Point(298, 66);
+            this.restoreBackupButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.restoreBackupButton.Name = "restoreBackupButton";
+            this.restoreBackupButton.Size = new System.Drawing.Size(76, 40);
+            this.restoreBackupButton.TabIndex = 4;
+            this.restoreBackupButton.Text = "Go";
+            this.restoreBackupButton.UseVisualStyleBackColor = false;
+            this.restoreBackupButton.Click += new System.EventHandler(this.restoreBackupButton_Click);
             // 
-            // restoreToolStripMenuItem
+            // getAccessButton
             // 
-            this.restoreToolStripMenuItem.Name = "restoreToolStripMenuItem";
-            this.restoreToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.restoreToolStripMenuItem.Text = "Restore";
+            this.getAccessButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.getAccessButton.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.getAccessButton.Location = new System.Drawing.Point(298, 127);
+            this.getAccessButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.getAccessButton.Name = "getAccessButton";
+            this.getAccessButton.Size = new System.Drawing.Size(76, 40);
+            this.getAccessButton.TabIndex = 5;
+            this.getAccessButton.Text = "Go";
+            this.getAccessButton.UseVisualStyleBackColor = false;
+            this.getAccessButton.Click += new System.EventHandler(this.getAccessButton_Click);
+            // 
+            // exitAppButton
+            // 
+            this.exitAppButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.exitAppButton.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exitAppButton.Location = new System.Drawing.Point(298, 187);
+            this.exitAppButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.exitAppButton.Name = "exitAppButton";
+            this.exitAppButton.Size = new System.Drawing.Size(76, 40);
+            this.exitAppButton.TabIndex = 6;
+            this.exitAppButton.Text = "Exit";
+            this.exitAppButton.UseVisualStyleBackColor = false;
+            this.exitAppButton.Click += new System.EventHandler(this.exitAppButton_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(158, 30);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(173, 24);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Initialize Program";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(70, 75);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(206, 21);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "Load Backup Databases";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(70, 125);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(198, 42);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "Load Access Database \r\nand associated files";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(70, 196);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(112, 21);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "Exit Program";
             // 
             // MainPartsListDisplay
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1898, 514);
+            this.ClientSize = new System.Drawing.Size(2847, 791);
+            this.Controls.Add(this.initalizePanel);
             this.Controls.Add(this.EditLogonPanel);
             this.Controls.Add(this.SalesTypeComboBox);
             this.Controls.Add(this.label5);
@@ -985,6 +1117,7 @@ namespace TecanPartListManager
             this.Controls.Add(this.partsListBindingNavigator);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainPartsListDisplay";
             this.Text = "Tecan Parts List";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -1005,6 +1138,8 @@ namespace TecanPartListManager
             ((System.ComponentModel.ISupportInitialize)(this.SalesTypeBindingSource)).EndInit();
             this.EditLogonPanel.ResumeLayout(false);
             this.EditLogonPanel.PerformLayout();
+            this.initalizePanel.ResumeLayout(false);
+            this.initalizePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1101,6 +1236,14 @@ namespace TecanPartListManager
         private ToolStripMenuItem backupRestoreToolStripMenuItem;
         private ToolStripMenuItem backupToolStripMenuItem;
         private ToolStripMenuItem restoreToolStripMenuItem;
+        private Panel initalizePanel;
+        private Label label11;
+        private Label label10;
+        private Label label9;
+        private Label label8;
+        private Button exitAppButton;
+        private Button getAccessButton;
+        private Button restoreBackupButton;
 
     }
 }

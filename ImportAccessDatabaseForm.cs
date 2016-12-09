@@ -29,7 +29,8 @@ namespace TecanPartListManager
             if (MessageBox.Show("This will delete the current Parts List and Replace it with your selected Access Database.\r\n\r\nDo you want to proceed?", "Import Database", MessageBoxButtons.YesNo) == DialogResult.No)
             {
                 this.Close();
-                mainForm.WindowState = FormWindowState.Maximized;
+                // mainForm.WindowState = FormWindowState.Maximized;
+                mainForm.Close();
             }
             else
             {
@@ -37,7 +38,7 @@ namespace TecanPartListManager
                 try
                 {
                     TecanDatabase = new SqlCeConnection();
-//                    String dataPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+                    // String dataPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
                     TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
                     TecanDatabase.Open();
 
@@ -103,7 +104,7 @@ namespace TecanPartListManager
         {
             // TODO: This line of code loads data into the 'tecanPartsListDataSet.DBMembership' table. You can move, or remove it, as needed.
             // this.dBMembershipTableAdapter.Fill(this.tecanPartsListDataSet.DBMembership);
-            //             mainForm.MainPartsListDisplay_Load(sender, e);
+            // mainForm.MainPartsListDisplay_Load(sender, e);
         }
 
         private void ImportAccessDatabaseForm_Close(object sender, EventArgs e)

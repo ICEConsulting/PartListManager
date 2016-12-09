@@ -57,16 +57,29 @@ namespace TecanPartListManager
 
             if (partsListBindingSource.Count == 0)
             {
-                if (MessageBox.Show("The Tecan Partlist Manager must be intilized!\r\n\r\nDo you want to load the database now?", "Initial Installation", MessageBoxButtons.YesNo) == DialogResult.No)
+                String sourcePath = @"c:\TecanFiles";
+                String sourcePartsFile = System.IO.Path.Combine(sourcePath, "TecanPartsList.sdf");
+                if (File.Exists(sourcePartsFile))
                 {
-                    this.Close();
+                    initalizePanel.Location = new Point(
+                    this.ClientSize.Width / 2 - initalizePanel.Size.Width / 2,
+                    this.ClientSize.Height / 2 - initalizePanel.Size.Height / 2);
+                    initalizePanel.Anchor = AnchorStyles.None;
+                    initalizePanel.Visible = true;
                 }
                 else
                 {
-                    this.WindowState = FormWindowState.Minimized;   
-                    ImportAccessDatabaseForm ImportForm = new ImportAccessDatabaseForm();
-                    ImportForm.SetForm1Instance(this);
-                    ImportForm.Show();
+                    if (MessageBox.Show("The Tecan Partlist Manager must be intilized!\r\n\r\nDo you want to load the database now?", "Initial Installation", MessageBoxButtons.YesNo) == DialogResult.No)
+                    {
+                        this.Close();
+                    }
+                    else
+                    {
+                        // this.WindowState = FormWindowState.Minimized;
+                        ImportAccessDatabaseForm ImportForm = new ImportAccessDatabaseForm();
+                        ImportForm.SetForm1Instance(this);
+                        ImportForm.Show();
+                    }
                 }
             }
 
@@ -79,6 +92,10 @@ namespace TecanPartListManager
             multiplePartDataChangeToolStripMenuItem.Enabled = false;
             databaseToolsToolStripMenuItem.Enabled = false;
             publishDatabasesToolStripMenuItem.Enabled = false;
+            EditLogonPanel.Location = new Point(
+            this.ClientSize.Width / 2 - EditLogonPanel.Size.Width / 2,
+            this.ClientSize.Height / 2 - EditLogonPanel.Size.Height / 2);
+            EditLogonPanel.Anchor = AnchorStyles.None;
             EditLogonPanel.Visible = true;
             EditPasswordTextBox.Focus();
         }
@@ -1053,6 +1070,72 @@ namespace TecanPartListManager
         {
             ApplicationDocsForm AppDocsForm = new ApplicationDocsForm();
             AppDocsForm.Show();
+        }
+
+        private void restoreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            String sourcePath = @"c:\TecanFiles";
+            String sourcePartsFile = System.IO.Path.Combine(sourcePath, "TecanPartsList.sdf");
+            if (File.Exists(sourcePartsFile))
+            {
+                String sourceSuppFile = System.IO.Path.Combine(sourcePath, "TecanSuppDocs.sdf");
+                String sourceAppDocFile = System.IO.Path.Combine(sourcePath, "TecanAppDocs.sdf");
+
+                String targetPartsFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanPartsList.sdf");
+                String targetSuppFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanSuppDocs.sdf");
+                String targetAppDocFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanAppDocs.sdf");
+
+                System.IO.File.Copy(sourcePartsFile, targetPartsFile, true);
+                System.IO.File.Copy(sourceSuppFile, targetSuppFile, true);
+                System.IO.File.Copy(sourceAppDocFile, targetAppDocFile, true);
+                MessageBox.Show("Backup Database Restored!");
+            }
+            else
+            {
+                MessageBox.Show("You do not currently have a Backup Database!");
+                return;
+            }
+        }
+
+        private void backupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            String sourcePartsFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanPartsList.sdf");
+            String sourceSuppFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanSuppDocs.sdf");
+            String sourceAppDocFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanAppDocs.sdf");
+            String targetPath = @"c:\TecanFiles";
+            System.IO.Directory.CreateDirectory(targetPath);
+            String targetPartsFile;
+            String targetSuppFile;
+            String targetAppDocFile;
+
+            targetPartsFile = System.IO.Path.Combine(targetPath, "TecanPartsList.sdf");
+            System.IO.File.Copy(sourcePartsFile, targetPartsFile, true);
+            targetSuppFile = System.IO.Path.Combine(targetPath, "TecanSuppDocs.sdf");
+            System.IO.File.Copy(sourceSuppFile, targetSuppFile, true);
+            targetAppDocFile = System.IO.Path.Combine(targetPath, "TecanAppDocs.sdf");
+            System.IO.File.Copy(sourceAppDocFile, targetAppDocFile, true);
+            MessageBox.Show("Backup Database saved to " + targetPartsFile + "!");
+        }
+
+        private void restoreBackupButton_Click(object sender, EventArgs e)
+        {
+            initalizePanel.Visible = false;
+            restoreToolStripMenuItem_Click(sender, e);
+            MainPartsListDisplay_Load(sender, e);
+        }
+
+        private void getAccessButton_Click(object sender, EventArgs e)
+        {
+            initalizePanel.Visible = false;
+            this.WindowState = FormWindowState.Minimized;
+            ImportAccessDatabaseForm ImportForm = new ImportAccessDatabaseForm();
+            ImportForm.SetForm1Instance(this);
+            ImportForm.Show();
+        }
+
+        private void exitAppButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }

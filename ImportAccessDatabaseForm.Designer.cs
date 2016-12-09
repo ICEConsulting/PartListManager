@@ -89,18 +89,21 @@
             this.categoryListBox.DataSource = this.categoryBindingSource;
             this.categoryListBox.DisplayMember = "CategoryName";
             this.categoryListBox.FormattingEnabled = true;
-            this.categoryListBox.Location = new System.Drawing.Point(144, 44);
+            this.categoryListBox.ItemHeight = 20;
+            this.categoryListBox.Location = new System.Drawing.Point(216, 68);
+            this.categoryListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.categoryListBox.Name = "categoryListBox";
-            this.categoryListBox.Size = new System.Drawing.Size(120, 95);
+            this.categoryListBox.Size = new System.Drawing.Size(178, 144);
             this.categoryListBox.TabIndex = 0;
             // 
             // CatLabel
             // 
             this.CatLabel.AutoSize = true;
             this.CatLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CatLabel.Location = new System.Drawing.Point(144, 25);
+            this.CatLabel.Location = new System.Drawing.Point(216, 38);
+            this.CatLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CatLabel.Name = "CatLabel";
-            this.CatLabel.Size = new System.Drawing.Size(71, 13);
+            this.CatLabel.Size = new System.Drawing.Size(106, 20);
             this.CatLabel.TabIndex = 1;
             this.CatLabel.Text = "Categories:";
             // 
@@ -118,18 +121,21 @@
             this.instrumentListBox.DataSource = this.instrumentBindingSource;
             this.instrumentListBox.DisplayMember = "InstrumentName";
             this.instrumentListBox.FormattingEnabled = true;
-            this.instrumentListBox.Location = new System.Drawing.Point(18, 44);
+            this.instrumentListBox.ItemHeight = 20;
+            this.instrumentListBox.Location = new System.Drawing.Point(27, 68);
+            this.instrumentListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.instrumentListBox.Name = "instrumentListBox";
-            this.instrumentListBox.Size = new System.Drawing.Size(120, 95);
+            this.instrumentListBox.Size = new System.Drawing.Size(178, 144);
             this.instrumentListBox.TabIndex = 2;
             // 
             // instrumentLabel
             // 
             this.instrumentLabel.AutoSize = true;
             this.instrumentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.instrumentLabel.Location = new System.Drawing.Point(18, 25);
+            this.instrumentLabel.Location = new System.Drawing.Point(27, 38);
+            this.instrumentLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.instrumentLabel.Name = "instrumentLabel";
-            this.instrumentLabel.Size = new System.Drawing.Size(76, 13);
+            this.instrumentLabel.Size = new System.Drawing.Size(114, 20);
             this.instrumentLabel.TabIndex = 3;
             this.instrumentLabel.Text = "Instruments:";
             // 
@@ -147,18 +153,21 @@
             this.subCategoryListBox.DataSource = this.subCategoryBindingSource;
             this.subCategoryListBox.DisplayMember = "SubCategoryName";
             this.subCategoryListBox.FormattingEnabled = true;
-            this.subCategoryListBox.Location = new System.Drawing.Point(271, 44);
+            this.subCategoryListBox.ItemHeight = 20;
+            this.subCategoryListBox.Location = new System.Drawing.Point(406, 68);
+            this.subCategoryListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.subCategoryListBox.Name = "subCategoryListBox";
-            this.subCategoryListBox.Size = new System.Drawing.Size(120, 95);
+            this.subCategoryListBox.Size = new System.Drawing.Size(178, 144);
             this.subCategoryListBox.TabIndex = 4;
             // 
             // SubCategoryLabel
             // 
             this.SubCategoryLabel.AutoSize = true;
             this.SubCategoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SubCategoryLabel.Location = new System.Drawing.Point(271, 25);
+            this.SubCategoryLabel.Location = new System.Drawing.Point(406, 38);
+            this.SubCategoryLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.SubCategoryLabel.Name = "SubCategoryLabel";
-            this.SubCategoryLabel.Size = new System.Drawing.Size(89, 13);
+            this.SubCategoryLabel.Size = new System.Drawing.Size(132, 20);
             this.SubCategoryLabel.TabIndex = 5;
             this.SubCategoryLabel.Text = "SubCategories";
             // 
@@ -208,25 +217,28 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(135, 188);
+            this.label1.Location = new System.Drawing.Point(321, 289);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 16);
+            this.label1.Size = new System.Drawing.Size(131, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Importing ....";
             // 
             // statusPanelLabel
             // 
             this.statusPanelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusPanelLabel.Location = new System.Drawing.Point(219, 188);
+            this.statusPanelLabel.Location = new System.Drawing.Point(447, 289);
+            this.statusPanelLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.statusPanelLabel.Name = "statusPanelLabel";
-            this.statusPanelLabel.Size = new System.Drawing.Size(310, 16);
+            this.statusPanelLabel.Size = new System.Drawing.Size(465, 25);
             this.statusPanelLabel.TabIndex = 1;
             // 
             // statusProgressBar
             // 
-            this.statusProgressBar.Location = new System.Drawing.Point(138, 207);
+            this.statusProgressBar.Location = new System.Drawing.Point(326, 318);
+            this.statusProgressBar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.statusProgressBar.Name = "statusProgressBar";
-            this.statusProgressBar.Size = new System.Drawing.Size(311, 23);
+            this.statusProgressBar.Size = new System.Drawing.Size(466, 35);
             this.statusProgressBar.TabIndex = 2;
             // 
             // sspCategoryListBox
@@ -234,18 +246,21 @@
             this.sspCategoryListBox.DataSource = this.sspCategoryBindingSource;
             this.sspCategoryListBox.DisplayMember = "SSPCategoryName";
             this.sspCategoryListBox.FormattingEnabled = true;
-            this.sspCategoryListBox.Location = new System.Drawing.Point(398, 44);
+            this.sspCategoryListBox.ItemHeight = 20;
+            this.sspCategoryListBox.Location = new System.Drawing.Point(597, 68);
+            this.sspCategoryListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.sspCategoryListBox.Name = "sspCategoryListBox";
-            this.sspCategoryListBox.Size = new System.Drawing.Size(120, 95);
+            this.sspCategoryListBox.Size = new System.Drawing.Size(178, 144);
             this.sspCategoryListBox.TabIndex = 7;
             // 
             // SSPCategoryLabel
             // 
             this.SSPCategoryLabel.AutoSize = true;
             this.SSPCategoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SSPCategoryLabel.Location = new System.Drawing.Point(398, 25);
+            this.SSPCategoryLabel.Location = new System.Drawing.Point(597, 38);
+            this.SSPCategoryLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.SSPCategoryLabel.Name = "SSPCategoryLabel";
-            this.SSPCategoryLabel.Size = new System.Drawing.Size(95, 13);
+            this.SSPCategoryLabel.Size = new System.Drawing.Size(142, 20);
             this.SSPCategoryLabel.TabIndex = 8;
             this.SSPCategoryLabel.Text = "SSP Categories";
             // 
@@ -263,18 +278,21 @@
             this.dBMembershipListBox.DataSource = this.dBMembershipbindingSource;
             this.dBMembershipListBox.DisplayMember = "DBName";
             this.dBMembershipListBox.FormattingEnabled = true;
-            this.dBMembershipListBox.Location = new System.Drawing.Point(524, 44);
+            this.dBMembershipListBox.ItemHeight = 20;
+            this.dBMembershipListBox.Location = new System.Drawing.Point(786, 68);
+            this.dBMembershipListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dBMembershipListBox.Name = "dBMembershipListBox";
-            this.dBMembershipListBox.Size = new System.Drawing.Size(120, 95);
+            this.dBMembershipListBox.Size = new System.Drawing.Size(178, 144);
             this.dBMembershipListBox.TabIndex = 9;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(524, 28);
+            this.label2.Location = new System.Drawing.Point(786, 43);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 13);
+            this.label2.Size = new System.Drawing.Size(144, 20);
             this.label2.TabIndex = 10;
             this.label2.Text = "DB Membership";
             // 
@@ -283,26 +301,30 @@
             this.salesTypeListBox.DataSource = this.salesTypeBindingSource;
             this.salesTypeListBox.DisplayMember = "SalesTypeName";
             this.salesTypeListBox.FormattingEnabled = true;
-            this.salesTypeListBox.Location = new System.Drawing.Point(650, 44);
+            this.salesTypeListBox.ItemHeight = 20;
+            this.salesTypeListBox.Location = new System.Drawing.Point(975, 68);
+            this.salesTypeListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.salesTypeListBox.Name = "salesTypeListBox";
-            this.salesTypeListBox.Size = new System.Drawing.Size(120, 95);
+            this.salesTypeListBox.Size = new System.Drawing.Size(178, 144);
             this.salesTypeListBox.TabIndex = 11;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(647, 28);
+            this.label3.Location = new System.Drawing.Point(970, 43);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 13);
+            this.label3.Size = new System.Drawing.Size(102, 20);
             this.label3.TabIndex = 12;
             this.label3.Text = "Sales Type";
             // 
             // ImportAccessDatabaseForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(788, 303);
+            this.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.ClientSize = new System.Drawing.Size(1182, 466);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.salesTypeListBox);
             this.Controls.Add(this.label2);
@@ -318,6 +340,7 @@
             this.Controls.Add(this.instrumentListBox);
             this.Controls.Add(this.CatLabel);
             this.Controls.Add(this.categoryListBox);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ImportAccessDatabaseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Import Access Database";

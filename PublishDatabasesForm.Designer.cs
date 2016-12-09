@@ -34,29 +34,32 @@
             // 
             // publishProgressBar
             // 
-            this.publishProgressBar.Location = new System.Drawing.Point(83, 83);
+            this.publishProgressBar.Location = new System.Drawing.Point(124, 128);
+            this.publishProgressBar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.publishProgressBar.Name = "publishProgressBar";
-            this.publishProgressBar.Size = new System.Drawing.Size(296, 24);
+            this.publishProgressBar.Size = new System.Drawing.Size(444, 37);
             this.publishProgressBar.TabIndex = 0;
             // 
             // publishLabel
             // 
             this.publishLabel.AutoSize = true;
             this.publishLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.publishLabel.Location = new System.Drawing.Point(214, 56);
+            this.publishLabel.Location = new System.Drawing.Point(119, 84);
+            this.publishLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.publishLabel.Name = "publishLabel";
-            this.publishLabel.Size = new System.Drawing.Size(57, 20);
+            this.publishLabel.Size = new System.Drawing.Size(85, 29);
             this.publishLabel.TabIndex = 1;
             this.publishLabel.Text = "label1";
             this.publishLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PublishDatabasesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(463, 162);
+            this.ClientSize = new System.Drawing.Size(694, 249);
             this.Controls.Add(this.publishLabel);
             this.Controls.Add(this.publishProgressBar);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "PublishDatabasesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Publish Databases";
