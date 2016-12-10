@@ -57,8 +57,8 @@ namespace TecanPartListManager
                     cmd.ExecuteNonQuery();
                     cmd.CommandText = "DELETE FROM RequiredParts";
                     cmd.ExecuteNonQuery();
-                    cmd.CommandText = "DELETE FROM OptionalParts";
-                    cmd.ExecuteNonQuery();
+                    //cmd.CommandText = "DELETE FROM OptionalParts";
+                    //cmd.ExecuteNonQuery();
                     cmd.CommandText = "DELETE FROM SalesType";
                     cmd.ExecuteNonQuery();
                     cmd.CommandText = "DELETE FROM SSPCategory";

@@ -50,9 +50,9 @@ namespace TecanPartListManager
 
             SAPID = mySAPId;
             SAPIDLabel.Text = SAPID;
-            SAPIDLabel2.Text = SAPID;
+            // SAPIDLabel2.Text = SAPID;
             LoadRequiredPartListView();
-            LoadOptionalPartListView();
+            // LoadOptionalPartListView();
 
             //openDB();
             //SqlCeCommand cmd = TecanDatabase.CreateCommand();
@@ -85,7 +85,7 @@ namespace TecanPartListManager
             partsListDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             partsListDataGridView.Columns["DescriptiondataGridViewTextBoxColumn"].SortMode = DataGridViewColumnSortMode.Automatic;
             RequiredListView.AllowDrop = true;
-            OptionalListView.AllowDrop = true;
+            // OptionalListView.AllowDrop = true;
         }
 
         private void LoadRequiredPartListView()
@@ -122,39 +122,39 @@ namespace TecanPartListManager
 
         }
 
-        private void LoadOptionalPartListView()
-        {
-            OptionalListView.Items.Clear();
+        //private void LoadOptionalPartListView()
+        //{
+        //    OptionalListView.Items.Clear();
 
-            openDB();
-            SqlCeCommand cmd = TecanDatabase.CreateCommand();
+        //    openDB();
+        //    SqlCeCommand cmd = TecanDatabase.CreateCommand();
 
-            cmd.CommandText = "SELECT O.OptionalSAPId, P.Description FROM OptionalParts O" +
-            " INNER JOIN PartsList P " +
-            " ON O.OptionalSAPId = P.SAPId" +
-            " WHERE O.SAPId = '" + SAPID + "'" +
-            " ORDER BY OptionalSAPId";
-            try
-            {
-                SqlCeDataReader reader = cmd.ExecuteReader();
+        //    cmd.CommandText = "SELECT O.OptionalSAPId, P.Description FROM OptionalParts O" +
+        //    " INNER JOIN PartsList P " +
+        //    " ON O.OptionalSAPId = P.SAPId" +
+        //    " WHERE O.SAPId = '" + SAPID + "'" +
+        //    " ORDER BY OptionalSAPId";
+        //    try
+        //    {
+        //        SqlCeDataReader reader = cmd.ExecuteReader();
 
-                int partCount = 0;
-                while (reader.Read())
-                {
-                    OptionalListView.Items.Add(reader[0].ToString());
-                    OptionalListView.Items[partCount].SubItems.Add(reader[1].ToString());
-                    partCount++;
-                }
-                reader.Dispose();
+        //        int partCount = 0;
+        //        while (reader.Read())
+        //        {
+        //            OptionalListView.Items.Add(reader[0].ToString());
+        //            OptionalListView.Items[partCount].SubItems.Add(reader[1].ToString());
+        //            partCount++;
+        //        }
+        //        reader.Dispose();
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            TecanDatabase.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    TecanDatabase.Close();
 
-        }
+        //}
 
         private void openDB()
         {
@@ -226,54 +226,54 @@ namespace TecanPartListManager
         }
 
         // Object that a drag into is desired
-        private void OptionalListView_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(typeof(DataGridViewSelectedRowCollection)))
-            {
-                e.Effect = DragDropEffects.Move;
-            }
-        }
+        //private void OptionalListView_DragEnter(object sender, DragEventArgs e)
+        //{
+        //    if (e.Data.GetDataPresent(typeof(DataGridViewSelectedRowCollection)))
+        //    {
+        //        e.Effect = DragDropEffects.Move;
+        //    }
+        //}
 
         // The drop into the desired object
-        private void OptionalListView_DragDrop(object sender, DragEventArgs e)
-        {
-            int partCount;
-            partCount = OptionalListView.Items.Count;
-            String OptionalSAPID;
-            String OptionalDescription;
+        //private void OptionalListView_DragDrop(object sender, DragEventArgs e)
+        //{
+        //    int partCount;
+        //    partCount = OptionalListView.Items.Count;
+        //    String OptionalSAPID;
+        //    String OptionalDescription;
             
-            DataGridViewSelectedRowCollection rows = (DataGridViewSelectedRowCollection)e.Data.GetData(typeof(DataGridViewSelectedRowCollection));
+        //    DataGridViewSelectedRowCollection rows = (DataGridViewSelectedRowCollection)e.Data.GetData(typeof(DataGridViewSelectedRowCollection));
 
-            openDB();
-            SqlCeCommand cmd = TecanDatabase.CreateCommand();
+        //    openDB();
+        //    SqlCeCommand cmd = TecanDatabase.CreateCommand();
 
-            foreach (DataGridViewRow row in rows)
-            {
+        //    foreach (DataGridViewRow row in rows)
+        //    {
 
-                OptionalSAPID = row.Cells[0].Value.ToString();
-                OptionalDescription = row.Cells[1].Value.ToString();
+        //        OptionalSAPID = row.Cells[0].Value.ToString();
+        //        OptionalDescription = row.Cells[1].Value.ToString();
 
-                OptionalListView.Items.Add(OptionalSAPID);
-                OptionalListView.Items[partCount].SubItems.Add(OptionalDescription);
-                partCount++;
+        //        OptionalListView.Items.Add(OptionalSAPID);
+        //        OptionalListView.Items[partCount].SubItems.Add(OptionalDescription);
+        //        partCount++;
 
-                cmd.CommandText = "INSERT INTO OptionalParts (SAPId, OptionalSAPId)" +
-                    " Values " +
-                    "(@SAPId, @OptionalSAPId)";
+        //        cmd.CommandText = "INSERT INTO OptionalParts (SAPId, OptionalSAPId)" +
+        //            " Values " +
+        //            "(@SAPId, @OptionalSAPId)";
 
-                cmd.Parameters.AddWithValue("@SAPId", SAPID);
-                cmd.Parameters.AddWithValue("@OptionalSAPId", OptionalSAPID);
-                try
-                {
-                    cmd.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                cmd.Parameters.Clear();
+        //        cmd.Parameters.AddWithValue("@SAPId", SAPID);
+        //        cmd.Parameters.AddWithValue("@OptionalSAPId", OptionalSAPID);
+        //        try
+        //        {
+        //            cmd.ExecuteNonQuery();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show(ex.Message);
+        //        }
+        //        cmd.Parameters.Clear();
 
-            }
+        //    }
             //int partCount;
             //partCount = OptionalListView.Items.Count;
             //String alternateSAPID;
@@ -330,7 +330,7 @@ namespace TecanPartListManager
             //}
             //cmd.Parameters.Clear();
             //TecanDatabase.Close();
-        }
+        //}
 
         //private void RequiredListView_Click(object sender, EventArgs e)
         //{
@@ -404,20 +404,20 @@ namespace TecanPartListManager
             }
         }
 
-        private void OptionalListView_DoubleClick(object sender, EventArgs e)
-        {
-            String OptionalSAPID = OptionalListView.SelectedItems[0].Text;
-            if (MessageBox.Show("Do you want to remove the optional part " + OptionalSAPID + " for part " + SAPID + "?", "Remove Optional Part", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                openDB();
-                SqlCeCommand cmd = TecanDatabase.CreateCommand();
+        //private void OptionalListView_DoubleClick(object sender, EventArgs e)
+        //{
+        //    String OptionalSAPID = OptionalListView.SelectedItems[0].Text;
+        //    if (MessageBox.Show("Do you want to remove the optional part " + OptionalSAPID + " for part " + SAPID + "?", "Remove Optional Part", MessageBoxButtons.YesNo) == DialogResult.Yes)
+        //    {
+        //        openDB();
+        //        SqlCeCommand cmd = TecanDatabase.CreateCommand();
 
-                cmd.CommandText = "DELETE FROM OptionalParts WHERE SAPId = '" + SAPID + "' AND OptionalSAPId = '" + OptionalSAPID + "'";
-                cmd.ExecuteNonQuery();
-                TecanDatabase.Close();
-                LoadOptionalPartListView();
-            }
-        }
+        //        cmd.CommandText = "DELETE FROM OptionalParts WHERE SAPId = '" + SAPID + "' AND OptionalSAPId = '" + OptionalSAPID + "'";
+        //        cmd.ExecuteNonQuery();
+        //        TecanDatabase.Close();
+        //        LoadOptionalPartListView();
+        //    }
+        //}
 
         //private void AlternateListView_DoubleClick(object sender, EventArgs e)
         //{

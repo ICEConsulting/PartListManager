@@ -211,6 +211,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RequirePartForm.resx">
       <DependentUpon>RequirePartForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SuppDocForm.resx">
       <DependentUpon>SuppDocForm.cs</DependentUpon>

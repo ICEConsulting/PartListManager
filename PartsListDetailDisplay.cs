@@ -68,7 +68,7 @@ namespace TecanPartListManager
 
             loadImage(SAPID);
             loadRequiredParts(SAPID);
-            loadOptionalParts(SAPID);
+            // loadOptionalParts(SAPID);
             loadCompatibility(SAPID);
             // loadCAD(SAPID);
             if (mainForm.getEditStatus() != true)
@@ -77,7 +77,7 @@ namespace TecanPartListManager
                 DuplicatePartToolStripLabel.Enabled = false;
                 addSuppDocButton.Enabled = false;
                 addRequiredPartButton.Enabled = false;
-                addRequiredPartButton2.Enabled = false;
+                // addRequiredPartButton2.Enabled = false;
                 AddCompatibilityButton.Enabled = false;
                 addImageButton.Enabled = false;
                 this.ControlBox = true;
@@ -734,26 +734,26 @@ namespace TecanPartListManager
             }
         }
 
-        private void OptionalListView_DoubleClick(object sender, EventArgs e)
-        {
-            if (mainForm.getEditStatus() != true) return;
-            String OptionalSAPID = OptionalListView.SelectedItems[0].Text;
-            if (MessageBox.Show("Do you want to remove the optional part " + OptionalSAPID + " for part " + sAPIdTextBox.Text + "?", "Remove Optional Part", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                openDB();
-                SqlCeCommand cmd = TecanDatabase.CreateCommand();
+        //private void OptionalListView_DoubleClick(object sender, EventArgs e)
+        //{
+        //    if (mainForm.getEditStatus() != true) return;
+        //    String OptionalSAPID = OptionalListView.SelectedItems[0].Text;
+        //    if (MessageBox.Show("Do you want to remove the optional part " + OptionalSAPID + " for part " + sAPIdTextBox.Text + "?", "Remove Optional Part", MessageBoxButtons.YesNo) == DialogResult.Yes)
+        //    {
+        //        openDB();
+        //        SqlCeCommand cmd = TecanDatabase.CreateCommand();
 
-                cmd.CommandText = "DELETE FROM OptionalParts WHERE SAPId = '" + sAPIdTextBox.Text + "' AND OptionalSAPId = '" + OptionalSAPID + "'";
-                cmd.ExecuteNonQuery();
-                TecanDatabase.Close();
-                loadOptionalParts(sAPIdTextBox.Text);
-            }
-        }
+        //        cmd.CommandText = "DELETE FROM OptionalParts WHERE SAPId = '" + sAPIdTextBox.Text + "' AND OptionalSAPId = '" + OptionalSAPID + "'";
+        //        cmd.ExecuteNonQuery();
+        //        TecanDatabase.Close();
+        //        loadOptionalParts(sAPIdTextBox.Text);
+        //    }
+        //}
 
         public void RequiredPartsReturn(String SAPID)
         {
             loadRequiredParts(SAPID);
-            loadOptionalParts(SAPID);
+            // loadOptionalParts(SAPID);
         }
 
         private void loadRequiredParts(String SAPID)
@@ -790,38 +790,38 @@ namespace TecanPartListManager
 
         }
 
-        private void loadOptionalParts(String SAPID)
-        {
-            OptionalListView.Items.Clear();
+        //private void loadOptionalParts(String SAPID)
+        //{
+        //    OptionalListView.Items.Clear();
 
-            openDB();
-            SqlCeCommand cmd = TecanDatabase.CreateCommand();
+        //    openDB();
+        //    SqlCeCommand cmd = TecanDatabase.CreateCommand();
 
-            cmd.CommandText = "SELECT O.OptionalSAPId, P.Description FROM OptionalParts O" +
-            " INNER JOIN PartsList P " +
-            " ON O.OptionalSAPId = P.SAPId" +
-            " WHERE O.SAPId = '" + SAPID + "'" +
-            " ORDER BY OptionalSAPId";
-            try
-            {
-                SqlCeDataReader reader = cmd.ExecuteReader();
+        //    cmd.CommandText = "SELECT O.OptionalSAPId, P.Description FROM OptionalParts O" +
+        //    " INNER JOIN PartsList P " +
+        //    " ON O.OptionalSAPId = P.SAPId" +
+        //    " WHERE O.SAPId = '" + SAPID + "'" +
+        //    " ORDER BY OptionalSAPId";
+        //    try
+        //    {
+        //        SqlCeDataReader reader = cmd.ExecuteReader();
 
-                int partCount = 0;
-                while (reader.Read())
-                {
-                    OptionalListView.Items.Add(reader[0].ToString());
-                    OptionalListView.Items[partCount].SubItems.Add(reader[1].ToString());
-                    partCount++;
-                }
-                reader.Dispose();
+        //        int partCount = 0;
+        //        while (reader.Read())
+        //        {
+        //            OptionalListView.Items.Add(reader[0].ToString());
+        //            OptionalListView.Items[partCount].SubItems.Add(reader[1].ToString());
+        //            partCount++;
+        //        }
+        //        reader.Dispose();
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            TecanDatabase.Close();
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    TecanDatabase.Close();
+        //}
 
         private void AddCompatibilityButton_Click(object sender, EventArgs e)
         {
