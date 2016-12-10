@@ -104,7 +104,17 @@ namespace TecanPartListManager
                         newImage = ResizeImage(newImage, new Size(396, 224));
                         partImagePictureBox.Image = newImage;
                     }
-                    
+                    else
+                    {
+                        // If no image available
+                        System.Reflection.Assembly myAssembly = System.Reflection.Assembly.GetExecutingAssembly();
+                        Stream myStream = myAssembly.GetManifestResourceStream("TecanPartListManager.noimage.bmp");
+                        Bitmap image = new Bitmap(myStream);
+                        System.Drawing.Image newImage = image;
+                        newImage = ResizeImage(newImage, new Size(396, 224));
+                        partImagePictureBox.Image = newImage;
+                    }
+
                 }
                 finally
                 {
