@@ -28,6 +28,7 @@ namespace TecanPartListManager
         int DBBothValue;
         int DBC2Value;
         int DBPLValue;
+        String lastTargetPath;
 
         public PublishDatabasesForm()
         {
@@ -553,6 +554,7 @@ namespace TecanPartListManager
             {
                 targetPath = folderBrowserDialog1.SelectedPath;
             }
+            lastTargetPath = targetPath;
             targetQuoteFile = System.IO.Path.Combine(targetPath, "TecanQuoteGeneratorPartsList.sdf");
             System.IO.File.Copy(sourceQuoteFile, targetQuoteFile, true);
             targetSuppFile = System.IO.Path.Combine(targetPath, "TecanSuppDocs.sdf");
@@ -858,6 +860,7 @@ namespace TecanPartListManager
         {
             FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
             folderBrowserDialog1.Description = "Please select your Customer Database Distribution Folder";
+            folderBrowserDialog1.SelectedPath = lastTargetPath;
             folderBrowserDialog1.ShowNewFolderButton = false;
 
             String sourceCustomerFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanCustomerPartsList.sdf");

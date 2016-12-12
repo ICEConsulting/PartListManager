@@ -199,7 +199,6 @@ namespace TecanPartListManager
 
             foreach (DataGridViewRow row in rows)
             {
-
                 requiredSAPID = row.Cells[0].Value.ToString();
                 requiredDescription = row.Cells[1].Value.ToString();
 
@@ -223,8 +222,16 @@ namespace TecanPartListManager
                 }
                 cmd.Parameters.Clear();
             }
+            PartNumberSearchTextBox.Focus();
         }
 
+        // Clear Grid Selection
+        private void RequiredListView_MouseLeave(object sender, EventArgs e)
+        {
+            partsListDataGridView.ClearSelection();
+            partsListDataGridView.Focus();
+        }
+        
         // Object that a drag into is desired
         //private void OptionalListView_DragEnter(object sender, DragEventArgs e)
         //{

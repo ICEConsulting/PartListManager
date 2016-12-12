@@ -143,6 +143,7 @@
             this.RequiredListView.DragDrop += new System.Windows.Forms.DragEventHandler(this.RequiredListView_DragDrop);
             this.RequiredListView.DragEnter += new System.Windows.Forms.DragEventHandler(this.RequiredListView_DragEnter);
             this.RequiredListView.DoubleClick += new System.EventHandler(this.RequiredListView_DoubleClick);
+            this.RequiredListView.MouseLeave += new System.EventHandler(RequiredListView_MouseLeave);
             // 
             // columnHeader1
             // 
