@@ -127,7 +127,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.partImagePictureBox = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.NotesFromFileTextBox = new System.Windows.Forms.TextBox();
             this.dBMembershipTableAdapter = new TecanPartListManager.TecanPartsListDataSetTableAdapters.DBMembershipTableAdapter();
             this.DBMembershipComboBox = new System.Windows.Forms.ComboBox();
             this.DBbindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -1213,16 +1213,16 @@
             this.label3.TabIndex = 135;
             this.label3.Text = "Comments";
             // 
-            // textBox1
+            // NotesFromFileTextBox
             // 
-            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "NotesFromFile", true));
-            this.textBox1.Location = new System.Drawing.Point(544, 548);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(571, 98);
-            this.textBox1.TabIndex = 16;
+            this.NotesFromFileTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "NotesFromFile", true));
+            this.NotesFromFileTextBox.Location = new System.Drawing.Point(544, 548);
+            this.NotesFromFileTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.NotesFromFileTextBox.Multiline = true;
+            this.NotesFromFileTextBox.Name = "NotesFromFileTextBox";
+            this.NotesFromFileTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.NotesFromFileTextBox.Size = new System.Drawing.Size(571, 98);
+            this.NotesFromFileTextBox.TabIndex = 16;
             // 
             // dBMembershipTableAdapter
             // 
@@ -1590,7 +1590,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.suppumentalDocsListBox);
             this.Controls.Add(this.DBMembershipComboBox);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.NotesFromFileTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.addSuppDocButton);
@@ -1688,7 +1688,6 @@
         private System.Windows.Forms.TextBox sAPIdTextBox;
         private System.Windows.Forms.TextBox oldPartNumTextBox;
         private System.Windows.Forms.TextBox priorityTextBox;
-        private System.Windows.Forms.TextBox descriptionTextBox;
         private System.Windows.Forms.TextBox plPriceTextBox;
         private System.Windows.Forms.TextBox gridsTextBox;
         private System.Windows.Forms.TextBox serialPortsTextBox;
@@ -1740,7 +1739,7 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.PictureBox partImagePictureBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox NotesFromFileTextBox;
         private TecanPartsListDataSetTableAdapters.DBMembershipTableAdapter dBMembershipTableAdapter;
         private System.Windows.Forms.ComboBox DBMembershipComboBox;
         private System.Windows.Forms.BindingSource DBbindingSource;
@@ -1776,5 +1775,6 @@
         private System.Windows.Forms.Button AddNewSAPIDButton;
         private System.Windows.Forms.TextBox NewSAPIDTextBox;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox descriptionTextBox;
     }
 }

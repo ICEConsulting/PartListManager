@@ -23,6 +23,7 @@ namespace TecanPartListManager
         Boolean categoryChanged = false;
         Boolean subCategoryChanged = false;
         PartsListDetailDisplay DetailsForm = null;
+        SqlCeConnection TecanDatabase = null;
 
         public MainPartsListDisplay()
         {
@@ -103,7 +104,7 @@ namespace TecanPartListManager
 
         public void PartDetailReturn()
         {
-//            this.partsListTableAdapter.Fill(this.tecanPartsListDataSet.PartsList);
+            //            this.partsListTableAdapter.Fill(this.tecanPartsListDataSet.PartsList);
             SelectAllToolStripButton.Text = "Select All";
             searchPreformed = false;
             doSearch();
@@ -153,22 +154,22 @@ namespace TecanPartListManager
 
 
                 case "DBMembership":
-                        this.dBMembershipTableAdapter.Fill(this.tecanPartsListDataSet.DBMembership);
+                    this.dBMembershipTableAdapter.Fill(this.tecanPartsListDataSet.DBMembership);
 
-                // DBMembershipListComboBox
-                        DBMembershipListComboBox.DataSource = this.dbMembershipBindingSource;
-                        DBMembershipListComboBox.DisplayMember = "DBName";
-                        DBMembershipListComboBox.ValueMember = "DBID";
+                    // DBMembershipListComboBox
+                    DBMembershipListComboBox.DataSource = this.dbMembershipBindingSource;
+                    DBMembershipListComboBox.DisplayMember = "DBName";
+                    DBMembershipListComboBox.ValueMember = "DBID";
 
-                        break;
+                    break;
 
                 case "SalesType":
-                        this.salesTypeTableAdapter.Fill(this.tecanPartsListDataSet.SalesType);
+                    this.salesTypeTableAdapter.Fill(this.tecanPartsListDataSet.SalesType);
 
-                // DBMembershipListComboBox
-                        DBMembershipListComboBox.DataSource = this.SalesTypeBindingSource;
-                        DBMembershipListComboBox.DisplayMember = "SalesTypeName";
-                        DBMembershipListComboBox.ValueMember = "SalesTypeID";
+                    // DBMembershipListComboBox
+                    DBMembershipListComboBox.DataSource = this.SalesTypeBindingSource;
+                    DBMembershipListComboBox.DisplayMember = "SalesTypeName";
+                    DBMembershipListComboBox.ValueMember = "SalesTypeID";
                     break;
 
             }
@@ -288,8 +289,8 @@ namespace TecanPartListManager
             InstrumentListComboBox.DataSource = this.InstrumentBindingSource;
             InstrumentListComboBox.DisplayMember = "InstrumentName";
             InstrumentListComboBox.ValueMember = "InstrumentID";
-            if(this.InstrumentBindingSource.Count > 0) InstrumentListComboBox.SelectedIndex = 0;
-            
+            if (this.InstrumentBindingSource.Count > 0) InstrumentListComboBox.SelectedIndex = 0;
+
             // CategoryListComboBox
             CategoryListComboBox.DataSource = this.CategoryBindingSource;
             CategoryListComboBox.DisplayMember = "CategoryName";
@@ -507,7 +508,7 @@ namespace TecanPartListManager
             lastSelected = this.partsListBindingSource.Position;
             System.Data.DataRowView SelectedRowView;
             TecanPartsListDataSet.PartsListRow SelectedRow;
-            
+
             SelectedRowView = (System.Data.DataRowView)partsListBindingSource.Current;
             SelectedRow = (TecanPartsListDataSet.PartsListRow)SelectedRowView.Row;
 
@@ -522,7 +523,7 @@ namespace TecanPartListManager
                 DetailsForm.TopMost = true;
                 DetailsForm.Show();
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show("Loading Deatils Form " + ex.Message);
             }
@@ -824,7 +825,7 @@ namespace TecanPartListManager
                     updateCategoryComboBox();
                     updateSubCategoryComboBox();
                 }
-                    if (categoryChanged)
+                if (categoryChanged)
                 {
                     // updateInstrumentComboBox();
                     updateSubCategoryComboBox();
@@ -1136,6 +1137,377 @@ namespace TecanPartListManager
         private void exitAppButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void findReplaceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FindReplacePanel.Location = new Point(
+            this.ClientSize.Width / 2 - FindReplacePanel.Size.Width / 2,
+            this.ClientSize.Height / 2 - FindReplacePanel.Size.Height / 2);
+            FindReplacePanel.Anchor = AnchorStyles.None;
+            FindReplacePanel.Height = 325;
+            FindReplacePanel.Visible = true;
+            SelectAllFindCheckBox.Checked = false;
+            clearFindCheckListBox();
+            FindTextBox.Focus();
+        }
+
+        private void clearFindCheckListBox()
+        {
+            for (int i = 0; i < FindCheckedListBox.Items.Count; i++)
+            {
+                FindCheckedListBox.SetItemChecked(i, false);
+            }
+
+        }
+
+        private void SelectAllFindCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SelectAllFindCheckBox.Checked == true)
+            {
+                for (int i = 0; i < FindCheckedListBox.Items.Count; i++)
+                {
+                    FindCheckedListBox.SetItemChecked(i, true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < FindCheckedListBox.Items.Count; i++)
+                {
+                    FindCheckedListBox.SetItemChecked(i, false);
+                }
+            }
+        }
+
+        private void CancelFindButton_Click(object sender, EventArgs e)
+        {
+            closeFindPanel();
+        }
+
+        private void FindButton_Click(object sender, EventArgs e)
+        {
+
+            if (FindTextBox.Text == "")
+            {
+                MessageBox.Show("You must enter your text to find!", "Search Error!");
+                return;
+            }
+
+            String FindWhat = "";
+            Boolean AtLeastOne = false;
+
+            openDB();
+            SqlCeCommand cmd = TecanDatabase.CreateCommand();
+            // SqlCeDataReader reader;
+
+            FindWhat = "%" + FindTextBox.Text + "%";
+
+            String commandString = "SELECT SAPId, SAPDescription, Description, DetailDescription, PLDescription, PLDetailDescription, Notes, NotesFromFile FROM PartsList WHERE";
+            if (FindCheckedListBox.GetItemChecked(0))
+            {
+                commandString = commandString + " SAPDescription LIKE '" + FindWhat + "'";
+                AtLeastOne = true;
+            }
+            if (FindCheckedListBox.GetItemChecked(1))
+            {
+                if(AtLeastOne)
+                {
+                    commandString = commandString + " OR Description LIKE '" + FindWhat + "'";
+                }
+                else
+                {
+                    commandString = commandString + " Description LIKE '" + FindWhat + "'";
+                    AtLeastOne = true;
+                }
+            }
+            if (FindCheckedListBox.GetItemChecked(2))
+            {
+                if (AtLeastOne)
+                {
+                    commandString = commandString + " OR DetailDescription LIKE '" + FindWhat + "'";
+                }
+                else
+                {
+                    commandString = commandString + " DetailDescription LIKE '" + FindWhat + "'";
+                    AtLeastOne = true;
+                }
+            }
+            if (FindCheckedListBox.GetItemChecked(3))
+            {
+                if (AtLeastOne)
+                {
+                    commandString = commandString + " OR PLDescription LIKE '" + FindWhat + "'";
+                }
+                else
+                {
+                    commandString = commandString + " PLDescription LIKE '" + FindWhat + "'";
+                    AtLeastOne = true;
+                }
+            }
+            if (FindCheckedListBox.GetItemChecked(4))
+            {
+                if (AtLeastOne)
+                {
+                    commandString = commandString + " OR PLDetailDescription LIKE '" + FindWhat + "'";
+                }
+                else
+                {
+                    commandString = commandString + " PLDetailDescription LIKE '" + FindWhat + "'";
+                    AtLeastOne = true;
+                }
+            }
+            if (FindCheckedListBox.GetItemChecked(5))
+            {
+                if (AtLeastOne)
+                {
+                    commandString = commandString + " OR Notes LIKE '" + FindWhat + "'";
+                }
+                else
+                {
+                    commandString = commandString + " Notes LIKE '" + FindWhat + "'";
+                    AtLeastOne = true;
+                }
+            }
+            if (FindCheckedListBox.GetItemChecked(6))
+            {
+                if (AtLeastOne)
+                {
+                    commandString = commandString + " OR NotesFromFile LIKE '" + FindWhat + "'";
+                }
+                else
+                {
+                    commandString = commandString + " NotesFromFile LIKE '" + FindWhat + "'";
+                    AtLeastOne = true;
+                }
+            }
+
+            if (!AtLeastOne)
+            {
+                MessageBox.Show("You must select at least one field to search!", "Search Error!");
+                TecanDatabase.Close();
+                return;
+            }
+            cmd.CommandText = commandString;
+            // reader = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            RecordsFoundLabel.Text = "Found " + dt.Rows.Count + " Records.";
+            RecordsFoundLabel.Visible = true;
+            if(dt.Rows.Count > 0)
+            {
+                FindDataGridView.DataSource = dt;
+                FindDataGridView.Columns[1].Width = 350;
+                FindReplacePanel.Height = 575;
+                FindDataGridView.Visible = true;
+            }
+            // reader.Dispose();
+            
+
+            // Find Only
+            if (ReplaceTextBox.Text == "")
+            {
+                
+            }
+            // Find and Replace
+            else
+            {
+                FindWhat = FindTextBox.Text;
+                String ReplaceWith = ReplaceTextBox.Text;
+                // String commandString = "SELECT SAPId, SAPDescription, Description, DetailDescription, PLDescription, PLDetailDescription, Notes, NotesFromFile FROM PartsList WHERE";
+
+                RecordsFoundLabel.Text = "Found " + dt.Rows.Count + " Records. Replacing " + FindTextBox.Text + " with " + ReplaceTextBox.Text + ", exact matches only!";
+                String OriginalSAPDescription = "";        // SAP Description Field
+                String OriginalDescription = "";           // Description Field
+                String OriginalDetailDescription = "";     // Detail Description Field
+                String OriginalPLDescription = "";         // PL Description Field
+                String OriginalPLDetailDescription = "";   // PL Detail Description Field (Tecan Only ?)
+                String OriginalNotes = "";                 // Notes From File Field
+                String OriginalComments = "";              // Notes Field
+
+                String NewSAPDescription = "";
+                String NewDescription = "";
+                String NewDetailDescription = "";
+                String NewPLDescription = "";
+                String NewPLDetailDescription = "";
+                String NewNotes = "";
+                String NewComments = "";
+
+                // cmd.CommandText = "UPDATE PartsList SET " + lookupTableID + " = '" + newValue + "' WHERE SAPId = '" + selectedSAPID + "'";
+
+                String itemSAPID = "";
+                DataGridViewRow srow = null;
+                Int32 rowCount = FindDataGridView.Rows.Count;
+                Int32 rowIndex;
+
+                for (int s = 0; s < rowCount-1; s++)
+                {
+                    AtLeastOne = false;
+                    commandString = "UPDATE PartsList SET";
+                    rowIndex = FindDataGridView.Rows[s].Index;
+                    srow = FindDataGridView.Rows[rowIndex];
+                    FindDataGridView.Rows[s].Selected = true;
+                    itemSAPID = srow.Cells[0].Value.ToString();
+
+                    if (FindCheckedListBox.GetItemChecked(0))
+                    {
+                        OriginalSAPDescription = srow.Cells[1].Value.ToString();
+                        NewSAPDescription = OriginalSAPDescription.Replace(FindWhat, ReplaceWith);
+                        NewSAPDescription = NewSAPDescription.Replace("'","''");
+                        commandString = commandString + " SAPDescription = '" + NewSAPDescription + "'";
+                        AtLeastOne = true;
+                    }
+                    if (FindCheckedListBox.GetItemChecked(1))
+                    {
+                        OriginalDescription = srow.Cells[2].Value.ToString();
+                        NewDescription = OriginalDescription.Replace(FindWhat, ReplaceWith);
+                        NewDescription = NewDescription.Replace("'","''");
+                        if (AtLeastOne)
+                        {
+                            commandString = commandString + ", Description = '" + NewDescription + "'";
+                        }
+                        else
+                        {
+                            commandString = commandString + " Description = '" + NewDescription + "'";
+                            AtLeastOne = true;
+                        }
+                    }
+                    if (FindCheckedListBox.GetItemChecked(2))
+                    {
+                        OriginalDetailDescription = srow.Cells[3].Value.ToString();
+                        NewDetailDescription = OriginalDetailDescription.Replace(FindWhat, ReplaceWith);
+                        NewDetailDescription = NewDetailDescription.Replace("'","''");
+                        if (AtLeastOne)
+                        {
+                            commandString = commandString + ", DetailDescription = '" + NewDetailDescription + "'";
+                        }
+                        else
+                        {
+                            commandString = commandString + " DetailDescription = '" + NewDetailDescription + "'";
+                            AtLeastOne = true;
+                        }
+                    }
+                    if (FindCheckedListBox.GetItemChecked(3))
+                    {
+                        OriginalPLDescription = srow.Cells[4].Value.ToString();
+                        NewPLDescription = OriginalPLDescription.Replace(FindWhat, ReplaceWith);
+                        NewPLDescription = NewPLDescription.Replace("'","''");
+                        if (AtLeastOne)
+                        {
+                            commandString = commandString + ", PLDescription = '" + NewPLDescription + "'";
+                        }
+                        else
+                        {
+                            commandString = commandString + " PLDescription = '" + NewPLDescription + "'";
+                            AtLeastOne = true;
+                        }
+                    }
+                    if (FindCheckedListBox.GetItemChecked(4))
+                    {
+                        OriginalPLDetailDescription = srow.Cells[5].Value.ToString();
+                        NewPLDetailDescription = OriginalPLDetailDescription.Replace(FindWhat, ReplaceWith);
+                        NewPLDetailDescription = NewPLDetailDescription.Replace("'","''");
+                        if (AtLeastOne)
+                        {
+                            commandString = commandString + ", PLDetailDescription = '" + OriginalPLDetailDescription + "'";
+                        }
+                        else
+                        {
+                            commandString = commandString + " PLDetailDescription = '" + OriginalPLDetailDescription + "'";
+                            AtLeastOne = true;
+                        }
+                    }
+                    if (FindCheckedListBox.GetItemChecked(5))
+                    {
+                        OriginalNotes = srow.Cells[6].Value.ToString();
+                        NewNotes = OriginalNotes.Replace(FindWhat, ReplaceWith);
+                        NewNotes = NewNotes.Replace("'","''");
+                        if (AtLeastOne)
+                        {
+                            commandString = commandString + ", Notes = '" + OriginalNotes + "'";
+                        }
+                        else
+                        {
+                            commandString = commandString + " Notes = '" + OriginalNotes + "'";
+                            AtLeastOne = true;
+                        }
+                    }
+                    if (FindCheckedListBox.GetItemChecked(6))
+                    {
+                        OriginalComments = srow.Cells[7].Value.ToString();
+                        NewComments = OriginalComments.Replace(FindWhat, ReplaceWith);
+                        NewComments = NewComments.Replace("'","''");
+                        if (AtLeastOne)
+                        {
+                            commandString = commandString + ", NotesFromFile = '" + NewComments + "'";
+                        }
+                        else
+                        {
+                            commandString = commandString + " NotesFromFile = '" + NewComments + "'";
+                            AtLeastOne = true;
+                        }
+                    }
+                    commandString = commandString + " WHERE SAPId = '" + itemSAPID + "'";
+                    cmd.CommandText = commandString;
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            TecanDatabase.Close();
+            PartDetailReturn();
+        }
+
+        private void openDB()
+        {
+            TecanDatabase = new SqlCeConnection();
+            String dataPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+            TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            TecanDatabase.Open();
+        }
+
+        private void FindCancelButton_Click(object sender, EventArgs e)
+        {
+            closeFindPanel();
+        }
+
+        private void closeFindPanel()
+        {
+            RecordsFoundLabel.Text = "";
+            RecordsFoundLabel.Visible = false;
+            FindDataGridView.Visible = false;
+            FindReplacePanel.Visible = false;
+        }
+
+        private void FindAgainButton_Click(object sender, EventArgs e)
+        {
+            RecordsFoundLabel.Text = "";
+            RecordsFoundLabel.Visible = false;
+            FindDataGridView.DataSource = null;
+            FindReplacePanel.Height = 325;
+            FindDataGridView.Visible = false;
+        }
+
+        private void FindDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowindex = FindDataGridView.CurrentCell.RowIndex;
+            // int columnindex = FindDataGridView.CurrentCell.ColumnIndex; 
+
+            String mySAPID = FindDataGridView.Rows[rowindex].Cells[0].Value.ToString();
+
+            if (DetailsForm == null || DetailsForm.IsDisposed)
+            {
+                DetailsForm = new PartsListDetailDisplay();
+            }
+            try
+            {
+                DetailsForm.SetForm1Instance(this);
+                DetailsForm.LoadParts(mySAPID);
+                DetailsForm.TopMost = true;
+                DetailsForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loading Deatils Form " + ex.Message);
+            }
+
         }
 
     }

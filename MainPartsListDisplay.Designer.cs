@@ -38,11 +38,11 @@ namespace TecanPartListManager
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPartsListDisplay));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tecanPartsListDataSet = new TecanPartListManager.TecanPartsListDataSet();
             this.partsListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.partsListTableAdapter = new TecanPartListManager.TecanPartsListDataSetTableAdapters.PartsListTableAdapter();
@@ -109,6 +109,7 @@ namespace TecanPartListManager
             this.quoteDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customerPartslistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bothToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.findReplaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editLogonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SSPBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sSPCategoryTableAdapter = new TecanPartListManager.TecanPartsListDataSetTableAdapters.SSPCategoryTableAdapter();
@@ -133,13 +134,28 @@ namespace TecanPartListManager
             this.EditPasswordTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.initalizePanel = new System.Windows.Forms.Panel();
-            this.restoreBackupButton = new System.Windows.Forms.Button();
-            this.getAccessButton = new System.Windows.Forms.Button();
-            this.exitAppButton = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.exitAppButton = new System.Windows.Forms.Button();
+            this.getAccessButton = new System.Windows.Forms.Button();
+            this.restoreBackupButton = new System.Windows.Forms.Button();
+            this.FindReplacePanel = new System.Windows.Forms.Panel();
+            this.RecordsFoundLabel = new System.Windows.Forms.Label();
+            this.FindCancelButton = new System.Windows.Forms.Button();
+            this.FindAgainButton = new System.Windows.Forms.Button();
+            this.FindDataGridView = new System.Windows.Forms.DataGridView();
+            this.SelectAllFindCheckBox = new System.Windows.Forms.CheckBox();
+            this.CancelFindButton = new System.Windows.Forms.Button();
+            this.FindButton = new System.Windows.Forms.Button();
+            this.FindCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.ReplaceTextBox = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.FindTextBox = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tecanPartsListDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partsListBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partsListBindingNavigator)).BeginInit();
@@ -154,6 +170,8 @@ namespace TecanPartListManager
             ((System.ComponentModel.ISupportInitialize)(this.SalesTypeBindingSource)).BeginInit();
             this.EditLogonPanel.SuspendLayout();
             this.initalizePanel.SuspendLayout();
+            this.FindReplacePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FindDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // tecanPartsListDataSet
@@ -425,14 +443,14 @@ namespace TecanPartListManager
             this.partsListDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.partsListDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.partsListDataGridView.BackgroundColor = System.Drawing.Color.Linen;
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle31.BackColor = System.Drawing.Color.Tan;
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.partsListDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Tan;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.partsListDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.partsListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.partsListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.sAPIdDataGridViewTextBoxColumn,
@@ -442,31 +460,31 @@ namespace TecanPartListManager
             this.DBMembership,
             this.descriptionDataGridViewTextBoxColumn});
             this.partsListDataGridView.DataSource = this.partsListBindingSource;
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.partsListDataGridView.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.partsListDataGridView.DefaultCellStyle = dataGridViewCellStyle13;
             this.partsListDataGridView.EnableHeadersVisualStyles = false;
             this.partsListDataGridView.GridColor = System.Drawing.Color.White;
             this.partsListDataGridView.Location = new System.Drawing.Point(0, 80);
             this.partsListDataGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.partsListDataGridView.Name = "partsListDataGridView";
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle34.BackColor = System.Drawing.Color.Linen;
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.partsListDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle34;
-            dataGridViewCellStyle35.BackColor = System.Drawing.Color.White;
-            this.partsListDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.Linen;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.partsListDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
+            this.partsListDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle15;
             this.partsListDataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.LightBlue;
-            this.partsListDataGridView.Size = new System.Drawing.Size(2847, 351);
+            this.partsListDataGridView.Size = new System.Drawing.Size(2847, 979);
             this.partsListDataGridView.TabIndex = 1;
             this.partsListDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.partsListDataGridView_CellDoubleClick);
             // 
@@ -555,8 +573,8 @@ namespace TecanPartListManager
             // 
             this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "DetailDescription";
-            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.descriptionDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.descriptionDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
             this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
             // 
@@ -567,6 +585,7 @@ namespace TecanPartListManager
             this.multiplePartDataChangeToolStripMenuItem,
             this.databaseToolsToolStripMenuItem,
             this.publishDatabasesToolStripMenuItem,
+            this.findReplaceToolStripMenuItem,
             this.editLogonToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -724,14 +743,14 @@ namespace TecanPartListManager
             // backupToolStripMenuItem
             // 
             this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
-            this.backupToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.backupToolStripMenuItem.Size = new System.Drawing.Size(143, 26);
             this.backupToolStripMenuItem.Text = "Backup";
             this.backupToolStripMenuItem.Click += new System.EventHandler(this.backupToolStripMenuItem_Click);
             // 
             // restoreToolStripMenuItem
             // 
             this.restoreToolStripMenuItem.Name = "restoreToolStripMenuItem";
-            this.restoreToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.restoreToolStripMenuItem.Size = new System.Drawing.Size(143, 26);
             this.restoreToolStripMenuItem.Text = "Restore";
             this.restoreToolStripMenuItem.Click += new System.EventHandler(this.restoreToolStripMenuItem_Click);
             // 
@@ -766,6 +785,14 @@ namespace TecanPartListManager
             this.bothToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
             this.bothToolStripMenuItem.Text = "Both";
             this.bothToolStripMenuItem.Click += new System.EventHandler(this.bothToolStripMenuItem_Click);
+            // 
+            // findReplaceToolStripMenuItem
+            // 
+            this.findReplaceToolStripMenuItem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.findReplaceToolStripMenuItem.Name = "findReplaceToolStripMenuItem";
+            this.findReplaceToolStripMenuItem.Size = new System.Drawing.Size(138, 25);
+            this.findReplaceToolStripMenuItem.Text = "Find / Replace";
+            this.findReplaceToolStripMenuItem.Click += new System.EventHandler(this.findReplaceToolStripMenuItem_Click);
             // 
             // editLogonToolStripMenuItem
             // 
@@ -1006,37 +1033,55 @@ namespace TecanPartListManager
             this.initalizePanel.Controls.Add(this.exitAppButton);
             this.initalizePanel.Controls.Add(this.getAccessButton);
             this.initalizePanel.Controls.Add(this.restoreBackupButton);
-            this.initalizePanel.Location = new System.Drawing.Point(462, 240);
+            this.initalizePanel.Location = new System.Drawing.Point(1201, 478);
             this.initalizePanel.Name = "initalizePanel";
             this.initalizePanel.Size = new System.Drawing.Size(445, 267);
             this.initalizePanel.TabIndex = 15;
             this.initalizePanel.Visible = false;
             // 
-            // restoreBackupButton
+            // label11
             // 
-            this.restoreBackupButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.restoreBackupButton.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.restoreBackupButton.Location = new System.Drawing.Point(298, 66);
-            this.restoreBackupButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.restoreBackupButton.Name = "restoreBackupButton";
-            this.restoreBackupButton.Size = new System.Drawing.Size(76, 40);
-            this.restoreBackupButton.TabIndex = 4;
-            this.restoreBackupButton.Text = "Go";
-            this.restoreBackupButton.UseVisualStyleBackColor = false;
-            this.restoreBackupButton.Click += new System.EventHandler(this.restoreBackupButton_Click);
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(70, 196);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(112, 21);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "Exit Program";
             // 
-            // getAccessButton
+            // label10
             // 
-            this.getAccessButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.getAccessButton.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.getAccessButton.Location = new System.Drawing.Point(298, 127);
-            this.getAccessButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.getAccessButton.Name = "getAccessButton";
-            this.getAccessButton.Size = new System.Drawing.Size(76, 40);
-            this.getAccessButton.TabIndex = 5;
-            this.getAccessButton.Text = "Go";
-            this.getAccessButton.UseVisualStyleBackColor = false;
-            this.getAccessButton.Click += new System.EventHandler(this.getAccessButton_Click);
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(70, 125);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(198, 42);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "Load Access Database \r\nand associated files";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(70, 75);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(206, 21);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "Load Backup Databases";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(158, 30);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(173, 24);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Initialize Program";
             // 
             // exitAppButton
             // 
@@ -1051,55 +1096,214 @@ namespace TecanPartListManager
             this.exitAppButton.UseVisualStyleBackColor = false;
             this.exitAppButton.Click += new System.EventHandler(this.exitAppButton_Click);
             // 
-            // label8
+            // getAccessButton
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(158, 30);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(173, 24);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Initialize Program";
+            this.getAccessButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.getAccessButton.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.getAccessButton.Location = new System.Drawing.Point(298, 127);
+            this.getAccessButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.getAccessButton.Name = "getAccessButton";
+            this.getAccessButton.Size = new System.Drawing.Size(76, 40);
+            this.getAccessButton.TabIndex = 5;
+            this.getAccessButton.Text = "Go";
+            this.getAccessButton.UseVisualStyleBackColor = false;
+            this.getAccessButton.Click += new System.EventHandler(this.getAccessButton_Click);
             // 
-            // label9
+            // restoreBackupButton
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(70, 75);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(206, 21);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "Load Backup Databases";
+            this.restoreBackupButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.restoreBackupButton.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.restoreBackupButton.Location = new System.Drawing.Point(298, 66);
+            this.restoreBackupButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.restoreBackupButton.Name = "restoreBackupButton";
+            this.restoreBackupButton.Size = new System.Drawing.Size(76, 40);
+            this.restoreBackupButton.TabIndex = 4;
+            this.restoreBackupButton.Text = "Go";
+            this.restoreBackupButton.UseVisualStyleBackColor = false;
+            this.restoreBackupButton.Click += new System.EventHandler(this.restoreBackupButton_Click);
             // 
-            // label10
+            // FindReplacePanel
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(70, 125);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(198, 42);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "Load Access Database \r\nand associated files";
+            this.FindReplacePanel.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.FindReplacePanel.Controls.Add(this.RecordsFoundLabel);
+            this.FindReplacePanel.Controls.Add(this.FindCancelButton);
+            this.FindReplacePanel.Controls.Add(this.FindAgainButton);
+            this.FindReplacePanel.Controls.Add(this.FindDataGridView);
+            this.FindReplacePanel.Controls.Add(this.SelectAllFindCheckBox);
+            this.FindReplacePanel.Controls.Add(this.CancelFindButton);
+            this.FindReplacePanel.Controls.Add(this.FindButton);
+            this.FindReplacePanel.Controls.Add(this.FindCheckedListBox);
+            this.FindReplacePanel.Controls.Add(this.label15);
+            this.FindReplacePanel.Controls.Add(this.label14);
+            this.FindReplacePanel.Controls.Add(this.ReplaceTextBox);
+            this.FindReplacePanel.Controls.Add(this.label13);
+            this.FindReplacePanel.Controls.Add(this.FindTextBox);
+            this.FindReplacePanel.Controls.Add(this.label12);
+            this.FindReplacePanel.Location = new System.Drawing.Point(741, 226);
+            this.FindReplacePanel.Name = "FindReplacePanel";
+            this.FindReplacePanel.Size = new System.Drawing.Size(729, 833);
+            this.FindReplacePanel.TabIndex = 16;
+            this.FindReplacePanel.Visible = false;
             // 
-            // label11
+            // RecordsFoundLabel
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(70, 196);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(112, 21);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "Exit Program";
+            this.RecordsFoundLabel.AutoSize = true;
+            this.RecordsFoundLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RecordsFoundLabel.Location = new System.Drawing.Point(14, 375);
+            this.RecordsFoundLabel.Name = "RecordsFoundLabel";
+            this.RecordsFoundLabel.Size = new System.Drawing.Size(0, 21);
+            this.RecordsFoundLabel.TabIndex = 13;
+            this.RecordsFoundLabel.Visible = false;
+            // 
+            // FindCancelButton
+            // 
+            this.FindCancelButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.FindCancelButton.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FindCancelButton.Location = new System.Drawing.Point(392, 778);
+            this.FindCancelButton.Name = "FindCancelButton";
+            this.FindCancelButton.Size = new System.Drawing.Size(147, 42);
+            this.FindCancelButton.TabIndex = 12;
+            this.FindCancelButton.Text = "Cancel";
+            this.FindCancelButton.UseVisualStyleBackColor = false;
+            this.FindCancelButton.Click += new System.EventHandler(this.FindCancelButton_Click);
+            // 
+            // FindAgainButton
+            // 
+            this.FindAgainButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.FindAgainButton.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FindAgainButton.Location = new System.Drawing.Point(200, 778);
+            this.FindAgainButton.Name = "FindAgainButton";
+            this.FindAgainButton.Size = new System.Drawing.Size(147, 42);
+            this.FindAgainButton.TabIndex = 11;
+            this.FindAgainButton.Text = "Find Again";
+            this.FindAgainButton.UseVisualStyleBackColor = false;
+            this.FindAgainButton.Click += new System.EventHandler(this.FindAgainButton_Click);
+            // 
+            // FindDataGridView
+            // 
+            this.FindDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.FindDataGridView.Location = new System.Drawing.Point(18, 408);
+            this.FindDataGridView.Name = "FindDataGridView";
+            this.FindDataGridView.RowTemplate.Height = 28;
+            this.FindDataGridView.Size = new System.Drawing.Size(690, 346);
+            this.FindDataGridView.TabIndex = 10;
+            this.FindDataGridView.Visible = false;
+            this.FindDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.FindDataGridView_CellDoubleClick);
+            // 
+            // SelectAllFindCheckBox
+            // 
+            this.SelectAllFindCheckBox.AutoSize = true;
+            this.SelectAllFindCheckBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectAllFindCheckBox.Location = new System.Drawing.Point(364, 182);
+            this.SelectAllFindCheckBox.Name = "SelectAllFindCheckBox";
+            this.SelectAllFindCheckBox.Size = new System.Drawing.Size(109, 25);
+            this.SelectAllFindCheckBox.TabIndex = 9;
+            this.SelectAllFindCheckBox.Text = "Select All";
+            this.SelectAllFindCheckBox.UseVisualStyleBackColor = true;
+            this.SelectAllFindCheckBox.CheckedChanged += new System.EventHandler(this.SelectAllFindCheckBox_CheckedChanged);
+            // 
+            // CancelFindButton
+            // 
+            this.CancelFindButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.CancelFindButton.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CancelFindButton.Location = new System.Drawing.Point(383, 408);
+            this.CancelFindButton.Name = "CancelFindButton";
+            this.CancelFindButton.Size = new System.Drawing.Size(121, 42);
+            this.CancelFindButton.TabIndex = 8;
+            this.CancelFindButton.Text = "Cancel";
+            this.CancelFindButton.UseVisualStyleBackColor = false;
+            this.CancelFindButton.Click += new System.EventHandler(this.CancelFindButton_Click);
+            // 
+            // FindButton
+            // 
+            this.FindButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.FindButton.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FindButton.Location = new System.Drawing.Point(224, 408);
+            this.FindButton.Name = "FindButton";
+            this.FindButton.Size = new System.Drawing.Size(89, 42);
+            this.FindButton.TabIndex = 7;
+            this.FindButton.Text = "Find";
+            this.FindButton.UseVisualStyleBackColor = false;
+            this.FindButton.Click += new System.EventHandler(this.FindButton_Click);
+            // 
+            // FindCheckedListBox
+            // 
+            this.FindCheckedListBox.FormattingEnabled = true;
+            this.FindCheckedListBox.Items.AddRange(new object[] {
+            "SAP Description",
+            "Description",
+            "Detail Description",
+            "PL Description",
+            "PL Detail Description",
+            "Notes",
+            "Comments"});
+            this.FindCheckedListBox.Location = new System.Drawing.Point(249, 213);
+            this.FindCheckedListBox.Name = "FindCheckedListBox";
+            this.FindCheckedListBox.Size = new System.Drawing.Size(224, 172);
+            this.FindCheckedListBox.TabIndex = 6;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(245, 181);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(87, 24);
+            this.label15.TabIndex = 5;
+            this.label15.Text = "Look In:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(139, 111);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(300, 21);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Replace (leave blank for simple find)";
+            // 
+            // ReplaceTextBox
+            // 
+            this.ReplaceTextBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReplaceTextBox.Location = new System.Drawing.Point(143, 135);
+            this.ReplaceTextBox.Name = "ReplaceTextBox";
+            this.ReplaceTextBox.Size = new System.Drawing.Size(446, 28);
+            this.ReplaceTextBox.TabIndex = 3;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(139, 49);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(45, 21);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Find";
+            // 
+            // FindTextBox
+            // 
+            this.FindTextBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FindTextBox.Location = new System.Drawing.Point(143, 73);
+            this.FindTextBox.Name = "FindTextBox";
+            this.FindTextBox.Size = new System.Drawing.Size(446, 28);
+            this.FindTextBox.TabIndex = 1;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(280, 18);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(144, 24);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Find / Replace";
             // 
             // MainPartsListDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2847, 791);
+            this.ClientSize = new System.Drawing.Size(2847, 1419);
+            this.Controls.Add(this.FindReplacePanel);
             this.Controls.Add(this.initalizePanel);
             this.Controls.Add(this.EditLogonPanel);
             this.Controls.Add(this.SalesTypeComboBox);
@@ -1140,6 +1344,9 @@ namespace TecanPartListManager
             this.EditLogonPanel.PerformLayout();
             this.initalizePanel.ResumeLayout(false);
             this.initalizePanel.PerformLayout();
+            this.FindReplacePanel.ResumeLayout(false);
+            this.FindReplacePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FindDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1244,6 +1451,22 @@ namespace TecanPartListManager
         private Button exitAppButton;
         private Button getAccessButton;
         private Button restoreBackupButton;
+        private ToolStripMenuItem findReplaceToolStripMenuItem;
+        private Panel FindReplacePanel;
+        private CheckBox SelectAllFindCheckBox;
+        private Button CancelFindButton;
+        private Button FindButton;
+        private CheckedListBox FindCheckedListBox;
+        private Label label15;
+        private Label label14;
+        private TextBox ReplaceTextBox;
+        private Label label13;
+        private TextBox FindTextBox;
+        private Label label12;
+        private DataGridView FindDataGridView;
+        private Label RecordsFoundLabel;
+        private Button FindCancelButton;
+        private Button FindAgainButton;
 
     }
 }
