@@ -1193,6 +1193,7 @@ namespace TecanPartListManager
                 return;
             }
 
+            RecordsFoundLabel.Text = "Looking....";
             String FindWhat = "";
             Boolean AtLeastOne = false;
 
@@ -1303,19 +1304,14 @@ namespace TecanPartListManager
             // reader.Dispose();
             
 
-            // Find Only
-            if (ReplaceTextBox.Text == "")
-            {
-                
-            }
-            // Find and Replace
-            else
+            // Find Only ?
+            if (ReplaceTextBox.Text != "" || DeleteFindCheckBox.Checked == true)
             {
                 FindWhat = FindTextBox.Text;
                 String ReplaceWith = ReplaceTextBox.Text;
                 // String commandString = "SELECT SAPId, SAPDescription, Description, DetailDescription, PLDescription, PLDetailDescription, Notes, NotesFromFile FROM PartsList WHERE";
 
-                RecordsFoundLabel.Text = "Found " + dt.Rows.Count + " Records. Replacing " + FindTextBox.Text + " with " + ReplaceTextBox.Text + ", exact matches only!";
+                RecordsFoundLabel.Text = "Found " + dt.Rows.Count + " Records. Replacing " + FindTextBox.Text + " with " + ReplaceTextBox.Text + " exact matches only!";
                 String OriginalSAPDescription = "";        // SAP Description Field
                 String OriginalDescription = "";           // Description Field
                 String OriginalDetailDescription = "";     // Detail Description Field
