@@ -220,80 +220,80 @@
             // labLabel
             // 
             labLabel.AutoSize = true;
-            labLabel.Location = new System.Drawing.Point(102, 372);
+            labLabel.Location = new System.Drawing.Point(102, 335);
             labLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             labLabel.Name = "labLabel";
-            labLabel.Size = new System.Drawing.Size(40, 20);
+            labLabel.Size = new System.Drawing.Size(39, 18);
             labLabel.TabIndex = 306;
             labLabel.Text = "Lab:";
             // 
             // sAPIdLabel
             // 
             sAPIdLabel.AutoSize = true;
-            sAPIdLabel.Location = new System.Drawing.Point(21, 58);
+            sAPIdLabel.Location = new System.Drawing.Point(21, 52);
             sAPIdLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             sAPIdLabel.Name = "sAPIdLabel";
-            sAPIdLabel.Size = new System.Drawing.Size(116, 20);
+            sAPIdLabel.Size = new System.Drawing.Size(114, 18);
             sAPIdLabel.TabIndex = 300;
             sAPIdLabel.Text = "Part #/ SAP ID:";
             // 
             // oldPartNumLabel
             // 
             oldPartNumLabel.AutoSize = true;
-            oldPartNumLabel.Location = new System.Drawing.Point(57, 111);
+            oldPartNumLabel.Location = new System.Drawing.Point(57, 100);
             oldPartNumLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             oldPartNumLabel.Name = "oldPartNumLabel";
-            oldPartNumLabel.Size = new System.Drawing.Size(83, 20);
+            oldPartNumLabel.Size = new System.Drawing.Size(82, 18);
             oldPartNumLabel.TabIndex = 301;
             oldPartNumLabel.Text = "Old Part #:";
             // 
             // priorityLabel
             // 
             priorityLabel.AutoSize = true;
-            priorityLabel.Location = new System.Drawing.Point(82, 268);
+            priorityLabel.Location = new System.Drawing.Point(82, 241);
             priorityLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             priorityLabel.Name = "priorityLabel";
-            priorityLabel.Size = new System.Drawing.Size(60, 20);
+            priorityLabel.Size = new System.Drawing.Size(61, 18);
             priorityLabel.TabIndex = 304;
             priorityLabel.Text = "Priority:";
             // 
             // instrumentLabel
             // 
             instrumentLabel.AutoSize = true;
-            instrumentLabel.Location = new System.Drawing.Point(56, 425);
+            instrumentLabel.Location = new System.Drawing.Point(56, 382);
             instrumentLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             instrumentLabel.Name = "instrumentLabel";
-            instrumentLabel.Size = new System.Drawing.Size(90, 20);
+            instrumentLabel.Size = new System.Drawing.Size(82, 18);
             instrumentLabel.TabIndex = 307;
             instrumentLabel.Text = "Instrument:";
             // 
             // categoryLabel
             // 
             categoryLabel.AutoSize = true;
-            categoryLabel.Location = new System.Drawing.Point(66, 477);
+            categoryLabel.Location = new System.Drawing.Point(66, 429);
             categoryLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             categoryLabel.Name = "categoryLabel";
-            categoryLabel.Size = new System.Drawing.Size(77, 20);
+            categoryLabel.Size = new System.Drawing.Size(76, 18);
             categoryLabel.TabIndex = 308;
             categoryLabel.Text = "Category:";
             // 
             // subCategoryLabel
             // 
             subCategoryLabel.AutoSize = true;
-            subCategoryLabel.Location = new System.Drawing.Point(33, 529);
+            subCategoryLabel.Location = new System.Drawing.Point(33, 476);
             subCategoryLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             subCategoryLabel.Name = "subCategoryLabel";
-            subCategoryLabel.Size = new System.Drawing.Size(110, 20);
+            subCategoryLabel.Size = new System.Drawing.Size(108, 18);
             subCategoryLabel.TabIndex = 309;
             subCategoryLabel.Text = "Sub Category:";
             // 
             // descriptionLabel
             // 
             descriptionLabel.AutoSize = true;
-            descriptionLabel.Location = new System.Drawing.Point(448, 52);
+            descriptionLabel.Location = new System.Drawing.Point(448, 47);
             descriptionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.Size = new System.Drawing.Size(93, 20);
+            descriptionLabel.Size = new System.Drawing.Size(92, 18);
             descriptionLabel.TabIndex = 320;
             descriptionLabel.Text = "Description:";
             // 
@@ -301,7 +301,7 @@
             // 
             plPriceLabel.AutoSize = true;
             plPriceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            plPriceLabel.Location = new System.Drawing.Point(66, 235);
+            plPriceLabel.Location = new System.Drawing.Point(66, 211);
             plPriceLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             plPriceLabel.Name = "plPriceLabel";
             plPriceLabel.Size = new System.Drawing.Size(73, 20);
@@ -312,7 +312,7 @@
             // 
             gridsLabel.AutoSize = true;
             gridsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            gridsLabel.Location = new System.Drawing.Point(100, 295);
+            gridsLabel.Location = new System.Drawing.Point(100, 265);
             gridsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             gridsLabel.Name = "gridsLabel";
             gridsLabel.Size = new System.Drawing.Size(55, 20);
@@ -323,7 +323,7 @@
             // 
             serialPortsLabel.AutoSize = true;
             serialPortsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            serialPortsLabel.Location = new System.Drawing.Point(46, 52);
+            serialPortsLabel.Location = new System.Drawing.Point(46, 47);
             serialPortsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             serialPortsLabel.Name = "serialPortsLabel";
             serialPortsLabel.Size = new System.Drawing.Size(102, 20);
@@ -334,7 +334,7 @@
             // 
             uSBPortsLabel.AutoSize = true;
             uSBPortsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            uSBPortsLabel.Location = new System.Drawing.Point(57, 100);
+            uSBPortsLabel.Location = new System.Drawing.Point(57, 90);
             uSBPortsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             uSBPortsLabel.Name = "uSBPortsLabel";
             uSBPortsLabel.Size = new System.Drawing.Size(89, 20);
@@ -345,7 +345,7 @@
             // 
             standarPriceLabel.AutoSize = true;
             standarPriceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            standarPriceLabel.Location = new System.Drawing.Point(15, 43);
+            standarPriceLabel.Location = new System.Drawing.Point(15, 39);
             standarPriceLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             standarPriceLabel.Name = "standarPriceLabel";
             standarPriceLabel.Size = new System.Drawing.Size(125, 20);
@@ -356,7 +356,7 @@
             // 
             iLPLabel.AutoSize = true;
             iLPLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            iLPLabel.Location = new System.Drawing.Point(96, 95);
+            iLPLabel.Location = new System.Drawing.Point(96, 85);
             iLPLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             iLPLabel.Name = "iLPLabel";
             iLPLabel.Size = new System.Drawing.Size(39, 20);
@@ -367,7 +367,7 @@
             // 
             aSPLabel.AutoSize = true;
             aSPLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            aSPLabel.Location = new System.Drawing.Point(88, 188);
+            aSPLabel.Location = new System.Drawing.Point(88, 169);
             aSPLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             aSPLabel.Name = "aSPLabel";
             aSPLabel.Size = new System.Drawing.Size(47, 20);
@@ -378,7 +378,7 @@
             // 
             x_DimensionLabel.AutoSize = true;
             x_DimensionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            x_DimensionLabel.Location = new System.Drawing.Point(48, 51);
+            x_DimensionLabel.Location = new System.Drawing.Point(48, 46);
             x_DimensionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             x_DimensionLabel.Name = "x_DimensionLabel";
             x_DimensionLabel.Size = new System.Drawing.Size(110, 20);
@@ -389,7 +389,7 @@
             // 
             y_DimensionLabel.AutoSize = true;
             y_DimensionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            y_DimensionLabel.Location = new System.Drawing.Point(48, 95);
+            y_DimensionLabel.Location = new System.Drawing.Point(48, 85);
             y_DimensionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             y_DimensionLabel.Name = "y_DimensionLabel";
             y_DimensionLabel.Size = new System.Drawing.Size(109, 20);
@@ -400,7 +400,7 @@
             // 
             z_DimensionLabel.AutoSize = true;
             z_DimensionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            z_DimensionLabel.Location = new System.Drawing.Point(48, 140);
+            z_DimensionLabel.Location = new System.Drawing.Point(48, 126);
             z_DimensionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             z_DimensionLabel.Name = "z_DimensionLabel";
             z_DimensionLabel.Size = new System.Drawing.Size(108, 20);
@@ -411,7 +411,7 @@
             // 
             z_DimensionNoteLabel.AutoSize = true;
             z_DimensionNoteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            z_DimensionNoteLabel.Location = new System.Drawing.Point(24, 185);
+            z_DimensionNoteLabel.Location = new System.Drawing.Point(24, 166);
             z_DimensionNoteLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             z_DimensionNoteLabel.Name = "z_DimensionNoteLabel";
             z_DimensionNoteLabel.Size = new System.Drawing.Size(134, 20);
@@ -421,30 +421,30 @@
             // CreateDateLabel
             // 
             CreateDateLabel.AutoSize = true;
-            CreateDateLabel.Location = new System.Drawing.Point(44, 694);
+            CreateDateLabel.Location = new System.Drawing.Point(44, 625);
             CreateDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             CreateDateLabel.Name = "CreateDateLabel";
-            CreateDateLabel.Size = new System.Drawing.Size(100, 20);
+            CreateDateLabel.Size = new System.Drawing.Size(98, 18);
             CreateDateLabel.TabIndex = 312;
             CreateDateLabel.Text = "Create Date:";
             // 
             // removeDateLabel
             // 
             removeDateLabel.AutoSize = true;
-            removeDateLabel.Location = new System.Drawing.Point(30, 743);
+            removeDateLabel.Location = new System.Drawing.Point(30, 669);
             removeDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             removeDateLabel.Name = "removeDateLabel";
-            removeDateLabel.Size = new System.Drawing.Size(111, 20);
+            removeDateLabel.Size = new System.Drawing.Size(108, 18);
             removeDateLabel.TabIndex = 313;
             removeDateLabel.Text = "Remove Date:";
             // 
             // dBMembershipLabel
             // 
             dBMembershipLabel.AutoSize = true;
-            dBMembershipLabel.Location = new System.Drawing.Point(21, 634);
+            dBMembershipLabel.Location = new System.Drawing.Point(21, 571);
             dBMembershipLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             dBMembershipLabel.Name = "dBMembershipLabel";
-            dBMembershipLabel.Size = new System.Drawing.Size(123, 20);
+            dBMembershipLabel.Size = new System.Drawing.Size(122, 18);
             dBMembershipLabel.TabIndex = 311;
             dBMembershipLabel.Text = "DBMembership:";
             // 
@@ -452,7 +452,7 @@
             // 
             notMasterPriceListLabel.AutoSize = true;
             notMasterPriceListLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            notMasterPriceListLabel.Location = new System.Drawing.Point(40, 285);
+            notMasterPriceListLabel.Location = new System.Drawing.Point(40, 256);
             notMasterPriceListLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             notMasterPriceListLabel.Name = "notMasterPriceListLabel";
             notMasterPriceListLabel.Size = new System.Drawing.Size(174, 20);
@@ -462,30 +462,30 @@
             // thridPartyLabel
             // 
             thridPartyLabel.AutoSize = true;
-            thridPartyLabel.Location = new System.Drawing.Point(52, 215);
+            thridPartyLabel.Location = new System.Drawing.Point(52, 193);
             thridPartyLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             thridPartyLabel.Name = "thridPartyLabel";
-            thridPartyLabel.Size = new System.Drawing.Size(88, 20);
+            thridPartyLabel.Size = new System.Drawing.Size(87, 18);
             thridPartyLabel.TabIndex = 303;
             thridPartyLabel.Text = "Thrid Party:";
             // 
             // notesLabel
             // 
             notesLabel.AutoSize = true;
-            notesLabel.Location = new System.Drawing.Point(486, 551);
+            notesLabel.Location = new System.Drawing.Point(486, 496);
             notesLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             notesLabel.Name = "notesLabel";
-            notesLabel.Size = new System.Drawing.Size(55, 20);
+            notesLabel.Size = new System.Drawing.Size(53, 18);
             notesLabel.TabIndex = 324;
             notesLabel.Text = "Notes:";
             // 
             // sSPCategoryLabel
             // 
             sSPCategoryLabel.AutoSize = true;
-            sSPCategoryLabel.Location = new System.Drawing.Point(34, 582);
+            sSPCategoryLabel.Location = new System.Drawing.Point(34, 524);
             sSPCategoryLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             sSPCategoryLabel.Name = "sSPCategoryLabel";
-            sSPCategoryLabel.Size = new System.Drawing.Size(109, 20);
+            sSPCategoryLabel.Size = new System.Drawing.Size(109, 18);
             sSPCategoryLabel.TabIndex = 310;
             sSPCategoryLabel.Text = "SSPCategory:";
             // 
@@ -493,7 +493,7 @@
             // 
             manufacturingCostLabel.AutoSize = true;
             manufacturingCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            manufacturingCostLabel.Location = new System.Drawing.Point(39, 142);
+            manufacturingCostLabel.Location = new System.Drawing.Point(39, 128);
             manufacturingCostLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             manufacturingCostLabel.Name = "manufacturingCostLabel";
             manufacturingCostLabel.Size = new System.Drawing.Size(100, 20);
@@ -503,49 +503,49 @@
             // salesTypeLabel
             // 
             salesTypeLabel.AutoSize = true;
-            salesTypeLabel.Location = new System.Drawing.Point(50, 320);
+            salesTypeLabel.Location = new System.Drawing.Point(50, 288);
             salesTypeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             salesTypeLabel.Name = "salesTypeLabel";
-            salesTypeLabel.Size = new System.Drawing.Size(91, 20);
+            salesTypeLabel.Size = new System.Drawing.Size(89, 18);
             salesTypeLabel.TabIndex = 305;
             salesTypeLabel.Text = "Sales Type:";
             // 
             // sAPDescriptionLabel
             // 
             sAPDescriptionLabel.AutoSize = true;
-            sAPDescriptionLabel.Location = new System.Drawing.Point(412, 172);
+            sAPDescriptionLabel.Location = new System.Drawing.Point(412, 155);
             sAPDescriptionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             sAPDescriptionLabel.Name = "sAPDescriptionLabel";
-            sAPDescriptionLabel.Size = new System.Drawing.Size(129, 20);
+            sAPDescriptionLabel.Size = new System.Drawing.Size(129, 18);
             sAPDescriptionLabel.TabIndex = 3211;
             sAPDescriptionLabel.Text = "SAP Description:";
             // 
             // pLDescriptionLabel
             // 
             pLDescriptionLabel.AutoSize = true;
-            pLDescriptionLabel.Location = new System.Drawing.Point(544, 667);
+            pLDescriptionLabel.Location = new System.Drawing.Point(544, 600);
             pLDescriptionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             pLDescriptionLabel.Name = "pLDescriptionLabel";
-            pLDescriptionLabel.Size = new System.Drawing.Size(191, 20);
+            pLDescriptionLabel.Size = new System.Drawing.Size(184, 18);
             pLDescriptionLabel.TabIndex = 325;
             pLDescriptionLabel.Text = "PL Additional Information:";
             // 
             // pLDetailDescriptionLabel
             // 
-            pLDetailDescriptionLabel.Location = new System.Drawing.Point(437, 426);
+            pLDetailDescriptionLabel.Location = new System.Drawing.Point(437, 383);
             pLDetailDescriptionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             pLDetailDescriptionLabel.Name = "pLDetailDescriptionLabel";
-            pLDetailDescriptionLabel.Size = new System.Drawing.Size(104, 26);
+            pLDetailDescriptionLabel.Size = new System.Drawing.Size(104, 23);
             pLDetailDescriptionLabel.TabIndex = 323;
             pLDetailDescriptionLabel.Text = "Tecan Only:";
             // 
             // detailDescriptionLabel
             // 
             detailDescriptionLabel.AutoSize = true;
-            detailDescriptionLabel.Location = new System.Drawing.Point(403, 301);
+            detailDescriptionLabel.Location = new System.Drawing.Point(403, 271);
             detailDescriptionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             detailDescriptionLabel.Name = "detailDescriptionLabel";
-            detailDescriptionLabel.Size = new System.Drawing.Size(138, 20);
+            detailDescriptionLabel.Size = new System.Drawing.Size(137, 18);
             detailDescriptionLabel.TabIndex = 322;
             detailDescriptionLabel.Text = "Detail Description:";
             detailDescriptionLabel.Click += new System.EventHandler(this.detailDescriptionLabel_Click);
@@ -553,30 +553,30 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new System.Drawing.Point(546, 730);
+            label12.Location = new System.Drawing.Point(546, 657);
             label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(131, 20);
+            label12.Size = new System.Drawing.Size(131, 18);
             label12.TabIndex = 3212;
             label12.Text = "CAD Description:";
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new System.Drawing.Point(546, 799);
+            label13.Location = new System.Drawing.Point(546, 719);
             label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label13.Name = "label13";
-            label13.Size = new System.Drawing.Size(84, 20);
+            label13.Size = new System.Drawing.Size(85, 18);
             label13.TabIndex = 3215;
             label13.Text = "CAD Files:";
             // 
             // _ThridPartyPartNumLabel
             // 
             this._ThridPartyPartNumLabel.AutoSize = true;
-            this._ThridPartyPartNumLabel.Location = new System.Drawing.Point(58, 163);
+            this._ThridPartyPartNumLabel.Location = new System.Drawing.Point(58, 147);
             this._ThridPartyPartNumLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this._ThridPartyPartNumLabel.Name = "_ThridPartyPartNumLabel";
-            this._ThridPartyPartNumLabel.Size = new System.Drawing.Size(82, 20);
+            this._ThridPartyPartNumLabel.Size = new System.Drawing.Size(81, 18);
             this._ThridPartyPartNumLabel.TabIndex = 302;
             this._ThridPartyPartNumLabel.Text = "3rd Part #:";
             // 
@@ -651,8 +651,8 @@
             // labTextBox
             // 
             this.labTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "Lab", true));
-            this.labTextBox.Location = new System.Drawing.Point(146, 368);
-            this.labTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.labTextBox.Location = new System.Drawing.Point(146, 331);
+            this.labTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labTextBox.Name = "labTextBox";
             this.labTextBox.Size = new System.Drawing.Size(82, 26);
             this.labTextBox.TabIndex = 6;
@@ -660,8 +660,8 @@
             // sAPIdTextBox
             // 
             this.sAPIdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "SAPId", true));
-            this.sAPIdTextBox.Location = new System.Drawing.Point(146, 54);
-            this.sAPIdTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.sAPIdTextBox.Location = new System.Drawing.Point(146, 49);
+            this.sAPIdTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.sAPIdTextBox.Name = "sAPIdTextBox";
             this.sAPIdTextBox.Size = new System.Drawing.Size(187, 26);
             this.sAPIdTextBox.TabIndex = 1;
@@ -669,8 +669,8 @@
             // oldPartNumTextBox
             // 
             this.oldPartNumTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "OldPartNum", true));
-            this.oldPartNumTextBox.Location = new System.Drawing.Point(146, 102);
-            this.oldPartNumTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.oldPartNumTextBox.Location = new System.Drawing.Point(146, 92);
+            this.oldPartNumTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.oldPartNumTextBox.Name = "oldPartNumTextBox";
             this.oldPartNumTextBox.Size = new System.Drawing.Size(187, 26);
             this.oldPartNumTextBox.TabIndex = 2;
@@ -678,8 +678,8 @@
             // priorityTextBox
             // 
             this.priorityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "Priority", true));
-            this.priorityTextBox.Location = new System.Drawing.Point(146, 263);
-            this.priorityTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.priorityTextBox.Location = new System.Drawing.Point(146, 237);
+            this.priorityTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.priorityTextBox.Name = "priorityTextBox";
             this.priorityTextBox.Size = new System.Drawing.Size(82, 26);
             this.priorityTextBox.TabIndex = 4;
@@ -687,19 +687,19 @@
             // descriptionTextBox
             // 
             this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "Description", true));
-            this.descriptionTextBox.Location = new System.Drawing.Point(544, 48);
-            this.descriptionTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.descriptionTextBox.Location = new System.Drawing.Point(544, 43);
+            this.descriptionTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
-            this.descriptionTextBox.Size = new System.Drawing.Size(571, 98);
+            this.descriptionTextBox.Size = new System.Drawing.Size(571, 89);
             this.descriptionTextBox.TabIndex = 12;
             // 
             // plPriceTextBox
             // 
             this.plPriceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "PlPrice", true));
             this.plPriceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.plPriceTextBox.Location = new System.Drawing.Point(144, 228);
-            this.plPriceTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.plPriceTextBox.Location = new System.Drawing.Point(144, 205);
+            this.plPriceTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.plPriceTextBox.Name = "plPriceTextBox";
             this.plPriceTextBox.Size = new System.Drawing.Size(115, 30);
             this.plPriceTextBox.TabIndex = 26;
@@ -712,8 +712,8 @@
             // 
             this.gridsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "Grids", true));
             this.gridsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridsTextBox.Location = new System.Drawing.Point(160, 291);
-            this.gridsTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gridsTextBox.Location = new System.Drawing.Point(160, 262);
+            this.gridsTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gridsTextBox.Name = "gridsTextBox";
             this.gridsTextBox.Size = new System.Drawing.Size(68, 26);
             this.gridsTextBox.TabIndex = 31;
@@ -722,8 +722,8 @@
             // 
             this.serialPortsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "SerialPorts", true));
             this.serialPortsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.serialPortsTextBox.Location = new System.Drawing.Point(160, 48);
-            this.serialPortsTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.serialPortsTextBox.Location = new System.Drawing.Point(160, 43);
+            this.serialPortsTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.serialPortsTextBox.Name = "serialPortsTextBox";
             this.serialPortsTextBox.Size = new System.Drawing.Size(98, 26);
             this.serialPortsTextBox.TabIndex = 19;
@@ -732,8 +732,8 @@
             // 
             this.uSBPortsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "USBPorts", true));
             this.uSBPortsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uSBPortsTextBox.Location = new System.Drawing.Point(160, 95);
-            this.uSBPortsTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uSBPortsTextBox.Location = new System.Drawing.Point(160, 85);
+            this.uSBPortsTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.uSBPortsTextBox.Name = "uSBPortsTextBox";
             this.uSBPortsTextBox.Size = new System.Drawing.Size(98, 26);
             this.uSBPortsTextBox.TabIndex = 20;
@@ -742,8 +742,8 @@
             // 
             this.standarPriceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "StandarPrice", true));
             this.standarPriceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.standarPriceTextBox.Location = new System.Drawing.Point(144, 38);
-            this.standarPriceTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.standarPriceTextBox.Location = new System.Drawing.Point(144, 34);
+            this.standarPriceTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.standarPriceTextBox.Name = "standarPriceTextBox";
             this.standarPriceTextBox.Size = new System.Drawing.Size(115, 30);
             this.standarPriceTextBox.TabIndex = 22;
@@ -756,8 +756,8 @@
             // 
             this.iLPTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "ILP", true));
             this.iLPTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iLPTextBox.Location = new System.Drawing.Point(144, 88);
-            this.iLPTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.iLPTextBox.Location = new System.Drawing.Point(144, 79);
+            this.iLPTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.iLPTextBox.Name = "iLPTextBox";
             this.iLPTextBox.Size = new System.Drawing.Size(115, 30);
             this.iLPTextBox.TabIndex = 23;
@@ -770,8 +770,8 @@
             // 
             this.aSPTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "ASP", true));
             this.aSPTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aSPTextBox.Location = new System.Drawing.Point(144, 180);
-            this.aSPTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.aSPTextBox.Location = new System.Drawing.Point(144, 162);
+            this.aSPTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.aSPTextBox.Name = "aSPTextBox";
             this.aSPTextBox.Size = new System.Drawing.Size(115, 30);
             this.aSPTextBox.TabIndex = 25;
@@ -784,8 +784,8 @@
             // 
             this.x_DimensionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "X_Dimension", true));
             this.x_DimensionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.x_DimensionTextBox.Location = new System.Drawing.Point(160, 46);
-            this.x_DimensionTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.x_DimensionTextBox.Location = new System.Drawing.Point(160, 41);
+            this.x_DimensionTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.x_DimensionTextBox.Name = "x_DimensionTextBox";
             this.x_DimensionTextBox.Size = new System.Drawing.Size(70, 26);
             this.x_DimensionTextBox.TabIndex = 27;
@@ -794,8 +794,8 @@
             // 
             this.y_DimensionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "Y_Dimension", true));
             this.y_DimensionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.y_DimensionTextBox.Location = new System.Drawing.Point(160, 91);
-            this.y_DimensionTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.y_DimensionTextBox.Location = new System.Drawing.Point(160, 82);
+            this.y_DimensionTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.y_DimensionTextBox.Name = "y_DimensionTextBox";
             this.y_DimensionTextBox.Size = new System.Drawing.Size(70, 26);
             this.y_DimensionTextBox.TabIndex = 28;
@@ -804,8 +804,8 @@
             // 
             this.z_DimensionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "Z_Dimension", true));
             this.z_DimensionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.z_DimensionTextBox.Location = new System.Drawing.Point(160, 135);
-            this.z_DimensionTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.z_DimensionTextBox.Location = new System.Drawing.Point(160, 121);
+            this.z_DimensionTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.z_DimensionTextBox.Name = "z_DimensionTextBox";
             this.z_DimensionTextBox.Size = new System.Drawing.Size(70, 26);
             this.z_DimensionTextBox.TabIndex = 28;
@@ -814,18 +814,18 @@
             // 
             this.z_DimensionNoteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "Z_DimensionNote", true));
             this.z_DimensionNoteTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.z_DimensionNoteTextBox.Location = new System.Drawing.Point(28, 209);
-            this.z_DimensionNoteTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.z_DimensionNoteTextBox.Location = new System.Drawing.Point(28, 188);
+            this.z_DimensionNoteTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.z_DimensionNoteTextBox.Multiline = true;
             this.z_DimensionNoteTextBox.Name = "z_DimensionNoteTextBox";
-            this.z_DimensionNoteTextBox.Size = new System.Drawing.Size(230, 58);
+            this.z_DimensionNoteTextBox.Size = new System.Drawing.Size(230, 53);
             this.z_DimensionNoteTextBox.TabIndex = 30;
             // 
             // CreateDateDateTimePicker
             // 
             this.CreateDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.partsListBindingSource, "CreateDate", true));
-            this.CreateDateDateTimePicker.Location = new System.Drawing.Point(146, 685);
-            this.CreateDateDateTimePicker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CreateDateDateTimePicker.Location = new System.Drawing.Point(146, 616);
+            this.CreateDateDateTimePicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CreateDateDateTimePicker.Name = "CreateDateDateTimePicker";
             this.CreateDateDateTimePicker.Size = new System.Drawing.Size(298, 26);
             this.CreateDateDateTimePicker.TabIndex = 208;
@@ -834,8 +834,8 @@
             // removeDateDateTimePicker
             // 
             this.removeDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.partsListBindingSource, "RemoveDate", true));
-            this.removeDateDateTimePicker.Location = new System.Drawing.Point(146, 734);
-            this.removeDateDateTimePicker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.removeDateDateTimePicker.Location = new System.Drawing.Point(146, 661);
+            this.removeDateDateTimePicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.removeDateDateTimePicker.Name = "removeDateDateTimePicker";
             this.removeDateDateTimePicker.Size = new System.Drawing.Size(298, 26);
             this.removeDateDateTimePicker.TabIndex = 209;
@@ -845,10 +845,10 @@
             // 
             this.notMasterPriceListCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.partsListBindingSource, "NotMasterPriceList", true));
             this.notMasterPriceListCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.notMasterPriceListCheckBox.Location = new System.Drawing.Point(212, 277);
-            this.notMasterPriceListCheckBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.notMasterPriceListCheckBox.Location = new System.Drawing.Point(212, 249);
+            this.notMasterPriceListCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.notMasterPriceListCheckBox.Name = "notMasterPriceListCheckBox";
-            this.notMasterPriceListCheckBox.Size = new System.Drawing.Size(34, 37);
+            this.notMasterPriceListCheckBox.Size = new System.Drawing.Size(34, 33);
             this.notMasterPriceListCheckBox.TabIndex = 211;
             this.notMasterPriceListCheckBox.TabStop = false;
             this.notMasterPriceListCheckBox.UseVisualStyleBackColor = true;
@@ -856,10 +856,10 @@
             // thridPartyCheckBox
             // 
             this.thridPartyCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.partsListBindingSource, "ThridParty", true));
-            this.thridPartyCheckBox.Location = new System.Drawing.Point(146, 208);
-            this.thridPartyCheckBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.thridPartyCheckBox.Location = new System.Drawing.Point(146, 187);
+            this.thridPartyCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.thridPartyCheckBox.Name = "thridPartyCheckBox";
-            this.thridPartyCheckBox.Size = new System.Drawing.Size(39, 37);
+            this.thridPartyCheckBox.Size = new System.Drawing.Size(39, 33);
             this.thridPartyCheckBox.TabIndex = 207;
             this.thridPartyCheckBox.TabStop = false;
             this.thridPartyCheckBox.UseVisualStyleBackColor = true;
@@ -867,11 +867,11 @@
             // notesTextBox
             // 
             this.notesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "Notes", true));
-            this.notesTextBox.Location = new System.Drawing.Point(1143, 1083);
-            this.notesTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.notesTextBox.Location = new System.Drawing.Point(1143, 975);
+            this.notesTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.notesTextBox.Multiline = true;
             this.notesTextBox.Name = "notesTextBox";
-            this.notesTextBox.Size = new System.Drawing.Size(304, 109);
+            this.notesTextBox.Size = new System.Drawing.Size(304, 98);
             this.notesTextBox.TabIndex = 50;
             this.notesTextBox.TabStop = false;
             // 
@@ -879,8 +879,8 @@
             // 
             this.manufacturingCostTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "ManufacturingCost", true));
             this.manufacturingCostTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.manufacturingCostTextBox.Location = new System.Drawing.Point(144, 134);
-            this.manufacturingCostTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.manufacturingCostTextBox.Location = new System.Drawing.Point(144, 121);
+            this.manufacturingCostTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.manufacturingCostTextBox.Name = "manufacturingCostTextBox";
             this.manufacturingCostTextBox.Size = new System.Drawing.Size(115, 30);
             this.manufacturingCostTextBox.TabIndex = 24;
@@ -900,10 +900,10 @@
             this.instrumentComboBox.DataSource = this.instrumentBindingSource;
             this.instrumentComboBox.DisplayMember = "InstrumentName";
             this.instrumentComboBox.FormattingEnabled = true;
-            this.instrumentComboBox.Location = new System.Drawing.Point(146, 420);
-            this.instrumentComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.instrumentComboBox.Location = new System.Drawing.Point(146, 378);
+            this.instrumentComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.instrumentComboBox.Name = "instrumentComboBox";
-            this.instrumentComboBox.Size = new System.Drawing.Size(192, 28);
+            this.instrumentComboBox.Size = new System.Drawing.Size(192, 26);
             this.instrumentComboBox.TabIndex = 7;
             this.instrumentComboBox.ValueMember = "InstrumentID";
             // 
@@ -931,10 +931,10 @@
             this.categoryComboBox.DataSource = this.categoryBindingSource;
             this.categoryComboBox.DisplayMember = "CategoryName";
             this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(146, 472);
-            this.categoryComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.categoryComboBox.Location = new System.Drawing.Point(146, 425);
+            this.categoryComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.categoryComboBox.Name = "categoryComboBox";
-            this.categoryComboBox.Size = new System.Drawing.Size(210, 28);
+            this.categoryComboBox.Size = new System.Drawing.Size(210, 26);
             this.categoryComboBox.TabIndex = 8;
             this.categoryComboBox.ValueMember = "CategoryID";
             // 
@@ -953,10 +953,10 @@
             this.subCategoryComboBox.DataSource = this.SubCategoryBindingSource;
             this.subCategoryComboBox.DisplayMember = "SubCategoryName";
             this.subCategoryComboBox.FormattingEnabled = true;
-            this.subCategoryComboBox.Location = new System.Drawing.Point(146, 525);
-            this.subCategoryComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.subCategoryComboBox.Location = new System.Drawing.Point(146, 472);
+            this.subCategoryComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.subCategoryComboBox.Name = "subCategoryComboBox";
-            this.subCategoryComboBox.Size = new System.Drawing.Size(272, 28);
+            this.subCategoryComboBox.Size = new System.Drawing.Size(272, 26);
             this.subCategoryComboBox.TabIndex = 9;
             this.subCategoryComboBox.ValueMember = "SubCategoryID";
             // 
@@ -975,10 +975,10 @@
             this.salesTypeComboBox.DataSource = this.salesTypeBindingSource;
             this.salesTypeComboBox.DisplayMember = "SalesTypeName";
             this.salesTypeComboBox.FormattingEnabled = true;
-            this.salesTypeComboBox.Location = new System.Drawing.Point(146, 314);
-            this.salesTypeComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.salesTypeComboBox.Location = new System.Drawing.Point(146, 283);
+            this.salesTypeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.salesTypeComboBox.Name = "salesTypeComboBox";
-            this.salesTypeComboBox.Size = new System.Drawing.Size(82, 28);
+            this.salesTypeComboBox.Size = new System.Drawing.Size(82, 26);
             this.salesTypeComboBox.TabIndex = 5;
             this.salesTypeComboBox.ValueMember = "SalesTypeID";
             // 
@@ -997,18 +997,18 @@
             this.SSPCategoryComboBox.DataSource = this.SSPBindingSource;
             this.SSPCategoryComboBox.DisplayMember = "SSPCategoryName";
             this.SSPCategoryComboBox.FormattingEnabled = true;
-            this.SSPCategoryComboBox.Location = new System.Drawing.Point(146, 577);
-            this.SSPCategoryComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.SSPCategoryComboBox.Location = new System.Drawing.Point(146, 519);
+            this.SSPCategoryComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SSPCategoryComboBox.Name = "SSPCategoryComboBox";
-            this.SSPCategoryComboBox.Size = new System.Drawing.Size(272, 28);
+            this.SSPCategoryComboBox.Size = new System.Drawing.Size(272, 26);
             this.SSPCategoryComboBox.TabIndex = 10;
             this.SSPCategoryComboBox.ValueMember = "SSPCategoryId";
             // 
             // thirdPartyPartNumTextBox
             // 
             this.thirdPartyPartNumTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "ThridPartyPartNum", true));
-            this.thirdPartyPartNumTextBox.Location = new System.Drawing.Point(146, 158);
-            this.thirdPartyPartNumTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.thirdPartyPartNumTextBox.Location = new System.Drawing.Point(146, 142);
+            this.thirdPartyPartNumTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.thirdPartyPartNumTextBox.Name = "thirdPartyPartNumTextBox";
             this.thirdPartyPartNumTextBox.Size = new System.Drawing.Size(187, 26);
             this.thirdPartyPartNumTextBox.TabIndex = 3;
@@ -1016,19 +1016,19 @@
             // sAPDescriptionTextBox
             // 
             this.sAPDescriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "SAPDescription", true));
-            this.sAPDescriptionTextBox.Location = new System.Drawing.Point(544, 173);
-            this.sAPDescriptionTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.sAPDescriptionTextBox.Location = new System.Drawing.Point(544, 156);
+            this.sAPDescriptionTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.sAPDescriptionTextBox.Multiline = true;
             this.sAPDescriptionTextBox.Name = "sAPDescriptionTextBox";
             this.sAPDescriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.sAPDescriptionTextBox.Size = new System.Drawing.Size(571, 98);
+            this.sAPDescriptionTextBox.Size = new System.Drawing.Size(571, 89);
             this.sAPDescriptionTextBox.TabIndex = 13;
             // 
             // pLDescriptionTextBox
             // 
             this.pLDescriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "PLDescription", true));
-            this.pLDescriptionTextBox.Location = new System.Drawing.Point(544, 692);
-            this.pLDescriptionTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pLDescriptionTextBox.Location = new System.Drawing.Point(544, 623);
+            this.pLDescriptionTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pLDescriptionTextBox.Name = "pLDescriptionTextBox";
             this.pLDescriptionTextBox.Size = new System.Drawing.Size(571, 26);
             this.pLDescriptionTextBox.TabIndex = 17;
@@ -1036,23 +1036,23 @@
             // pLDetailDescriptionTextBox
             // 
             this.pLDetailDescriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "PLDetailDescription", true));
-            this.pLDetailDescriptionTextBox.Location = new System.Drawing.Point(544, 423);
-            this.pLDetailDescriptionTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pLDetailDescriptionTextBox.Location = new System.Drawing.Point(544, 381);
+            this.pLDetailDescriptionTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pLDetailDescriptionTextBox.Multiline = true;
             this.pLDetailDescriptionTextBox.Name = "pLDetailDescriptionTextBox";
             this.pLDetailDescriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.pLDetailDescriptionTextBox.Size = new System.Drawing.Size(571, 98);
+            this.pLDetailDescriptionTextBox.Size = new System.Drawing.Size(571, 89);
             this.pLDetailDescriptionTextBox.TabIndex = 15;
             // 
             // detailDescriptionTextBox
             // 
             this.detailDescriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "DetailDescription", true));
-            this.detailDescriptionTextBox.Location = new System.Drawing.Point(544, 298);
-            this.detailDescriptionTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.detailDescriptionTextBox.Location = new System.Drawing.Point(544, 268);
+            this.detailDescriptionTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.detailDescriptionTextBox.Multiline = true;
             this.detailDescriptionTextBox.Name = "detailDescriptionTextBox";
             this.detailDescriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.detailDescriptionTextBox.Size = new System.Drawing.Size(571, 98);
+            this.detailDescriptionTextBox.Size = new System.Drawing.Size(571, 89);
             this.detailDescriptionTextBox.TabIndex = 14;
             this.detailDescriptionTextBox.TextChanged += new System.EventHandler(this.detailDescriptionTextBox_TextChanged);
             // 
@@ -1071,11 +1071,11 @@
             this.groupBox1.Controls.Add(notMasterPriceListLabel);
             this.groupBox1.Controls.Add(this.notMasterPriceListCheckBox);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(1143, 208);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Location = new System.Drawing.Point(1143, 187);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(306, 326);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(306, 293);
             this.groupBox1.TabIndex = 316;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pricing";
@@ -1087,11 +1087,11 @@
             this.groupBox2.Controls.Add(uSBPortsLabel);
             this.groupBox2.Controls.Add(this.serialPortsTextBox);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(1143, 48);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox2.Location = new System.Drawing.Point(1143, 43);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox2.Size = new System.Drawing.Size(306, 142);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(306, 128);
             this.groupBox2.TabIndex = 315;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Interfaces";
@@ -1109,11 +1109,11 @@
             this.groupBox3.Controls.Add(this.gridsTextBox);
             this.groupBox3.Controls.Add(gridsLabel);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(1143, 548);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox3.Location = new System.Drawing.Point(1143, 493);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox3.Size = new System.Drawing.Size(306, 335);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Size = new System.Drawing.Size(306, 301);
             this.groupBox3.TabIndex = 319;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Dimensions / Grids";
@@ -1121,8 +1121,8 @@
             // salesTypeTextBox
             // 
             this.salesTypeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "SalesType", true));
-            this.salesTypeTextBox.Location = new System.Drawing.Point(308, 1372);
-            this.salesTypeTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.salesTypeTextBox.Location = new System.Drawing.Point(308, 1235);
+            this.salesTypeTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.salesTypeTextBox.Name = "salesTypeTextBox";
             this.salesTypeTextBox.Size = new System.Drawing.Size(37, 26);
             this.salesTypeTextBox.TabIndex = 202;
@@ -1131,8 +1131,8 @@
             // SSPCategoryTextBox
             // 
             this.SSPCategoryTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "SSPCategory", true));
-            this.SSPCategoryTextBox.Location = new System.Drawing.Point(238, 1372);
-            this.SSPCategoryTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.SSPCategoryTextBox.Location = new System.Drawing.Point(238, 1235);
+            this.SSPCategoryTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SSPCategoryTextBox.Name = "SSPCategoryTextBox";
             this.SSPCategoryTextBox.Size = new System.Drawing.Size(37, 26);
             this.SSPCategoryTextBox.TabIndex = 203;
@@ -1141,8 +1141,8 @@
             // subCategoryTextBox
             // 
             this.subCategoryTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "SubCategory", true));
-            this.subCategoryTextBox.Location = new System.Drawing.Point(172, 1372);
-            this.subCategoryTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.subCategoryTextBox.Location = new System.Drawing.Point(172, 1235);
+            this.subCategoryTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.subCategoryTextBox.Name = "subCategoryTextBox";
             this.subCategoryTextBox.Size = new System.Drawing.Size(37, 26);
             this.subCategoryTextBox.TabIndex = 204;
@@ -1151,8 +1151,8 @@
             // categoryTextBox
             // 
             this.categoryTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "Category", true));
-            this.categoryTextBox.Location = new System.Drawing.Point(105, 1372);
-            this.categoryTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.categoryTextBox.Location = new System.Drawing.Point(105, 1235);
+            this.categoryTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.categoryTextBox.Name = "categoryTextBox";
             this.categoryTextBox.Size = new System.Drawing.Size(37, 26);
             this.categoryTextBox.TabIndex = 205;
@@ -1161,8 +1161,8 @@
             // instrumentTextBox
             // 
             this.instrumentTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "Instrument", true));
-            this.instrumentTextBox.Location = new System.Drawing.Point(38, 1372);
-            this.instrumentTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.instrumentTextBox.Location = new System.Drawing.Point(38, 1235);
+            this.instrumentTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.instrumentTextBox.Name = "instrumentTextBox";
             this.instrumentTextBox.Size = new System.Drawing.Size(37, 26);
             this.instrumentTextBox.TabIndex = 206;
@@ -1172,9 +1172,9 @@
             // 
             this.addSuppDocButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.addSuppDocButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addSuppDocButton.Location = new System.Drawing.Point(858, 872);
+            this.addSuppDocButton.Location = new System.Drawing.Point(858, 785);
             this.addSuppDocButton.Name = "addSuppDocButton";
-            this.addSuppDocButton.Size = new System.Drawing.Size(120, 38);
+            this.addSuppDocButton.Size = new System.Drawing.Size(120, 34);
             this.addSuppDocButton.TabIndex = 213;
             this.addSuppDocButton.TabStop = false;
             this.addSuppDocButton.Text = "Add / Edit";
@@ -1185,43 +1185,43 @@
             // 
             this.groupBox4.Controls.Add(this.partImagePictureBox);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(0, 800);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox4.Location = new System.Drawing.Point(0, 720);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox4.Size = new System.Drawing.Size(518, 420);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Size = new System.Drawing.Size(518, 378);
             this.groupBox4.TabIndex = 314;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Image";
             // 
             // partImagePictureBox
             // 
-            this.partImagePictureBox.Location = new System.Drawing.Point(26, 46);
-            this.partImagePictureBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.partImagePictureBox.Location = new System.Drawing.Point(26, 41);
+            this.partImagePictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.partImagePictureBox.Name = "partImagePictureBox";
-            this.partImagePictureBox.Size = new System.Drawing.Size(465, 345);
+            this.partImagePictureBox.Size = new System.Drawing.Size(465, 310);
             this.partImagePictureBox.TabIndex = 2;
             this.partImagePictureBox.TabStop = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1143, 1054);
+            this.label3.Location = new System.Drawing.Point(1143, 949);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 20);
+            this.label3.Size = new System.Drawing.Size(84, 18);
             this.label3.TabIndex = 135;
             this.label3.Text = "Comments";
             // 
             // NotesFromFileTextBox
             // 
             this.NotesFromFileTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "NotesFromFile", true));
-            this.NotesFromFileTextBox.Location = new System.Drawing.Point(544, 548);
-            this.NotesFromFileTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.NotesFromFileTextBox.Location = new System.Drawing.Point(544, 493);
+            this.NotesFromFileTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NotesFromFileTextBox.Multiline = true;
             this.NotesFromFileTextBox.Name = "NotesFromFileTextBox";
             this.NotesFromFileTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.NotesFromFileTextBox.Size = new System.Drawing.Size(571, 98);
+            this.NotesFromFileTextBox.Size = new System.Drawing.Size(571, 89);
             this.NotesFromFileTextBox.TabIndex = 16;
             // 
             // dBMembershipTableAdapter
@@ -1234,10 +1234,10 @@
             this.DBMembershipComboBox.DataSource = this.DBbindingSource;
             this.DBMembershipComboBox.DisplayMember = "DBName";
             this.DBMembershipComboBox.FormattingEnabled = true;
-            this.DBMembershipComboBox.Location = new System.Drawing.Point(146, 629);
-            this.DBMembershipComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.DBMembershipComboBox.Location = new System.Drawing.Point(146, 566);
+            this.DBMembershipComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DBMembershipComboBox.Name = "DBMembershipComboBox";
-            this.DBMembershipComboBox.Size = new System.Drawing.Size(116, 28);
+            this.DBMembershipComboBox.Size = new System.Drawing.Size(116, 26);
             this.DBMembershipComboBox.TabIndex = 11;
             this.DBMembershipComboBox.ValueMember = "DBID";
             // 
@@ -1260,11 +1260,11 @@
             this.suppumentalDocsListBox.DataSource = this.suppumentalDocsBindingSource;
             this.suppumentalDocsListBox.DisplayMember = "FileName";
             this.suppumentalDocsListBox.FormattingEnabled = true;
-            this.suppumentalDocsListBox.ItemHeight = 20;
-            this.suppumentalDocsListBox.Location = new System.Drawing.Point(543, 915);
-            this.suppumentalDocsListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.suppumentalDocsListBox.ItemHeight = 18;
+            this.suppumentalDocsListBox.Location = new System.Drawing.Point(543, 823);
+            this.suppumentalDocsListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.suppumentalDocsListBox.Name = "suppumentalDocsListBox";
-            this.suppumentalDocsListBox.Size = new System.Drawing.Size(571, 104);
+            this.suppumentalDocsListBox.Size = new System.Drawing.Size(571, 94);
             this.suppumentalDocsListBox.TabIndex = 18;
             this.suppumentalDocsListBox.TabStop = false;
             this.suppumentalDocsListBox.ValueMember = "FileName";
@@ -1274,10 +1274,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(732, 1042);
+            this.label2.Location = new System.Drawing.Point(732, 938);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 20);
+            this.label2.Size = new System.Drawing.Size(117, 18);
             this.label2.TabIndex = 327;
             this.label2.Text = "Required Parts:";
             // 
@@ -1294,9 +1294,9 @@
             // 
             this.addRequiredPartButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.addRequiredPartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addRequiredPartButton.Location = new System.Drawing.Point(858, 1032);
+            this.addRequiredPartButton.Location = new System.Drawing.Point(858, 929);
             this.addRequiredPartButton.Name = "addRequiredPartButton";
-            this.addRequiredPartButton.Size = new System.Drawing.Size(120, 38);
+            this.addRequiredPartButton.Size = new System.Drawing.Size(120, 34);
             this.addRequiredPartButton.TabIndex = 215;
             this.addRequiredPartButton.TabStop = false;
             this.addRequiredPartButton.Text = "Add";
@@ -1306,8 +1306,8 @@
             // dBMembershipTextBox
             // 
             this.dBMembershipTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "DBMembership", true));
-            this.dBMembershipTextBox.Location = new System.Drawing.Point(370, 1372);
-            this.dBMembershipTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dBMembershipTextBox.Location = new System.Drawing.Point(370, 1235);
+            this.dBMembershipTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dBMembershipTextBox.Name = "dBMembershipTextBox";
             this.dBMembershipTextBox.Size = new System.Drawing.Size(36, 26);
             this.dBMembershipTextBox.TabIndex = 201;
@@ -1320,10 +1320,10 @@
             this.columnHeader2});
             this.RequiredListView.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RequiredListView.FullRowSelect = true;
-            this.RequiredListView.Location = new System.Drawing.Point(543, 1074);
-            this.RequiredListView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.RequiredListView.Location = new System.Drawing.Point(543, 967);
+            this.RequiredListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.RequiredListView.Name = "RequiredListView";
-            this.RequiredListView.Size = new System.Drawing.Size(571, 118);
+            this.RequiredListView.Size = new System.Drawing.Size(571, 107);
             this.RequiredListView.TabIndex = 218;
             this.RequiredListView.TabStop = false;
             this.RequiredListView.UseCompatibleStateImageBehavior = false;
@@ -1342,10 +1342,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(704, 882);
+            this.label1.Location = new System.Drawing.Point(704, 794);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(148, 20);
+            this.label1.Size = new System.Drawing.Size(145, 18);
             this.label1.TabIndex = 326;
             this.label1.Text = "Supplemental Files:";
             // 
@@ -1353,9 +1353,9 @@
             // 
             this.viewSuppDocButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.viewSuppDocButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewSuppDocButton.Location = new System.Drawing.Point(984, 872);
+            this.viewSuppDocButton.Location = new System.Drawing.Point(984, 785);
             this.viewSuppDocButton.Name = "viewSuppDocButton";
-            this.viewSuppDocButton.Size = new System.Drawing.Size(75, 38);
+            this.viewSuppDocButton.Size = new System.Drawing.Size(75, 34);
             this.viewSuppDocButton.TabIndex = 214;
             this.viewSuppDocButton.TabStop = false;
             this.viewSuppDocButton.Text = "View";
@@ -1367,9 +1367,9 @@
             // 
             this.addImageButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.addImageButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addImageButton.Location = new System.Drawing.Point(172, 1200);
+            this.addImageButton.Location = new System.Drawing.Point(172, 1080);
             this.addImageButton.Name = "addImageButton";
-            this.addImageButton.Size = new System.Drawing.Size(120, 38);
+            this.addImageButton.Size = new System.Drawing.Size(120, 34);
             this.addImageButton.TabIndex = 212;
             this.addImageButton.TabStop = false;
             this.addImageButton.Text = "Add / Edit";
@@ -1379,8 +1379,8 @@
             // PLAddedInfoCheckBox
             // 
             this.PLAddedInfoCheckBox.AutoSize = true;
-            this.PLAddedInfoCheckBox.Location = new System.Drawing.Point(740, 667);
-            this.PLAddedInfoCheckBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.PLAddedInfoCheckBox.Location = new System.Drawing.Point(740, 600);
+            this.PLAddedInfoCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PLAddedInfoCheckBox.Name = "PLAddedInfoCheckBox";
             this.PLAddedInfoCheckBox.Size = new System.Drawing.Size(22, 21);
             this.PLAddedInfoCheckBox.TabIndex = 210;
@@ -1391,21 +1391,21 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1143, 902);
+            this.label5.Location = new System.Drawing.Point(1143, 812);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(102, 20);
+            this.label5.Size = new System.Drawing.Size(103, 18);
             this.label5.TabIndex = 342;
             this.label5.Text = "Compatibility:";
             // 
             // compatibilityListBox
             // 
             this.compatibilityListBox.FormattingEnabled = true;
-            this.compatibilityListBox.ItemHeight = 20;
-            this.compatibilityListBox.Location = new System.Drawing.Point(1143, 935);
-            this.compatibilityListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.compatibilityListBox.ItemHeight = 18;
+            this.compatibilityListBox.Location = new System.Drawing.Point(1143, 841);
+            this.compatibilityListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.compatibilityListBox.Name = "compatibilityListBox";
-            this.compatibilityListBox.Size = new System.Drawing.Size(304, 84);
+            this.compatibilityListBox.Size = new System.Drawing.Size(304, 76);
             this.compatibilityListBox.TabIndex = 200;
             this.compatibilityListBox.TabStop = false;
             this.compatibilityListBox.DoubleClick += new System.EventHandler(this.compatibilityListBox_DoubleClick);
@@ -1414,9 +1414,9 @@
             // 
             this.AddCompatibilityButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.AddCompatibilityButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddCompatibilityButton.Location = new System.Drawing.Point(1244, 891);
+            this.AddCompatibilityButton.Location = new System.Drawing.Point(1244, 802);
             this.AddCompatibilityButton.Name = "AddCompatibilityButton";
-            this.AddCompatibilityButton.Size = new System.Drawing.Size(75, 38);
+            this.AddCompatibilityButton.Size = new System.Drawing.Size(75, 34);
             this.AddCompatibilityButton.TabIndex = 216;
             this.AddCompatibilityButton.TabStop = false;
             this.AddCompatibilityButton.Text = "Add";
@@ -1426,68 +1426,68 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(50, 1348);
+            this.label6.Location = new System.Drawing.Point(50, 1213);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(14, 20);
+            this.label6.Size = new System.Drawing.Size(11, 18);
             this.label6.TabIndex = 155;
             this.label6.Text = "I";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(114, 1348);
+            this.label7.Location = new System.Drawing.Point(114, 1213);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(20, 20);
+            this.label7.Size = new System.Drawing.Size(20, 18);
             this.label7.TabIndex = 156;
             this.label7.Text = "C";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(177, 1348);
+            this.label8.Location = new System.Drawing.Point(177, 1213);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(31, 20);
+            this.label8.Size = new System.Drawing.Size(31, 18);
             this.label8.TabIndex = 157;
             this.label8.Text = "SC";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(237, 1348);
+            this.label9.Location = new System.Drawing.Point(237, 1213);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(41, 20);
+            this.label9.Size = new System.Drawing.Size(41, 18);
             this.label9.TabIndex = 158;
             this.label9.Text = "SSP";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(303, 1348);
+            this.label10.Location = new System.Drawing.Point(303, 1213);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(49, 20);
+            this.label10.Size = new System.Drawing.Size(48, 18);
             this.label10.TabIndex = 159;
             this.label10.Text = "Sales";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(375, 1348);
+            this.label11.Location = new System.Drawing.Point(375, 1213);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(32, 20);
+            this.label11.Size = new System.Drawing.Size(31, 18);
             this.label11.TabIndex = 160;
             this.label11.Text = "DB";
             // 
             // CADDescription
             // 
             this.CADDescription.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "PLDescription", true));
-            this.CADDescription.Location = new System.Drawing.Point(544, 755);
-            this.CADDescription.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CADDescription.Location = new System.Drawing.Point(544, 679);
+            this.CADDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CADDescription.Name = "CADDescription";
             this.CADDescription.Size = new System.Drawing.Size(571, 26);
             this.CADDescription.TabIndex = 3213;
@@ -1495,8 +1495,8 @@
             // CADFiles
             // 
             this.CADFiles.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsListBindingSource, "PLDescription", true));
-            this.CADFiles.Location = new System.Drawing.Point(544, 824);
-            this.CADFiles.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CADFiles.Location = new System.Drawing.Point(544, 742);
+            this.CADFiles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CADFiles.Name = "CADFiles";
             this.CADFiles.Size = new System.Drawing.Size(571, 26);
             this.CADFiles.TabIndex = 3214;
@@ -1507,10 +1507,10 @@
             this.NewSAPIDPanel.Controls.Add(this.AddNewSAPIDButton);
             this.NewSAPIDPanel.Controls.Add(this.NewSAPIDTextBox);
             this.NewSAPIDPanel.Controls.Add(this.label14);
-            this.NewSAPIDPanel.Location = new System.Drawing.Point(675, 363);
-            this.NewSAPIDPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.NewSAPIDPanel.Location = new System.Drawing.Point(675, 327);
+            this.NewSAPIDPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NewSAPIDPanel.Name = "NewSAPIDPanel";
-            this.NewSAPIDPanel.Size = new System.Drawing.Size(288, 158);
+            this.NewSAPIDPanel.Size = new System.Drawing.Size(288, 142);
             this.NewSAPIDPanel.TabIndex = 3216;
             this.NewSAPIDPanel.Visible = false;
             // 
@@ -1518,9 +1518,9 @@
             // 
             this.CancelAddNewSAPIDButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.CancelAddNewSAPIDButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CancelAddNewSAPIDButton.Location = new System.Drawing.Point(147, 109);
+            this.CancelAddNewSAPIDButton.Location = new System.Drawing.Point(147, 98);
             this.CancelAddNewSAPIDButton.Name = "CancelAddNewSAPIDButton";
-            this.CancelAddNewSAPIDButton.Size = new System.Drawing.Size(88, 38);
+            this.CancelAddNewSAPIDButton.Size = new System.Drawing.Size(88, 34);
             this.CancelAddNewSAPIDButton.TabIndex = 3218;
             this.CancelAddNewSAPIDButton.TabStop = false;
             this.CancelAddNewSAPIDButton.Text = "Cancel";
@@ -1531,9 +1531,9 @@
             // 
             this.AddNewSAPIDButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.AddNewSAPIDButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddNewSAPIDButton.Location = new System.Drawing.Point(56, 109);
+            this.AddNewSAPIDButton.Location = new System.Drawing.Point(56, 98);
             this.AddNewSAPIDButton.Name = "AddNewSAPIDButton";
-            this.AddNewSAPIDButton.Size = new System.Drawing.Size(75, 38);
+            this.AddNewSAPIDButton.Size = new System.Drawing.Size(75, 34);
             this.AddNewSAPIDButton.TabIndex = 3217;
             this.AddNewSAPIDButton.TabStop = false;
             this.AddNewSAPIDButton.Text = "Add";
@@ -1542,8 +1542,8 @@
             // 
             // NewSAPIDTextBox
             // 
-            this.NewSAPIDTextBox.Location = new System.Drawing.Point(22, 48);
-            this.NewSAPIDTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.NewSAPIDTextBox.Location = new System.Drawing.Point(22, 43);
+            this.NewSAPIDTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NewSAPIDTextBox.Name = "NewSAPIDTextBox";
             this.NewSAPIDTextBox.Size = new System.Drawing.Size(242, 26);
             this.NewSAPIDTextBox.TabIndex = 1;
@@ -1552,7 +1552,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(54, 17);
+            this.label14.Location = new System.Drawing.Point(54, 15);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(177, 24);
@@ -1561,10 +1561,10 @@
             // 
             // PartsListDetailDisplay
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.BlanchedAlmond;
-            this.ClientSize = new System.Drawing.Size(1478, 1286);
+            this.ClientSize = new System.Drawing.Size(1478, 1157);
             this.ControlBox = false;
             this.Controls.Add(this.NewSAPIDPanel);
             this.Controls.Add(label13);
@@ -1642,7 +1642,8 @@
             this.Controls.Add(sSPCategoryLabel);
             this.Controls.Add(salesTypeLabel);
             this.Controls.Add(this.partsListBindingNavigator);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "PartsListDetailDisplay";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Part Detail";

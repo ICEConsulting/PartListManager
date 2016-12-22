@@ -89,10 +89,10 @@
             this.SAPIdataGridViewTextBoxColumn,
             this.DescriptiondataGridViewTextBoxColumn});
             this.partsListDataGridView.DataSource = this.partsListBindingSource;
-            this.partsListDataGridView.Location = new System.Drawing.Point(18, 94);
-            this.partsListDataGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.partsListDataGridView.Location = new System.Drawing.Point(18, 85);
+            this.partsListDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.partsListDataGridView.Name = "partsListDataGridView";
-            this.partsListDataGridView.Size = new System.Drawing.Size(972, 518);
+            this.partsListDataGridView.Size = new System.Drawing.Size(972, 466);
             this.partsListDataGridView.TabIndex = 1;
             this.partsListDataGridView.TabStop = false;
             this.partsListDataGridView.ColumnHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.partsListDataGridView_HeaderDoubleClick);
@@ -116,7 +116,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(450, 14);
+            this.label1.Location = new System.Drawing.Point(450, 13);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(110, 29);
@@ -131,11 +131,11 @@
             this.columnHeader2});
             this.RequiredListView.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RequiredListView.FullRowSelect = true;
-            this.RequiredListView.Location = new System.Drawing.Point(18, 783);
-            this.RequiredListView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.RequiredListView.Location = new System.Drawing.Point(18, 705);
+            this.RequiredListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.RequiredListView.MultiSelect = false;
             this.RequiredListView.Name = "RequiredListView";
-            this.RequiredListView.Size = new System.Drawing.Size(972, 278);
+            this.RequiredListView.Size = new System.Drawing.Size(972, 251);
             this.RequiredListView.TabIndex = 3;
             this.RequiredListView.TabStop = false;
             this.RequiredListView.UseCompatibleStateImageBehavior = false;
@@ -143,7 +143,7 @@
             this.RequiredListView.DragDrop += new System.Windows.Forms.DragEventHandler(this.RequiredListView_DragDrop);
             this.RequiredListView.DragEnter += new System.Windows.Forms.DragEventHandler(this.RequiredListView_DragEnter);
             this.RequiredListView.DoubleClick += new System.EventHandler(this.RequiredListView_DoubleClick);
-            this.RequiredListView.MouseLeave += new System.EventHandler(RequiredListView_MouseLeave);
+            this.RequiredListView.MouseLeave += new System.EventHandler(this.RequiredListView_MouseLeave);
             // 
             // columnHeader1
             // 
@@ -158,7 +158,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(44, 754);
+            this.label2.Location = new System.Drawing.Point(44, 679);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(248, 25);
@@ -169,7 +169,7 @@
             // 
             this.SAPIDLabel.AutoSize = true;
             this.SAPIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SAPIDLabel.Location = new System.Drawing.Point(308, 754);
+            this.SAPIDLabel.Location = new System.Drawing.Point(308, 679);
             this.SAPIDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.SAPIDLabel.Name = "SAPIDLabel";
             this.SAPIDLabel.Size = new System.Drawing.Size(120, 25);
@@ -179,17 +179,17 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 65);
+            this.label4.Location = new System.Drawing.Point(21, 58);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 20);
+            this.label4.Size = new System.Drawing.Size(50, 18);
             this.label4.TabIndex = 9;
             this.label4.Text = "Part#:";
             // 
             // PartNumberSearchTextBox
             // 
-            this.PartNumberSearchTextBox.Location = new System.Drawing.Point(84, 60);
-            this.PartNumberSearchTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.PartNumberSearchTextBox.Location = new System.Drawing.Point(84, 54);
+            this.PartNumberSearchTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PartNumberSearchTextBox.Name = "PartNumberSearchTextBox";
             this.PartNumberSearchTextBox.Size = new System.Drawing.Size(178, 26);
             this.PartNumberSearchTextBox.TabIndex = 10;
@@ -198,8 +198,8 @@
             // 
             // DescriptionSearchTextBox
             // 
-            this.DescriptionSearchTextBox.Location = new System.Drawing.Point(416, 62);
-            this.DescriptionSearchTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.DescriptionSearchTextBox.Location = new System.Drawing.Point(416, 56);
+            this.DescriptionSearchTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DescriptionSearchTextBox.Name = "DescriptionSearchTextBox";
             this.DescriptionSearchTextBox.Size = new System.Drawing.Size(368, 26);
             this.DescriptionSearchTextBox.TabIndex = 11;
@@ -209,20 +209,20 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(312, 66);
+            this.label5.Location = new System.Drawing.Point(312, 59);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 20);
+            this.label5.Size = new System.Drawing.Size(92, 18);
             this.label5.TabIndex = 12;
             this.label5.Text = "Description:";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(294, 638);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox1.Location = new System.Drawing.Point(294, 574);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(436, 98);
+            this.textBox1.Size = new System.Drawing.Size(436, 89);
             this.textBox1.TabIndex = 13;
             this.textBox1.TabStop = false;
             this.textBox1.Text = "To add a required Part:\r\nDrag part(s) from the list above to the box at the botto" +
@@ -230,10 +230,10 @@
             // 
             // RequirePartForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.BlanchedAlmond;
-            this.ClientSize = new System.Drawing.Size(1026, 1091);
+            this.ClientSize = new System.Drawing.Size(1026, 982);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.DescriptionSearchTextBox);
@@ -244,7 +244,8 @@
             this.Controls.Add(this.RequiredListView);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.partsListDataGridView);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "RequirePartForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add / Edit Require Parts";

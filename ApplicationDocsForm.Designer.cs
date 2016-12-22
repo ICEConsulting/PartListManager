@@ -82,10 +82,11 @@
             this.columnHeader3});
             this.TopDocumentsListView.FullRowSelect = true;
             this.TopDocumentsListView.HideSelection = false;
-            this.TopDocumentsListView.Location = new System.Drawing.Point(48, 52);
+            this.TopDocumentsListView.Location = new System.Drawing.Point(72, 72);
+            this.TopDocumentsListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TopDocumentsListView.MultiSelect = false;
             this.TopDocumentsListView.Name = "TopDocumentsListView";
-            this.TopDocumentsListView.Size = new System.Drawing.Size(705, 117);
+            this.TopDocumentsListView.Size = new System.Drawing.Size(1056, 161);
             this.TopDocumentsListView.TabIndex = 0;
             this.TopDocumentsListView.UseCompatibleStateImageBehavior = false;
             this.TopDocumentsListView.View = System.Windows.Forms.View.Details;
@@ -121,9 +122,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(201, 30);
+            this.label1.Location = new System.Drawing.Point(302, 41);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(398, 19);
+            this.label1.Size = new System.Drawing.Size(598, 29);
             this.label1.TabIndex = 1;
             this.label1.Text = "Document Header, Smart Start and Non-Smart Start";
             // 
@@ -131,9 +133,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(260, 239);
+            this.label2.Location = new System.Drawing.Point(390, 331);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(281, 19);
+            this.label2.Size = new System.Drawing.Size(424, 29);
             this.label2.TabIndex = 2;
             this.label2.Text = "Document Body, After Product Lists";
             // 
@@ -147,10 +150,11 @@
             this.columnHeader6});
             this.BodyDocumentsListView.FullRowSelect = true;
             this.BodyDocumentsListView.HideSelection = false;
-            this.BodyDocumentsListView.Location = new System.Drawing.Point(48, 261);
+            this.BodyDocumentsListView.Location = new System.Drawing.Point(72, 362);
+            this.BodyDocumentsListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BodyDocumentsListView.MultiSelect = false;
             this.BodyDocumentsListView.Name = "BodyDocumentsListView";
-            this.BodyDocumentsListView.Size = new System.Drawing.Size(705, 476);
+            this.BodyDocumentsListView.Size = new System.Drawing.Size(1056, 657);
             this.BodyDocumentsListView.TabIndex = 3;
             this.BodyDocumentsListView.UseCompatibleStateImageBehavior = false;
             this.BodyDocumentsListView.View = System.Windows.Forms.View.Details;
@@ -186,17 +190,19 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(285, 820);
+            this.label3.Location = new System.Drawing.Point(428, 1136);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(231, 19);
+            this.label3.Size = new System.Drawing.Size(348, 29);
             this.label3.TabIndex = 4;
             this.label3.Text = "Terms and Conditions Footer";
             // 
             // FooterDocumentTextBox
             // 
-            this.FooterDocumentTextBox.Location = new System.Drawing.Point(195, 842);
+            this.FooterDocumentTextBox.Location = new System.Drawing.Point(292, 1165);
+            this.FooterDocumentTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FooterDocumentTextBox.Name = "FooterDocumentTextBox";
-            this.FooterDocumentTextBox.Size = new System.Drawing.Size(410, 20);
+            this.FooterDocumentTextBox.Size = new System.Drawing.Size(613, 26);
             this.FooterDocumentTextBox.TabIndex = 5;
             // 
             // menuStrip1
@@ -205,7 +211,8 @@
             this.importDocumentsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
+            this.menuStrip1.Size = new System.Drawing.Size(1200, 35);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -215,20 +222,20 @@
             this.headerDocumentsToolStripMenuItem,
             this.bodyDocumentsToolStripMenuItem});
             this.importDocumentsToolStripMenuItem.Name = "importDocumentsToolStripMenuItem";
-            this.importDocumentsToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
+            this.importDocumentsToolStripMenuItem.Size = new System.Drawing.Size(175, 29);
             this.importDocumentsToolStripMenuItem.Text = "Import Documents";
             // 
             // headerDocumentsToolStripMenuItem
             // 
             this.headerDocumentsToolStripMenuItem.Name = "headerDocumentsToolStripMenuItem";
-            this.headerDocumentsToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.headerDocumentsToolStripMenuItem.Size = new System.Drawing.Size(237, 30);
             this.headerDocumentsToolStripMenuItem.Text = "Header Documents";
             this.headerDocumentsToolStripMenuItem.Click += new System.EventHandler(this.headerDocumentsToolStripMenuItem_Click);
             // 
             // bodyDocumentsToolStripMenuItem
             // 
             this.bodyDocumentsToolStripMenuItem.Name = "bodyDocumentsToolStripMenuItem";
-            this.bodyDocumentsToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.bodyDocumentsToolStripMenuItem.Size = new System.Drawing.Size(237, 30);
             this.bodyDocumentsToolStripMenuItem.Text = "Body Documents";
             this.bodyDocumentsToolStripMenuItem.Click += new System.EventHandler(this.bodyDocumentsToolStripMenuItem_Click);
             // 
@@ -251,9 +258,10 @@
             this.AppDocEditPanel.Controls.Add(this.label5);
             this.AppDocEditPanel.Controls.Add(this.label4);
             this.AppDocEditPanel.Controls.Add(this.AppDocEditPanelHeader);
-            this.AppDocEditPanel.Location = new System.Drawing.Point(134, 221);
+            this.AppDocEditPanel.Location = new System.Drawing.Point(201, 306);
+            this.AppDocEditPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AppDocEditPanel.Name = "AppDocEditPanel";
-            this.AppDocEditPanel.Size = new System.Drawing.Size(532, 267);
+            this.AppDocEditPanel.Size = new System.Drawing.Size(797, 369);
             this.AppDocEditPanel.TabIndex = 7;
             this.AppDocEditPanel.Visible = false;
             // 
@@ -261,9 +269,10 @@
             // 
             this.AppDocReplaceFileButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.AppDocReplaceFileButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AppDocReplaceFileButton.Location = new System.Drawing.Point(325, 208);
+            this.AppDocReplaceFileButton.Location = new System.Drawing.Point(488, 288);
+            this.AppDocReplaceFileButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AppDocReplaceFileButton.Name = "AppDocReplaceFileButton";
-            this.AppDocReplaceFileButton.Size = new System.Drawing.Size(100, 25);
+            this.AppDocReplaceFileButton.Size = new System.Drawing.Size(150, 34);
             this.AppDocReplaceFileButton.TabIndex = 15;
             this.AppDocReplaceFileButton.Text = "Replace File";
             this.AppDocReplaceFileButton.UseVisualStyleBackColor = false;
@@ -273,9 +282,10 @@
             // 
             this.ViewDocumentButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ViewDocumentButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ViewDocumentButton.Location = new System.Drawing.Point(237, 208);
+            this.ViewDocumentButton.Location = new System.Drawing.Point(356, 288);
+            this.ViewDocumentButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ViewDocumentButton.Name = "ViewDocumentButton";
-            this.ViewDocumentButton.Size = new System.Drawing.Size(82, 25);
+            this.ViewDocumentButton.Size = new System.Drawing.Size(123, 34);
             this.ViewDocumentButton.TabIndex = 14;
             this.ViewDocumentButton.Text = "View";
             this.ViewDocumentButton.UseVisualStyleBackColor = false;
@@ -285,9 +295,10 @@
             // 
             this.AppDocCancelButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.AppDocCancelButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AppDocCancelButton.Location = new System.Drawing.Point(431, 208);
+            this.AppDocCancelButton.Location = new System.Drawing.Point(646, 288);
+            this.AppDocCancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AppDocCancelButton.Name = "AppDocCancelButton";
-            this.AppDocCancelButton.Size = new System.Drawing.Size(82, 25);
+            this.AppDocCancelButton.Size = new System.Drawing.Size(123, 34);
             this.AppDocCancelButton.TabIndex = 13;
             this.AppDocCancelButton.Text = "Cancel";
             this.AppDocCancelButton.UseVisualStyleBackColor = false;
@@ -297,9 +308,10 @@
             // 
             this.AppDocDeleteButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.AppDocDeleteButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AppDocDeleteButton.Location = new System.Drawing.Point(149, 208);
+            this.AppDocDeleteButton.Location = new System.Drawing.Point(224, 288);
+            this.AppDocDeleteButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AppDocDeleteButton.Name = "AppDocDeleteButton";
-            this.AppDocDeleteButton.Size = new System.Drawing.Size(82, 25);
+            this.AppDocDeleteButton.Size = new System.Drawing.Size(123, 34);
             this.AppDocDeleteButton.TabIndex = 12;
             this.AppDocDeleteButton.Text = "Delete";
             this.AppDocDeleteButton.UseVisualStyleBackColor = false;
@@ -309,9 +321,10 @@
             // 
             this.AppDocEditUpdateButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.AppDocEditUpdateButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AppDocEditUpdateButton.Location = new System.Drawing.Point(31, 208);
+            this.AppDocEditUpdateButton.Location = new System.Drawing.Point(46, 288);
+            this.AppDocEditUpdateButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AppDocEditUpdateButton.Name = "AppDocEditUpdateButton";
-            this.AppDocEditUpdateButton.Size = new System.Drawing.Size(112, 25);
+            this.AppDocEditUpdateButton.Size = new System.Drawing.Size(168, 34);
             this.AppDocEditUpdateButton.TabIndex = 11;
             this.AppDocEditUpdateButton.Text = "Save Changes";
             this.AppDocEditUpdateButton.UseVisualStyleBackColor = false;
@@ -320,51 +333,57 @@
             // AppDocAppCatTextBox
             // 
             this.AppDocAppCatTextBox.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AppDocAppCatTextBox.Location = new System.Drawing.Point(192, 137);
+            this.AppDocAppCatTextBox.Location = new System.Drawing.Point(288, 190);
+            this.AppDocAppCatTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AppDocAppCatTextBox.Name = "AppDocAppCatTextBox";
-            this.AppDocAppCatTextBox.Size = new System.Drawing.Size(261, 22);
+            this.AppDocAppCatTextBox.Size = new System.Drawing.Size(390, 30);
             this.AppDocAppCatTextBox.TabIndex = 10;
             // 
             // AppDocSmartStartTitleTextBox
             // 
             this.AppDocSmartStartTitleTextBox.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AppDocSmartStartTitleTextBox.Location = new System.Drawing.Point(192, 137);
+            this.AppDocSmartStartTitleTextBox.Location = new System.Drawing.Point(288, 190);
+            this.AppDocSmartStartTitleTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AppDocSmartStartTitleTextBox.Name = "AppDocSmartStartTitleTextBox";
-            this.AppDocSmartStartTitleTextBox.Size = new System.Drawing.Size(261, 22);
+            this.AppDocSmartStartTitleTextBox.Size = new System.Drawing.Size(390, 30);
             this.AppDocSmartStartTitleTextBox.TabIndex = 9;
             // 
             // AppDocDescriptionTextBox
             // 
             this.AppDocDescriptionTextBox.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AppDocDescriptionTextBox.Location = new System.Drawing.Point(192, 111);
+            this.AppDocDescriptionTextBox.Location = new System.Drawing.Point(288, 154);
+            this.AppDocDescriptionTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AppDocDescriptionTextBox.Name = "AppDocDescriptionTextBox";
-            this.AppDocDescriptionTextBox.Size = new System.Drawing.Size(261, 22);
+            this.AppDocDescriptionTextBox.Size = new System.Drawing.Size(390, 30);
             this.AppDocDescriptionTextBox.TabIndex = 8;
             // 
             // AppDocFilenameTextBox
             // 
             this.AppDocFilenameTextBox.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AppDocFilenameTextBox.Location = new System.Drawing.Point(192, 85);
+            this.AppDocFilenameTextBox.Location = new System.Drawing.Point(288, 118);
+            this.AppDocFilenameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AppDocFilenameTextBox.Name = "AppDocFilenameTextBox";
-            this.AppDocFilenameTextBox.Size = new System.Drawing.Size(261, 22);
+            this.AppDocFilenameTextBox.Size = new System.Drawing.Size(390, 30);
             this.AppDocFilenameTextBox.TabIndex = 7;
             // 
             // AppDocIDTextBox
             // 
             this.AppDocIDTextBox.Enabled = false;
             this.AppDocIDTextBox.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AppDocIDTextBox.Location = new System.Drawing.Point(192, 59);
+            this.AppDocIDTextBox.Location = new System.Drawing.Point(288, 82);
+            this.AppDocIDTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AppDocIDTextBox.Name = "AppDocIDTextBox";
-            this.AppDocIDTextBox.Size = new System.Drawing.Size(261, 22);
+            this.AppDocIDTextBox.Size = new System.Drawing.Size(390, 30);
             this.AppDocIDTextBox.TabIndex = 6;
             // 
             // AppCatLabel
             // 
             this.AppCatLabel.AutoSize = true;
             this.AppCatLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AppCatLabel.Location = new System.Drawing.Point(49, 143);
+            this.AppCatLabel.Location = new System.Drawing.Point(74, 198);
+            this.AppCatLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.AppCatLabel.Name = "AppCatLabel";
-            this.AppCatLabel.Size = new System.Drawing.Size(132, 16);
+            this.AppCatLabel.Size = new System.Drawing.Size(198, 23);
             this.AppCatLabel.TabIndex = 5;
             this.AppCatLabel.Text = "Application Category:";
             // 
@@ -372,9 +391,10 @@
             // 
             this.SmartStartLabel.AutoSize = true;
             this.SmartStartLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SmartStartLabel.Location = new System.Drawing.Point(74, 140);
+            this.SmartStartLabel.Location = new System.Drawing.Point(111, 193);
+            this.SmartStartLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.SmartStartLabel.Name = "SmartStartLabel";
-            this.SmartStartLabel.Size = new System.Drawing.Size(107, 16);
+            this.SmartStartLabel.Size = new System.Drawing.Size(160, 23);
             this.SmartStartLabel.TabIndex = 4;
             this.SmartStartLabel.Text = "Smart Start Title:";
             // 
@@ -382,9 +402,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(104, 114);
+            this.label6.Location = new System.Drawing.Point(156, 157);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 16);
+            this.label6.Size = new System.Drawing.Size(114, 23);
             this.label6.TabIndex = 3;
             this.label6.Text = "Description:";
             // 
@@ -392,9 +413,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(116, 88);
+            this.label5.Location = new System.Drawing.Point(174, 121);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 16);
+            this.label5.Size = new System.Drawing.Size(95, 23);
             this.label5.TabIndex = 2;
             this.label5.Text = "Filename:";
             // 
@@ -402,9 +424,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(130, 62);
+            this.label4.Location = new System.Drawing.Point(195, 85);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 16);
+            this.label4.Size = new System.Drawing.Size(77, 23);
             this.label4.TabIndex = 1;
             this.label4.Text = "Doc ID:";
             // 
@@ -412,9 +435,10 @@
             // 
             this.AppDocEditPanelHeader.AutoSize = true;
             this.AppDocEditPanelHeader.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AppDocEditPanelHeader.Location = new System.Drawing.Point(18, 13);
+            this.AppDocEditPanelHeader.Location = new System.Drawing.Point(27, 18);
+            this.AppDocEditPanelHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.AppDocEditPanelHeader.Name = "AppDocEditPanelHeader";
-            this.AppDocEditPanelHeader.Size = new System.Drawing.Size(50, 18);
+            this.AppDocEditPanelHeader.Size = new System.Drawing.Size(79, 27);
             this.AppDocEditPanelHeader.TabIndex = 0;
             this.AppDocEditPanelHeader.Text = "label4";
             // 
@@ -422,9 +446,10 @@
             // 
             this.AddHeaderDocButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.AddHeaderDocButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddHeaderDocButton.Location = new System.Drawing.Point(605, 24);
+            this.AddHeaderDocButton.Location = new System.Drawing.Point(908, 33);
+            this.AddHeaderDocButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AddHeaderDocButton.Name = "AddHeaderDocButton";
-            this.AddHeaderDocButton.Size = new System.Drawing.Size(82, 25);
+            this.AddHeaderDocButton.Size = new System.Drawing.Size(123, 34);
             this.AddHeaderDocButton.TabIndex = 14;
             this.AddHeaderDocButton.Text = "Add";
             this.AddHeaderDocButton.UseVisualStyleBackColor = false;
@@ -434,9 +459,10 @@
             // 
             this.AddBodyDocumentButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.AddBodyDocumentButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddBodyDocumentButton.Location = new System.Drawing.Point(605, 233);
+            this.AddBodyDocumentButton.Location = new System.Drawing.Point(908, 322);
+            this.AddBodyDocumentButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AddBodyDocumentButton.Name = "AddBodyDocumentButton";
-            this.AddBodyDocumentButton.Size = new System.Drawing.Size(82, 25);
+            this.AddBodyDocumentButton.Size = new System.Drawing.Size(123, 34);
             this.AddBodyDocumentButton.TabIndex = 15;
             this.AddBodyDocumentButton.Text = "Add";
             this.AddBodyDocumentButton.UseVisualStyleBackColor = false;
@@ -446,9 +472,10 @@
             // 
             this.AddFooterDocumentButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.AddFooterDocumentButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddFooterDocumentButton.Location = new System.Drawing.Point(523, 814);
+            this.AddFooterDocumentButton.Location = new System.Drawing.Point(784, 1127);
+            this.AddFooterDocumentButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AddFooterDocumentButton.Name = "AddFooterDocumentButton";
-            this.AddFooterDocumentButton.Size = new System.Drawing.Size(82, 25);
+            this.AddFooterDocumentButton.Size = new System.Drawing.Size(123, 34);
             this.AddFooterDocumentButton.TabIndex = 16;
             this.AddFooterDocumentButton.Text = "Add";
             this.AddFooterDocumentButton.UseVisualStyleBackColor = false;
@@ -456,10 +483,10 @@
             // 
             // ApplicationDocsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.BlanchedAlmond;
-            this.ClientSize = new System.Drawing.Size(800, 960);
+            this.ClientSize = new System.Drawing.Size(1200, 1329);
             this.Controls.Add(this.AddFooterDocumentButton);
             this.Controls.Add(this.AppDocEditPanel);
             this.Controls.Add(this.AddBodyDocumentButton);
@@ -471,7 +498,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TopDocumentsListView);
             this.Controls.Add(this.menuStrip1);
+            this.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ApplicationDocsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Application Document Configurations";

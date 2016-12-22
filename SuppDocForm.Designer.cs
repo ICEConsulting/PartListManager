@@ -48,9 +48,10 @@
             // 
             this.viewSuppDocButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.viewSuppDocButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewSuppDocButton.Location = new System.Drawing.Point(473, 29);
+            this.viewSuppDocButton.Location = new System.Drawing.Point(710, 40);
+            this.viewSuppDocButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.viewSuppDocButton.Name = "viewSuppDocButton";
-            this.viewSuppDocButton.Size = new System.Drawing.Size(59, 26);
+            this.viewSuppDocButton.Size = new System.Drawing.Size(88, 36);
             this.viewSuppDocButton.TabIndex = 41;
             this.viewSuppDocButton.TabStop = false;
             this.viewSuppDocButton.Text = "View";
@@ -61,9 +62,10 @@
             // 
             this.addSuppDocButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.addSuppDocButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addSuppDocButton.Location = new System.Drawing.Point(422, 29);
+            this.addSuppDocButton.Location = new System.Drawing.Point(633, 40);
+            this.addSuppDocButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addSuppDocButton.Name = "addSuppDocButton";
-            this.addSuppDocButton.Size = new System.Drawing.Size(45, 26);
+            this.addSuppDocButton.Size = new System.Drawing.Size(68, 36);
             this.addSuppDocButton.TabIndex = 40;
             this.addSuppDocButton.TabStop = false;
             this.addSuppDocButton.Text = "Add";
@@ -76,9 +78,10 @@
             this.allSuppDocsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DocID,
             this.FileName});
-            this.allSuppDocsDataGridView.Location = new System.Drawing.Point(37, 58);
+            this.allSuppDocsDataGridView.Location = new System.Drawing.Point(56, 80);
+            this.allSuppDocsDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.allSuppDocsDataGridView.Name = "allSuppDocsDataGridView";
-            this.allSuppDocsDataGridView.Size = new System.Drawing.Size(645, 637);
+            this.allSuppDocsDataGridView.Size = new System.Drawing.Size(968, 882);
             this.allSuppDocsDataGridView.TabIndex = 39;
             this.allSuppDocsDataGridView.TabStop = false;
             // 
@@ -97,9 +100,10 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(180, 35);
+            this.label8.Location = new System.Drawing.Point(270, 49);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(215, 20);
+            this.label8.Size = new System.Drawing.Size(311, 29);
             this.label8.TabIndex = 38;
             this.label8.Text = "Supplemental Documents";
             // 
@@ -107,9 +111,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(162, 715);
+            this.label1.Location = new System.Drawing.Point(243, 990);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 20);
+            this.label1.Size = new System.Drawing.Size(66, 29);
             this.label1.TabIndex = 42;
             this.label1.Text = "Add:";
             // 
@@ -117,9 +122,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(156, 750);
+            this.label2.Location = new System.Drawing.Point(234, 1039);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 20);
+            this.label2.Size = new System.Drawing.Size(77, 29);
             this.label2.TabIndex = 43;
             this.label2.Text = "View:";
             // 
@@ -127,9 +133,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(115, 789);
+            this.label3.Location = new System.Drawing.Point(172, 1093);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 20);
+            this.label3.Size = new System.Drawing.Size(133, 29);
             this.label3.TabIndex = 44;
             this.label3.Text = "Associate:";
             // 
@@ -137,38 +144,42 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(214, 718);
+            this.label4.Location = new System.Drawing.Point(321, 994);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(316, 16);
+            this.label4.Size = new System.Drawing.Size(461, 25);
             this.label4.TabIndex = 45;
             this.label4.Text = "Add a new supplemental document to the database.";
             // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(214, 753);
+            this.label5.Location = new System.Drawing.Point(321, 1042);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(410, 40);
+            this.label5.Size = new System.Drawing.Size(615, 56);
             this.label5.TabIndex = 46;
             this.label5.Text = "View the selected document. Only one document may be selected.";
             // 
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(214, 792);
+            this.label6.Location = new System.Drawing.Point(321, 1096);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(468, 74);
+            this.label6.Size = new System.Drawing.Size(702, 103);
             this.label6.TabIndex = 47;
             this.label6.Text = "Associate the selected document(s).\r\nNote: To delete a supplemental document,  pl" +
-                "ease use the Assocation Table menu item on the main parts list display page.";
+    "ease use the Assocation Table menu item on the main parts list display page.";
             // 
             // associateDocButton
             // 
             this.associateDocButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.associateDocButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.associateDocButton.Location = new System.Drawing.Point(538, 29);
+            this.associateDocButton.Location = new System.Drawing.Point(807, 40);
+            this.associateDocButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.associateDocButton.Name = "associateDocButton";
-            this.associateDocButton.Size = new System.Drawing.Size(97, 26);
+            this.associateDocButton.Size = new System.Drawing.Size(146, 36);
             this.associateDocButton.TabIndex = 48;
             this.associateDocButton.TabStop = false;
             this.associateDocButton.Text = "Associate";
@@ -177,9 +188,10 @@
             // 
             // SuppDocForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 863);
+            this.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.ClientSize = new System.Drawing.Size(1077, 1195);
             this.Controls.Add(this.associateDocButton);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -191,6 +203,8 @@
             this.Controls.Add(this.addSuppDocButton);
             this.Controls.Add(this.allSuppDocsDataGridView);
             this.Controls.Add(this.label8);
+            this.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SuppDocForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Associate Supplemental Document";

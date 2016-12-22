@@ -38,28 +38,32 @@
             // compatibilitiesListBox
             // 
             this.compatibilitiesListBox.FormattingEnabled = true;
-            this.compatibilitiesListBox.Location = new System.Drawing.Point(60, 71);
+            this.compatibilitiesListBox.ItemHeight = 20;
+            this.compatibilitiesListBox.Location = new System.Drawing.Point(80, 109);
+            this.compatibilitiesListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.compatibilitiesListBox.Name = "compatibilitiesListBox";
             this.compatibilitiesListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.compatibilitiesListBox.Size = new System.Drawing.Size(234, 264);
+            this.compatibilitiesListBox.Size = new System.Drawing.Size(311, 404);
             this.compatibilitiesListBox.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(60, 26);
+            this.label1.Location = new System.Drawing.Point(80, 40);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(203, 16);
+            this.label1.Size = new System.Drawing.Size(282, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Select All Compatibilities for";
             // 
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(60, 49);
+            this.label2.Location = new System.Drawing.Point(80, 75);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 19);
+            this.label2.Size = new System.Drawing.Size(67, 29);
             this.label2.TabIndex = 2;
             this.label2.Text = "Part# ";
             // 
@@ -67,9 +71,10 @@
             // 
             this.SAPIDLabel.AutoSize = true;
             this.SAPIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SAPIDLabel.Location = new System.Drawing.Point(120, 49);
+            this.SAPIDLabel.Location = new System.Drawing.Point(160, 75);
+            this.SAPIDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.SAPIDLabel.Name = "SAPIDLabel";
-            this.SAPIDLabel.Size = new System.Drawing.Size(51, 16);
+            this.SAPIDLabel.Size = new System.Drawing.Size(70, 25);
             this.SAPIDLabel.TabIndex = 3;
             this.SAPIDLabel.Text = "label3";
             // 
@@ -77,9 +82,10 @@
             // 
             this.SetCompatibilitiesButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.SetCompatibilitiesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SetCompatibilitiesButton.Location = new System.Drawing.Point(92, 346);
+            this.SetCompatibilitiesButton.Location = new System.Drawing.Point(123, 532);
+            this.SetCompatibilitiesButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SetCompatibilitiesButton.Name = "SetCompatibilitiesButton";
-            this.SetCompatibilitiesButton.Size = new System.Drawing.Size(171, 37);
+            this.SetCompatibilitiesButton.Size = new System.Drawing.Size(228, 57);
             this.SetCompatibilitiesButton.TabIndex = 4;
             this.SetCompatibilitiesButton.Text = "Set Compatibilities";
             this.SetCompatibilitiesButton.UseVisualStyleBackColor = false;
@@ -87,14 +93,17 @@
             // 
             // CompatibilitiesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 395);
+            this.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.ClientSize = new System.Drawing.Size(472, 608);
             this.Controls.Add(this.SetCompatibilitiesButton);
             this.Controls.Add(this.SAPIDLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.compatibilitiesListBox);
+            this.Font = new System.Drawing.Font("Arial Narrow", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CompatibilitiesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Compatibilities";

@@ -161,9 +161,11 @@
             this.instrumentListBox.DataSource = this.instrumentBindingSource;
             this.instrumentListBox.DisplayMember = "InstrumentName";
             this.instrumentListBox.FormattingEnabled = true;
-            this.instrumentListBox.Location = new System.Drawing.Point(23, 33);
+            this.instrumentListBox.ItemHeight = 18;
+            this.instrumentListBox.Location = new System.Drawing.Point(34, 46);
+            this.instrumentListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.instrumentListBox.Name = "instrumentListBox";
-            this.instrumentListBox.Size = new System.Drawing.Size(101, 212);
+            this.instrumentListBox.Size = new System.Drawing.Size(150, 292);
             this.instrumentListBox.TabIndex = 1;
             this.instrumentListBox.TabStop = false;
             this.instrumentListBox.ValueMember = "InstrumentID";
@@ -173,9 +175,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(21, 10);
+            this.label1.Location = new System.Drawing.Point(32, 13);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 20);
+            this.label1.Size = new System.Drawing.Size(147, 29);
             this.label1.TabIndex = 2;
             this.label1.Text = "Instruments";
             // 
@@ -189,9 +192,11 @@
             this.categoryListBox.DataSource = this.categoryBindingSource;
             this.categoryListBox.DisplayMember = "CategoryName";
             this.categoryListBox.FormattingEnabled = true;
-            this.categoryListBox.Location = new System.Drawing.Point(153, 33);
+            this.categoryListBox.ItemHeight = 18;
+            this.categoryListBox.Location = new System.Drawing.Point(230, 46);
+            this.categoryListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.categoryListBox.Name = "categoryListBox";
-            this.categoryListBox.Size = new System.Drawing.Size(125, 212);
+            this.categoryListBox.Size = new System.Drawing.Size(186, 292);
             this.categoryListBox.TabIndex = 3;
             this.categoryListBox.TabStop = false;
             this.categoryListBox.ValueMember = "CategoryID";
@@ -201,9 +206,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(167, 10);
+            this.label2.Location = new System.Drawing.Point(250, 13);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 20);
+            this.label2.Size = new System.Drawing.Size(141, 29);
             this.label2.TabIndex = 4;
             this.label2.Text = "Categories";
             // 
@@ -217,9 +223,11 @@
             this.subCategoryListBox.DataSource = this.subCategoryBindingSource;
             this.subCategoryListBox.DisplayMember = "SubCategoryName";
             this.subCategoryListBox.FormattingEnabled = true;
-            this.subCategoryListBox.Location = new System.Drawing.Point(309, 33);
+            this.subCategoryListBox.ItemHeight = 18;
+            this.subCategoryListBox.Location = new System.Drawing.Point(464, 46);
+            this.subCategoryListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.subCategoryListBox.Name = "subCategoryListBox";
-            this.subCategoryListBox.Size = new System.Drawing.Size(130, 212);
+            this.subCategoryListBox.Size = new System.Drawing.Size(193, 292);
             this.subCategoryListBox.TabIndex = 5;
             this.subCategoryListBox.TabStop = false;
             this.subCategoryListBox.ValueMember = "SubCategoryID";
@@ -229,9 +237,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(307, 10);
+            this.label3.Location = new System.Drawing.Point(460, 13);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(134, 20);
+            this.label3.Size = new System.Drawing.Size(196, 29);
             this.label3.TabIndex = 6;
             this.label3.Text = "Sub-Categories";
             // 
@@ -245,9 +254,11 @@
             this.sSPCategoryListBox.DataSource = this.sSPCategoryBindingSource;
             this.sSPCategoryListBox.DisplayMember = "SSPCategoryName";
             this.sSPCategoryListBox.FormattingEnabled = true;
-            this.sSPCategoryListBox.Location = new System.Drawing.Point(468, 33);
+            this.sSPCategoryListBox.ItemHeight = 18;
+            this.sSPCategoryListBox.Location = new System.Drawing.Point(702, 46);
+            this.sSPCategoryListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.sSPCategoryListBox.Name = "sSPCategoryListBox";
-            this.sSPCategoryListBox.Size = new System.Drawing.Size(133, 212);
+            this.sSPCategoryListBox.Size = new System.Drawing.Size(198, 292);
             this.sSPCategoryListBox.TabIndex = 6;
             this.sSPCategoryListBox.TabStop = false;
             this.sSPCategoryListBox.ValueMember = "SSPCategoryId";
@@ -257,9 +268,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(466, 10);
+            this.label4.Location = new System.Drawing.Point(699, 13);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(137, 20);
+            this.label4.Size = new System.Drawing.Size(201, 29);
             this.label4.TabIndex = 7;
             this.label4.Text = "SSP-Categories";
             // 
@@ -273,9 +285,11 @@
             this.dBMembershipListBox.DataSource = this.dBMembershipBindingSource;
             this.dBMembershipListBox.DisplayMember = "DBName";
             this.dBMembershipListBox.FormattingEnabled = true;
-            this.dBMembershipListBox.Location = new System.Drawing.Point(635, 33);
+            this.dBMembershipListBox.ItemHeight = 18;
+            this.dBMembershipListBox.Location = new System.Drawing.Point(952, 46);
+            this.dBMembershipListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dBMembershipListBox.Name = "dBMembershipListBox";
-            this.dBMembershipListBox.Size = new System.Drawing.Size(132, 82);
+            this.dBMembershipListBox.Size = new System.Drawing.Size(196, 112);
             this.dBMembershipListBox.TabIndex = 8;
             this.dBMembershipListBox.TabStop = false;
             this.dBMembershipListBox.ValueMember = "DBID";
@@ -285,9 +299,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(633, 10);
+            this.label5.Location = new System.Drawing.Point(950, 13);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(136, 20);
+            this.label5.Size = new System.Drawing.Size(200, 29);
             this.label5.TabIndex = 9;
             this.label5.Text = "DB Membership";
             // 
@@ -301,9 +316,11 @@
             this.salesTypeListBox.DataSource = this.salesTypeBindingSource;
             this.salesTypeListBox.DisplayMember = "SalesTypeName";
             this.salesTypeListBox.FormattingEnabled = true;
-            this.salesTypeListBox.Location = new System.Drawing.Point(635, 176);
+            this.salesTypeListBox.ItemHeight = 18;
+            this.salesTypeListBox.Location = new System.Drawing.Point(952, 244);
+            this.salesTypeListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.salesTypeListBox.Name = "salesTypeListBox";
-            this.salesTypeListBox.Size = new System.Drawing.Size(93, 69);
+            this.salesTypeListBox.Size = new System.Drawing.Size(138, 94);
             this.salesTypeListBox.TabIndex = 10;
             this.salesTypeListBox.TabStop = false;
             this.salesTypeListBox.ValueMember = "SalesTypeID";
@@ -313,9 +330,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(633, 153);
+            this.label6.Location = new System.Drawing.Point(950, 211);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(97, 20);
+            this.label6.Size = new System.Drawing.Size(145, 29);
             this.label6.TabIndex = 11;
             this.label6.Text = "Sales Type";
             // 
@@ -328,9 +346,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(154, 302);
+            this.label7.Location = new System.Drawing.Point(231, 418);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(309, 20);
+            this.label7.Size = new System.Drawing.Size(446, 29);
             this.label7.TabIndex = 13;
             this.label7.Text = "Associated Supplemental Documents";
             // 
@@ -342,10 +361,11 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
             this.suppumentalDocsDataGridView.DataSource = this.suppumentalDocsBindingSource;
-            this.suppumentalDocsDataGridView.Location = new System.Drawing.Point(23, 325);
+            this.suppumentalDocsDataGridView.Location = new System.Drawing.Point(34, 450);
+            this.suppumentalDocsDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.suppumentalDocsDataGridView.MultiSelect = false;
             this.suppumentalDocsDataGridView.Name = "suppumentalDocsDataGridView";
-            this.suppumentalDocsDataGridView.Size = new System.Drawing.Size(566, 267);
+            this.suppumentalDocsDataGridView.Size = new System.Drawing.Size(849, 370);
             this.suppumentalDocsDataGridView.TabIndex = 13;
             this.suppumentalDocsDataGridView.TabStop = false;
             this.suppumentalDocsDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.suppumentalDocsDataGridView_CellDoubleClick);
@@ -367,9 +387,10 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(193, 625);
+            this.label8.Location = new System.Drawing.Point(290, 866);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(240, 20);
+            this.label8.Size = new System.Drawing.Size(348, 29);
             this.label8.TabIndex = 14;
             this.label8.Text = "All Supplemental Documents";
             // 
@@ -383,10 +404,12 @@
             this.partsListListBox.DataSource = this.partsListBindingSource;
             this.partsListListBox.DisplayMember = "SAPId";
             this.partsListListBox.FormattingEnabled = true;
-            this.partsListListBox.Location = new System.Drawing.Point(633, 325);
+            this.partsListListBox.ItemHeight = 18;
+            this.partsListListBox.Location = new System.Drawing.Point(950, 450);
+            this.partsListListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.partsListListBox.Name = "partsListListBox";
             this.partsListListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.partsListListBox.Size = new System.Drawing.Size(132, 576);
+            this.partsListListBox.Size = new System.Drawing.Size(196, 796);
             this.partsListListBox.TabIndex = 16;
             this.partsListListBox.TabStop = false;
             this.partsListListBox.ValueMember = "SAPId";
@@ -395,9 +418,10 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(634, 302);
+            this.label9.Location = new System.Drawing.Point(951, 418);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(131, 20);
+            this.label9.Size = new System.Drawing.Size(185, 29);
             this.label9.TabIndex = 17;
             this.label9.Text = "SAP ID / Part #";
             // 
@@ -407,9 +431,10 @@
             this.allSuppDocsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DocID,
             this.FileName});
-            this.allSuppDocsDataGridView.Location = new System.Drawing.Point(23, 648);
+            this.allSuppDocsDataGridView.Location = new System.Drawing.Point(34, 897);
+            this.allSuppDocsDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.allSuppDocsDataGridView.Name = "allSuppDocsDataGridView";
-            this.allSuppDocsDataGridView.Size = new System.Drawing.Size(566, 294);
+            this.allSuppDocsDataGridView.Size = new System.Drawing.Size(849, 407);
             this.allSuppDocsDataGridView.TabIndex = 18;
             this.allSuppDocsDataGridView.TabStop = false;
             this.allSuppDocsDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.allSuppDocsDataGridView_CellDoubleClick);
@@ -427,13 +452,14 @@
             // 
             // textBox1
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.textBox1.BackColor = System.Drawing.SystemColors.HighlightText;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(976, 33);
+            this.textBox1.Location = new System.Drawing.Point(1464, 46);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(248, 212);
+            this.textBox1.Size = new System.Drawing.Size(372, 293);
             this.textBox1.TabIndex = 19;
             this.textBox1.TabStop = false;
             this.textBox1.Text = resources.GetString("textBox1.Text");
@@ -442,9 +468,10 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(1024, 10);
+            this.label10.Location = new System.Drawing.Point(1536, 13);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(153, 20);
+            this.label10.Size = new System.Drawing.Size(221, 29);
             this.label10.TabIndex = 20;
             this.label10.Text = "Table Instructions";
             // 
@@ -452,21 +479,23 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(862, 302);
+            this.label11.Location = new System.Drawing.Point(1293, 418);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(306, 20);
+            this.label11.Size = new System.Drawing.Size(438, 29);
             this.label11.TabIndex = 21;
             this.label11.Text = "Supplemental Document Instructions";
             // 
             // textBox2
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.textBox2.BackColor = System.Drawing.SystemColors.HighlightText;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(802, 333);
+            this.textBox2.Location = new System.Drawing.Point(1203, 461);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(422, 606);
+            this.textBox2.Size = new System.Drawing.Size(633, 839);
             this.textBox2.TabIndex = 22;
             this.textBox2.TabStop = false;
             this.textBox2.Text = resources.GetString("textBox2.Text");
@@ -475,9 +504,10 @@
             // 
             this.addInstrumentButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.addInstrumentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addInstrumentButton.Location = new System.Drawing.Point(51, 251);
+            this.addInstrumentButton.Location = new System.Drawing.Point(76, 347);
+            this.addInstrumentButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addInstrumentButton.Name = "addInstrumentButton";
-            this.addInstrumentButton.Size = new System.Drawing.Size(45, 26);
+            this.addInstrumentButton.Size = new System.Drawing.Size(68, 36);
             this.addInstrumentButton.TabIndex = 23;
             this.addInstrumentButton.TabStop = false;
             this.addInstrumentButton.Text = "Add";
@@ -488,9 +518,10 @@
             // 
             this.assoSuppDocButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.assoSuppDocButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.assoSuppDocButton.Location = new System.Drawing.Point(649, 909);
+            this.assoSuppDocButton.Location = new System.Drawing.Point(974, 1258);
+            this.assoSuppDocButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.assoSuppDocButton.Name = "assoSuppDocButton";
-            this.assoSuppDocButton.Size = new System.Drawing.Size(100, 33);
+            this.assoSuppDocButton.Size = new System.Drawing.Size(150, 46);
             this.assoSuppDocButton.TabIndex = 30;
             this.assoSuppDocButton.TabStop = false;
             this.assoSuppDocButton.Text = "Associate";
@@ -501,9 +532,10 @@
             // 
             this.addCategoryButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.addCategoryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addCategoryButton.Location = new System.Drawing.Point(193, 251);
+            this.addCategoryButton.Location = new System.Drawing.Point(290, 347);
+            this.addCategoryButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addCategoryButton.Name = "addCategoryButton";
-            this.addCategoryButton.Size = new System.Drawing.Size(45, 26);
+            this.addCategoryButton.Size = new System.Drawing.Size(68, 36);
             this.addCategoryButton.TabIndex = 31;
             this.addCategoryButton.TabStop = false;
             this.addCategoryButton.Text = "Add";
@@ -514,9 +546,10 @@
             // 
             this.addSubCategoryButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.addSubCategoryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addSubCategoryButton.Location = new System.Drawing.Point(352, 251);
+            this.addSubCategoryButton.Location = new System.Drawing.Point(528, 347);
+            this.addSubCategoryButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addSubCategoryButton.Name = "addSubCategoryButton";
-            this.addSubCategoryButton.Size = new System.Drawing.Size(45, 26);
+            this.addSubCategoryButton.Size = new System.Drawing.Size(68, 36);
             this.addSubCategoryButton.TabIndex = 32;
             this.addSubCategoryButton.TabStop = false;
             this.addSubCategoryButton.Text = "Add";
@@ -527,9 +560,10 @@
             // 
             this.addSSPCategoryButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.addSSPCategoryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addSSPCategoryButton.Location = new System.Drawing.Point(512, 251);
+            this.addSSPCategoryButton.Location = new System.Drawing.Point(768, 347);
+            this.addSSPCategoryButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addSSPCategoryButton.Name = "addSSPCategoryButton";
-            this.addSSPCategoryButton.Size = new System.Drawing.Size(45, 26);
+            this.addSSPCategoryButton.Size = new System.Drawing.Size(68, 36);
             this.addSSPCategoryButton.TabIndex = 33;
             this.addSSPCategoryButton.TabStop = false;
             this.addSSPCategoryButton.Text = "Add";
@@ -540,9 +574,10 @@
             // 
             this.addDBMembershipButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.addDBMembershipButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addDBMembershipButton.Location = new System.Drawing.Point(679, 121);
+            this.addDBMembershipButton.Location = new System.Drawing.Point(1018, 167);
+            this.addDBMembershipButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addDBMembershipButton.Name = "addDBMembershipButton";
-            this.addDBMembershipButton.Size = new System.Drawing.Size(45, 26);
+            this.addDBMembershipButton.Size = new System.Drawing.Size(68, 36);
             this.addDBMembershipButton.TabIndex = 34;
             this.addDBMembershipButton.TabStop = false;
             this.addDBMembershipButton.Text = "Add";
@@ -553,9 +588,10 @@
             // 
             this.addSalesTypeButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.addSalesTypeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addSalesTypeButton.Location = new System.Drawing.Point(659, 251);
+            this.addSalesTypeButton.Location = new System.Drawing.Point(988, 347);
+            this.addSalesTypeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addSalesTypeButton.Name = "addSalesTypeButton";
-            this.addSalesTypeButton.Size = new System.Drawing.Size(45, 26);
+            this.addSalesTypeButton.Size = new System.Drawing.Size(68, 36);
             this.addSalesTypeButton.TabIndex = 35;
             this.addSalesTypeButton.TabStop = false;
             this.addSalesTypeButton.Text = "Add";
@@ -566,9 +602,10 @@
             // 
             this.addSuppDocButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.addSuppDocButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addSuppDocButton.Location = new System.Drawing.Point(435, 619);
+            this.addSuppDocButton.Location = new System.Drawing.Point(652, 857);
+            this.addSuppDocButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addSuppDocButton.Name = "addSuppDocButton";
-            this.addSuppDocButton.Size = new System.Drawing.Size(45, 26);
+            this.addSuppDocButton.Size = new System.Drawing.Size(68, 36);
             this.addSuppDocButton.TabIndex = 36;
             this.addSuppDocButton.TabStop = false;
             this.addSuppDocButton.Text = "Add";
@@ -579,9 +616,10 @@
             // 
             this.viewSuppDocButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.viewSuppDocButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewSuppDocButton.Location = new System.Drawing.Point(486, 619);
+            this.viewSuppDocButton.Location = new System.Drawing.Point(729, 857);
+            this.viewSuppDocButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.viewSuppDocButton.Name = "viewSuppDocButton";
-            this.viewSuppDocButton.Size = new System.Drawing.Size(59, 26);
+            this.viewSuppDocButton.Size = new System.Drawing.Size(88, 36);
             this.viewSuppDocButton.TabIndex = 37;
             this.viewSuppDocButton.TabStop = false;
             this.viewSuppDocButton.Text = "View";
@@ -591,9 +629,11 @@
             // compatibilityListBox
             // 
             this.compatibilityListBox.FormattingEnabled = true;
-            this.compatibilityListBox.Location = new System.Drawing.Point(802, 33);
+            this.compatibilityListBox.ItemHeight = 18;
+            this.compatibilityListBox.Location = new System.Drawing.Point(1203, 46);
+            this.compatibilityListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.compatibilityListBox.Name = "compatibilityListBox";
-            this.compatibilityListBox.Size = new System.Drawing.Size(159, 212);
+            this.compatibilityListBox.Size = new System.Drawing.Size(236, 292);
             this.compatibilityListBox.TabIndex = 38;
             this.compatibilityListBox.TabStop = false;
             this.compatibilityListBox.DoubleClick += new System.EventHandler(this.compatibilityListBox_DoubleClick);
@@ -602,9 +642,10 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(798, 10);
+            this.label12.Location = new System.Drawing.Point(1197, 13);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(126, 20);
+            this.label12.Size = new System.Drawing.Size(188, 29);
             this.label12.TabIndex = 39;
             this.label12.Text = "Compatibilities";
             // 
@@ -612,9 +653,10 @@
             // 
             this.addCompatibilityButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.addCompatibilityButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addCompatibilityButton.Location = new System.Drawing.Point(859, 251);
+            this.addCompatibilityButton.Location = new System.Drawing.Point(1288, 347);
+            this.addCompatibilityButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addCompatibilityButton.Name = "addCompatibilityButton";
-            this.addCompatibilityButton.Size = new System.Drawing.Size(45, 26);
+            this.addCompatibilityButton.Size = new System.Drawing.Size(68, 36);
             this.addCompatibilityButton.TabIndex = 40;
             this.addCompatibilityButton.TabStop = false;
             this.addCompatibilityButton.Text = "Add";
@@ -623,9 +665,10 @@
             // 
             // tableMaintnance
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1245, 961);
+            this.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.ClientSize = new System.Drawing.Size(1868, 1330);
             this.Controls.Add(this.addCompatibilityButton);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.compatibilityListBox);
@@ -660,6 +703,8 @@
             this.Controls.Add(this.categoryListBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.instrumentListBox);
+            this.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "tableMaintnance";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Association Tables";
