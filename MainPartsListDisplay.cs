@@ -23,6 +23,7 @@ namespace TecanPartListManager
         Boolean categoryChanged = false;
         Boolean subCategoryChanged = false;
         PartsListDetailDisplay DetailsForm = null;
+        RemovePartCheckForm RemovePartForm = null;
         SqlCeConnection TecanDatabase = null;
 
         public MainPartsListDisplay()
@@ -104,7 +105,7 @@ namespace TecanPartListManager
 
         public void PartDetailReturn()
         {
-            //            this.partsListTableAdapter.Fill(this.tecanPartsListDataSet.PartsList);
+            this.partsListTableAdapter.Fill(this.tecanPartsListDataSet.PartsList);
             SelectAllToolStripButton.Text = "Select All";
             searchPreformed = false;
             doSearch();
@@ -900,7 +901,8 @@ namespace TecanPartListManager
 
         private void instrumentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MultiPartDataChangeForm ChangeForm = new MultiPartDataChangeForm();
+            // MultiPartDataChangeForm ChangeForm = new MultiPartDataChangeForm();
+            MultiLookupDataChangeForm ChangeForm = new MultiLookupDataChangeForm();
             ChangeForm.SetFormInstance(this);
             ChangeForm.MultiPartDataChangeFormLoad("Instrument");
             ChangeForm.Show();
@@ -908,7 +910,8 @@ namespace TecanPartListManager
 
         private void categoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MultiPartDataChangeForm ChangeForm = new MultiPartDataChangeForm();
+            // MultiPartDataChangeForm ChangeForm = new MultiPartDataChangeForm();
+            MultiLookupDataChangeForm ChangeForm = new MultiLookupDataChangeForm();
             ChangeForm.SetFormInstance(this);
             ChangeForm.MultiPartDataChangeFormLoad("Category");
             ChangeForm.Show();
@@ -916,7 +919,8 @@ namespace TecanPartListManager
 
         private void subCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MultiPartDataChangeForm ChangeForm = new MultiPartDataChangeForm();
+            // MultiPartDataChangeForm ChangeForm = new MultiPartDataChangeForm();
+            MultiLookupDataChangeForm ChangeForm = new MultiLookupDataChangeForm();
             ChangeForm.SetFormInstance(this);
             ChangeForm.MultiPartDataChangeFormLoad("SubCategory");
             ChangeForm.Show();
@@ -924,7 +928,8 @@ namespace TecanPartListManager
 
         private void sSPCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MultiPartDataChangeForm ChangeForm = new MultiPartDataChangeForm();
+            // MultiPartDataChangeForm ChangeForm = new MultiPartDataChangeForm();
+            MultiLookupDataChangeForm ChangeForm = new MultiLookupDataChangeForm();
             ChangeForm.SetFormInstance(this);
             ChangeForm.MultiPartDataChangeFormLoad("SSPCategory");
             ChangeForm.Show();
@@ -932,7 +937,8 @@ namespace TecanPartListManager
 
         private void databaseMembershipToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MultiPartDataChangeForm ChangeForm = new MultiPartDataChangeForm();
+            // MultiPartDataChangeForm ChangeForm = new MultiPartDataChangeForm();
+            MultiLookupDataChangeForm ChangeForm = new MultiLookupDataChangeForm();
             ChangeForm.SetFormInstance(this);
             ChangeForm.MultiPartDataChangeFormLoad("DBMembership");
             ChangeForm.Show();
@@ -940,7 +946,8 @@ namespace TecanPartListManager
 
         private void salesTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MultiPartDataChangeForm ChangeForm = new MultiPartDataChangeForm();
+            // MultiPartDataChangeForm ChangeForm = new MultiPartDataChangeForm();
+            MultiLookupDataChangeForm ChangeForm = new MultiLookupDataChangeForm();
             ChangeForm.SetFormInstance(this);
             ChangeForm.MultiPartDataChangeFormLoad("SalesType");
             ChangeForm.Show();
@@ -1504,6 +1511,79 @@ namespace TecanPartListManager
                 MessageBox.Show("Loading Deatils Form " + ex.Message);
             }
 
+        }
+
+        //private void partsListDataGridView_ControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        //{
+        //    System.Data.DataRowView SelectedRowView;
+        //    TecanPartsListDataSet.PartsListRow SelectedRow;
+
+        //    SelectedRowView = (System.Data.DataRowView)partsListBindingSource.Current;
+        //    SelectedRow = (TecanPartsListDataSet.PartsListRow)SelectedRowView.Row;
+        //    MessageBox.Show(SelectedRow.DBMembership.ToString());
+        //}
+
+        // This event handler manually raises the CellValueChanged event 
+        // by calling the CommitEdit method. 
+        void partsListDataGridView_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (partsListDataGridView.IsCurrentCellDirty)
+            {
+                // This fires the cell value changed handler below
+                partsListDataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+
+        private void partsListDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            // My combobox column is the second one so I hard coded a 1, flavor to taste
+            if (e.RowIndex >= 0 && e.ColumnIndex == 4)
+            {
+                DataGridViewComboBoxCell cb = (DataGridViewComboBoxCell)partsListDataGridView.Rows[e.RowIndex].Cells[4];
+                if ((String)cb.FormattedValue == "Removed")
+                {
+                    System.Data.DataRowView SelectedRowView;
+                    TecanPartsListDataSet.PartsListRow SelectedRow;
+
+                    SelectedRowView = (System.Data.DataRowView)partsListBindingSource.Current;
+                    SelectedRow = (TecanPartsListDataSet.PartsListRow)SelectedRowView.Row;
+
+                    openDB();
+                    SqlCeCommand cmd = TecanDatabase.CreateCommand();
+
+                    cmd.CommandText = "SELECT R.SAPId, P.Description FROM PartsList P" +
+                    " INNER JOIN RequiredParts R " +
+                    " ON R.SAPId = P.SAPId" +
+                    " WHERE R.RequiredSAPId = '" + SelectedRow.SAPId + "'" +
+                    " ORDER BY RequiredSAPId";
+                    DataTable dt = new DataTable();
+                    dt.Load(cmd.ExecuteReader());
+                    if (dt.Rows.Count > 0)
+                    {
+                        if (RemovePartForm == null || RemovePartForm.IsDisposed)
+                        {
+                            RemovePartForm = new RemovePartCheckForm();
+                        }
+                        try
+                        {
+                            RemovePartForm.SetForm1Instance(this);
+                            RemovePartForm.ShowRemoved(dt);
+                            RemovePartForm.TopMost = true;
+                            RemovePartForm.Show();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Loading Remove Part Form Form " + ex.Message);
+                        }
+                    }
+                    dt.Dispose();
+                    
+                    // Set remove date
+                    cmd.CommandText = "UPDATE PartsList SET DBMembership = " + cb.Value + ", RemoveDate = '" + DateTime.Today.AddDays(0) + "' WHERE SAPId = '" + SelectedRow.SAPId + "'";
+                    cmd.ExecuteNonQuery();
+                    TecanDatabase.Close();
+                }
+            }
         }
 
     }

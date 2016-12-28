@@ -18,6 +18,7 @@ namespace TecanPartListManager
     {
 
         MainPartsListDisplay mainForm;
+        RemovePartCheckForm RemovePartForm = null;
         Boolean hasSAPID;
         
         SqlCeConnection TecanDatabase = null;
@@ -46,6 +47,11 @@ namespace TecanPartListManager
                 saveNewRecord();
             }
             mainForm.PartDetailReturn();
+            this.Close();
+        }
+
+        private void CloseToolStripLabel_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
 
@@ -1256,8 +1262,11 @@ namespace TecanPartListManager
         // Duplicate Part Menu Item
         private void toolStripLabel1_Click(object sender, EventArgs e)
         {
-            if(hasSAPID) 
+            if (hasSAPID)
+            {
                 NewSAPIDPanel.Visible = true;
+                NewSAPIDTextBox.Focus();
+            }
         }
 
         private void AddNewSAPIDButton_Click(object sender, EventArgs e)
@@ -1275,6 +1284,46 @@ namespace TecanPartListManager
             NewSAPIDPanel.Visible = false;
         }
 
+        private void DBMembershipComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DBMembershipComboBox.Text == "Removed")
+            {
+                openDB();
+                SqlCeCommand cmd = TecanDatabase.CreateCommand();
+
+                cmd.CommandText = "SELECT R.SAPId, P.Description FROM PartsList P" +
+                " INNER JOIN RequiredParts R " +
+                " ON R.SAPId = P.SAPId" +
+                " WHERE R.RequiredSAPId = '" + sAPIdTextBox.Text + "'" +
+                " ORDER BY RequiredSAPId";
+                DataTable dt = new DataTable();
+                dt.Load(cmd.ExecuteReader());
+                TecanDatabase.Close();
+                if (dt.Rows.Count > 0)
+                {
+                    if (RemovePartForm == null || RemovePartForm.IsDisposed)
+                    {
+                        RemovePartForm = new RemovePartCheckForm();
+                    }
+                    try
+                    {
+                        RemovePartForm.SetForm1Instance(mainForm);
+                        RemovePartForm.ShowRemoved(dt);
+                        RemovePartForm.TopMost = true;
+                        RemovePartForm.Show();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Loading Remove Part Form Form " + ex.Message);
+                    }
+                }
+                else
+                {
+                    dt.Dispose();
+                }
+                removeDateDateTimePicker.Value = DateTime.Today.AddDays(0);
+            }
+        }
 
     }
 }

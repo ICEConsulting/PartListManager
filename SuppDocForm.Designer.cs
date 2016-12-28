@@ -49,7 +49,7 @@
             this.viewSuppDocButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.viewSuppDocButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewSuppDocButton.Location = new System.Drawing.Point(710, 40);
-            this.viewSuppDocButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.viewSuppDocButton.Margin = new System.Windows.Forms.Padding(4);
             this.viewSuppDocButton.Name = "viewSuppDocButton";
             this.viewSuppDocButton.Size = new System.Drawing.Size(88, 36);
             this.viewSuppDocButton.TabIndex = 41;
@@ -63,7 +63,7 @@
             this.addSuppDocButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.addSuppDocButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addSuppDocButton.Location = new System.Drawing.Point(633, 40);
-            this.addSuppDocButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addSuppDocButton.Margin = new System.Windows.Forms.Padding(4);
             this.addSuppDocButton.Name = "addSuppDocButton";
             this.addSuppDocButton.Size = new System.Drawing.Size(68, 36);
             this.addSuppDocButton.TabIndex = 40;
@@ -79,7 +79,7 @@
             this.DocID,
             this.FileName});
             this.allSuppDocsDataGridView.Location = new System.Drawing.Point(56, 80);
-            this.allSuppDocsDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.allSuppDocsDataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.allSuppDocsDataGridView.Name = "allSuppDocsDataGridView";
             this.allSuppDocsDataGridView.Size = new System.Drawing.Size(968, 882);
             this.allSuppDocsDataGridView.TabIndex = 39;
@@ -177,7 +177,7 @@
             this.associateDocButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.associateDocButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.associateDocButton.Location = new System.Drawing.Point(807, 40);
-            this.associateDocButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.associateDocButton.Margin = new System.Windows.Forms.Padding(4);
             this.associateDocButton.Name = "associateDocButton";
             this.associateDocButton.Size = new System.Drawing.Size(146, 36);
             this.associateDocButton.TabIndex = 48;
@@ -204,10 +204,11 @@
             this.Controls.Add(this.allSuppDocsDataGridView);
             this.Controls.Add(this.label8);
             this.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SuppDocForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Associate Supplemental Document";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.SuppDocForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.allSuppDocsDataGridView)).EndInit();
             this.ResumeLayout(false);

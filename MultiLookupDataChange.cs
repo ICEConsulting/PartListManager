@@ -11,7 +11,7 @@ using System.Data.SqlServerCe;
 
 namespace TecanPartListManager
 {
-    public partial class MultiPartDataChangeForm : Form
+    public partial class MultiLookupDataChangeForm : Form
     {
 
         MainPartsListDisplay mainForm;
@@ -24,7 +24,7 @@ namespace TecanPartListManager
             mainForm = inst;
         }
 
-        public MultiPartDataChangeForm()
+        public MultiLookupDataChangeForm()
         {
             InitializeComponent();
         }
@@ -75,9 +75,7 @@ namespace TecanPartListManager
                     lookupName = "SalesTypeName";
                     break;
             }
-
-
-            // Add Compatibilities to List
+            // Add Lookup Items to List
             ArrayList theLookupTableValues = new ArrayList();
             cmd.CommandText = "SELECT " + lookupID + ", " + lookupName + " FROM " + currentTable + " ORDER BY " + lookupName;
             reader = cmd.ExecuteReader();
@@ -95,6 +93,35 @@ namespace TecanPartListManager
             reader.Dispose();
             TecanDatabase.Close();
             SetListBoxSize();
+        }
+
+        private void openBD()
+        {
+            TecanDatabase = new SqlCeConnection();
+            String dataPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+            TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            TecanDatabase.Open();
+        }
+
+        private void SetListBoxSize()
+        {
+
+            int width = 0;
+            Graphics g = currentTableListBox.CreateGraphics();
+            Font font = currentTableListBox.Font;
+
+            int newWidth = 0;
+            foreach (theLookupTableValues s in currentTableListBox.Items)
+            {
+                newWidth = (int)g.MeasureString(s.Name, font).Width;
+                if (width < newWidth)
+                {
+                    width = newWidth;
+                }
+            }
+            currentTableListBox.Width = width;
+            currentTableListBox.Left = (this.ClientSize.Width - currentTableListBox.Width) / 2;
+
         }
 
         public class theLookupTableValues
@@ -125,41 +152,13 @@ namespace TecanPartListManager
             }
         }
 
-        private void openBD()
-        {
-            TecanDatabase = new SqlCeConnection();
-            String dataPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
-            TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
-            TecanDatabase.Open();
-        }
-
-        private void SetListBoxSize()
-        {
-            
-            int width = 0;
-            Graphics g = currentTableListBox.CreateGraphics();
-            Font font = currentTableListBox.Font;
-
-            int newWidth = 0;
-            foreach (theLookupTableValues s in currentTableListBox.Items)
-            {
-                newWidth = (int)g.MeasureString(s.Name, font).Width;
-                if (width < newWidth)
-                {
-                    width = newWidth;
-                }
-            }
-            currentTableListBox.Width = width;
-            currentTableListBox.Left = (this.ClientSize.Width - currentTableListBox.Width) / 2;
-
-        }
-        
         private void SetPartsButton_Click(object sender, EventArgs e)
         {
             Int32 selectedValue = 0;
             selectedValue = Convert.ToInt32(currentTableListBox.SelectedValue);
             mainForm.multiPartChangeFormReturn(currentTable, (int)selectedValue);
             this.Close();
+
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -167,28 +166,5 @@ namespace TecanPartListManager
             this.Close();
         }
 
-        //private void InitializeComponent()
-        //{
-        //    this.SuspendLayout();
-        //    // 
-        //    // MultiPartDataChangeForm
-        //    // 
-        //    this.ClientSize = new System.Drawing.Size(713, 756);
-        //    this.Name = "MultiPartDataChangeForm";
-        //    this.ResumeLayout(false);
-
-        //}
-
-        //private void InitializeComponent()
-        //{
-        //    this.SuspendLayout();
-        //    // 
-        //    // MultiPartDataChangeForm
-        //    // 
-        //    this.ClientSize = new System.Drawing.Size(718, 821);
-        //    this.Name = "MultiPartDataChangeForm";
-        //    this.ResumeLayout(false);
-
-        //}
     }
 }

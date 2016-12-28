@@ -321,8 +321,8 @@
             // 
             // ImportAccessDatabaseForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.BlanchedAlmond;
             this.ClientSize = new System.Drawing.Size(1051, 466);
             this.Controls.Add(this.label3);
@@ -345,6 +345,7 @@
             this.Name = "ImportAccessDatabaseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Import Access Database";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.ImportAccessDatabaseForm_Load);
             this.Shown += new System.EventHandler(this.ImportAccessDatabaseForm_Shown);
             this.Disposed += new System.EventHandler(this.ImportAccessDatabaseForm_Close);

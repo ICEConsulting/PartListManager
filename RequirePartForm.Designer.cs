@@ -47,6 +47,7 @@
             this.DescriptionSearchTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.CloseButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tecanPartsListDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partsListBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partsListDataGridView)).BeginInit();
@@ -90,7 +91,7 @@
             this.DescriptiondataGridViewTextBoxColumn});
             this.partsListDataGridView.DataSource = this.partsListBindingSource;
             this.partsListDataGridView.Location = new System.Drawing.Point(18, 85);
-            this.partsListDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.partsListDataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.partsListDataGridView.Name = "partsListDataGridView";
             this.partsListDataGridView.Size = new System.Drawing.Size(972, 466);
             this.partsListDataGridView.TabIndex = 1;
@@ -132,7 +133,7 @@
             this.RequiredListView.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RequiredListView.FullRowSelect = true;
             this.RequiredListView.Location = new System.Drawing.Point(18, 705);
-            this.RequiredListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RequiredListView.Margin = new System.Windows.Forms.Padding(4);
             this.RequiredListView.MultiSelect = false;
             this.RequiredListView.Name = "RequiredListView";
             this.RequiredListView.Size = new System.Drawing.Size(972, 251);
@@ -189,7 +190,7 @@
             // PartNumberSearchTextBox
             // 
             this.PartNumberSearchTextBox.Location = new System.Drawing.Point(84, 54);
-            this.PartNumberSearchTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PartNumberSearchTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.PartNumberSearchTextBox.Name = "PartNumberSearchTextBox";
             this.PartNumberSearchTextBox.Size = new System.Drawing.Size(178, 26);
             this.PartNumberSearchTextBox.TabIndex = 10;
@@ -199,7 +200,7 @@
             // DescriptionSearchTextBox
             // 
             this.DescriptionSearchTextBox.Location = new System.Drawing.Point(416, 56);
-            this.DescriptionSearchTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DescriptionSearchTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.DescriptionSearchTextBox.Name = "DescriptionSearchTextBox";
             this.DescriptionSearchTextBox.Size = new System.Drawing.Size(368, 26);
             this.DescriptionSearchTextBox.TabIndex = 11;
@@ -219,7 +220,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(294, 574);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(436, 89);
@@ -228,12 +229,25 @@
             this.textBox1.Text = "To add a required Part:\r\nDrag part(s) from the list above to the box at the botto" +
     "m.\r\n\r\nTo delete any part,  simply double-click that part#";
             // 
+            // CloseButton
+            // 
+            this.CloseButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.CloseButton.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CloseButton.Location = new System.Drawing.Point(445, 983);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(128, 44);
+            this.CloseButton.TabIndex = 14;
+            this.CloseButton.Text = "Save";
+            this.CloseButton.UseVisualStyleBackColor = false;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
+            // 
             // RequirePartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.BlanchedAlmond;
-            this.ClientSize = new System.Drawing.Size(1026, 982);
+            this.ClientSize = new System.Drawing.Size(1026, 1047);
+            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.DescriptionSearchTextBox);
@@ -245,7 +259,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.partsListDataGridView);
             this.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RequirePartForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add / Edit Require Parts";
@@ -279,5 +293,6 @@
         private System.Windows.Forms.TextBox DescriptionSearchTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button CloseButton;
     }
 }

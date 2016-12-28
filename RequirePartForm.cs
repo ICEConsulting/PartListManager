@@ -32,7 +32,6 @@ namespace TecanPartListManager
             this.Validate();
             this.partsListBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.tecanPartsListDataSet);
-
         }
 
         private void RequirePartForm_Load(object sender, EventArgs e)
@@ -533,6 +532,12 @@ namespace TecanPartListManager
 
             partsListTableAdapter.FillByLIKE(this.tecanPartsListDataSet.PartsList, PartSearchValue, DescriptionSearchValue);
             
+        }
+
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            detailForm.RequiredPartsReturn(SAPID);
+            this.Close();
         }
 
     }

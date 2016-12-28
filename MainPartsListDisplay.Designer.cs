@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using System;
 
 namespace TecanPartListManager
 {
@@ -74,10 +75,16 @@ namespace TecanPartListManager
             this.SelectAllToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.partsListDataGridView = new System.Windows.Forms.DataGridView();
+            this.sAPIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.instrumentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.InstrumentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.CategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.subCategoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.SubCategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.DBMembership = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dbMembershipBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.multiplePartDataChangeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.instrumentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -151,12 +158,6 @@ namespace TecanPartListManager
             this.label13 = new System.Windows.Forms.Label();
             this.FindTextBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.sAPIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.instrumentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.subCategoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.DBMembership = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tecanPartsListDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partsListBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partsListBindingNavigator)).BeginInit();
@@ -487,27 +488,101 @@ namespace TecanPartListManager
             this.partsListDataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.LightBlue;
             this.partsListDataGridView.Size = new System.Drawing.Size(2878, 881);
             this.partsListDataGridView.TabIndex = 1;
+            this.partsListDataGridView.TabStop = false;
             this.partsListDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.partsListDataGridView_CellDoubleClick);
+            this.partsListDataGridView.CellValueChanged += new DataGridViewCellEventHandler(this.partsListDataGridView_CellValueChanged);
+            this.partsListDataGridView.CurrentCellDirtyStateChanged += new EventHandler(this.partsListDataGridView_CurrentCellDirtyStateChanged);
+            // 
+            // sAPIdDataGridViewTextBoxColumn
+            // 
+            this.sAPIdDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.sAPIdDataGridViewTextBoxColumn.DataPropertyName = "SAPId";
+            this.sAPIdDataGridViewTextBoxColumn.HeaderText = "SAPId";
+            this.sAPIdDataGridViewTextBoxColumn.Name = "sAPIdDataGridViewTextBoxColumn";
+            this.sAPIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.sAPIdDataGridViewTextBoxColumn.Width = 78;
+            // 
+            // instrumentDataGridViewTextBoxColumn
+            // 
+            this.instrumentDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.instrumentDataGridViewTextBoxColumn.DataPropertyName = "Instrument";
+            this.instrumentDataGridViewTextBoxColumn.DataSource = this.InstrumentBindingSource;
+            this.instrumentDataGridViewTextBoxColumn.DisplayMember = "InstrumentName";
+            this.instrumentDataGridViewTextBoxColumn.HeaderText = "Instrument";
+            this.instrumentDataGridViewTextBoxColumn.Name = "instrumentDataGridViewTextBoxColumn";
+            this.instrumentDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.instrumentDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.instrumentDataGridViewTextBoxColumn.ValueMember = "InstrumentID";
+            this.instrumentDataGridViewTextBoxColumn.Width = 175;
             // 
             // InstrumentBindingSource
             // 
             this.InstrumentBindingSource.DataMember = "Instrument";
             this.InstrumentBindingSource.DataSource = this.tecanPartsListDataSet;
             // 
+            // categoryDataGridViewTextBoxColumn
+            // 
+            this.categoryDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
+            this.categoryDataGridViewTextBoxColumn.DataSource = this.CategoryBindingSource;
+            this.categoryDataGridViewTextBoxColumn.DisplayMember = "CategoryName";
+            this.categoryDataGridViewTextBoxColumn.HeaderText = "Category";
+            this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
+            this.categoryDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.categoryDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.categoryDataGridViewTextBoxColumn.ValueMember = "CategoryID";
+            this.categoryDataGridViewTextBoxColumn.Width = 175;
+            // 
             // CategoryBindingSource
             // 
             this.CategoryBindingSource.DataMember = "Category";
             this.CategoryBindingSource.DataSource = this.tecanPartsListDataSet;
+            // 
+            // subCategoryDataGridViewTextBoxColumn
+            // 
+            this.subCategoryDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.subCategoryDataGridViewTextBoxColumn.DataPropertyName = "SubCategory";
+            this.subCategoryDataGridViewTextBoxColumn.DataSource = this.SubCategoryBindingSource;
+            this.subCategoryDataGridViewTextBoxColumn.DisplayMember = "SubCategoryName";
+            this.subCategoryDataGridViewTextBoxColumn.HeaderText = "SubCategory";
+            this.subCategoryDataGridViewTextBoxColumn.Name = "subCategoryDataGridViewTextBoxColumn";
+            this.subCategoryDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.subCategoryDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.subCategoryDataGridViewTextBoxColumn.ValueMember = "SubCategoryID";
+            this.subCategoryDataGridViewTextBoxColumn.Width = 175;
             // 
             // SubCategoryBindingSource
             // 
             this.SubCategoryBindingSource.DataMember = "SubCategory";
             this.SubCategoryBindingSource.DataSource = this.tecanPartsListDataSet;
             // 
+            // DBMembership
+            // 
+            this.DBMembership.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.DBMembership.DataPropertyName = "DBMembership";
+            this.DBMembership.DataSource = this.dbMembershipBindingSource;
+            this.DBMembership.DisplayMember = "DBName";
+            this.DBMembership.HeaderText = "DB Membership";
+            this.DBMembership.Name = "DBMembership";
+            this.DBMembership.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DBMembership.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.DBMembership.ValueMember = "DBID";
+            this.DBMembership.Width = 75;
+            // 
             // dbMembershipBindingSource
             // 
             this.dbMembershipBindingSource.DataMember = "DBMembership";
             this.dbMembershipBindingSource.DataSource = this.tecanPartsListDataSet;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "DetailDescription";
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.descriptionDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Detail Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.Width = 1200;
             // 
             // menuStrip1
             // 
@@ -754,6 +829,7 @@ namespace TecanPartListManager
             this.CategoryListComboBox.Name = "CategoryListComboBox";
             this.CategoryListComboBox.Size = new System.Drawing.Size(230, 26);
             this.CategoryListComboBox.TabIndex = 3;
+            this.CategoryListComboBox.TabStop = false;
             this.CategoryListComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryListComboBox_SelectedIndexChanged);
             this.CategoryListComboBox.Click += new System.EventHandler(this.CategoryListComboBox_Click);
             // 
@@ -777,6 +853,7 @@ namespace TecanPartListManager
             this.InstrumentListComboBox.Name = "InstrumentListComboBox";
             this.InstrumentListComboBox.Size = new System.Drawing.Size(196, 26);
             this.InstrumentListComboBox.TabIndex = 5;
+            this.InstrumentListComboBox.TabStop = false;
             this.InstrumentListComboBox.SelectedIndexChanged += new System.EventHandler(this.InstrumentListComboBox_SelectedIndexChanged);
             this.InstrumentListComboBox.Click += new System.EventHandler(this.InstrumentListComboBox_Click);
             // 
@@ -812,6 +889,7 @@ namespace TecanPartListManager
             this.SubCategoryListComboBox.Name = "SubCategoryListComboBox";
             this.SubCategoryListComboBox.Size = new System.Drawing.Size(258, 26);
             this.SubCategoryListComboBox.TabIndex = 8;
+            this.SubCategoryListComboBox.TabStop = false;
             this.SubCategoryListComboBox.SelectedIndexChanged += new System.EventHandler(this.SubCategoryListComboBox_SelectedIndexChanged);
             this.SubCategoryListComboBox.Click += new System.EventHandler(this.SubCategoryListComboBox_Click);
             // 
@@ -835,6 +913,7 @@ namespace TecanPartListManager
             this.DBMembershipListComboBox.Name = "DBMembershipListComboBox";
             this.DBMembershipListComboBox.Size = new System.Drawing.Size(103, 26);
             this.DBMembershipListComboBox.TabIndex = 10;
+            this.DBMembershipListComboBox.TabStop = false;
             this.DBMembershipListComboBox.SelectedIndexChanged += new System.EventHandler(this.DBMembershipListComboBox_SelectedIndexChanged);
             this.DBMembershipListComboBox.Click += new System.EventHandler(this.DBMembershipListComboBox_Click);
             // 
@@ -846,6 +925,7 @@ namespace TecanPartListManager
             this.ClearFiltersButton.Name = "ClearFiltersButton";
             this.ClearFiltersButton.Size = new System.Drawing.Size(146, 33);
             this.ClearFiltersButton.TabIndex = 11;
+            this.ClearFiltersButton.TabStop = false;
             this.ClearFiltersButton.Text = "Clear Filters";
             this.ClearFiltersButton.UseVisualStyleBackColor = false;
             this.ClearFiltersButton.Click += new System.EventHandler(this.ClearFiltersButton_Click);
@@ -870,6 +950,7 @@ namespace TecanPartListManager
             this.SalesTypeComboBox.Name = "SalesTypeComboBox";
             this.SalesTypeComboBox.Size = new System.Drawing.Size(94, 26);
             this.SalesTypeComboBox.TabIndex = 13;
+            this.SalesTypeComboBox.TabStop = false;
             this.SalesTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.SalesTypeComboBox_SelectedIndexChanged);
             this.SalesTypeComboBox.Click += new System.EventHandler(this.SalesTypeComboBox_Click);
             // 
@@ -1081,7 +1162,7 @@ namespace TecanPartListManager
             // 
             this.DeleteFindCheckBox.AutoSize = true;
             this.DeleteFindCheckBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteFindCheckBox.Location = new System.Drawing.Point(451, 100);
+            this.DeleteFindCheckBox.Location = new System.Drawing.Point(457, 107);
             this.DeleteFindCheckBox.Name = "DeleteFindCheckBox";
             this.DeleteFindCheckBox.Size = new System.Drawing.Size(142, 25);
             this.DeleteFindCheckBox.TabIndex = 14;
@@ -1092,7 +1173,7 @@ namespace TecanPartListManager
             // 
             this.RecordsFoundLabel.AutoSize = true;
             this.RecordsFoundLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecordsFoundLabel.Location = new System.Drawing.Point(18, 365);
+            this.RecordsFoundLabel.Location = new System.Drawing.Point(24, 372);
             this.RecordsFoundLabel.Name = "RecordsFoundLabel";
             this.RecordsFoundLabel.Size = new System.Drawing.Size(0, 21);
             this.RecordsFoundLabel.TabIndex = 13;
@@ -1102,7 +1183,7 @@ namespace TecanPartListManager
             // 
             this.FindCancelButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.FindCancelButton.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FindCancelButton.Location = new System.Drawing.Point(387, 725);
+            this.FindCancelButton.Location = new System.Drawing.Point(393, 732);
             this.FindCancelButton.Name = "FindCancelButton";
             this.FindCancelButton.Size = new System.Drawing.Size(147, 38);
             this.FindCancelButton.TabIndex = 12;
@@ -1114,7 +1195,7 @@ namespace TecanPartListManager
             // 
             this.FindAgainButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.FindAgainButton.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FindAgainButton.Location = new System.Drawing.Point(195, 725);
+            this.FindAgainButton.Location = new System.Drawing.Point(201, 732);
             this.FindAgainButton.Name = "FindAgainButton";
             this.FindAgainButton.Size = new System.Drawing.Size(147, 38);
             this.FindAgainButton.TabIndex = 11;
@@ -1125,7 +1206,7 @@ namespace TecanPartListManager
             // FindDataGridView
             // 
             this.FindDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.FindDataGridView.Location = new System.Drawing.Point(13, 392);
+            this.FindDataGridView.Location = new System.Drawing.Point(19, 399);
             this.FindDataGridView.Name = "FindDataGridView";
             this.FindDataGridView.RowTemplate.Height = 28;
             this.FindDataGridView.Size = new System.Drawing.Size(690, 311);
@@ -1137,7 +1218,7 @@ namespace TecanPartListManager
             // 
             this.SelectAllFindCheckBox.AutoSize = true;
             this.SelectAllFindCheckBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SelectAllFindCheckBox.Location = new System.Drawing.Point(362, 164);
+            this.SelectAllFindCheckBox.Location = new System.Drawing.Point(368, 171);
             this.SelectAllFindCheckBox.Name = "SelectAllFindCheckBox";
             this.SelectAllFindCheckBox.Size = new System.Drawing.Size(109, 25);
             this.SelectAllFindCheckBox.TabIndex = 9;
@@ -1149,7 +1230,7 @@ namespace TecanPartListManager
             // 
             this.CancelFindButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.CancelFindButton.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CancelFindButton.Location = new System.Drawing.Point(376, 391);
+            this.CancelFindButton.Location = new System.Drawing.Point(382, 398);
             this.CancelFindButton.Name = "CancelFindButton";
             this.CancelFindButton.Size = new System.Drawing.Size(121, 38);
             this.CancelFindButton.TabIndex = 8;
@@ -1161,7 +1242,7 @@ namespace TecanPartListManager
             // 
             this.FindButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.FindButton.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FindButton.Location = new System.Drawing.Point(217, 391);
+            this.FindButton.Location = new System.Drawing.Point(223, 398);
             this.FindButton.Name = "FindButton";
             this.FindButton.Size = new System.Drawing.Size(89, 38);
             this.FindButton.TabIndex = 7;
@@ -1180,7 +1261,7 @@ namespace TecanPartListManager
             "PL Detail Description",
             "Notes",
             "Comments"});
-            this.FindCheckedListBox.Location = new System.Drawing.Point(242, 205);
+            this.FindCheckedListBox.Location = new System.Drawing.Point(248, 212);
             this.FindCheckedListBox.Name = "FindCheckedListBox";
             this.FindCheckedListBox.Size = new System.Drawing.Size(224, 151);
             this.FindCheckedListBox.TabIndex = 6;
@@ -1189,7 +1270,7 @@ namespace TecanPartListManager
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(243, 163);
+            this.label15.Location = new System.Drawing.Point(249, 170);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(87, 24);
             this.label15.TabIndex = 5;
@@ -1199,7 +1280,7 @@ namespace TecanPartListManager
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(139, 100);
+            this.label14.Location = new System.Drawing.Point(145, 107);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(300, 21);
             this.label14.TabIndex = 4;
@@ -1208,7 +1289,7 @@ namespace TecanPartListManager
             // ReplaceTextBox
             // 
             this.ReplaceTextBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReplaceTextBox.Location = new System.Drawing.Point(143, 127);
+            this.ReplaceTextBox.Location = new System.Drawing.Point(149, 134);
             this.ReplaceTextBox.Name = "ReplaceTextBox";
             this.ReplaceTextBox.Size = new System.Drawing.Size(446, 28);
             this.ReplaceTextBox.TabIndex = 3;
@@ -1217,7 +1298,7 @@ namespace TecanPartListManager
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(139, 44);
+            this.label13.Location = new System.Drawing.Point(145, 51);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(45, 21);
             this.label13.TabIndex = 2;
@@ -1226,7 +1307,7 @@ namespace TecanPartListManager
             // FindTextBox
             // 
             this.FindTextBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FindTextBox.Location = new System.Drawing.Point(143, 66);
+            this.FindTextBox.Location = new System.Drawing.Point(149, 73);
             this.FindTextBox.Name = "FindTextBox";
             this.FindTextBox.Size = new System.Drawing.Size(446, 28);
             this.FindTextBox.TabIndex = 1;
@@ -1235,82 +1316,11 @@ namespace TecanPartListManager
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(280, 16);
+            this.label12.Location = new System.Drawing.Point(286, 23);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(144, 24);
             this.label12.TabIndex = 0;
             this.label12.Text = "Find / Replace";
-            // 
-            // sAPIdDataGridViewTextBoxColumn
-            // 
-            this.sAPIdDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.sAPIdDataGridViewTextBoxColumn.DataPropertyName = "SAPId";
-            this.sAPIdDataGridViewTextBoxColumn.HeaderText = "SAPId";
-            this.sAPIdDataGridViewTextBoxColumn.Name = "sAPIdDataGridViewTextBoxColumn";
-            this.sAPIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.sAPIdDataGridViewTextBoxColumn.Width = 78;
-            // 
-            // instrumentDataGridViewTextBoxColumn
-            // 
-            this.instrumentDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.instrumentDataGridViewTextBoxColumn.DataPropertyName = "Instrument";
-            this.instrumentDataGridViewTextBoxColumn.DataSource = this.InstrumentBindingSource;
-            this.instrumentDataGridViewTextBoxColumn.DisplayMember = "InstrumentName";
-            this.instrumentDataGridViewTextBoxColumn.HeaderText = "Instrument";
-            this.instrumentDataGridViewTextBoxColumn.Name = "instrumentDataGridViewTextBoxColumn";
-            this.instrumentDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.instrumentDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.instrumentDataGridViewTextBoxColumn.ValueMember = "InstrumentID";
-            this.instrumentDataGridViewTextBoxColumn.Width = 175;
-            // 
-            // categoryDataGridViewTextBoxColumn
-            // 
-            this.categoryDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
-            this.categoryDataGridViewTextBoxColumn.DataSource = this.CategoryBindingSource;
-            this.categoryDataGridViewTextBoxColumn.DisplayMember = "CategoryName";
-            this.categoryDataGridViewTextBoxColumn.HeaderText = "Category";
-            this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
-            this.categoryDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.categoryDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.categoryDataGridViewTextBoxColumn.ValueMember = "CategoryID";
-            this.categoryDataGridViewTextBoxColumn.Width = 175;
-            // 
-            // subCategoryDataGridViewTextBoxColumn
-            // 
-            this.subCategoryDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.subCategoryDataGridViewTextBoxColumn.DataPropertyName = "SubCategory";
-            this.subCategoryDataGridViewTextBoxColumn.DataSource = this.SubCategoryBindingSource;
-            this.subCategoryDataGridViewTextBoxColumn.DisplayMember = "SubCategoryName";
-            this.subCategoryDataGridViewTextBoxColumn.HeaderText = "SubCategory";
-            this.subCategoryDataGridViewTextBoxColumn.Name = "subCategoryDataGridViewTextBoxColumn";
-            this.subCategoryDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.subCategoryDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.subCategoryDataGridViewTextBoxColumn.ValueMember = "SubCategoryID";
-            this.subCategoryDataGridViewTextBoxColumn.Width = 175;
-            // 
-            // DBMembership
-            // 
-            this.DBMembership.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.DBMembership.DataPropertyName = "DBMembership";
-            this.DBMembership.DataSource = this.dbMembershipBindingSource;
-            this.DBMembership.DisplayMember = "DBName";
-            this.DBMembership.HeaderText = "DB Membership";
-            this.DBMembership.Name = "DBMembership";
-            this.DBMembership.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DBMembership.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.DBMembership.ValueMember = "DBID";
-            this.DBMembership.Width = 75;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "DetailDescription";
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.descriptionDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.Width = 1200;
             // 
             // MainPartsListDisplay
             // 
