@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlServerCe;
+using System.Threading;
 
 
 namespace TecanPartListManager
@@ -41,20 +42,13 @@ namespace TecanPartListManager
 
         public void MainPartsListDisplay_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'tecanPartsListDataSet.SalesType' table. You can move, or remove it, as needed.
             this.salesTypeTableAdapter.Fill(this.tecanPartsListDataSet.SalesType);
-            // TODO: This line of code loads data into the 'tecanPartsListDataSet.DBMembership' table. You can move, or remove it, as needed.
             this.dBMembershipTableAdapter.Fill(this.tecanPartsListDataSet.DBMembership);
-            // TODO: This line of code loads data into the 'tecanPartsListDataSet.SSPCategory' table. You can move, or remove it, as needed.
             this.partsListDataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            // TODO: This line of code loads data into the 'tecanPart   sListDataSet.SubCategory' table. You can move, or remove it, as needed.
             this.sSPCategoryTableAdapter.Fill(this.tecanPartsListDataSet.SSPCategory);
             this.subCategoryTableAdapter.Fill(this.tecanPartsListDataSet.SubCategory);
-            // TODO: This line of code loads data into the 'tecanPartsListDataSet.Category' table. You can move, or remove it, as needed.
             this.categoryTableAdapter.Fill(this.tecanPartsListDataSet.Category);
-            // TODO: This line of code loads data into the 'tecanPartsListDataSet.Instrument' table. You can move, or remove it, as needed.
             this.instrumentTableAdapter.Fill(this.tecanPartsListDataSet.Instrument);
-            // TODO: This line of code loads data into the 'tecanPartsListDataSet.PartsList' table. You can move, or remove it, as needed.
             this.partsListTableAdapter.Fill(this.tecanPartsListDataSet.PartsList);
 
             if (partsListBindingSource.Count == 0)
@@ -218,52 +212,18 @@ namespace TecanPartListManager
 
         // After the lookup table item has been selected
         // Change to the new value in all of the parts selected in the gridview
-        public void multiPartChangeFormReturn(String currentTable, Int32 newValue)
+        public void multiPartChangeFormReturn(String currentTable, Int32 newValue, Boolean ifDBMembershipIsRemoved = false)
         {
-            String lookupTableID = "";
-
-            switch (currentTable)
-            {
-                case "Instrument":
-                    lookupTableID = "Instrument";
-                    break;
-
-                case "Category":
-                    lookupTableID = "Category";
-                    break;
-
-                case "SubCategory":
-                    lookupTableID = "SubCategory";
-                    break;
-
-                case "SSPCategory":
-                    lookupTableID = "SSPCategory";
-                    break;
-
-                case "DBMembership":
-                    lookupTableID = "DBMembership";
-                    break;
-
-                case "SalesType":
-                    lookupTableID = "SalesType";
-                    break;
-
-            }
-
-            SqlCeConnection TecanDatabase = null;
-
-            TecanDatabase = new SqlCeConnection();
-            String dataPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
-            TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
-            TecanDatabase.Open();
-
+            openDB();
             SqlCeCommand cmd = TecanDatabase.CreateCommand();
 
             // Get the number of rows selected
             Int32 selectedsRowCount = this.partsListDataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected);
             int partRowIndex = 0;
             String selectedSAPID;
-
+            Boolean foundRequired = false;
+            List<string> thePartDetails = new List<string>();
+            
             for (int s = 0; s < selectedsRowCount; s++)
             {
                 // Get the SAPID for the current selected row
@@ -271,8 +231,15 @@ namespace TecanPartListManager
                 DataGridViewRow srow = this.partsListDataGridView.Rows[partRowIndex];
                 selectedSAPID = srow.Cells[0].Value.ToString();
 
+                if (ifDBMembershipIsRemoved)
+                {
+                    foundRequired = showDependentParts(selectedSAPID, newValue, true);
+                    if (foundRequired) thePartDetails.Add(selectedSAPID);
+                    foundRequired = false;
+                }
+
                 // Set the new lookup table value
-                cmd.CommandText = "UPDATE PartsList SET " + lookupTableID + " = '" + newValue + "' WHERE SAPId = '" + selectedSAPID + "'";
+                cmd.CommandText = "UPDATE PartsList SET " + currentTable + " = '" + newValue + "' WHERE SAPId = '" + selectedSAPID + "'";
                 cmd.ExecuteNonQuery();
 
             }
@@ -315,70 +282,6 @@ namespace TecanPartListManager
             if (this.SalesTypeBindingSource.Count > 0) SalesTypeComboBox.SelectedIndex = 0;
 
         }
-
-        // Called after doSearch() if Category or SubCategory has changed
-        // Only include Instruments that are avaiable for selected Dataset
-        //private void updateInstrumentComboBox()
-        //{
-        //    // Instruments
-        //    categoryChanged = false;
-        //    subCategoryChanged = false;
-        //    String CurrentInstrumentSearchValue = InstrumentListComboBox.SelectedValue.ToString();
-        //    short CategorySearchValue = (short)Convert.ToInt16(CategoryListComboBox.SelectedValue);
-        //    short SubCategorySearchValue = (short)Convert.ToInt16(SubCategoryListComboBox.SelectedValue);
-
-        //    if (CategorySearchValue != 0 || SubCategorySearchValue != 0)
-        //    {
-        //        // Set up new Available Category list
-        //        ArrayList theAvailableInstruments = new ArrayList();
-        //        theAvailableInstruments.Add(new LookupTableDefinitions.AvailableInstruments("Any", "0"));
-
-        //        foreach (DataRow dr in this.tecanPartsListDataSet.Tables["Instrument"].Rows)
-        //        {
-        //            foreach (DataRow pr in this.tecanPartsListDataSet.Tables["PartsList"].Rows)
-        //            {
-        //                if (pr["Instrument"].ToString() == dr["InstrumentID"].ToString())
-        //                {
-        //                    theAvailableInstruments.Add(new LookupTableDefinitions.AvailableInstruments(dr["InstrumentName"].ToString(), dr["InstrumentID"].ToString()));
-        //                    break;
-        //                }
-        //            }
-        //        }
-        //        // InstrumentListComboBox
-        //        InstrumentListComboBox.DataSource = theAvailableInstruments;
-        //        InstrumentListComboBox.DisplayMember = "Name";
-        //        InstrumentListComboBox.ValueMember = "ID";
-        //    }
-        //    else
-        //    {
-        //        // InstrumentListComboBox
-        //        InstrumentListComboBox.DataSource = this.InstrumentBindingSource;
-        //        InstrumentListComboBox.DisplayMember = "InstrumentName";
-        //        InstrumentListComboBox.ValueMember = "InstrumentID";
-        //    }
-
-        //    // Set the perviously selected item
-        //    if (CurrentInstrumentSearchValue != "0")
-        //    {
-        //        searchPreformed = true;
-        //        int currentItem = 0;
-
-        //        try
-        //        {
-        //            foreach (LookupTableDefinitions.AvailableInstruments instruments in InstrumentListComboBox.Items)
-        //            {
-        //                if (instruments.ID == CurrentInstrumentSearchValue)
-        //                {
-        //                    InstrumentListComboBox.SelectedIndex = currentItem;
-        //                }
-        //                currentItem++;
-        //            }
-        //        }
-        //        catch (Exception)
-        //        { }
-
-        //    }
-        //}
 
         // Called after doSearch() if Instrument has changed
         // Only include Categories that are avaiable for selected Instrument
@@ -1513,16 +1416,6 @@ namespace TecanPartListManager
 
         }
 
-        //private void partsListDataGridView_ControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        //{
-        //    System.Data.DataRowView SelectedRowView;
-        //    TecanPartsListDataSet.PartsListRow SelectedRow;
-
-        //    SelectedRowView = (System.Data.DataRowView)partsListBindingSource.Current;
-        //    SelectedRow = (TecanPartsListDataSet.PartsListRow)SelectedRowView.Row;
-        //    MessageBox.Show(SelectedRow.DBMembership.ToString());
-        //}
-
         // This event handler manually raises the CellValueChanged event 
         // by calling the CommitEdit method. 
         void partsListDataGridView_CurrentCellDirtyStateChanged(object sender, EventArgs e)
@@ -1534,6 +1427,7 @@ namespace TecanPartListManager
             }
         }
 
+        // Process a Removed Part from the grid being changed, see if anybody had it as a reuired part.
         private void partsListDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             // My combobox column is the second one so I hard coded a 1, flavor to taste
@@ -1548,42 +1442,58 @@ namespace TecanPartListManager
                     SelectedRowView = (System.Data.DataRowView)partsListBindingSource.Current;
                     SelectedRow = (TecanPartsListDataSet.PartsListRow)SelectedRowView.Row;
 
-                    openDB();
-                    SqlCeCommand cmd = TecanDatabase.CreateCommand();
-
-                    cmd.CommandText = "SELECT R.SAPId, P.Description FROM PartsList P" +
-                    " INNER JOIN RequiredParts R " +
-                    " ON R.SAPId = P.SAPId" +
-                    " WHERE R.RequiredSAPId = '" + SelectedRow.SAPId + "'" +
-                    " ORDER BY RequiredSAPId";
-                    DataTable dt = new DataTable();
-                    dt.Load(cmd.ExecuteReader());
-                    if (dt.Rows.Count > 0)
-                    {
-                        if (RemovePartForm == null || RemovePartForm.IsDisposed)
-                        {
-                            RemovePartForm = new RemovePartCheckForm();
-                        }
-                        try
-                        {
-                            RemovePartForm.SetForm1Instance(this);
-                            RemovePartForm.ShowRemoved(dt);
-                            RemovePartForm.TopMost = true;
-                            RemovePartForm.Show();
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Loading Remove Part Form Form " + ex.Message);
-                        }
-                    }
-                    dt.Dispose();
-                    
-                    // Set remove date
-                    cmd.CommandText = "UPDATE PartsList SET DBMembership = " + cb.Value + ", RemoveDate = '" + DateTime.Today.AddDays(0) + "' WHERE SAPId = '" + SelectedRow.SAPId + "'";
-                    cmd.ExecuteNonQuery();
-                    TecanDatabase.Close();
+                    Boolean CheckOnly = false;
+                    CheckOnly =   showDependentParts(SelectedRow.SAPId, (int)cb.Value, CheckOnly);
                 }
             }
+        }
+
+        public Boolean showDependentParts(String SAPId, Int32 DBMembershipID, Boolean CheckOnly)
+        {
+            Boolean foundRequired = false;
+            openDB();
+            SqlCeCommand cmd = TecanDatabase.CreateCommand();
+
+            // Get any required parts for removed part and add to list
+            cmd.CommandText = "SELECT R.SAPId, P.Description FROM PartsList P" +
+            " INNER JOIN RequiredParts R " +
+            " ON R.SAPId = P.SAPId" +
+            " WHERE R.RequiredSAPId = '" + SAPId + "'" +
+            " ORDER BY RequiredSAPId";
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            if (dt.Rows.Count > 0)
+            {
+                if (!CheckOnly)
+                {
+                    if (RemovePartForm == null || RemovePartForm.IsDisposed)
+                    {
+                        RemovePartForm = new RemovePartCheckForm();
+                    }
+                    try
+                    {
+                        RemovePartForm.SetForm1Instance(this);
+                        RemovePartForm.ShowRemoved(dt);
+                        RemovePartForm.TopMost = true;
+                        RemovePartForm.Show();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Loading Remove Part Form " + ex.Message);
+                    }
+                }
+                foundRequired = true;
+            }
+            dt.Dispose();
+
+            if (!CheckOnly)
+            {
+                // Set remove date
+                cmd.CommandText = "UPDATE PartsList SET DBMembership = " + DBMembershipID + ", RemoveDate = '" + DateTime.Today.AddDays(0) + "' WHERE SAPId = '" + SAPId + "'";
+                cmd.ExecuteNonQuery();
+            }
+            TecanDatabase.Close();
+            return foundRequired;
         }
 
     }

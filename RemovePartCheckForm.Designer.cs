@@ -67,6 +67,7 @@
             this.Name = "RemovePartCheckForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Removing Part Verification";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RemovePartCheckForm_Close);
             this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.RequiredDataGridView)).EndInit();
             this.ResumeLayout(false);

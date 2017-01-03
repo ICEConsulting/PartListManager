@@ -75,6 +75,7 @@ namespace TecanPartListManager
                     lookupName = "SalesTypeName";
                     break;
             }
+
             // Add Lookup Items to List
             ArrayList theLookupTableValues = new ArrayList();
             cmd.CommandText = "SELECT " + lookupID + ", " + lookupName + " FROM " + currentTable + " ORDER BY " + lookupName;
@@ -154,9 +155,17 @@ namespace TecanPartListManager
 
         private void SetPartsButton_Click(object sender, EventArgs e)
         {
+            
             Int32 selectedValue = 0;
             selectedValue = Convert.ToInt32(currentTableListBox.SelectedValue);
-            mainForm.multiPartChangeFormReturn(currentTable, (int)selectedValue);
+            if (currentTable == "DBMembership" && currentTableListBox.GetItemText(currentTableListBox.SelectedItem) == "Removed")
+            {
+                mainForm.multiPartChangeFormReturn(currentTable, (int)selectedValue, true);
+            }
+            else
+            {
+                mainForm.multiPartChangeFormReturn(currentTable, (int)selectedValue);
+            }
             this.Close();
 
         }

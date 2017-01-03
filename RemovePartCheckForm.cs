@@ -54,5 +54,12 @@ namespace TecanPartListManager
                 MessageBox.Show("Loading Deatils Form " + ex.Message);
             }
         }
+
+        private void RemovePartCheckForm_Close(object sender, EventArgs e)
+        {
+            // mainForm.waitForMe = false;
+        }
+
     }
+
 }

@@ -1284,44 +1284,17 @@ namespace TecanPartListManager
             NewSAPIDPanel.Visible = false;
         }
 
+        // Process a Removed Part from the grid being changed
         private void DBMembershipComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (DBMembershipComboBox.Text == "Removed")
             {
-                openDB();
-                SqlCeCommand cmd = TecanDatabase.CreateCommand();
+                Boolean CheckOnly = false;
+                CheckOnly = mainForm.showDependentParts(sAPIdTextBox.Text, DBMembershipComboBox.SelectedIndex, CheckOnly);
 
-                cmd.CommandText = "SELECT R.SAPId, P.Description FROM PartsList P" +
-                " INNER JOIN RequiredParts R " +
-                " ON R.SAPId = P.SAPId" +
-                " WHERE R.RequiredSAPId = '" + sAPIdTextBox.Text + "'" +
-                " ORDER BY RequiredSAPId";
-                DataTable dt = new DataTable();
-                dt.Load(cmd.ExecuteReader());
-                TecanDatabase.Close();
-                if (dt.Rows.Count > 0)
-                {
-                    if (RemovePartForm == null || RemovePartForm.IsDisposed)
-                    {
-                        RemovePartForm = new RemovePartCheckForm();
-                    }
-                    try
-                    {
-                        RemovePartForm.SetForm1Instance(mainForm);
-                        RemovePartForm.ShowRemoved(dt);
-                        RemovePartForm.TopMost = true;
-                        RemovePartForm.Show();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Loading Remove Part Form Form " + ex.Message);
-                    }
-                }
-                else
-                {
-                    dt.Dispose();
-                }
+                // Set Remove Date
                 removeDateDateTimePicker.Value = DateTime.Today.AddDays(0);
+                TecanDatabase.Close();
             }
         }
 
