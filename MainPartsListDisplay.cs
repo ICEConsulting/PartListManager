@@ -65,17 +65,10 @@ namespace TecanPartListManager
                 }
                 else
                 {
-                    if (MessageBox.Show("The Tecan Partlist Manager must be intilized!\r\n\r\nDo you want to load the database now?", "Initial Installation", MessageBoxButtons.YesNo) == DialogResult.No)
-                    {
-                        this.Close();
-                    }
-                    else
-                    {
-                        // this.WindowState = FormWindowState.Minimized;
-                        ImportAccessDatabaseForm ImportForm = new ImportAccessDatabaseForm();
-                        ImportForm.SetForm1Instance(this);
-                        ImportForm.Show();
-                    }
+                    // this.WindowState = FormWindowState.Minimized;
+                    ImportAccessDatabaseForm ImportForm = new ImportAccessDatabaseForm();
+                    ImportForm.SetForm1Instance(this);
+                    ImportForm.Show();
                 }
             }
 
