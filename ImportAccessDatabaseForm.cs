@@ -26,67 +26,78 @@ namespace TecanPartListManager
 
         private void ImportAccessDatabaseForm_Shown(Object sender, EventArgs e)
         {
-            if (MessageBox.Show("This will delete the current Parts List and Replace it with your selected Access Database.\r\n\r\nDo you want to proceed?", "Import Database", MessageBoxButtons.YesNo) == DialogResult.No)
+            SqlCeConnection TecanDatabase = null;
+            try
             {
-                this.Close();
-                // mainForm.WindowState = FormWindowState.Maximized;
-                mainForm.Close();
+                TecanDatabase = new SqlCeConnection();
+                // String dataPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+                TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+                TecanDatabase.Open();
+
+                SqlCeCommand cmd = TecanDatabase.CreateCommand();
+                cmd.CommandText = "DELETE FROM PartsList";
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = "DELETE FROM Category";
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = "DELETE FROM Compatibility";
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = "DELETE FROM DBMembership";
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = "DELETE FROM Instrument";
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = "DELETE FROM PartImages";
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = "DELETE FROM RequiredParts";
+                cmd.ExecuteNonQuery();
+                //cmd.CommandText = "DELETE FROM OptionalParts";
+                //cmd.ExecuteNonQuery();
+                cmd.CommandText = "DELETE FROM SalesType";
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = "DELETE FROM SSPCategory";
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = "DELETE FROM SubCategory";
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = "DELETE FROM SuppumentalDocs";
+                cmd.ExecuteNonQuery();
+                TecanDatabase.Close();
+
+                TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanSuppDocs.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+                TecanDatabase.Open();
+                cmd.CommandText = "DELETE FROM SuppumentalDocs";
+                cmd.ExecuteNonQuery();
+
+                //TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanAppDocs.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+                //TecanDatabase.Open();
+                //cmd.CommandText = "DELETE FROM ApplicationCategories";
+                //cmd.ExecuteNonQuery();
+                //cmd.CommandText = "DELETE FROM Documents";
+                //cmd.ExecuteNonQuery();
+
+            }
+            finally
+            {
+                TecanDatabase.Close();
+            }
+            String myAccessDatabaseConnectionString;
+            myAccessDatabaseConnectionString = getConnection();
+            if (myAccessDatabaseConnectionString == "")
+            {
+                if (MessageBox.Show("All Data has already been Deleted!\r\n\r\nPlease select a Parts List File?", "Select an Import Database", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    this.Close();
+                }
+                else
+                {
+                    myAccessDatabaseConnectionString = getConnection();
+                }
+            }
+            if (myAccessDatabaseConnectionString != "")
+            {
+                loadDatabase(myAccessDatabaseConnectionString);
             }
             else
             {
-                SqlCeConnection TecanDatabase = null;
-                try
-                {
-                    TecanDatabase = new SqlCeConnection();
-                    // String dataPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
-                    TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
-                    TecanDatabase.Open();
-
-                    SqlCeCommand cmd = TecanDatabase.CreateCommand();
-                    cmd.CommandText = "DELETE FROM PartsList";
-                    cmd.ExecuteNonQuery();
-                    cmd.CommandText = "DELETE FROM Category";
-                    cmd.ExecuteNonQuery();
-                    cmd.CommandText = "DELETE FROM Compatibility";
-                    cmd.ExecuteNonQuery();
-                    cmd.CommandText = "DELETE FROM DBMembership";
-                    cmd.ExecuteNonQuery();
-                    cmd.CommandText = "DELETE FROM Instrument";
-                    cmd.ExecuteNonQuery();
-                    cmd.CommandText = "DELETE FROM PartImages";
-                    cmd.ExecuteNonQuery();
-                    cmd.CommandText = "DELETE FROM RequiredParts";
-                    cmd.ExecuteNonQuery();
-                    //cmd.CommandText = "DELETE FROM OptionalParts";
-                    //cmd.ExecuteNonQuery();
-                    cmd.CommandText = "DELETE FROM SalesType";
-                    cmd.ExecuteNonQuery();
-                    cmd.CommandText = "DELETE FROM SSPCategory";
-                    cmd.ExecuteNonQuery();
-                    cmd.CommandText = "DELETE FROM SubCategory";
-                    cmd.ExecuteNonQuery();
-                    cmd.CommandText = "DELETE FROM SuppumentalDocs";
-                    cmd.ExecuteNonQuery();
-                    TecanDatabase.Close();
-
-                    TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanSuppDocs.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
-                    TecanDatabase.Open();
-                    cmd.CommandText = "DELETE FROM SuppumentalDocs";
-                    cmd.ExecuteNonQuery();
-
-                    //TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanAppDocs.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
-                    //TecanDatabase.Open();
-                    //cmd.CommandText = "DELETE FROM ApplicationCategories";
-                    //cmd.ExecuteNonQuery();
-                    //cmd.CommandText = "DELETE FROM Documents";
-                    //cmd.ExecuteNonQuery();
-
-                }
-                finally
-                {
-                    TecanDatabase.Close();
-                }
-                loadDatabase();
+                this.Close();
             }
         }
 
@@ -116,18 +127,22 @@ namespace TecanPartListManager
             mainForm.MainPartsListDisplay_Load(sender, e);
         }
 
-        private void loadDatabase()
+        private void loadDatabase(String myAccessDatabaseConnectionString)
         {
 
-            String myAccessDatabaseConnectionString;
-            myAccessDatabaseConnectionString = getConnection();
-            while (myAccessDatabaseConnectionString == "")
-            {
-                MessageBox.Show("All Data has already been Deleted!\r\n\r\nPlease select a Parts List File?", "Select an Import Database");
-                {
-                    myAccessDatabaseConnectionString = getConnection();
-                }
-            }
+            //String myAccessDatabaseConnectionString;
+            //myAccessDatabaseConnectionString = getConnection();
+            //if (myAccessDatabaseConnectionString == "")
+            //{
+            //    if (MessageBox.Show("All Data has already been Deleted!\r\n\r\nPlease select a Parts List File?", "Select an Import Database", MessageBoxButtons.YesNo) == DialogResult.No)
+            //    {
+            //        this.Close();
+            //    }
+            //    else
+            //    {
+            //        myAccessDatabaseConnectionString = getConnection();
+            //    }
+            //}
 
             SqlCeConnection TecanDatabase = null;
 
