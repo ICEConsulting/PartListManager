@@ -19,8 +19,14 @@ namespace TecanPartListManager
         SqlCeConnection TecanMasterDatabase = null;
         SqlCeCommand cmdMaster;
 
+        SqlCeConnection TecanSmartStartMasterDatabase = null;
+        SqlCeCommand cmdSmartStartMaster;
+
         SqlCeConnection TecanQuoteDatabase = null;
         SqlCeCommand cmdQuote;
+
+        SqlCeConnection TecanSmartStartQuoteDatabase = null;
+        SqlCeCommand cmdSmartStartQuote;
 
         SqlCeConnection TecanCustomerDatabase = null;
         SqlCeCommand cmdCustomer;
@@ -46,12 +52,20 @@ namespace TecanPartListManager
             if (WhichDatabase == "Quote" || WhichDatabase == "Both")
             {
                 publishProgressBar.Value = 0;
-                publishLabel.Text = "Creating Quote Generator Database";
+                publishLabel.Text = "Creating Configurator Database";
                 CleanExistingQuoteDatabase();
                 getDBMembership();
                 CreateQuoteLookupTables();
                 if (errorFoundDoExit) return;
                 CopyMasterDatabaseToQuoteDatabase();
+
+                publishProgressBar.Value = 0;
+                publishLabel.Text = "Creating Configurator Smart Start Database";
+                CleanExistingSmartStartQuoteDatabase();
+                getSmartStartDBMembership();
+                CreateSmartStartQuoteLookupTables();
+                if (errorFoundDoExit) return;
+                CopyMasterDatabaseToSmartStartQuoteDatabase();
                 SaveNewQuoteDatabaseToFolder();
             }
 
@@ -101,6 +115,34 @@ namespace TecanPartListManager
             TecanQuoteDatabase.Close();
         }
 
+        private void CleanExistingSmartStartQuoteDatabase()
+        {
+            if (TecanSmartStartQuoteDatabase == null) openSmartStartQuoteDB();
+
+            cmdQuote = TecanSmartStartQuoteDatabase.CreateCommand();
+            cmdQuote.CommandText = "DELETE FROM PartsList";
+            cmdQuote.ExecuteNonQuery();
+            cmdQuote.CommandText = "DELETE FROM Category";
+            cmdQuote.ExecuteNonQuery();
+            cmdQuote.CommandText = "DELETE FROM Compatibility";
+            cmdQuote.ExecuteNonQuery();
+            cmdQuote.CommandText = "DELETE FROM Instrument";
+            cmdQuote.ExecuteNonQuery();
+            cmdQuote.CommandText = "DELETE FROM PartImages";
+            cmdQuote.ExecuteNonQuery();
+            cmdQuote.CommandText = "DELETE FROM RequiredParts";
+            cmdQuote.ExecuteNonQuery();
+            cmdQuote.CommandText = "DELETE FROM SalesType";
+            cmdQuote.ExecuteNonQuery();
+            cmdQuote.CommandText = "DELETE FROM SSPCategory";
+            cmdQuote.ExecuteNonQuery();
+            cmdQuote.CommandText = "DELETE FROM SubCategory";
+            cmdQuote.ExecuteNonQuery();
+            cmdQuote.CommandText = "DELETE FROM SuppumentalDocs";
+            cmdQuote.ExecuteNonQuery();
+            TecanSmartStartQuoteDatabase.Close();
+        }
+
         private void CleanExistingCustomerDatabase()
         {
             if (TecanCustomerDatabase == null) openCustomerDB();
@@ -141,6 +183,23 @@ namespace TecanPartListManager
             cmdMaster.CommandText = "SELECT [DBID] FROM DBMembership WHERE [DBName] = 'PL'";
             DBPLValue = (int)cmdMaster.ExecuteScalar();
             TecanMasterDatabase.Close();
+        }
+
+        private void getSmartStartDBMembership()
+        {
+            openSmartStartMasterDB();
+            cmdSmartStartMaster = TecanSmartStartMasterDatabase.CreateCommand();
+
+            // Get DBMembership Values for records that need to be added to Quote Database
+            cmdSmartStartMaster.CommandText = "SELECT [DBID] FROM DBMembership WHERE [DBName] = 'Both'";
+            DBBothValue = (int)cmdSmartStartMaster.ExecuteScalar();
+
+            cmdSmartStartMaster.CommandText = "SELECT [DBID] FROM DBMembership WHERE [DBName] = 'C2'";
+            DBC2Value = (int)cmdSmartStartMaster.ExecuteScalar();
+
+            cmdSmartStartMaster.CommandText = "SELECT [DBID] FROM DBMembership WHERE [DBName] = 'PL'";
+            DBPLValue = (int)cmdSmartStartMaster.ExecuteScalar();
+            TecanSmartStartMasterDatabase.Close();
         }
 
         private void CreateQuoteLookupTables()
@@ -536,6 +595,401 @@ namespace TecanPartListManager
 
         }
 
+
+        private void CreateSmartStartQuoteLookupTables()
+        {
+
+            openSmartStartMasterDB();
+            cmdSmartStartMaster = TecanSmartStartMasterDatabase.CreateCommand();
+
+            openSmartStartQuoteDB();
+            cmdSmartStartQuote = TecanSmartStartQuoteDatabase.CreateCommand();
+
+            // Category Table
+            cmdSmartStartQuote.CommandText = "INSERT INTO Category (CategoryID, CategoryName) Values (0, 'Any')"; // Used only for filter default selection
+            cmdSmartStartQuote.ExecuteNonQuery();
+
+            cmdSmartStartMaster.CommandText = "SELECT DISTINCT P.Category, C.CategoryName FROM PartsList P" +
+            " INNER JOIN Category C" +
+            " ON P.Category = C.CategoryID" +
+            " WHERE P.DBMembership = " + DBBothValue + " OR P.DBMembership = " + DBC2Value +
+            " ORDER BY CategoryName";
+
+            SqlCeDataReader reader = cmdSmartStartMaster.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader[1].ToString() == "")
+                {
+                    if (MessageBox.Show("There are parts that have no Category assigned!\r\n\r\nDo you want to continue to Publish this database?\r\n\r\nSelect No, the main partslist display will list the parts with this association!", "Invalid Category", MessageBoxButtons.YesNo) == DialogResult.No)
+                    {
+                        errorFoundDoExit = true;
+                        break;
+                    }
+                }
+                cmdSmartStartQuote.CommandText = "INSERT INTO Category (CategoryID, CategoryName)" +
+                    " Values (@CategoryID, @CategoryName)";
+
+                cmdSmartStartQuote.Parameters.AddWithValue("@CategoryID", Convert.ToInt16(reader[0].ToString()));
+                cmdSmartStartQuote.Parameters.AddWithValue("@CategoryName", reader[1].ToString());
+                cmdSmartStartQuote.ExecuteNonQuery();
+                cmdSmartStartQuote.Parameters.Clear();
+            }
+            if (errorFoundDoExit)
+            {
+                mainForm.associationTableError("Category", Convert.ToInt16(reader[0].ToString()));
+                reader.Dispose();
+                cleanupAndExit();
+                return;
+            }
+
+            // Compatibility Table
+            cmdSmartStartMaster.CommandText = "SELECT CompatibilityID, CompatibilityName FROM Compatibility";
+
+            reader = cmdSmartStartMaster.ExecuteReader();
+            while (reader.Read())
+            {
+                cmdSmartStartQuote.CommandText = "INSERT INTO Compatibility (CompatibilityID, CompatibilityName)" +
+                    " Values (@CompatibilityID, @CompatibilityName)";
+
+                cmdSmartStartQuote.Parameters.AddWithValue("@CompatibilityID", Convert.ToInt16(reader[0].ToString()));
+                cmdSmartStartQuote.Parameters.AddWithValue("@CompatibilityName", reader[1].ToString());
+                cmdSmartStartQuote.ExecuteNonQuery();
+                cmdSmartStartQuote.Parameters.Clear();
+            }
+
+            // Instrument Table
+            cmdSmartStartQuote.CommandText = "INSERT INTO Instrument (InstrumentID, InstrumentName) Values (0, 'Any')"; // Used only for filter default selection
+            cmdSmartStartQuote.ExecuteNonQuery();
+
+            cmdSmartStartMaster.CommandText = "SELECT DISTINCT P.Instrument, I.InstrumentName FROM PartsList P" +
+            " INNER JOIN Instrument I" +
+            " ON P.Instrument = I.InstrumentID" +
+            " WHERE P.DBMembership = " + DBBothValue + " OR P.DBMembership = " + DBC2Value +
+            " ORDER BY InstrumentName";
+
+            reader = cmdSmartStartMaster.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader[1].ToString() == "")
+                {
+                    if (MessageBox.Show("There are parts that have no Instrument assigned!\r\n\r\nDo you want to continue to Publish this database?\r\n\r\nSelect No, the main partslist display will list the parts with this association!", "Invalid Instrument", MessageBoxButtons.YesNo) == DialogResult.No)
+                    {
+                        errorFoundDoExit = true;
+                        break;
+                    }
+                }
+                cmdSmartStartQuote.CommandText = "INSERT INTO Instrument (InstrumentID, InstrumentName)" +
+                    " Values (@InstrumentID, @InstrumentName)";
+
+                cmdSmartStartQuote.Parameters.AddWithValue("@InstrumentID", Convert.ToInt16(reader[0].ToString()));
+                cmdSmartStartQuote.Parameters.AddWithValue("@InstrumentName", reader[1].ToString());
+                cmdSmartStartQuote.ExecuteNonQuery();
+                cmdSmartStartQuote.Parameters.Clear();
+            }
+            if (errorFoundDoExit)
+            {
+                mainForm.associationTableError("Instrument", Convert.ToInt16(reader[0].ToString()));
+                reader.Dispose();
+                cleanupAndExit();
+                return;
+            }
+
+            // PartImages Table
+            Byte[] imageData;
+            cmdSmartStartMaster.CommandText = "SELECT DocID, DocExtension, SAPId, Document, FileName FROM PartImages";
+
+            reader = cmdSmartStartMaster.ExecuteReader();
+            while (reader.Read())
+            {
+                cmdSmartStartQuote.CommandText = "INSERT INTO PartImages (DocID, DocExtension, SAPId, Document, FileName)" +
+                    " Values (@DocID, @DocExtension, @SAPId, @Document, @FileName)";
+
+                cmdSmartStartQuote.Parameters.AddWithValue("@DocID", Convert.ToInt16(reader[0].ToString()));
+                cmdSmartStartQuote.Parameters.AddWithValue("@DocExtension", reader[1].ToString());
+                cmdSmartStartQuote.Parameters.AddWithValue("@SAPId", reader[2].ToString());
+                imageData = (byte[])reader[3];
+                cmdSmartStartQuote.Parameters.AddWithValue("@Document", imageData);
+                cmdSmartStartQuote.Parameters.AddWithValue("@FileName", reader[4].ToString());
+                cmdSmartStartQuote.ExecuteNonQuery();
+                cmdSmartStartQuote.Parameters.Clear();
+            }
+
+            // RequiredParts Table
+            cmdSmartStartMaster.CommandText = "SELECT SAPId, RequiredSAPId, Alternatives FROM RequiredParts";
+
+            reader = cmdSmartStartMaster.ExecuteReader();
+            while (reader.Read())
+            {
+                cmdSmartStartQuote.CommandText = "INSERT INTO RequiredParts (SAPId, RequiredSAPId, Alternatives)" +
+                    " Values (@SAPId, @RequiredSAPId, @Alternatives)";
+
+                cmdSmartStartQuote.Parameters.AddWithValue("@SAPId", reader[0].ToString());
+                cmdSmartStartQuote.Parameters.AddWithValue("@RequiredSAPId", reader[1].ToString());
+                cmdSmartStartQuote.Parameters.AddWithValue("@Alternatives", reader[2].ToString());
+                cmdSmartStartQuote.ExecuteNonQuery();
+                cmdSmartStartQuote.Parameters.Clear();
+            }
+
+            // SalesType Table
+            cmdSmartStartQuote.CommandText = "INSERT INTO SalesType (SalesTypeID, SalesTypeName) Values (0, 'Any')"; // Used only for filter default selection
+            cmdSmartStartQuote.ExecuteNonQuery();
+
+            cmdSmartStartMaster.CommandText = "SELECT DISTINCT P.SalesType, C.SalesTypeName FROM PartsList P" +
+            " INNER JOIN SalesType C" +
+            " ON P.SalesType = C.SalesTypeID" +
+            " WHERE P.DBMembership = " + DBBothValue + " OR P.DBMembership = " + DBC2Value +
+            " ORDER BY SalesTypeName";
+
+            reader = cmdSmartStartMaster.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader[1].ToString() == "")
+                {
+                    if (MessageBox.Show("There are parts that have no Sales Type assigned!\r\n\r\nDo you want to continue to Publish this database?\r\n\r\nSelect No, the main partslist display will list the parts with this association!", "Invalid Sales Type", MessageBoxButtons.YesNo) == DialogResult.No)
+                    {
+                        errorFoundDoExit = true;
+                        break;
+                    }
+                }
+                cmdSmartStartQuote.CommandText = "INSERT INTO SalesType (SalesTypeID, SalesTypeName)" +
+                    " Values (@SalesTypeID, @SalesTypeName)";
+
+                cmdSmartStartQuote.Parameters.AddWithValue("@SalesTypeID", Convert.ToInt16(reader[0].ToString()));
+                cmdSmartStartQuote.Parameters.AddWithValue("@SalesTypeName", reader[1].ToString());
+                cmdSmartStartQuote.ExecuteNonQuery();
+                cmdSmartStartQuote.Parameters.Clear();
+            }
+            if (errorFoundDoExit)
+            {
+                mainForm.associationTableError("SalesType", Convert.ToInt16(reader[0].ToString()));
+                reader.Dispose();
+                cleanupAndExit();
+                return;
+            }
+
+            // SSPCategory Table
+            cmdSmartStartMaster.CommandText = "SELECT DISTINCT P.SSPCategory, C.SSPCategoryName FROM PartsList P" +
+            " INNER JOIN SSPCategory C" +
+            " ON P.SSPCategory = C.SSPCategoryID" +
+            " WHERE P.DBMembership = " + DBBothValue + " OR P.DBMembership = " + DBC2Value +
+            " ORDER BY SSPCategoryName";
+
+            reader = cmdSmartStartMaster.ExecuteReader();
+            while (reader.Read())
+            {
+                cmdSmartStartQuote.CommandText = "INSERT INTO SSPCategory (SSPCategoryID, SSPCategoryName)" +
+                    " Values (@SSPCategoryID, @SSPCategoryName)";
+
+                cmdSmartStartQuote.Parameters.AddWithValue("@SSPCategoryID", Convert.ToInt16(reader[0].ToString()));
+                cmdSmartStartQuote.Parameters.AddWithValue("@SSPCategoryName", reader[1].ToString());
+                cmdSmartStartQuote.ExecuteNonQuery();
+                cmdSmartStartQuote.Parameters.Clear();
+            }
+
+            // SubCategory Table
+            cmdSmartStartQuote.CommandText = "INSERT INTO SubCategory (SubCategoryID, SubCategoryName) Values (0, 'Any')"; // Used only for filter default selection
+            cmdSmartStartQuote.ExecuteNonQuery();
+
+            cmdSmartStartMaster.CommandText = "SELECT DISTINCT P.SubCategory, C.SubCategoryName FROM PartsList P" +
+            " INNER JOIN SubCategory C" +
+            " ON P.SubCategory = C.SubCategoryID" +
+            " WHERE P.DBMembership = " + DBBothValue + " OR P.DBMembership = " + DBC2Value +
+            " ORDER BY SubCategoryName";
+
+            reader = cmdSmartStartMaster.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader[1].ToString() == "")
+                {
+                    if (MessageBox.Show("There are parts that have no SubCategory assigned!\r\n\r\nDo you want to continue to Publish this database?\r\n\r\nSelect No, the main partslist display will list the parts with this association!", "Invalid SubCategory", MessageBoxButtons.YesNo) == DialogResult.No)
+                    {
+                        errorFoundDoExit = true;
+                        break;
+                    }
+                }
+                cmdSmartStartQuote.CommandText = "INSERT INTO SubCategory (SubCategoryID, SubCategoryName)" +
+                    " Values (@SubCategoryID, @SubCategoryName)";
+
+                cmdSmartStartQuote.Parameters.AddWithValue("@SubCategoryID", Convert.ToInt16(reader[0].ToString()));
+                cmdSmartStartQuote.Parameters.AddWithValue("@SubCategoryName", reader[1].ToString());
+                cmdSmartStartQuote.ExecuteNonQuery();
+                cmdSmartStartQuote.Parameters.Clear();
+            }
+            if (errorFoundDoExit)
+            {
+                mainForm.associationTableError("SubCategory", Convert.ToInt16(reader[0].ToString()));
+                reader.Dispose();
+                cleanupAndExit();
+                return;
+            }
+
+            // Supplemental Document Reference Table (This table does not contain the documents themselves)
+            cmdSmartStartMaster.CommandText = "SELECT SAPId, FileName FROM SuppumentalDocs";
+
+            reader = cmdSmartStartMaster.ExecuteReader();
+            while (reader.Read())
+            {
+                cmdSmartStartQuote.CommandText = "INSERT INTO SuppumentalDocs (SAPId, FileName)" +
+                    " Values (@SAPId, @FileName)";
+
+                cmdSmartStartQuote.Parameters.AddWithValue("@SAPId", reader[0].ToString());
+                cmdSmartStartQuote.Parameters.AddWithValue("@FileName", reader[1].ToString());
+                cmdSmartStartQuote.ExecuteNonQuery();
+                cmdSmartStartQuote.Parameters.Clear();
+            }
+
+            TecanSmartStartMasterDatabase.Close();
+            TecanSmartStartQuoteDatabase.Close();
+            reader.Dispose();
+        }
+
+
+        private void CopyMasterDatabaseToSmartStartQuoteDatabase()
+        {
+
+            Int16 Lab;
+            String SAPId;
+            String OldPartNum;
+            String ThridPartyPartNum;
+            Byte Priority;
+            short Instrument;
+            short SalesType;
+            short Category;
+            short SubCategory;
+            String Description;
+            String SAPDescription;
+            String DetailDescription;
+            // String PLDescription; // This field is used for PL Additional Info
+            // String PLDetailDescription; // This field is used for Tecan Only Data
+            Decimal PlPrice;
+            Int16 Grids;
+            Byte SerialPorts;
+            Byte USBPorts;
+            Decimal StandarPrice;
+            Decimal ILP;
+            Decimal ASP;
+            Decimal ManufacturingCost;
+            String X_Dimension;
+            String Y_Dimension;
+            String Z_Dimension;
+            String Z_DimensionNote;
+            // DateTime? CreateDate = null;
+            // DateTime? RemoveDate = null;
+            // Byte DBMembership;
+            Boolean NotMasterPriceList;
+            Boolean ThridParty;
+            String NotesFromFile = "";
+            short SSPCategory;
+            String Compatibility;
+            String CADInfo;
+
+            openSmartStartMasterDB();
+            cmdSmartStartMaster = TecanSmartStartMasterDatabase.CreateCommand();
+
+            cmdSmartStartMaster.CommandText = "SELECT [Lab], [SAPId], [OldPartNum], [Priority], [Instrument], [Category], [SubCategory], [SSPCategory]," +
+                " [Description], [SAPDescription], [DetailDescription], [PLDetailDescription], [Grids], [SerialPorts], [USBPorts], [PlPrice]," +
+                " [StandarPrice], [ILP], [ASP], [ManufacturingCost], [SalesType], [X_Dimension], [Y_Dimension], [Z_Dimension], [Z_DimensionNote]," +
+                " [NotMasterPriceList], [ThridParty], [ThridPartyPartNum], [NotesFromFile], [Compatibility], [CADInfo]" +
+                " FROM [PartsList] WHERE [DBMembership] = " + DBBothValue + " OR [DBMembership] = " + DBC2Value + " ORDER BY [SAPId]";
+
+            SqlCeDataReader reader = cmdSmartStartMaster.ExecuteReader();
+
+            openSmartStartQuoteDB();
+            cmdSmartStartQuote = TecanSmartStartQuoteDatabase.CreateCommand();
+
+            while (reader.Read())
+            {
+                // Read the Master Parts List Record
+                Lab = Convert.ToInt16(reader[0].ToString());
+                SAPId = reader.GetString(1);
+                OldPartNum = reader.GetString(2);
+                Priority = (byte)Convert.ToInt16(reader[3].ToString());
+                Instrument = Convert.ToInt16(reader[4].ToString());
+                Category = Convert.ToInt16(reader[5].ToString());
+                SubCategory = Convert.ToInt16(reader[6].ToString());
+                SSPCategory = Convert.ToInt16(reader[7].ToString());
+                Description = reader.GetString(8);
+                SAPDescription = reader.GetString(9);
+                DetailDescription = reader.GetString(10) + "\n" + reader.GetString(11);
+                // String PLDescription; // This field is used for PL Additional Info
+                // PLDetailDescription; // This field is used for Tecan Only Data and has been added to the Quote Database Detail Description
+                Grids = Convert.ToInt16(reader[12].ToString());
+                SerialPorts = (byte)Convert.ToInt16(reader[13].ToString());
+                USBPorts = (byte)Convert.ToInt16(reader[14].ToString());
+                PlPrice = Convert.ToDecimal(reader[15].ToString());
+                StandarPrice = Convert.ToDecimal(reader[16].ToString());
+                ILP = Convert.ToDecimal(reader[17].ToString());
+                ASP = Convert.ToDecimal(reader[18].ToString());
+                ManufacturingCost = Convert.ToDecimal(reader[19].ToString());
+                SalesType = Convert.ToInt16(reader[20].ToString());
+                X_Dimension = reader.GetString(21);
+                Y_Dimension = reader.GetString(22);
+                Z_Dimension = reader.GetString(23);
+                Z_DimensionNote = reader.GetString(24);
+                // DateTime? CreateDate = null;
+                // DateTime? RemoveDate = null;
+                // Byte DBMembership;
+                NotMasterPriceList = Convert.ToBoolean(reader[25].ToString());
+                ThridParty = Convert.ToBoolean(reader[26].ToString());
+                ThridPartyPartNum = reader.GetString(27);
+                NotesFromFile = reader[28].ToString();
+                //                NotesFromFile = reader.GetString(28);
+                Compatibility = reader[29].ToString();
+                CADInfo = reader[30].ToString();
+
+                // Insert New Record into Quote Database
+                cmdSmartStartQuote.CommandText = "INSERT INTO PartsList (Lab, SAPId, OldPartNum, Priority, Instrument, Category, SubCategory, SSPCategory," +
+                " Description, SAPDescription, DetailDescription, Grids, SerialPorts, USBPorts, PlPrice, StandarPrice, ILP, ASP, ManufacturingCost," +
+                " SalesType, X_Dimension, Y_Dimension, Z_Dimension, Z_DimensionNote, NotMasterPriceList, ThridParty, ThridPartyPartNum," +
+                " NotesFromFile, Compatibility, CADInfo)" +
+                " Values " +
+                " (@Lab, @SAPId, @OldPartNum, @Priority, @Instrument, @Category, @SubCategory, @SSPCategory, @Description, @SAPDescription," +
+                " @DetailDescription, @Grids, @SerialPorts, @USBPorts, @PlPrice, @StandarPrice, @ILP, @ASP, @ManufacturingCost, @SalesType," +
+                " @X_Dimension, @Y_Dimension, @Z_Dimension, @Z_DimensionNote, @NotMasterPriceList, @ThridParty, @ThridPartyPartNum," +
+                " @NotesFromFile, @Compatibility, @CADInfo)";
+
+                cmdSmartStartQuote.Parameters.AddWithValue("@Lab", Lab);
+                cmdSmartStartQuote.Parameters.AddWithValue("@SAPId", SAPId);
+                cmdSmartStartQuote.Parameters.AddWithValue("@OldPartNum", OldPartNum);
+                cmdSmartStartQuote.Parameters.AddWithValue("@Priority", Priority);
+                cmdSmartStartQuote.Parameters.AddWithValue("@Instrument", Instrument);
+                cmdSmartStartQuote.Parameters.AddWithValue("@Category", Category);
+                cmdSmartStartQuote.Parameters.AddWithValue("@SubCategory", SubCategory);
+                cmdSmartStartQuote.Parameters.AddWithValue("@SSPCategory", SSPCategory);
+                cmdSmartStartQuote.Parameters.AddWithValue("@Description", Description);
+                cmdSmartStartQuote.Parameters.AddWithValue("@SAPDescription", SAPDescription);
+                cmdSmartStartQuote.Parameters.AddWithValue("@DetailDescription", DetailDescription);
+                cmdSmartStartQuote.Parameters.AddWithValue("@Grids", Grids);
+                cmdSmartStartQuote.Parameters.AddWithValue("@SerialPorts", SerialPorts);
+                cmdSmartStartQuote.Parameters.AddWithValue("@USBPorts", USBPorts);
+                cmdSmartStartQuote.Parameters.AddWithValue("@PlPrice", PlPrice);
+                cmdSmartStartQuote.Parameters.AddWithValue("@StandarPrice", StandarPrice);
+                cmdSmartStartQuote.Parameters.AddWithValue("@ILP", ILP);
+                cmdSmartStartQuote.Parameters.AddWithValue("@ASP", ASP);
+                cmdSmartStartQuote.Parameters.AddWithValue("@ManufacturingCost", ManufacturingCost);
+                cmdSmartStartQuote.Parameters.AddWithValue("@SalesType", SalesType);
+                cmdSmartStartQuote.Parameters.AddWithValue("@X_Dimension", X_Dimension);
+                cmdSmartStartQuote.Parameters.AddWithValue("@Y_Dimension", Y_Dimension);
+                cmdSmartStartQuote.Parameters.AddWithValue("@Z_Dimension", Z_Dimension);
+                cmdSmartStartQuote.Parameters.AddWithValue("@Z_DimensionNote", Z_DimensionNote);
+                cmdSmartStartQuote.Parameters.AddWithValue("@NotMasterPriceList", NotMasterPriceList);
+                cmdSmartStartQuote.Parameters.AddWithValue("@ThridParty", ThridParty);
+                cmdSmartStartQuote.Parameters.AddWithValue("@ThridPartyPartNum", ThridPartyPartNum);
+                cmdSmartStartQuote.Parameters.AddWithValue("@NotesFromFile", NotesFromFile);
+                cmdSmartStartQuote.Parameters.AddWithValue("@Compatibility", Compatibility);
+                cmdSmartStartQuote.Parameters.AddWithValue("@CADInfo", CADInfo);
+
+                cmdSmartStartQuote.ExecuteNonQuery();
+
+                cmdSmartStartQuote.Parameters.Clear();
+                publishProgressBar.Value = publishProgressBar.Value + 1;
+            }
+            TecanSmartStartMasterDatabase.Close();
+            TecanSmartStartQuoteDatabase.Close();
+            reader.Dispose();
+
+        }
+
         private void SaveNewQuoteDatabaseToFolder()
         {
             FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
@@ -543,10 +997,12 @@ namespace TecanPartListManager
             folderBrowserDialog1.ShowNewFolderButton = false;
 
             String sourceQuoteFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanQuoteGeneratorPartsList.sdf");
+            String sourceSmartStartQuoteFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanSmartStartQuoteGeneratorPartsList.sdf");
             String sourceSuppFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanSuppDocs.sdf");
             String sourceAppDocFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanAppDocs.sdf");
             String targetPath = "";
             String targetQuoteFile;
+            String targetSmartStartQuoteFile;
             String targetSuppFile;
             String targetAppDocFile;
 
@@ -557,11 +1013,15 @@ namespace TecanPartListManager
             lastTargetPath = targetPath;
             targetQuoteFile = System.IO.Path.Combine(targetPath, "TecanQuoteGeneratorPartsList.sdf");
             System.IO.File.Copy(sourceQuoteFile, targetQuoteFile, true);
+            targetSmartStartQuoteFile = System.IO.Path.Combine(targetPath, "TecanSmartStartQuoteGeneratorPartsList.sdf");
+            System.IO.File.Copy(sourceSmartStartQuoteFile, targetSmartStartQuoteFile, true);
             targetSuppFile = System.IO.Path.Combine(targetPath, "TecanSuppDocs.sdf");
             System.IO.File.Copy(sourceSuppFile, targetSuppFile, true);
             targetAppDocFile = System.IO.Path.Combine(targetPath, "TecanAppDocs.sdf");
             System.IO.File.Copy(sourceAppDocFile, targetAppDocFile, true);
         }
+
+
 
         private void CreateCustomerLookupTables()
         {
@@ -886,11 +1346,25 @@ namespace TecanPartListManager
             TecanMasterDatabase.Open();
         }
 
+        private void openSmartStartMasterDB()
+        {
+            TecanSmartStartMasterDatabase = new SqlCeConnection();
+            TecanSmartStartMasterDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanSmartStartPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            TecanSmartStartMasterDatabase.Open();
+        }
+
         private void openQuoteDB()
         {
             TecanQuoteDatabase = new SqlCeConnection();
             TecanQuoteDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanQuoteGeneratorPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
             TecanQuoteDatabase.Open();
+        }
+
+        private void openSmartStartQuoteDB()
+        {
+            TecanSmartStartQuoteDatabase = new SqlCeConnection();
+            TecanSmartStartQuoteDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanSmartStartQuoteGeneratorPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            TecanSmartStartQuoteDatabase.Open();
         }
 
         private void openCustomerDB()
@@ -903,6 +1377,7 @@ namespace TecanPartListManager
         private void cleanupAndExit()
         {
             if (TecanQuoteDatabase != null) CleanExistingQuoteDatabase();
+            if (TecanSmartStartQuoteDatabase != null) CleanExistingSmartStartQuoteDatabase();
             if (TecanCustomerDatabase != null) CleanExistingCustomerDatabase();
             TecanMasterDatabase.Close();
             this.Dispose();

@@ -26,6 +26,7 @@ namespace TecanPartListManager
         PartsListDetailDisplay DetailsForm = null;
         RemovePartCheckForm RemovePartForm = null;
         SqlCeConnection TecanDatabase = null;
+        public String whichDb = "";
 
         public MainPartsListDisplay()
         {
@@ -51,6 +52,14 @@ namespace TecanPartListManager
             this.instrumentTableAdapter.Fill(this.tecanPartsListDataSet.Instrument);
             this.partsListTableAdapter.Fill(this.tecanPartsListDataSet.PartsList);
 
+            String str1 = salesTypeTableAdapter.Connection.ConnectionString.ToString();
+            String str2 = dBMembershipTableAdapter.Connection.ConnectionString.ToString();
+            String str3 = sSPCategoryTableAdapter.Connection.ConnectionString.ToString();
+            String str4 = subCategoryTableAdapter.Connection.ConnectionString.ToString();
+            String str5 = categoryTableAdapter.Connection.ConnectionString.ToString();
+            String str6 = instrumentTableAdapter.Connection.ConnectionString.ToString();
+            String str7 = partsListTableAdapter.Connection.ConnectionString.ToString();
+            MessageBox.Show(str1 + "\n" + str2 + "\n" + str3 + "\n" + str4 + "\n" + str5 + "\n" + str6 + "\n" + str7);
             if (partsListBindingSource.Count == 0)
             {
                 String sourcePath = @"c:\TecanFiles";
@@ -84,16 +93,23 @@ namespace TecanPartListManager
             newGridHeight = Screen.PrimaryScreen.Bounds.Height - (this.menuStrip1.Height + this.partsListBindingNavigator.Height);
             this.partsListDataGridView.Height = newGridHeight - 60;
             this.partsListBindingSource.Position = lastSelected;
-            this.partsListDataGridView.Enabled = false;
-            multiplePartDataChangeToolStripMenuItem.Enabled = false;
-            databaseToolsToolStripMenuItem.Enabled = false;
-            publishDatabasesToolStripMenuItem.Enabled = false;
-            EditLogonPanel.Location = new Point(
-            this.ClientSize.Width / 2 - EditLogonPanel.Size.Width / 2,
-            this.ClientSize.Height / 2 - EditLogonPanel.Size.Height / 2);
-            EditLogonPanel.Anchor = AnchorStyles.None;
-            EditLogonPanel.Visible = true;
-            EditPasswordTextBox.Focus();
+            if (!EditEnabled)
+            {
+                this.partsListDataGridView.Enabled = false;
+                multiplePartDataChangeToolStripMenuItem.Enabled = false;
+                databaseToolsToolStripMenuItem.Enabled = false;
+                publishDatabasesToolStripMenuItem.Enabled = false;
+            }
+            if (whichDb == "")
+            {
+                EditLogonPanel.Location = new Point(
+                this.ClientSize.Width / 2 - EditLogonPanel.Size.Width / 2,
+                this.ClientSize.Height / 2 - EditLogonPanel.Size.Height / 2);
+                EditLogonPanel.Anchor = AnchorStyles.None;
+                EditLogonPanel.Visible = true;
+                EditPasswordTextBox.Focus();
+            }
+            whichDb = partsListTableAdapter.Connection.ConnectionString;
         }
 
 
@@ -989,14 +1005,17 @@ namespace TecanPartListManager
             String sourcePartsFile = System.IO.Path.Combine(sourcePath, "TecanPartsList.sdf");
             if (File.Exists(sourcePartsFile))
             {
+                String sourceSSPartsFile = System.IO.Path.Combine(sourcePath, "TecanSmartStartPartsList.sdf");
                 String sourceSuppFile = System.IO.Path.Combine(sourcePath, "TecanSuppDocs.sdf");
                 String sourceAppDocFile = System.IO.Path.Combine(sourcePath, "TecanAppDocs.sdf");
 
                 String targetPartsFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanPartsList.sdf");
+                String targetSSPartsFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanSmartStartPartsList.sdf");
                 String targetSuppFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanSuppDocs.sdf");
                 String targetAppDocFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanAppDocs.sdf");
 
                 System.IO.File.Copy(sourcePartsFile, targetPartsFile, true);
+                System.IO.File.Copy(sourceSSPartsFile, targetSSPartsFile, true);
                 System.IO.File.Copy(sourceSuppFile, targetSuppFile, true);
                 System.IO.File.Copy(sourceAppDocFile, targetAppDocFile, true);
                 MessageBox.Show("Backup Database Restored!");
@@ -1011,16 +1030,20 @@ namespace TecanPartListManager
         private void backupToolStripMenuItem_Click(object sender, EventArgs e)
         {
             String sourcePartsFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanPartsList.sdf");
+            String sourceSSPartsFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanSmartStartPartsList.sdf");
             String sourceSuppFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanSuppDocs.sdf");
             String sourceAppDocFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanAppDocs.sdf");
             String targetPath = @"c:\TecanFiles";
             System.IO.Directory.CreateDirectory(targetPath);
             String targetPartsFile;
+            String targetSSPartsFile;
             String targetSuppFile;
             String targetAppDocFile;
 
             targetPartsFile = System.IO.Path.Combine(targetPath, "TecanPartsList.sdf");
             System.IO.File.Copy(sourcePartsFile, targetPartsFile, true);
+            targetSSPartsFile = System.IO.Path.Combine(targetPath, "TecanSmartStartPartsList.sdf");
+            System.IO.File.Copy(sourceSSPartsFile, targetSSPartsFile, true);
             targetSuppFile = System.IO.Path.Combine(targetPath, "TecanSuppDocs.sdf");
             System.IO.File.Copy(sourceSuppFile, targetSuppFile, true);
             targetAppDocFile = System.IO.Path.Combine(targetPath, "TecanAppDocs.sdf");
@@ -1365,7 +1388,14 @@ namespace TecanPartListManager
         {
             TecanDatabase = new SqlCeConnection();
             String dataPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
-            TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            if (whichDb.Contains("TecanPartsList"))
+            {
+                TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            }
+            else
+            {
+                TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanSmartStartPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            }
             TecanDatabase.Open();
         }
 
@@ -1494,6 +1524,35 @@ namespace TecanPartListManager
             }
             TecanDatabase.Close();
             return foundRequired;
+        }
+
+        private void SmartStartToolStripButton_Click(object sender, EventArgs e)
+        {
+            //if (MessageBox.Show("The Tecan Partlist Manager must be intilized!\r\n\r\nDo you want to load the database now?", "Initial Installation", MessageBoxButtons.YesNo) == DialogResult.No)
+            //{
+            //    return;
+            //}
+
+            String myConnStr = partsListTableAdapter.Connection.ConnectionString;
+            if(myConnStr.Contains("TecanPartsList"))
+            {
+                myConnStr = myConnStr.Replace("TecanPartsList", "TecanSmartStartPartsList");
+                SmartStartToolStripButton.Text = "Standard Parts";
+            }
+            else
+            {
+                myConnStr = myConnStr.Replace("TecanSmartStartPartsList", "TecanPartsList");
+                SmartStartToolStripButton.Text = "Smart Start Parts";
+            }
+            partsListTableAdapter.Connection.ConnectionString = myConnStr;
+            salesTypeTableAdapter.Connection.ConnectionString = myConnStr;
+            dBMembershipTableAdapter.Connection.ConnectionString = myConnStr;
+            sSPCategoryTableAdapter.Connection.ConnectionString = myConnStr;
+            subCategoryTableAdapter.Connection.ConnectionString = myConnStr;
+            categoryTableAdapter.Connection.ConnectionString = myConnStr;
+            instrumentTableAdapter.Connection.ConnectionString = myConnStr;
+            whichDb = myConnStr;
+            MainPartsListDisplay_Load(sender, e);
         }
 
     }

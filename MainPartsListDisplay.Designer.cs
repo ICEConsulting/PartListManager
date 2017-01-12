@@ -73,6 +73,7 @@ namespace TecanPartListManager
             this.DescriptionSearchTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.DescriptionClearButton = new System.Windows.Forms.ToolStripButton();
             this.SelectAllToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.SmartStartToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.partsListDataGridView = new System.Windows.Forms.DataGridView();
             this.sAPIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -246,6 +247,7 @@ namespace TecanPartListManager
             this.DescriptionSearchTextBox,
             this.DescriptionClearButton,
             this.SelectAllToolStripButton,
+            this.SmartStartToolStripButton,
             this.helpToolStripButton});
             this.partsListBindingNavigator.Location = new System.Drawing.Point(0, 24);
             this.partsListBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
@@ -425,6 +427,18 @@ namespace TecanPartListManager
             this.SelectAllToolStripButton.Size = new System.Drawing.Size(59, 20);
             this.SelectAllToolStripButton.Text = "Select All";
             this.SelectAllToolStripButton.Click += new System.EventHandler(this.SelectAllToolStripButton_Click);
+            // 
+            // SmartStartToolStripButton
+            // 
+            this.SmartStartToolStripButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.SmartStartToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.SmartStartToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("SmartStartToolStripButton.Image")));
+            this.SmartStartToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SmartStartToolStripButton.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
+            this.SmartStartToolStripButton.Name = "SmartStartToolStripButton";
+            this.SmartStartToolStripButton.Size = new System.Drawing.Size(129, 20);
+            this.SmartStartToolStripButton.Text = "Smart Start Items Only";
+            this.SmartStartToolStripButton.Click += new System.EventHandler(this.SmartStartToolStripButton_Click);
             // 
             // helpToolStripButton
             // 
@@ -677,7 +691,7 @@ namespace TecanPartListManager
             // 
             this.applicationDocumentsToolStripMenuItem.Name = "applicationDocumentsToolStripMenuItem";
             this.applicationDocumentsToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.applicationDocumentsToolStripMenuItem.Text = "Application Documents";
+            this.applicationDocumentsToolStripMenuItem.Text = "Template Documents";
             this.applicationDocumentsToolStripMenuItem.Click += new System.EventHandler(this.applicationDocumentsToolStripMenuItem_Click);
             // 
             // importSAPDataToolStripMenuItem1
@@ -1026,7 +1040,7 @@ namespace TecanPartListManager
             this.initalizePanel.Controls.Add(this.getAccessButton);
             this.initalizePanel.Controls.Add(this.restoreBackupButton);
             this.initalizePanel.Location = new System.Drawing.Point(801, 287);
-            this.initalizePanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.initalizePanel.Margin = new System.Windows.Forms.Padding(2);
             this.initalizePanel.Name = "initalizePanel";
             this.initalizePanel.Size = new System.Drawing.Size(297, 161);
             this.initalizePanel.TabIndex = 15;
@@ -1127,7 +1141,7 @@ namespace TecanPartListManager
             this.FindReplacePanel.Controls.Add(this.FindTextBox);
             this.FindReplacePanel.Controls.Add(this.label12);
             this.FindReplacePanel.Location = new System.Drawing.Point(500, 102);
-            this.FindReplacePanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FindReplacePanel.Margin = new System.Windows.Forms.Padding(2);
             this.FindReplacePanel.Name = "FindReplacePanel";
             this.FindReplacePanel.Size = new System.Drawing.Size(486, 528);
             this.FindReplacePanel.TabIndex = 16;
@@ -1138,7 +1152,7 @@ namespace TecanPartListManager
             this.DeleteFindCheckBox.AutoSize = true;
             this.DeleteFindCheckBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteFindCheckBox.Location = new System.Drawing.Point(305, 71);
-            this.DeleteFindCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DeleteFindCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteFindCheckBox.Name = "DeleteFindCheckBox";
             this.DeleteFindCheckBox.Size = new System.Drawing.Size(97, 19);
             this.DeleteFindCheckBox.TabIndex = 14;
@@ -1161,7 +1175,7 @@ namespace TecanPartListManager
             this.FindCancelButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.FindCancelButton.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FindCancelButton.Location = new System.Drawing.Point(262, 488);
-            this.FindCancelButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FindCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.FindCancelButton.Name = "FindCancelButton";
             this.FindCancelButton.Size = new System.Drawing.Size(98, 25);
             this.FindCancelButton.TabIndex = 12;
@@ -1174,7 +1188,7 @@ namespace TecanPartListManager
             this.FindAgainButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.FindAgainButton.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FindAgainButton.Location = new System.Drawing.Point(134, 488);
-            this.FindAgainButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FindAgainButton.Margin = new System.Windows.Forms.Padding(2);
             this.FindAgainButton.Name = "FindAgainButton";
             this.FindAgainButton.Size = new System.Drawing.Size(98, 25);
             this.FindAgainButton.TabIndex = 11;
@@ -1186,7 +1200,7 @@ namespace TecanPartListManager
             // 
             this.FindDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.FindDataGridView.Location = new System.Drawing.Point(13, 266);
-            this.FindDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FindDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.FindDataGridView.Name = "FindDataGridView";
             this.FindDataGridView.RowTemplate.Height = 28;
             this.FindDataGridView.Size = new System.Drawing.Size(460, 207);
@@ -1199,7 +1213,7 @@ namespace TecanPartListManager
             this.SelectAllFindCheckBox.AutoSize = true;
             this.SelectAllFindCheckBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectAllFindCheckBox.Location = new System.Drawing.Point(245, 114);
-            this.SelectAllFindCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SelectAllFindCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.SelectAllFindCheckBox.Name = "SelectAllFindCheckBox";
             this.SelectAllFindCheckBox.Size = new System.Drawing.Size(75, 19);
             this.SelectAllFindCheckBox.TabIndex = 9;
@@ -1212,7 +1226,7 @@ namespace TecanPartListManager
             this.CancelFindButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.CancelFindButton.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CancelFindButton.Location = new System.Drawing.Point(255, 265);
-            this.CancelFindButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CancelFindButton.Margin = new System.Windows.Forms.Padding(2);
             this.CancelFindButton.Name = "CancelFindButton";
             this.CancelFindButton.Size = new System.Drawing.Size(81, 25);
             this.CancelFindButton.TabIndex = 8;
@@ -1225,7 +1239,7 @@ namespace TecanPartListManager
             this.FindButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.FindButton.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FindButton.Location = new System.Drawing.Point(149, 265);
-            this.FindButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FindButton.Margin = new System.Windows.Forms.Padding(2);
             this.FindButton.Name = "FindButton";
             this.FindButton.Size = new System.Drawing.Size(59, 25);
             this.FindButton.TabIndex = 7;
@@ -1245,7 +1259,7 @@ namespace TecanPartListManager
             "Notes",
             "Comments"});
             this.FindCheckedListBox.Location = new System.Drawing.Point(165, 141);
-            this.FindCheckedListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FindCheckedListBox.Margin = new System.Windows.Forms.Padding(2);
             this.FindCheckedListBox.Name = "FindCheckedListBox";
             this.FindCheckedListBox.Size = new System.Drawing.Size(151, 94);
             this.FindCheckedListBox.TabIndex = 6;
@@ -1276,7 +1290,7 @@ namespace TecanPartListManager
             // 
             this.ReplaceTextBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReplaceTextBox.Location = new System.Drawing.Point(99, 89);
-            this.ReplaceTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ReplaceTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.ReplaceTextBox.Name = "ReplaceTextBox";
             this.ReplaceTextBox.Size = new System.Drawing.Size(299, 21);
             this.ReplaceTextBox.TabIndex = 3;
@@ -1296,7 +1310,7 @@ namespace TecanPartListManager
             // 
             this.FindTextBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FindTextBox.Location = new System.Drawing.Point(99, 49);
-            this.FindTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FindTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.FindTextBox.Name = "FindTextBox";
             this.FindTextBox.Size = new System.Drawing.Size(299, 21);
             this.FindTextBox.TabIndex = 1;
@@ -1483,6 +1497,7 @@ namespace TecanPartListManager
         private DataGridViewComboBoxColumn subCategoryDataGridViewTextBoxColumn;
         private DataGridViewComboBoxColumn DBMembership;
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private ToolStripButton SmartStartToolStripButton;
 
     }
 }

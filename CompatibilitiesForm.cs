@@ -55,38 +55,38 @@ namespace TecanPartListManager
             compatibilitiesListBox.ValueMember = "ID";
         }
 
-        public class Compatibilities
-        {
-            private String CompatibilityID;
-            private String CompatibilityName;
+        //public class Compatibilities
+        //{
+        //    private String CompatibilityID;
+        //    private String CompatibilityName;
 
-            public Compatibilities(string strName, string strID)
-            {
-                this.CompatibilityID = strID;
-                this.CompatibilityName = strName;
-            }
+        //    public Compatibilities(string strName, string strID)
+        //    {
+        //        this.CompatibilityID = strID;
+        //        this.CompatibilityName = strName;
+        //    }
 
-            public string ID
-            {
-                get
-                {
-                    return CompatibilityID;
-                }
-            }
+        //    public string ID
+        //    {
+        //        get
+        //        {
+        //            return CompatibilityID;
+        //        }
+        //    }
 
-            public string Name
-            {
-                get
-                {
-                    return CompatibilityName;
-                }
-            }
-        }
+        //    public string Name
+        //    {
+        //        get
+        //        {
+        //            return CompatibilityName;
+        //        }
+        //    }
+        //}
 
         private void SetCompatibilitiesButton_Click(object sender, EventArgs e)
         {
             String selectedCompatibilities = "";
-            
+
             foreach (Compatibilities compatibility in compatibilitiesListBox.SelectedItems)
             {
                 if (selectedCompatibilities == "")
@@ -120,7 +120,14 @@ namespace TecanPartListManager
         {
             TecanDatabase = new SqlCeConnection();
             String dataPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
-            TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            if (detailForm.whichDb.Contains("TecanPartsList"))
+            {
+                TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            }
+            else
+            {
+                TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanSmartStartPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            }
             TecanDatabase.Open();
         }
 

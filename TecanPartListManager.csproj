@@ -109,6 +109,7 @@
     <Compile Include="ApplicationDocsForm.Designer.cs">
       <DependentUpon>ApplicationDocsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Compatibilities.cs" />
     <Compile Include="CompatibilitiesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +201,7 @@
     </Compile>
     <EmbeddedResource Include="AddSAPIDForm.resx">
       <DependentUpon>AddSAPIDForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ApplicationDocsForm.resx">
       <DependentUpon>ApplicationDocsForm.cs</DependentUpon>
@@ -319,6 +321,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="tecan.ico" />
+    <Content Include="TecanSmartStartPartsList.sdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TecanSmartStartQuoteGeneratorPartsList.sdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="x86\sqlceca35.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -34,27 +34,35 @@ namespace TecanPartListManager
             this.Validate();
             this.instrumentBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.tecanPartsListDataSet);
-
         }
 
         private void tableMaintnance_Load(object sender, EventArgs e)
         {
-            
-            // TODO: This line of code loads data into the 'tecanPartsListDataSet.PartsList' table. You can move, or remove it, as needed.
+
+            partsListTableAdapter.Connection.ConnectionString = mainForm.whichDb;
+            salesTypeTableAdapter.Connection.ConnectionString = mainForm.whichDb;
+            dBMembershipTableAdapter.Connection.ConnectionString = mainForm.whichDb;
+            sSPCategoryTableAdapter.Connection.ConnectionString = mainForm.whichDb;
+            subCategoryTableAdapter.Connection.ConnectionString = mainForm.whichDb;
+            categoryTableAdapter.Connection.ConnectionString = mainForm.whichDb;
+            instrumentTableAdapter.Connection.ConnectionString = mainForm.whichDb;
+
+            String str1 = salesTypeTableAdapter.Connection.ConnectionString.ToString();
+            String str2 = dBMembershipTableAdapter.Connection.ConnectionString.ToString();
+            String str3 = sSPCategoryTableAdapter.Connection.ConnectionString.ToString();
+            String str4 = subCategoryTableAdapter.Connection.ConnectionString.ToString();
+            String str5 = categoryTableAdapter.Connection.ConnectionString.ToString();
+            String str6 = instrumentTableAdapter.Connection.ConnectionString.ToString();
+            String str7 = partsListTableAdapter.Connection.ConnectionString.ToString();
+            MessageBox.Show(str1 + "\n" + str2 + "\n" + str3 + "\n" + str4 + "\n" + str5 + "\n" + str6 + "\n" + str7);
+
             this.partsListTableAdapter.Fill(this.tecanPartsListDataSet.PartsList);
-            // TODO: This line of code loads data into the 'tecanPartsListDataSet.SuppumentalDocs' table. You can move, or remove it, as needed.
             this.suppumentalDocsTableAdapter.Fill(this.tecanPartsListDataSet.SuppumentalDocs);
-            // TODO: This line of code loads data into the 'tecanPartsListDataSet.SalesType' table. You can move, or remove it, as needed.
             this.salesTypeTableAdapter.Fill(this.tecanPartsListDataSet.SalesType);
-            // TODO: This line of code loads data into the 'tecanPartsListDataSet.DBMembership' table. You can move, or remove it, as needed.
             this.dBMembershipTableAdapter.Fill(this.tecanPartsListDataSet.DBMembership);
-            // TODO: This line of code loads data into the 'tecanPartsListDataSet.SSPCategory' table. You can move, or remove it, as needed.
             this.sSPCategoryTableAdapter.Fill(this.tecanPartsListDataSet.SSPCategory);
-            // TODO: This line of code loads data into the 'tecanPartsListDataSet.SubCategory' table. You can move, or remove it, as needed.
             this.subCategoryTableAdapter.Fill(this.tecanPartsListDataSet.SubCategory);
-            // TODO: This line of code loads data into the 'tecanPartsListDataSet.Category' table. You can move, or remove it, as needed.
             this.categoryTableAdapter.Fill(this.tecanPartsListDataSet.Category);
-            // TODO: This line of code loads data into the 'tecanPartsListDataSet.Instrument' table. You can move, or remove it, as needed.
             this.instrumentTableAdapter.Fill(this.tecanPartsListDataSet.Instrument);
 
 
@@ -103,33 +111,33 @@ namespace TecanPartListManager
 
         }
 
-        public class Compatibilities
-        {
-            private String CompatibilityID;
-            private String CompatibilityName;
+        //public class Compatibilities
+        //{
+        //    private String CompatibilityID;
+        //    private String CompatibilityName;
 
-            public Compatibilities(string strName, string strID)
-            {
-                this.CompatibilityID = strID;
-                this.CompatibilityName = strName;
-            }
+        //    public Compatibilities(string strName, string strID)
+        //    {
+        //        this.CompatibilityID = strID;
+        //        this.CompatibilityName = strName;
+        //    }
 
-            public string ID
-            {
-                get
-                {
-                    return CompatibilityID;
-                }
-            }
+        //    public string ID
+        //    {
+        //        get
+        //        {
+        //            return CompatibilityID;
+        //        }
+        //    }
 
-            public string Name
-            {
-                get
-                {
-                    return CompatibilityName;
-                }
-            }
-        }
+        //    public string Name
+        //    {
+        //        get
+        //        {
+        //            return CompatibilityName;
+        //        }
+        //    }
+        //}
 
         public void clearCurrentTable()
         {

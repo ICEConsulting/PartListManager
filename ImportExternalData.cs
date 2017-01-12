@@ -516,7 +516,14 @@ namespace TecanPartListManager
         private void openMasterDB()
         {
             TecanMasterDatabase = new SqlCeConnection();
-            TecanMasterDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            if (mainForm.whichDb.Contains("TecanPartsList"))
+            {
+                TecanMasterDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            }
+            else
+            {
+                TecanMasterDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanSmartStartPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            }
             TecanMasterDatabase.Open();
         }
 

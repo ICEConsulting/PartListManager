@@ -20,7 +20,7 @@ namespace TecanPartListManager
         MainPartsListDisplay mainForm;
         RemovePartCheckForm RemovePartForm = null;
         Boolean hasSAPID;
-        
+        public String whichDb;
         SqlCeConnection TecanDatabase = null;
 
         public void SetForm1Instance(MainPartsListDisplay inst)
@@ -57,6 +57,24 @@ namespace TecanPartListManager
 
         internal void LoadParts(String SAPID)
         {
+            whichDb = mainForm.whichDb;
+            partsListTableAdapter.Connection.ConnectionString = whichDb;
+            salesTypeTableAdapter.Connection.ConnectionString = whichDb;
+            dBMembershipTableAdapter.Connection.ConnectionString = whichDb;
+            sSPCategoryTableAdapter.Connection.ConnectionString = whichDb;
+            subCategoryTableAdapter.Connection.ConnectionString = whichDb;
+            categoryTableAdapter.Connection.ConnectionString = whichDb;
+            instrumentTableAdapter.Connection.ConnectionString = whichDb;
+
+            String str1 = salesTypeTableAdapter.Connection.ConnectionString.ToString();
+            String str2 = dBMembershipTableAdapter.Connection.ConnectionString.ToString();
+            String str3 = sSPCategoryTableAdapter.Connection.ConnectionString.ToString();
+            String str4 = subCategoryTableAdapter.Connection.ConnectionString.ToString();
+            String str5 = categoryTableAdapter.Connection.ConnectionString.ToString();
+            String str6 = instrumentTableAdapter.Connection.ConnectionString.ToString();
+            String str7 = partsListTableAdapter.Connection.ConnectionString.ToString();
+            MessageBox.Show(str1 + "\n" + str2 + "\n" + str3 + "\n" + str4 + "\n" + str5 + "\n" + str6 + "\n" + str7);
+
             if (SAPID != "" && SAPID != null)
             {
                 hasSAPID = true;
@@ -592,7 +610,7 @@ namespace TecanPartListManager
             {
                 MessageBox.Show(ex.Message);
             }
-
+            this.WindowState = FormWindowState.Minimized;
             Process.Start(fullFilePathName);
 
         }
@@ -1097,7 +1115,14 @@ namespace TecanPartListManager
         {
             TecanDatabase = new SqlCeConnection();
             String dataPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
-            TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            if (mainForm.whichDb.Contains("TecanPartsList"))
+            {
+                TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            }
+            else
+            {
+                TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanSmartStartPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            }
             TecanDatabase.Open();
         }
 

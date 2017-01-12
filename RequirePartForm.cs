@@ -36,6 +36,7 @@ namespace TecanPartListManager
 
         private void RequirePartForm_Load(object sender, EventArgs e)
         {
+            partsListTableAdapter.Connection.ConnectionString = detailForm.whichDb;
             this.partsListTableAdapter.Fill(this.tecanPartsListDataSet.PartsList);
         }
 
@@ -159,7 +160,14 @@ namespace TecanPartListManager
         {
             TecanDatabase = new SqlCeConnection();
             String dataPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
-            TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            if (detailForm.whichDb.Contains("TecanPartsList"))
+            {
+                TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            }
+            else
+            {
+                TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanSmartStartPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            }
             TecanDatabase.Open();
         }
 

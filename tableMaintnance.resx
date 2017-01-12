@@ -177,6 +177,12 @@
   <metadata name="FileName.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="DocID.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="FileName.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="textBox1.Text" xml:space="preserve">
     <value>Click the Add Button associated with any table to add a new item to that table.
 
@@ -187,17 +193,14 @@ NOTE:  You cannot Delete any item in any table if it is currently associated wit
   <data name="textBox2.Text" xml:space="preserve">
     <value>To remove a document associated with a Part:
 
-Double-Click any row in the Associated Supplemental Documents to remove the document from the part number.
-(Only 1 association can be selected)
+Double-Click any row in the Associated Supplemental Documents to remove the document from the part number. (Only 1 association can be selected)
 
 
 To Associate Document(s) with a Part(s):
 
-Select the document(s) from the list of All Supplemental Documents 
-(use the Shift and / or Ctrl keys to select multiple documents)
+Select the document(s) from the list of All Supplemental Documents (use the Shift and / or Ctrl keys to select multiple documents)
 
-Select the part number in the part number(s) list. 
-(use the Shift and / or Ctrl keys to select multiple part numbers)
+Select the part number in the part number(s) list. (use the Shift and / or Ctrl keys to select multiple part numbers)
 
 Click the Associate Button.
 
