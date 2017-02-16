@@ -26,6 +26,7 @@ namespace TecanPartListManager
         SqlCeConnection TecanPartsDatabase = new SqlCeConnection();
         SqlCeConnection TecanSmartStartDatabase = new SqlCeConnection();
         SqlCeConnection TecanSuppDocsDatabase = new SqlCeConnection();
+        SqlCeConnection TecanAppDocsDatabase = new SqlCeConnection();
 
         DataTable InstrumentDataTable = new DataTable();
         DataTable CategoryDataTable = new DataTable();
@@ -135,12 +136,13 @@ namespace TecanPartListManager
             scmd.ExecuteNonQuery();
             TecanSuppDocsDatabase.Close();
 
-            //TecanDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanAppDocs.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
-            //TecanDatabase.Open();
-            //cmd.CommandText = "DELETE FROM ApplicationCategories";
-            //cmd.ExecuteNonQuery();
-            //cmd.CommandText = "DELETE FROM Documents";
-            //cmd.ExecuteNonQuery();
+            TecanAppDocsDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanAppDocs.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            TecanAppDocsDatabase.Open();
+            SqlCeCommand acmd = TecanAppDocsDatabase.CreateCommand();
+            acmd.CommandText = "DELETE FROM ApplicationCategories";
+            acmd.ExecuteNonQuery();
+            acmd.CommandText = "DELETE FROM Documents";
+            acmd.ExecuteNonQuery();
 
 
             String myAccessDatabaseConnectionString;
@@ -1055,7 +1057,7 @@ namespace TecanPartListManager
                         pcmd.ExecuteNonQuery();
                         pcmd.Parameters.Clear();
                         statusProgressBar.Value = statusProgressBar.Value + 1;
-                        partsListBox.Items.Add(SAPId + " - ' " + Description);
+                        partsListBox.Items.Add(SAPId + " - " + Description);
                     }
                     reader.Close();
                     
@@ -1395,7 +1397,7 @@ namespace TecanPartListManager
                         scmd.ExecuteNonQuery();
                         scmd.Parameters.Clear();
                         statusProgressBar.Value = statusProgressBar.Value + 1;
-                        SSpartsListBox.Items.Add(SAPId + " - ' " + Description);
+                        SSpartsListBox.Items.Add(SAPId + " - " + Description);
                     }
                     reader.Close();
 
@@ -1590,7 +1592,7 @@ namespace TecanPartListManager
                             }
                             scmd.Parameters.Clear();
                             pcmd.Parameters.Clear();
-                            supplementalDocsListBox.Items.Add(suppSAPID + " - ' " + suppFilename);
+                            supplementalDocsListBox.Items.Add(suppSAPID + " - " + suppFilename);
                         }
                     }
                     reader.Close();
@@ -1601,6 +1603,8 @@ namespace TecanPartListManager
                     MessageBox.Show("Associate Supplement Docs 1 " + ex.Message);
                 }
                 TecanSuppDatabase.Close();
+
+                loadTemplateDocs();
 
                 //
                 // Add CAD info to parts
@@ -1641,6 +1645,7 @@ namespace TecanPartListManager
                 TecanSmartStartDatabase.Close();
 
                 statusProgressBar.Visible = false;
+                statusPanelLabel.Text = "";
                 ImportStatusLabel.Text = "Import Complete!";
                 if (EmptyLookupField)
                 {
@@ -1794,7 +1799,9 @@ namespace TecanPartListManager
         }
 
         // Add Template Documents to database
-        // todo
+        // Documnet Position -  Header Document (Blank and Smart Start) = 1
+        //                      Body Document (After Items Displayed) = 2
+        //                      Footer Document (Terms & Conditions) = 3
         private void loadTemplateDocs()
         {
             statusPanelLabel.Text = "Adding Quote Templates";
@@ -1806,48 +1813,134 @@ namespace TecanPartListManager
             TecanAppDocsDatabase.Open();
             SqlCeCommand cmd = TecanAppDocsDatabase.CreateCommand();
 
+            int catID;
+            catID = 1;
             int docID;
             docID = 1;
-            String suppumentalPath, suppumentalFileName, suppumentalExt;
-            Byte[] suppumentalData;
-            long suppumentalNumBytes;
-            String[] suppumentalList;
+            String AppDocsPath, AppDocsFileName, AppDocsExt;
+            Byte[] AppDocData;
+            long AppDocNumBytes;
+            String[] AppDocsList;
+            String[] AppDocsFolders;
 
-            suppumentalPath = getSuppumentalPath();
-            suppumentalList = Directory.GetFiles(suppumentalPath);
+            AppDocsPath = getTemplatePath();
 
-            foreach (string suppumentalPathandName in suppumentalList)
+            // Get template file that are in the root folder (no Cataegory)
+            cmd.CommandText = "INSERT INTO ApplicationCategories (AppCategoryID, AppCategoryName) Values (" + catID + ", 'General')";
+            cmd.ExecuteNonQuery();
+
+            AppDocsList = Directory.GetFiles(AppDocsPath, "*.pdf");
+            foreach (string appDocsPathandName in AppDocsList)
             {
-                FileInfo suppumentalFileInfo = new FileInfo(suppumentalPathandName);
-                suppumentalNumBytes = suppumentalFileInfo.Length;
-                FileStream suppumentalContents = new FileStream(suppumentalPathandName, FileMode.Open, FileAccess.Read);
-                BinaryReader br = new BinaryReader(suppumentalContents);
-                suppumentalData = br.ReadBytes((int)suppumentalNumBytes);
-                suppumentalContents.Close();
+                FileInfo appDocFileInfo = new FileInfo(appDocsPathandName);
+                AppDocNumBytes = appDocFileInfo.Length;
+                FileStream appDocsContents = new FileStream(appDocsPathandName, FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(appDocsContents);
+                AppDocData = br.ReadBytes((int)AppDocNumBytes);
+                appDocsContents.Close();
 
-                suppumentalFileName = suppumentalFileInfo.Name.ToLower();
-                suppumentalExt = suppumentalFileInfo.Extension.Replace(".", "").ToLower();
-                cmd.CommandText = "INSERT INTO SuppumentalDocs (DocID, DocExtension, Document, FileName)" +
+                AppDocsFileName = appDocFileInfo.Name.ToLower();
+                AppDocsExt = appDocFileInfo.Extension.Replace(".", "").ToLower();
+                cmd.CommandText = "INSERT INTO Documents (DocID, DocumentName, DocExtension, FileName, ApplicationCategory, Document, DocumentDescription, IsSmartStart, DocumentPosition)" +
                     " Values " +
-                    "(@DocID, @DocExtension, @Document, @FileName)";
+                    "(@DocID, @DocumentName, @DocExtension, @FileName, @ApplicationCategory, @Document, @DocumentDescription, @IsSmartStart, @DocumentPosition)";
 
-                cmd.Parameters.AddWithValue("@DocId", docID);
-                cmd.Parameters.AddWithValue("@DocExtension", suppumentalExt);
-                cmd.Parameters.AddWithValue("@Document", suppumentalData);
-                cmd.Parameters.AddWithValue("@FileName", suppumentalFileName);
+                cmd.Parameters.AddWithValue("@DocID", docID);
+                cmd.Parameters.AddWithValue("@DocumentName", AppDocsFileName);
+                cmd.Parameters.AddWithValue("@DocExtension", AppDocsExt);
+                cmd.Parameters.AddWithValue("@FileName", AppDocsFileName);
+                cmd.Parameters.AddWithValue("@ApplicationCategory", catID);
+                cmd.Parameters.AddWithValue("@Document", AppDocData);
+                cmd.Parameters.AddWithValue("@DocumentDescription", AppDocsFileName);
+                cmd.Parameters.AddWithValue("@IsSmartStart", 0);
+                switch (AppDocsFileName)
+                {
+                    case "blank header.pdf":
+                        cmd.Parameters.AddWithValue("@DocumentPosition", 1);
+                        break;
+
+                    case "terms.pdf":
+                        cmd.Parameters.AddWithValue("@DocumentPosition", 3);
+                        break;
+
+                    default:
+                        cmd.Parameters.AddWithValue("@DocumentPosition", 2);
+                        break;
+
+                }
                 try
                 {
                     cmd.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Please correct the Supplemental Filename and add to database manually \n\n " + suppumentalFileName + "\n\n" + ex.Message + "\n\n" + ex.TargetSite);
+                    MessageBox.Show("Please correct the Template Filename and add to database manually \n\n " + AppDocsFileName + "\n\n" + ex.Message + "\n\n" + ex.TargetSite);
                 }
                 cmd.Parameters.Clear();
-                suppumentalContents.Dispose();
+                appDocsContents.Dispose();
                 // br.Dispose();
                 docID++;
                 statusProgressBar.Value = statusProgressBar.Value + 1;
+                templatesListBox.Items.Add(AppDocsFileName);
+            }
+
+            catID++;
+            String catName = "";
+            AppDocsFolders = Directory.GetDirectories(AppDocsPath);
+            foreach (string appDocsFolder in AppDocsFolders)
+            {
+                catName = appDocsFolder.Substring(appDocsFolder.LastIndexOf('\\') + 1);
+                cmd.CommandText = "INSERT INTO ApplicationCategories (AppCategoryID, AppCategoryName) Values (" + catID + ", '" + catName + "')";
+                cmd.ExecuteNonQuery();
+                AppDocsList = Directory.GetFiles(appDocsFolder, "*.pdf");
+                foreach (string appDocsPathandName in AppDocsList)
+                {
+                    FileInfo appDocFileInfo = new FileInfo(appDocsPathandName);
+                    AppDocNumBytes = appDocFileInfo.Length;
+                    FileStream appDocsContents = new FileStream(appDocsPathandName, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(appDocsContents);
+                    AppDocData = br.ReadBytes((int)AppDocNumBytes);
+                    appDocsContents.Close();
+
+                    AppDocsFileName = appDocFileInfo.Name.ToLower();
+                    AppDocsExt = appDocFileInfo.Extension.Replace(".", "").ToLower();
+                    cmd.CommandText = "INSERT INTO Documents (DocID, DocumentName, DocExtension, FileName, ApplicationCategory, Document, DocumentDescription, IsSmartStart, DocumentPosition)" +
+                        " Values " +
+                        "(@DocID, @DocumentName, @DocExtension, @FileName, @ApplicationCategory, @Document, @DocumentDescription, @IsSmartStart, @DocumentPosition)";
+
+                    cmd.Parameters.AddWithValue("@DocID", docID);
+                    cmd.Parameters.AddWithValue("@DocumentName", AppDocsFileName);
+                    cmd.Parameters.AddWithValue("@DocExtension", AppDocsExt);
+                    cmd.Parameters.AddWithValue("@FileName", AppDocsFileName);
+                    cmd.Parameters.AddWithValue("@ApplicationCategory", catID);
+                    cmd.Parameters.AddWithValue("@Document", AppDocData);
+                    cmd.Parameters.AddWithValue("@DocumentDescription", AppDocsFileName);
+                    if (catName == "Smart Start")
+                    {
+                        cmd.Parameters.AddWithValue("@IsSmartStart", 1);
+                        cmd.Parameters.AddWithValue("@DocumentPosition", 1);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@IsSmartStart", 0);
+                        cmd.Parameters.AddWithValue("@DocumentPosition", 2);
+                    }
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Please correct the Template Filename and add to database manually \n\n " + AppDocsFileName + "\n\n" + ex.Message + "\n\n" + ex.TargetSite);
+                    }
+                    cmd.Parameters.Clear();
+                    appDocsContents.Dispose();
+                    // br.Dispose();
+                    docID++;
+                    statusProgressBar.Value = statusProgressBar.Value + 1;
+                    templatesListBox.Items.Add(catName + " - " + AppDocsFileName);
+                }
+                catID++;
             }
             TecanAppDocsDatabase.Close();
         }
@@ -2135,6 +2228,25 @@ namespace TecanPartListManager
 
             FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
             folderBrowserDialog1.Description = "Please select your Partslist Supplemental Files folder";
+            folderBrowserDialog1.SelectedPath = LastFilePath;
+            folderBrowserDialog1.ShowNewFolderButton = false;
+
+            String myPath = "";
+
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                myPath = folderBrowserDialog1.SelectedPath;
+            }
+
+            return myPath;
+
+        }
+
+        private String getTemplatePath()
+        {
+
+            FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
+            folderBrowserDialog1.Description = "Please select your Template Files folder";
             folderBrowserDialog1.SelectedPath = LastFilePath;
             folderBrowserDialog1.ShowNewFolderButton = false;
 

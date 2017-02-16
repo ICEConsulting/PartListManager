@@ -28,10 +28,14 @@ namespace TecanPartListManager
             openAppDocDatabase();
             SqlCeCommand cmd = TecanAppDocDatabase.CreateCommand();
 
-
             // Load Top Documents into List
-            TopDocumentsListView.Items.Clear(); 
-            cmd.CommandText = "SELECT DocID, FileName, DocumentDescription, SmartStartTitle FROM Documents WHERE DocumentPosition = 'Header'";
+            TopDocumentsListView.Items.Clear();
+
+            cmd.CommandText = "SELECT D.DocID, D.FileName, D.DocumentDescription, C.AppCategoryName, D.IsSmartStart FROM Documents D" +
+            " INNER JOIN ApplicationCategories C" +
+            " ON D.ApplicationCategory = C.AppCategoryID" +
+            " WHERE DocumentPosition = 1";
+
             try
             {
                 SqlCeDataReader reader = cmd.ExecuteReader();
@@ -44,6 +48,14 @@ namespace TecanPartListManager
                     TopDocumentsListView.Items[docCount].SubItems.Add(reader[1].ToString());
                     TopDocumentsListView.Items[docCount].SubItems.Add(reader[2].ToString());
                     TopDocumentsListView.Items[docCount].SubItems.Add(reader[3].ToString());
+                    if (Convert.ToInt16(reader[4]) == 0)
+                    {
+                        TopDocumentsListView.Items[docCount].SubItems.Add("No");
+                    }
+                    else
+                    {
+                        TopDocumentsListView.Items[docCount].SubItems.Add("Yes");
+                    }
                     docCount++;
                 }
                 reader.Dispose();
@@ -54,9 +66,17 @@ namespace TecanPartListManager
                 MessageBox.Show("Loading Header List: " + ex.Message);
             }
 
+            // Load Categories List
+            LoadCatList();
+
             // Load Body Documents into List
             BodyDocumentsListView.Items.Clear();
-            cmd.CommandText = "SELECT DocID, FileName, DocumentDescription, ApplicationCategory FROM Documents WHERE DocumentPosition = 'Body'";
+
+            cmd.CommandText = "SELECT D.DocID, D.FileName, D.DocumentDescription, C.AppCategoryName FROM Documents D" +
+            " INNER JOIN ApplicationCategories C" +
+            " ON D.ApplicationCategory = C.AppCategoryID" +
+            " WHERE DocumentPosition = 2";
+
             try
             {
                 SqlCeDataReader reader = cmd.ExecuteReader();
@@ -80,7 +100,7 @@ namespace TecanPartListManager
             }
 
             // Load Footer Document textbox
-            cmd.CommandText = "SELECT FileName FROM Documents WHERE DocumentPosition = 'Footer'";
+            cmd.CommandText = "SELECT FileName FROM Documents WHERE DocumentPosition = 3";
             try
             {
                 SqlCeDataReader reader = cmd.ExecuteReader();
@@ -100,6 +120,32 @@ namespace TecanPartListManager
             TecanAppDocDatabase.Close();
         }
 
+        private void LoadCatList()
+        {
+            openAppDocDatabase();
+            SqlCeCommand cmd = TecanAppDocDatabase.CreateCommand();
+
+            CategoryListView.Items.Clear();
+            int catCount = 0;
+            cmd.CommandText = "SELECT AppCategoryID, AppCategoryName FROM ApplicationCategories";
+            try
+            {
+                SqlCeDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    CategoryListView.Items.Add("");
+                    CategoryListView.Items[catCount].SubItems.Add(reader[0].ToString());
+                    CategoryListView.Items[catCount].SubItems.Add(reader[1].ToString());
+                    catCount++;
+                }
+                reader.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loading Categories List: " + ex.Message);
+            }
+            TecanAppDocDatabase.Close();
+        }
 
         private void openAppDocDatabase()
         {
@@ -122,14 +168,14 @@ namespace TecanPartListManager
                 SqlCeCommand cmd = TecanAppDocDatabase.CreateCommand();
 
                 // Delete current header documents
-                cmd.CommandText = "DELETE FROM Documents WHERE DocumentPosition = 'Header'";
+                cmd.CommandText = "DELETE FROM Documents WHERE DocumentPosition = 1";
                 try
                 {
                     cmd.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Unable to Delete");
+                    MessageBox.Show("Unable to Delete " + ex.Message);
                 }
 
                 int docID = getLastDocId();
@@ -169,7 +215,7 @@ namespace TecanPartListManager
                     cmd.Parameters.AddWithValue("@Document", appDocData);
                     cmd.Parameters.AddWithValue("@FileName", appDocFileName);
                     cmd.Parameters.AddWithValue("@DocumentDescription", appDocDescription);
-                    cmd.Parameters.AddWithValue("@DocumentPosition", "Header");
+                    cmd.Parameters.AddWithValue("@DocumentPosition", 1);
                     try
                     {
                         cmd.ExecuteNonQuery();
@@ -219,7 +265,7 @@ namespace TecanPartListManager
                 SqlCeCommand cmd = TecanAppDocDatabase.CreateCommand();
 
                 // Delete current body documents
-                cmd.CommandText = "DELETE FROM Documents WHERE DocumentPosition = 'Body'";
+                cmd.CommandText = "DELETE FROM Documents WHERE DocumentPosition = 2";
                 try
                 {
                     cmd.ExecuteNonQuery();
@@ -235,6 +281,7 @@ namespace TecanPartListManager
                 Byte[] appDocData;
                 long appDocNumBytes;
                 String[] appDocList;
+                String[] AppDocsFolders;
 
                 appDocPath = getAppDocPath();
                 if (appDocPath == "")
@@ -257,17 +304,19 @@ namespace TecanPartListManager
                     appDocFileName = appDocFileInfo.Name.ToLower();
                     appDocExt = appDocFileInfo.Extension.Replace(".", "").ToLower();
                     appDocDescription = appDocFileInfo.Name.Substring(0, (appDocFileInfo.Name.Length - appDocExt.Length) - 1);
-                    cmd.CommandText = "INSERT INTO Documents (DocID, DocExtension, Document, FileName, DocumentDescription, DocumentPosition, ApplicationCategory)" +
+                    cmd.CommandText = "INSERT INTO Documents (DocID, DocumentName, DocExtension, FileName, Document, DocumentDescription, DocumentPosition, ApplicationCategory, IsSmartStart)" +
                         " Values " +
-                        "(@DocID, @DocExtension, @Document, @FileName, @DocumentDescription, @DocumentPosition, @ApplicationCategory)";
+                        "(@DocID, @DocumentName, @DocExtension, @FileName, @Document, @DocumentDescription, @DocumentPosition, @ApplicationCategory, @IsSmartStart)";
 
                     cmd.Parameters.AddWithValue("@DocId", docID);
+                    cmd.Parameters.AddWithValue("@DocumentName", appDocFileName);
                     cmd.Parameters.AddWithValue("@DocExtension", appDocExt);
-                    cmd.Parameters.AddWithValue("@Document", appDocData);
                     cmd.Parameters.AddWithValue("@FileName", appDocFileName);
+                    cmd.Parameters.AddWithValue("@Document", appDocData);
                     cmd.Parameters.AddWithValue("@DocumentDescription", appDocDescription);
-                    cmd.Parameters.AddWithValue("@DocumentPosition", "Body");
-                    cmd.Parameters.AddWithValue("@ApplicationCategory", "");
+                    cmd.Parameters.AddWithValue("@DocumentPosition", 2);
+                    cmd.Parameters.AddWithValue("@ApplicationCategory", 1);
+                    cmd.Parameters.AddWithValue("@IsSmartStart", 0);
                     try
                     {
                         cmd.ExecuteNonQuery();
@@ -283,10 +332,11 @@ namespace TecanPartListManager
                 }
 
                 String appDocCategory = "";
-                foreach (string subDir in Directory.GetDirectories(appDocPath))
+                AppDocsFolders = Directory.GetDirectories(appDocPath);
+                foreach (string subDir in AppDocsFolders)
                 {
-                    appDocList = Directory.GetFiles(subDir);
-                    appDocCategory = subDir.Substring(appDocPath.Length + 1, (subDir.Length - appDocPath.Length) - 1);
+                    appDocCategory = subDir.Substring(subDir.LastIndexOf('\\') + 1);
+                    appDocList = Directory.GetFiles(subDir, "*.pdf");
                     foreach (string appDocPathandName in appDocList)
                     {
                         FileInfo appDocFileInfo = new FileInfo(appDocPathandName);
@@ -299,17 +349,29 @@ namespace TecanPartListManager
                         appDocFileName = appDocFileInfo.Name.ToLower();
                         appDocExt = appDocFileInfo.Extension.Replace(".", "").ToLower();
                         appDocDescription = appDocFileInfo.Name.Substring(0, appDocFileInfo.Name.Length - appDocExt.Length - 1);
-                        cmd.CommandText = "INSERT INTO Documents (DocID, DocExtension, Document, FileName, DocumentDescription, DocumentPosition, ApplicationCategory)" +
+                        cmd.CommandText = "INSERT INTO Documents (DocID, DocumentName, DocExtension, FileName, Document, DocumentDescription, DocumentPosition, ApplicationCategory, IsSmartStart)" +
                             " Values " +
-                            "(@DocID, @DocExtension, @Document, @FileName, @DocumentDescription, @DocumentPosition, @ApplicationCategory)";
+                            "(@DocID, @DocumentName, @DocExtension, @FileName, @Document, @DocumentDescription, @DocumentPosition, @ApplicationCategory, @IsSmartStart)";
 
                         cmd.Parameters.AddWithValue("@DocId", docID);
+                        cmd.Parameters.AddWithValue("@DocumentName", appDocFileName);
                         cmd.Parameters.AddWithValue("@DocExtension", appDocExt);
-                        cmd.Parameters.AddWithValue("@Document", appDocData);
                         cmd.Parameters.AddWithValue("@FileName", appDocFileName);
+                        cmd.Parameters.AddWithValue("@Document", appDocData);
                         cmd.Parameters.AddWithValue("@DocumentDescription", appDocDescription);
-                        cmd.Parameters.AddWithValue("@DocumentPosition", "Body");
-                        cmd.Parameters.AddWithValue("@ApplicationCategory", appDocCategory);
+                        cmd.Parameters.AddWithValue("@DocumentPosition", 2);
+                        cmd.Parameters.AddWithValue("@ApplicationCategory", 1);
+                        if (appDocCategory == "Smart Start")
+                        {
+                            cmd.Parameters.AddWithValue("@IsSmartStart", 1);
+                            cmd.Parameters.AddWithValue("@DocumentPosition", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@IsSmartStart", 0);
+                            cmd.Parameters.AddWithValue("@DocumentPosition", 2);
+                        }
+                        cmd.Parameters.AddWithValue("@IsSmartStart", 0);
                         try
                         {
                             cmd.ExecuteNonQuery();
@@ -378,77 +440,73 @@ namespace TecanPartListManager
         private void TopDocumentsListView_Click(object sender, EventArgs e)
         {
             AppDocEditPanelHeader.Text = "Edit Header Application Document";
-            SmartStartLabel.Visible = true;
-            AppDocSmartStartTitleTextBox.Visible = true;
-            AppCatLabel.Visible = false;
-            AppDocAppCatTextBox.Visible = false;
+            IsSmartStartCheckBox.Visible = true;
             AppDocEditPanel.Visible = true;
             Int32 EditDocID = Convert.ToInt32(TopDocumentsListView.SelectedItems[0].SubItems[1].Text);
-            LoadAppDocEditPanel(EditDocID, "Header");
+            LoadAppDocEditPanel(EditDocID);
         }
 
         private void BodyDocumentsListView_Click(object sender, EventArgs e)
         {
             AppDocEditPanelHeader.Text = "Edit Body Application Document";
-            SmartStartLabel.Visible = false;
-            AppDocSmartStartTitleTextBox.Visible = false;
-            AppCatLabel.Visible = true;
-            AppDocAppCatTextBox.Visible = true;
+            IsSmartStartCheckBox.Visible = false;
             AppDocEditPanel.Visible = true;
             Int32 EditDocID = Convert.ToInt32(BodyDocumentsListView.SelectedItems[0].SubItems[1].Text);
-            LoadAppDocEditPanel(EditDocID, "Body");
+            LoadAppDocEditPanel(EditDocID);
         }
 
-        private void LoadAppDocEditPanel(int EditDocID, string DocPosition)
+        private void LoadAppDocEditPanel(int EditDocID)
         {
             openAppDocDatabase();
             SqlCeCommand cmd = TecanAppDocDatabase.CreateCommand();
+            SqlCeDataReader reader;
 
-            if (DocPosition == "Header")
+            // Load Load AppCat combobox
+            cmd.CommandText = "SELECT AppCategoryID, AppCategoryName FROM ApplicationCategories";
+            reader = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("AppCategoryID");
+            dt.Columns.Add("AppCategoryName");
+            dt.Load(reader);
+            AppDocCatComboBox.ValueMember = "AppCategoryID";
+            AppDocCatComboBox.DisplayMember = "AppCategoryName";
+            AppDocCatComboBox.DataSource = dt;
+            String SSTest;
+
+            // Load Document details into Edit Panel
+            cmd.CommandText = "SELECT DocID, FileName, DocumentDescription, ApplicationCategory, IsSmartStart FROM Documents WHERE DocID = '" + EditDocID + "'";
+            try
             {
-                // Load Top Documents into Panel Textboxes
-                cmd.CommandText = "SELECT DocID, FileName, DocumentDescription, SmartStartTitle FROM Documents WHERE DocID = '" + EditDocID + "'";
-                try
-                {
-                    SqlCeDataReader reader = cmd.ExecuteReader();
+                reader = cmd.ExecuteReader();
 
-                    while (reader.Read())
+                while (reader.Read())
+                {
+                    AppDocIDTextBox.Text = reader[0].ToString();
+                    AppDocFilenameTextBox.Text = reader[1].ToString();
+                    AppDocDescriptionTextBox.Text = reader[2].ToString();
+                    AppDocCatComboBox.SelectedValue = reader[3];
+                    SSTest = reader[4].ToString();
+                    if (SSTest != "")
                     {
-                        AppDocIDTextBox.Text = reader[0].ToString();
-                        AppDocFilenameTextBox.Text = reader[1].ToString();
-                        AppDocDescriptionTextBox.Text = reader[2].ToString();
-                        AppDocSmartStartTitleTextBox.Text = reader[3].ToString();
+                        if (IsSmartStartCheckBox.Visible == true)
+                        {
+                            if (Convert.ToInt16(reader[4]) == 1)
+                            {
+                                IsSmartStartCheckBox.Checked = true;
+                            }
+                            else
+                            {
+                                IsSmartStartCheckBox.Checked = false;
+                            }
+                        }
                     }
-                    reader.Dispose();
+                }
+                reader.Dispose();
 
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
             }
-            else
+            catch (Exception ex)
             {
-                // Load Body Documents into Panel Textboxes
-                cmd.CommandText = "SELECT DocID, FileName, DocumentDescription, ApplicationCategory FROM Documents WHERE DocID = '" + EditDocID + "'";
-                try
-                {
-                    SqlCeDataReader reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        AppDocIDTextBox.Text = reader[0].ToString();
-                        AppDocFilenameTextBox.Text = reader[1].ToString();
-                        AppDocDescriptionTextBox.Text = reader[2].ToString();
-                        AppDocAppCatTextBox.Text = reader[3].ToString();
-                    }
-                    reader.Dispose();
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                MessageBox.Show(ex.Message);
             }
             TecanAppDocDatabase.Close();
         }
@@ -493,40 +551,37 @@ namespace TecanPartListManager
             SqlCeCommand cmd = TecanAppDocDatabase.CreateCommand();
             // Update current document... Save Changes Button
 
-            if (AppDocEditPanelHeader.Text == "Edit Header Application Document")
-            {
-                cmd.CommandText = "UPDATE Documents SET [FileName] = @FileName, [DocumentDescription] = @Description, [SmartStartTitle] = @SmartStartTitle" +
-                    " WHERE DocID = " + Convert.ToInt32(AppDocIDTextBox.Text);
+            cmd.CommandText = "UPDATE Documents SET [FileName] = @FileName, [DocumentDescription] = @Description, [ApplicationCategory] = @ApplicationCategory, [IsSmartStart] = @IsSmartStart" +
+                " WHERE DocID = " + Convert.ToInt32(AppDocIDTextBox.Text);
 
-                cmd.Parameters.AddWithValue("@FileName", AppDocFilenameTextBox.Text);
-                cmd.Parameters.AddWithValue("@Description", AppDocDescriptionTextBox.Text);
-                cmd.Parameters.AddWithValue("@SmartStartTitle", AppDocSmartStartTitleTextBox.Text);
-                try
+            cmd.Parameters.AddWithValue("@FileName", AppDocFilenameTextBox.Text);
+            cmd.Parameters.AddWithValue("@Description", AppDocDescriptionTextBox.Text);
+            cmd.Parameters.AddWithValue("@ApplicationCategory", AppDocCatComboBox.SelectedValue);
+            if (IsSmartStartCheckBox.Visible == true)
+            {
+                if (IsSmartStartCheckBox.Checked == true)
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd.Parameters.AddWithValue("@IsSmartStart", 1);
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message);
+                    cmd.Parameters.AddWithValue("@IsSmartStart", 0);
                 }
             }
             else
             {
-                cmd.CommandText = "UPDATE Documents SET [FileName] = @FileName, [DocumentDescription] = @Description, [ApplicationCategory] = @ApplicationCategory" +
-                    " WHERE DocID = " + Convert.ToInt32(AppDocIDTextBox.Text);
-
-                cmd.Parameters.AddWithValue("@FileName", AppDocFilenameTextBox.Text);
-                cmd.Parameters.AddWithValue("@Description", AppDocDescriptionTextBox.Text);
-                cmd.Parameters.AddWithValue("@ApplicationCategory", AppDocAppCatTextBox.Text);
-                try
-                {
-                    cmd.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                cmd.Parameters.AddWithValue("@IsSmartStart", 0);
             }
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
             cmd.Parameters.Clear();
             TecanAppDocDatabase.Close();
             AppDocEditPanel.Visible = false;
@@ -536,13 +591,13 @@ namespace TecanPartListManager
         private void AddHeaderDocButton_Click(object sender, EventArgs e)
         {
             if(AppDocEditPanel.Visible == true) AppDocEditPanel.Visible = false;
-            AddSingleDoc("Header");
+            AddSingleDoc(1);
         }
 
         private void AddBodyDocumentButton_Click(object sender, EventArgs e)
         {
             if (AppDocEditPanel.Visible == true) AppDocEditPanel.Visible = false;
-            AddSingleDoc("Body");
+            AddSingleDoc(2);
         }
 
         private void AddFooterDocumentButton_Click(object sender, EventArgs e)
@@ -560,7 +615,7 @@ namespace TecanPartListManager
                     SqlCeCommand cmd = TecanAppDocDatabase.CreateCommand();
 
                     // Delete current document
-                    cmd.CommandText = "DELETE FROM Documents WHERE DocumentPosition = 'Footer'";
+                    cmd.CommandText = "DELETE FROM Documents WHERE DocumentPosition = 3";
                     try
                     {
                         cmd.ExecuteNonQuery();
@@ -570,7 +625,7 @@ namespace TecanPartListManager
                         MessageBox.Show("Unable to Delete");
                     }
                     TecanAppDocDatabase.Close();
-                    AddSingleDoc("Footer");
+                    AddSingleDoc(3);
                 }
             }
         }
@@ -579,16 +634,16 @@ namespace TecanPartListManager
         {
             if (AppDocEditPanelHeader.Text == "Edit Header Application Document")
             {
-                AddSingleDoc("Header");
+                AddSingleDoc(1);
             }
             else
             {
-                AddSingleDoc("Body");
+                AddSingleDoc(2);
             }
 
         }
 
-        private void AddSingleDoc(string DocumenrtPosition)
+        private void AddSingleDoc(int DocumenrtPosition)
         {
             int docID;
             if (AppDocEditPanel.Visible == true)
@@ -645,15 +700,22 @@ namespace TecanPartListManager
                 {
                     cmd.CommandText = "UPDATE Documents SET [DocExtension] = @DocExtension, [Document] = @Document, [FileName] = @FileName," +
                         " [DocumentDescription] = @DocumentDescription, [DocumentPosition] = @DocumentPosition, [ApplicationCategory] = @ApplicationCategory," + 
-                        " [SmartStartTitle] = @SmartStartTitle WHERE DocID = " + docID;
+                        " [IsSmartStart] = @IsSmartStart WHERE DocID = " + docID;
 
                     cmd.Parameters.AddWithValue("@DocExtension", appDocExt);
                     cmd.Parameters.AddWithValue("@Document", appDocData);
                     cmd.Parameters.AddWithValue("@FileName", appDocFileName);
-                    cmd.Parameters.AddWithValue("@DocumentDescription", AppDocDescriptionTextBox.Text);
+                    cmd.Parameters.AddWithValue("@DocumentDescription", appDocDescription);
                     cmd.Parameters.AddWithValue("@DocumentPosition", DocumenrtPosition);
-                    cmd.Parameters.AddWithValue("@ApplicationCategory", AppDocAppCatTextBox.Text);
-                    cmd.Parameters.AddWithValue("@SmartStartTitle", AppDocSmartStartTitleTextBox.Text);
+                    cmd.Parameters.AddWithValue("@ApplicationCategory", AppDocCatComboBox.SelectedValue);
+                    if (IsSmartStartCheckBox.Checked == true)
+                    {
+                        cmd.Parameters.AddWithValue("@IsSmartStart", 1);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@IsSmartStart", 0);
+                    }
                     AppDocEditPanel.Visible = false;
                 }
                 try
@@ -670,25 +732,21 @@ namespace TecanPartListManager
                 // br.Dispose();
                 loadAppDocs();
 
-                if (DocumenrtPosition == "Header")
+                switch (DocumenrtPosition)
                 {
-                    AppDocEditPanelHeader.Text = "Edit Header Application Document";
-                    SmartStartLabel.Visible = true;
-                    AppDocSmartStartTitleTextBox.Visible = true;
-                    AppCatLabel.Visible = false;
-                    AppDocAppCatTextBox.Visible = false;
-                    AppDocEditPanel.Visible = true;
-                    LoadAppDocEditPanel(docID, "Header");
-                }
-                else
-                {
-                    AppDocEditPanelHeader.Text = "Edit Body Application Document";
-                    SmartStartLabel.Visible = false;
-                    AppDocSmartStartTitleTextBox.Visible = false;
-                    AppCatLabel.Visible = true;
-                    AppDocAppCatTextBox.Visible = true;
-                    AppDocEditPanel.Visible = true;
-                    LoadAppDocEditPanel(docID, "Body");
+                    case 1:
+                        AppDocEditPanelHeader.Text = "Edit Header Application Document";
+                        IsSmartStartCheckBox.Visible = true;
+                        AppDocEditPanel.Visible = true;
+                        LoadAppDocEditPanel(docID);
+                        break;
+
+                    case 2:                    
+                        AppDocEditPanelHeader.Text = "Edit Body Application Document";
+                        IsSmartStartCheckBox.Visible = false;
+                        AppDocEditPanel.Visible = true;
+                        LoadAppDocEditPanel(docID);
+                        break;
                 }
             }
 
@@ -747,6 +805,116 @@ namespace TecanPartListManager
 
             Process.Start(fullFilePathName);
 
+        }
+
+        private void AddCatButton_Click(object sender, EventArgs e)
+        {
+            RenameCatButton.Visible = false;
+            DeleteCatButton.Visible = false;
+            AddNewCatButton.Visible = true;
+            CatPanel.Visible = true;
+            AddEditCategoryTextBox.Focus();
+        }
+
+        private void AddNewCatButton_Click(object sender, EventArgs e)
+        {
+            if (AddEditCategoryTextBox.Text != "")
+            {
+                int NewCatID = getlastCatID();
+
+                openAppDocDatabase();
+                SqlCeCommand cmd = TecanAppDocDatabase.CreateCommand();
+
+                cmd.CommandText = "INSERT INTO ApplicationCategories (AppCategoryID, AppCategoryName) Values (@AppCategoryID, @AppCategoryName)";
+
+                cmd.Parameters.AddWithValue("@AppCategoryID", NewCatID);
+                cmd.Parameters.AddWithValue("@AppCategoryName", AddEditCategoryTextBox.Text);
+
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                TecanAppDocDatabase.Close();
+                CatPanel.Visible = false;
+                CategoryListView.Items.Add("");
+                CategoryListView.Items[CategoryListView.Items.Count-1].SubItems.Add(NewCatID.ToString());
+                CategoryListView.Items[CategoryListView.Items.Count-1].SubItems.Add(AddEditCategoryTextBox.Text);
+            }
+
+        }
+
+        private int getlastCatID()
+        {
+            Int16 NewCatID = 0;
+            openAppDocDatabase();
+            SqlCeCommand cmd = TecanAppDocDatabase.CreateCommand();
+            cmd.CommandText = "SELECT AppCategoryID FROM ApplicationCategories ORDER BY AppCategoryID";
+
+            SqlCeDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                NewCatID = Convert.ToInt16(reader[0]);
+            }
+            reader.Dispose();
+            TecanAppDocDatabase.Close();
+            return NewCatID++;
+        }
+
+        private void CategoryListView_DoubleClick(object sender, EventArgs e)
+        {
+            RenameCatButton.Visible = true;
+            DeleteCatButton.Visible = true;
+            AddNewCatButton.Visible = false;
+            CatPanel.Visible = true;
+            CurrentCatID.Text = CategoryListView.SelectedItems[0].SubItems[1].Text;
+            AddEditCategoryTextBox.Text = CategoryListView.SelectedItems[0].SubItems[2].Text;
+            AddEditCategoryTextBox.Focus();
+        }
+
+        private void CancelCatButton_Click(object sender, EventArgs e)
+        {
+            CatPanel.Visible = false;
+        }
+
+        private void RenameCatButton_Click(object sender, EventArgs e)
+        {
+            openAppDocDatabase();
+            SqlCeCommand cmd = TecanAppDocDatabase.CreateCommand();
+
+            cmd.CommandText = "UPDATE ApplicationCategories SET [AppCategoryName] = @NewCatName WHERE AppCategoryID = " + Convert.ToInt32(CurrentCatID.Text);
+            cmd.Parameters.AddWithValue("@NewCatName", AddEditCategoryTextBox.Text);            
+            cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
+            TecanAppDocDatabase.Close();
+            LoadCatList();
+            CatPanel.Visible = false;
+        }
+
+        private void DeleteCatButton_Click(object sender, EventArgs e)
+        {
+            int docCount = 0;
+            openAppDocDatabase();
+            SqlCeCommand cmd = TecanAppDocDatabase.CreateCommand();
+
+            cmd.CommandText = "SELECT DocID FROM Documents WHERE AppCategoryID = " + Convert.ToInt32(CurrentCatID.Text);
+            SqlCeDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                docCount++;
+            }
+            reader.Dispose();
+            if (docCount > 0)
+            {
+                MessageBox.Show("There are documents in application category " + AddEditCategoryTextBox.Text +
+                    ".\n\nPlease change the document categories before deleting this category.");
+            }
+            else
+            {
+                cmd.CommandText = "DELETE FROM ApplicationCategories WHERE AppCategoryID = " + Convert.ToInt32(CurrentCatID.Text);
+                cmd.ExecuteNonQuery();
+                LoadCatList();
+            }
+            TecanAppDocDatabase.Close();
+            CatPanel.Visible = false;
         }
 
     }
