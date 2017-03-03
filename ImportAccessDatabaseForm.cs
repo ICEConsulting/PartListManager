@@ -1855,10 +1855,6 @@ namespace TecanPartListManager
                 cmd.Parameters.AddWithValue("@IsSmartStart", 0);
                 switch (AppDocsFileName)
                 {
-                    case "blank header.pdf":
-                        cmd.Parameters.AddWithValue("@DocumentPosition", 1);
-                        break;
-
                     case "terms.pdf":
                         cmd.Parameters.AddWithValue("@DocumentPosition", 3);
                         break;
@@ -1866,7 +1862,6 @@ namespace TecanPartListManager
                     default:
                         cmd.Parameters.AddWithValue("@DocumentPosition", 2);
                         break;
-
                 }
                 try
                 {

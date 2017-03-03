@@ -1140,7 +1140,7 @@ namespace TecanPartListManager
             this.FindReplacePanel.Controls.Add(this.label13);
             this.FindReplacePanel.Controls.Add(this.FindTextBox);
             this.FindReplacePanel.Controls.Add(this.label12);
-            this.FindReplacePanel.Location = new System.Drawing.Point(500, 102);
+            this.FindReplacePanel.Location = new System.Drawing.Point(311, 107);
             this.FindReplacePanel.Margin = new System.Windows.Forms.Padding(2);
             this.FindReplacePanel.Name = "FindReplacePanel";
             this.FindReplacePanel.Size = new System.Drawing.Size(486, 528);

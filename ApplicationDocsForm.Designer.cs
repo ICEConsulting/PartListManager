@@ -34,7 +34,6 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.BodyDocumentsListView = new System.Windows.Forms.ListView();
@@ -71,6 +70,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.AddCatButton = new System.Windows.Forms.Button();
             this.CatPanel = new System.Windows.Forms.Panel();
+            this.CurrentCatID = new System.Windows.Forms.Label();
             this.CancelCatButton = new System.Windows.Forms.Button();
             this.DeleteCatButton = new System.Windows.Forms.Button();
             this.RenameCatButton = new System.Windows.Forms.Button();
@@ -81,7 +81,6 @@
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CatID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CatName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.CurrentCatID = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.AppDocEditPanel.SuspendLayout();
             this.CatPanel.SuspendLayout();
@@ -94,8 +93,7 @@
             this.columnHeader7,
             this.columnHeader1,
             this.columnHeader2,
-            this.columnHeader11,
-            this.columnHeader3});
+            this.columnHeader11});
             this.TopDocumentsListView.FullRowSelect = true;
             this.TopDocumentsListView.HideSelection = false;
             this.TopDocumentsListView.Location = new System.Drawing.Point(49, 109);
@@ -122,32 +120,28 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Filename";
-            this.columnHeader1.Width = 225;
+            this.columnHeader1.Width = 240;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Document Description";
-            this.columnHeader2.Width = 350;
+            this.columnHeader2.Width = 400;
             // 
             // columnHeader11
             // 
             this.columnHeader11.Text = "Category";
             this.columnHeader11.Width = 150;
             // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Is SS";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(279, 78);
+            this.label1.Location = new System.Drawing.Point(398, 78);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(398, 19);
+            this.label1.Size = new System.Drawing.Size(162, 19);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Document Header, Smart Start and Non-Smart Start";
+            this.label1.Text = "Smart Start Headers";
             // 
             // label2
             // 
@@ -278,7 +272,7 @@
             this.AppDocEditPanel.Controls.Add(this.label5);
             this.AppDocEditPanel.Controls.Add(this.label4);
             this.AppDocEditPanel.Controls.Add(this.AppDocEditPanelHeader);
-            this.AppDocEditPanel.Location = new System.Drawing.Point(91, 548);
+            this.AppDocEditPanel.Location = new System.Drawing.Point(81, 548);
             this.AppDocEditPanel.Margin = new System.Windows.Forms.Padding(4);
             this.AppDocEditPanel.Name = "AppDocEditPanel";
             this.AppDocEditPanel.Size = new System.Drawing.Size(797, 324);
@@ -524,11 +518,21 @@
             this.CatPanel.Controls.Add(this.AddNewCatButton);
             this.CatPanel.Controls.Add(this.AddEditCategoryTextBox);
             this.CatPanel.Controls.Add(this.label8);
-            this.CatPanel.Location = new System.Drawing.Point(261, 136);
+            this.CatPanel.Location = new System.Drawing.Point(310, 136);
             this.CatPanel.Name = "CatPanel";
             this.CatPanel.Size = new System.Drawing.Size(338, 160);
             this.CatPanel.TabIndex = 20;
             this.CatPanel.Visible = false;
+            // 
+            // CurrentCatID
+            // 
+            this.CurrentCatID.AutoSize = true;
+            this.CurrentCatID.Location = new System.Drawing.Point(22, 125);
+            this.CurrentCatID.Name = "CurrentCatID";
+            this.CurrentCatID.Size = new System.Drawing.Size(35, 14);
+            this.CurrentCatID.TabIndex = 24;
+            this.CurrentCatID.Text = "label9";
+            this.CurrentCatID.Visible = false;
             // 
             // CancelCatButton
             // 
@@ -630,16 +634,6 @@
             this.CatName.Text = "Category Name";
             this.CatName.Width = 250;
             // 
-            // CurrentCatID
-            // 
-            this.CurrentCatID.AutoSize = true;
-            this.CurrentCatID.Location = new System.Drawing.Point(22, 125);
-            this.CurrentCatID.Name = "CurrentCatID";
-            this.CurrentCatID.Size = new System.Drawing.Size(35, 14);
-            this.CurrentCatID.TabIndex = 24;
-            this.CurrentCatID.Text = "label9";
-            this.CurrentCatID.Visible = false;
-            // 
             // ApplicationDocsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -667,6 +661,7 @@
             this.Name = "ApplicationDocsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Application Document Configurations";
+            this.Shown += new System.EventHandler(this.loadAppDocs);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.AppDocEditPanel.ResumeLayout(false);
@@ -721,7 +716,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.ComboBox AppDocCatComboBox;
         private System.Windows.Forms.CheckBox IsSmartStartCheckBox;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.Panel CatPanel;
         private System.Windows.Forms.Button DeleteCatButton;
         private System.Windows.Forms.Button RenameCatButton;

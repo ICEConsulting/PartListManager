@@ -197,8 +197,8 @@ namespace TecanPartListManager
             cmdSmartStartMaster.CommandText = "SELECT [DBID] FROM DBMembership WHERE [DBName] = 'C2'";
             DBC2Value = (int)cmdSmartStartMaster.ExecuteScalar();
 
-            cmdSmartStartMaster.CommandText = "SELECT [DBID] FROM DBMembership WHERE [DBName] = 'PL'";
-            DBPLValue = (int)cmdSmartStartMaster.ExecuteScalar();
+            //cmdSmartStartMaster.CommandText = "SELECT [DBID] FROM DBMembership WHERE [DBName] = 'PL'";
+            //DBPLValue = (int)cmdSmartStartMaster.ExecuteScalar();
             TecanSmartStartMasterDatabase.Close();
         }
 
@@ -351,7 +351,7 @@ namespace TecanPartListManager
             {
                 if (reader[1].ToString() == "")
                 {
-                    if (MessageBox.Show("There are parts that have no Sales Type assigned!\r\n\r\nDo you want to continue to Publish this database?\r\n\r\nSelect No, the main partslist display will list the parts with this association!", "Invalid Sales Type", MessageBoxButtons.YesNo) == DialogResult.No)
+                    if (MessageBox.Show("There are parts that have no Sales Type assigned!\r\n\r\nDo you want to continue to Publish this database?", "Invalid Sales Type", MessageBoxButtons.YesNo) == DialogResult.No)
                     {
                         errorFoundDoExit = true;
                         break;
@@ -745,7 +745,7 @@ namespace TecanPartListManager
             {
                 if (reader[1].ToString() == "")
                 {
-                    if (MessageBox.Show("There are parts that have no Sales Type assigned!\r\n\r\nDo you want to continue to Publish this database?\r\n\r\nSelect No, the main partslist display will list the parts with this association!", "Invalid Sales Type", MessageBoxButtons.YesNo) == DialogResult.No)
+                    if (MessageBox.Show("There are parts that have no Sales Type assigned!\r\n\r\nDo you want to continue to Publish this database?", "Invalid Sales Type", MessageBoxButtons.YesNo) == DialogResult.No)
                     {
                         errorFoundDoExit = true;
                         break;

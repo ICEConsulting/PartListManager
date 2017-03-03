@@ -20,18 +20,15 @@ namespace TecanPartListManager
         public ApplicationDocsForm()
         {
             InitializeComponent();
-            loadAppDocs();
         }
 
-        private void loadAppDocs()
+        private void loadAppDocs(object sender, EventArgs e)
         {
             openAppDocDatabase();
             SqlCeCommand cmd = TecanAppDocDatabase.CreateCommand();
-
+            
             // Load Top Documents into List
-            TopDocumentsListView.Items.Clear();
-
-            cmd.CommandText = "SELECT D.DocID, D.FileName, D.DocumentDescription, C.AppCategoryName, D.IsSmartStart FROM Documents D" +
+            cmd.CommandText = "SELECT D.DocID, D.FileName, D.DocumentDescription, C.AppCategoryName FROM Documents D" +
             " INNER JOIN ApplicationCategories C" +
             " ON D.ApplicationCategory = C.AppCategoryID" +
             " WHERE DocumentPosition = 1";
@@ -48,14 +45,6 @@ namespace TecanPartListManager
                     TopDocumentsListView.Items[docCount].SubItems.Add(reader[1].ToString());
                     TopDocumentsListView.Items[docCount].SubItems.Add(reader[2].ToString());
                     TopDocumentsListView.Items[docCount].SubItems.Add(reader[3].ToString());
-                    if (Convert.ToInt16(reader[4]) == 0)
-                    {
-                        TopDocumentsListView.Items[docCount].SubItems.Add("No");
-                    }
-                    else
-                    {
-                        TopDocumentsListView.Items[docCount].SubItems.Add("Yes");
-                    }
                     docCount++;
                 }
                 reader.Dispose();
@@ -70,8 +59,6 @@ namespace TecanPartListManager
             LoadCatList();
 
             // Load Body Documents into List
-            BodyDocumentsListView.Items.Clear();
-
             cmd.CommandText = "SELECT D.DocID, D.FileName, D.DocumentDescription, C.AppCategoryName FROM Documents D" +
             " INNER JOIN ApplicationCategories C" +
             " ON D.ApplicationCategory = C.AppCategoryID" +
@@ -125,12 +112,11 @@ namespace TecanPartListManager
             openAppDocDatabase();
             SqlCeCommand cmd = TecanAppDocDatabase.CreateCommand();
 
-            CategoryListView.Items.Clear();
-            int catCount = 0;
             cmd.CommandText = "SELECT AppCategoryID, AppCategoryName FROM ApplicationCategories";
             try
             {
                 SqlCeDataReader reader = cmd.ExecuteReader();
+                int catCount = 0;
                 while (reader.Read())
                 {
                     CategoryListView.Items.Add("");
@@ -230,7 +216,7 @@ namespace TecanPartListManager
                     docID++;
                 }
                 TecanAppDocDatabase.Close();
-                loadAppDocs();
+                loadAppDocs(sender, e);
             }
         }
 
@@ -388,7 +374,7 @@ namespace TecanPartListManager
                 }
 
                 TecanAppDocDatabase.Close();
-                loadAppDocs();
+                loadAppDocs(sender, e);
             }
         }
 
@@ -439,6 +425,7 @@ namespace TecanPartListManager
 
         private void TopDocumentsListView_Click(object sender, EventArgs e)
         {
+            BodyDocumentsListView.SelectedIndices.Clear();
             AppDocEditPanelHeader.Text = "Edit Header Application Document";
             IsSmartStartCheckBox.Visible = true;
             AppDocEditPanel.Visible = true;
@@ -448,6 +435,7 @@ namespace TecanPartListManager
 
         private void BodyDocumentsListView_Click(object sender, EventArgs e)
         {
+            TopDocumentsListView.SelectedIndices.Clear();
             AppDocEditPanelHeader.Text = "Edit Body Application Document";
             IsSmartStartCheckBox.Visible = false;
             AppDocEditPanel.Visible = true;
@@ -539,8 +527,19 @@ namespace TecanPartListManager
                     MessageBox.Show("Unable to Delete");
                 }
                 TecanAppDocDatabase.Close();
+                // update listviews contents
+                int whichSelected;
+                if (TopDocumentsListView.SelectedIndices.Count > 0)
+                {
+                    whichSelected = TopDocumentsListView.SelectedIndices[0];
+                    TopDocumentsListView.Items.RemoveAt(whichSelected);
+                }
+                if (BodyDocumentsListView.SelectedIndices.Count > 0)
+                {
+                    whichSelected = BodyDocumentsListView.SelectedIndices[0];
+                    BodyDocumentsListView.Items.RemoveAt(whichSelected);
+                }
                 AppDocEditPanel.Visible = false;
-                loadAppDocs();
             }
 
         }
@@ -584,8 +583,23 @@ namespace TecanPartListManager
             
             cmd.Parameters.Clear();
             TecanAppDocDatabase.Close();
+            // update listviews contents
+            int whichSelected;
+            if (TopDocumentsListView.SelectedIndices.Count > 0)
+            {
+                whichSelected = TopDocumentsListView.SelectedIndices[0];
+                TopDocumentsListView.Items[whichSelected].SubItems[2].Text = AppDocFilenameTextBox.Text;
+                TopDocumentsListView.Items[whichSelected].SubItems[3].Text = AppDocDescriptionTextBox.Text;
+                TopDocumentsListView.Items[whichSelected].SubItems[4].Text = AppDocCatComboBox.Text;
+            }
+            if (BodyDocumentsListView.SelectedIndices.Count > 0)
+            {
+                whichSelected = BodyDocumentsListView.SelectedIndices[0];
+                BodyDocumentsListView.Items[whichSelected].SubItems[2].Text = AppDocFilenameTextBox.Text;
+                BodyDocumentsListView.Items[whichSelected].SubItems[3].Text = AppDocDescriptionTextBox.Text;
+                BodyDocumentsListView.Items[whichSelected].SubItems[4].Text = AppDocCatComboBox.Text;
+            }
             AppDocEditPanel.Visible = false;
-            loadAppDocs();
         }
 
         private void AddHeaderDocButton_Click(object sender, EventArgs e)
@@ -640,7 +654,7 @@ namespace TecanPartListManager
             {
                 AddSingleDoc(2);
             }
-
+            loadAppDocs(sender, e);
         }
 
         private void AddSingleDoc(int DocumenrtPosition)
@@ -664,6 +678,7 @@ namespace TecanPartListManager
 
             openFileDialog1.InitialDirectory = "c:\\";
             openFileDialog1.FilterIndex = 2;
+            openFileDialog1.Filter = "pdf files (*.pdf)|*.pdf";
             openFileDialog1.RestoreDirectory = true;
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -730,7 +745,6 @@ namespace TecanPartListManager
                 TecanAppDocDatabase.Close();
                 appDocContents.Dispose();
                 // br.Dispose();
-                loadAppDocs();
 
                 switch (DocumenrtPosition)
                 {
@@ -884,7 +898,12 @@ namespace TecanPartListManager
             cmd.ExecuteNonQuery();
             cmd.Parameters.Clear();
             TecanAppDocDatabase.Close();
-            LoadCatList();
+            int whichSelected;
+            if (CategoryListView.SelectedIndices.Count > 0)
+            {
+                whichSelected = CategoryListView.SelectedIndices[0];
+                CategoryListView.Items[whichSelected].SubItems[2].Text = AddEditCategoryTextBox.Text;
+            }
             CatPanel.Visible = false;
         }
 
@@ -894,7 +913,7 @@ namespace TecanPartListManager
             openAppDocDatabase();
             SqlCeCommand cmd = TecanAppDocDatabase.CreateCommand();
 
-            cmd.CommandText = "SELECT DocID FROM Documents WHERE AppCategoryID = " + Convert.ToInt32(CurrentCatID.Text);
+            cmd.CommandText = "SELECT DocID FROM Documents WHERE ApplicationCategory = " + Convert.ToInt32(CurrentCatID.Text);
             SqlCeDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -911,7 +930,13 @@ namespace TecanPartListManager
             {
                 cmd.CommandText = "DELETE FROM ApplicationCategories WHERE AppCategoryID = " + Convert.ToInt32(CurrentCatID.Text);
                 cmd.ExecuteNonQuery();
-                LoadCatList();
+                int whichSelected;
+                if (CategoryListView.SelectedIndices.Count > 0)
+                {
+                    whichSelected = CategoryListView.SelectedIndices[0];
+                    CategoryListView.Items.RemoveAt(whichSelected);
+                }
+
             }
             TecanAppDocDatabase.Close();
             CatPanel.Visible = false;
