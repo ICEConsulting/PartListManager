@@ -47,14 +47,14 @@ namespace TecanPartListManager
             categoryTableAdapter.Connection.ConnectionString = mainForm.whichDb;
             instrumentTableAdapter.Connection.ConnectionString = mainForm.whichDb;
 
-            String str1 = salesTypeTableAdapter.Connection.ConnectionString.ToString();
-            String str2 = dBMembershipTableAdapter.Connection.ConnectionString.ToString();
-            String str3 = sSPCategoryTableAdapter.Connection.ConnectionString.ToString();
-            String str4 = subCategoryTableAdapter.Connection.ConnectionString.ToString();
-            String str5 = categoryTableAdapter.Connection.ConnectionString.ToString();
-            String str6 = instrumentTableAdapter.Connection.ConnectionString.ToString();
-            String str7 = partsListTableAdapter.Connection.ConnectionString.ToString();
-            MessageBox.Show(str1 + "\n" + str2 + "\n" + str3 + "\n" + str4 + "\n" + str5 + "\n" + str6 + "\n" + str7);
+            //String str1 = salesTypeTableAdapter.Connection.ConnectionString.ToString();
+            //String str2 = dBMembershipTableAdapter.Connection.ConnectionString.ToString();
+            //String str3 = sSPCategoryTableAdapter.Connection.ConnectionString.ToString();
+            //String str4 = subCategoryTableAdapter.Connection.ConnectionString.ToString();
+            //String str5 = categoryTableAdapter.Connection.ConnectionString.ToString();
+            //String str6 = instrumentTableAdapter.Connection.ConnectionString.ToString();
+            //String str7 = partsListTableAdapter.Connection.ConnectionString.ToString();
+            //MessageBox.Show(str1 + "\n" + str2 + "\n" + str3 + "\n" + str4 + "\n" + str5 + "\n" + str6 + "\n" + str7);
 
             this.partsListTableAdapter.Fill(this.tecanPartsListDataSet.PartsList);
             this.suppumentalDocsTableAdapter.Fill(this.tecanPartsListDataSet.SuppumentalDocs);
