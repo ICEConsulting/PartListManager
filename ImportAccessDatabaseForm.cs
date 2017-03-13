@@ -1826,7 +1826,7 @@ namespace TecanPartListManager
             AppDocsPath = getTemplatePath();
 
             // Get template file that are in the root folder (no Cataegory)
-            cmd.CommandText = "INSERT INTO ApplicationCategories (AppCategoryID, AppCategoryName) Values (" + catID + ", 'General')";
+            cmd.CommandText = "INSERT INTO ApplicationCategories (AppCategoryID, AppCategoryName) Values (" + catID + ", 'No Category Associated')";
             cmd.ExecuteNonQuery();
 
             AppDocsList = Directory.GetFiles(AppDocsPath, "*.pdf");
