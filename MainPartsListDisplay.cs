@@ -52,14 +52,14 @@ namespace TecanPartListManager
             this.instrumentTableAdapter.Fill(this.tecanPartsListDataSet.Instrument);
             this.partsListTableAdapter.Fill(this.tecanPartsListDataSet.PartsList);
 
-            String str1 = salesTypeTableAdapter.Connection.ConnectionString.ToString();
-            String str2 = dBMembershipTableAdapter.Connection.ConnectionString.ToString();
-            String str3 = sSPCategoryTableAdapter.Connection.ConnectionString.ToString();
-            String str4 = subCategoryTableAdapter.Connection.ConnectionString.ToString();
-            String str5 = categoryTableAdapter.Connection.ConnectionString.ToString();
-            String str6 = instrumentTableAdapter.Connection.ConnectionString.ToString();
-            String str7 = partsListTableAdapter.Connection.ConnectionString.ToString();
-            MessageBox.Show(str1 + "\n" + str2 + "\n" + str3 + "\n" + str4 + "\n" + str5 + "\n" + str6 + "\n" + str7);
+            //String str1 = salesTypeTableAdapter.Connection.ConnectionString.ToString();
+            //String str2 = dBMembershipTableAdapter.Connection.ConnectionString.ToString();
+            //String str3 = sSPCategoryTableAdapter.Connection.ConnectionString.ToString();
+            //String str4 = subCategoryTableAdapter.Connection.ConnectionString.ToString();
+            //String str5 = categoryTableAdapter.Connection.ConnectionString.ToString();
+            //String str6 = instrumentTableAdapter.Connection.ConnectionString.ToString();
+            //String str7 = partsListTableAdapter.Connection.ConnectionString.ToString();
+            //MessageBox.Show(str1 + "\n" + str2 + "\n" + str3 + "\n" + str4 + "\n" + str5 + "\n" + str6 + "\n" + str7);
             if (partsListBindingSource.Count == 0)
             {
                 String sourcePath = @"c:\TecanFiles";
