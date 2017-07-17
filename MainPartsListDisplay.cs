@@ -31,6 +31,7 @@ namespace TecanPartListManager
         public MainPartsListDisplay()
         {
             InitializeComponent();
+            this.AutoScroll = true;
         }
 
         public void partsListBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -38,7 +39,6 @@ namespace TecanPartListManager
             this.Validate();
             this.partsListBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.tecanPartsListDataSet);
-
         }
 
         public void MainPartsListDisplay_Load(object sender, EventArgs e)
@@ -62,6 +62,7 @@ namespace TecanPartListManager
             //MessageBox.Show(str1 + "\n" + str2 + "\n" + str3 + "\n" + str4 + "\n" + str5 + "\n" + str6 + "\n" + str7);
             if (partsListBindingSource.Count == 0)
             {
+                // Needs to change to current directory
                 String sourcePath = @"c:\TecanFiles";
                 String sourcePartsFile = System.IO.Path.Combine(sourcePath, "TecanPartsList.sdf");
                 if (File.Exists(sourcePartsFile))
@@ -110,8 +111,13 @@ namespace TecanPartListManager
                 EditPasswordTextBox.Focus();
             }
             whichDb = partsListTableAdapter.Connection.ConnectionString;
+            string publishPath = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "publishedDatabases.txt");
+            if (File.Exists(publishPath))
+            {
+                String[] lastPublishData = File.ReadAllLines(publishPath);
+                LastPublishLabel.Text = "Quote Database Last Publish Date: " + lastPublishData[lastPublishData.Length-1];
+            }
         }
-
 
         public void PartDetailReturn()
         {
@@ -215,9 +221,9 @@ namespace TecanPartListManager
                     DBMembershipListComboBox.SelectedValue = selectedValue;
                     break;
 
-                //case "SalesType":
-                //    lookupTableID = "SalesType";
-                //    break;
+                case "SalesType":
+                    SalesTypeComboBox.SelectedValue = selectedValue;
+                    break;
 
             }
 
@@ -453,6 +459,7 @@ namespace TecanPartListManager
         {
             tableMaintnance tablesForm = new tableMaintnance();
             tablesForm.SetMainFormInstance(this);
+            tablesForm.TopMost = true;
             tablesForm.Show();
         }
 

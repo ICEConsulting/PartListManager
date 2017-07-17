@@ -160,6 +160,7 @@ namespace TecanPartListManager
             EditTableForm.SetMainFormInstance(mainForm);
             EditTableForm.Text = "Add Instrument Item";
             EditTableForm.LoadTableEdit("Instrument", "Add");
+            EditTableForm.TopMost = true;
             EditTableForm.Show();
         }
 
@@ -168,8 +169,10 @@ namespace TecanPartListManager
             currentTable = "Category";
             tableMaintenanceEdit EditTableForm = new tableMaintenanceEdit();
             EditTableForm.SetAssociationFormInstance(this);
+            EditTableForm.SetMainFormInstance(mainForm);
             EditTableForm.Text = "Add Category Item";
             EditTableForm.LoadTableEdit("Category", "Add");
+            EditTableForm.TopMost = true;
             EditTableForm.Show();
         }
 
@@ -178,8 +181,10 @@ namespace TecanPartListManager
             currentTable = "SubCategory";
             tableMaintenanceEdit EditTableForm = new tableMaintenanceEdit();
             EditTableForm.SetAssociationFormInstance(this);
+            EditTableForm.SetMainFormInstance(mainForm);
             EditTableForm.Text = "Add Sub-Category Item";
             EditTableForm.LoadTableEdit("SubCategory", "Add");
+            EditTableForm.TopMost = true;
             EditTableForm.Show();
         }
 
@@ -188,8 +193,10 @@ namespace TecanPartListManager
             currentTable = "SSPCategory";
             tableMaintenanceEdit EditTableForm = new tableMaintenanceEdit();
             EditTableForm.SetAssociationFormInstance(this);
+            EditTableForm.SetMainFormInstance(mainForm);
             EditTableForm.Text = "Add SSP-Category Item";
             EditTableForm.LoadTableEdit("SSPCategory", "Add");
+            EditTableForm.TopMost = true;
             EditTableForm.Show();
         }
 
@@ -198,8 +205,10 @@ namespace TecanPartListManager
             currentTable = "DBMembership";
             tableMaintenanceEdit EditTableForm = new tableMaintenanceEdit();
             EditTableForm.SetAssociationFormInstance(this);
+            EditTableForm.SetMainFormInstance(mainForm);
             EditTableForm.Text = "Add Database Membership Item";
             EditTableForm.LoadTableEdit("DBMembership", "Add");
+            EditTableForm.TopMost = true;
             EditTableForm.Show();
         }
 
@@ -208,8 +217,10 @@ namespace TecanPartListManager
             currentTable = "SalesType";
             tableMaintenanceEdit EditTableForm = new tableMaintenanceEdit();
             EditTableForm.SetAssociationFormInstance(this);
+            EditTableForm.SetMainFormInstance(mainForm);
             EditTableForm.Text = "Add Sales Type Item";
             EditTableForm.LoadTableEdit("SalesType", "Add");
+            EditTableForm.TopMost = true;
             EditTableForm.Show();
         }
 
@@ -218,8 +229,10 @@ namespace TecanPartListManager
             currentTable = "Compatibility";
             tableMaintenanceEdit EditTableForm = new tableMaintenanceEdit();
             EditTableForm.SetAssociationFormInstance(this);
+            EditTableForm.SetMainFormInstance(mainForm);
             EditTableForm.Text = "Add Compatibility Item";
             EditTableForm.LoadTableEdit("Compatibility", "Add");
+            EditTableForm.TopMost = true;
             EditTableForm.Show();
         }
 
@@ -231,6 +244,7 @@ namespace TecanPartListManager
             EditTableForm.SetMainFormInstance(mainForm);
             EditTableForm.Text = "Edit or Delete Instrument Item";
             EditTableForm.LoadTableEdit("Instrument", "Edit", instrumentListBox.GetItemText(instrumentListBox.SelectedItem));
+            EditTableForm.TopMost = true;
             EditTableForm.Show();
         }
 
@@ -242,6 +256,7 @@ namespace TecanPartListManager
             EditTableForm.SetMainFormInstance(mainForm);
             EditTableForm.Text = "Edit or Delete Category Item";
             EditTableForm.LoadTableEdit("Category", "Edit", categoryListBox.GetItemText(categoryListBox.SelectedItem));
+            EditTableForm.TopMost = true;
             EditTableForm.Show();
         }
 
@@ -253,6 +268,7 @@ namespace TecanPartListManager
             EditTableForm.SetMainFormInstance(mainForm);
             EditTableForm.Text = "Edit or Delete Sub-Category Item";
             EditTableForm.LoadTableEdit("SubCategory", "Edit", subCategoryListBox.GetItemText(subCategoryListBox.SelectedItem));
+            EditTableForm.TopMost = true;
             EditTableForm.Show();
         }
 
@@ -264,6 +280,7 @@ namespace TecanPartListManager
             EditTableForm.SetMainFormInstance(mainForm);
             EditTableForm.Text = "Edit or Delete SSP Category Item";
             EditTableForm.LoadTableEdit("SSPCategory", "Edit", sSPCategoryListBox.GetItemText(sSPCategoryListBox.SelectedItem));
+            EditTableForm.TopMost = true;
             EditTableForm.Show();
         }
 
@@ -275,6 +292,7 @@ namespace TecanPartListManager
             EditTableForm.SetMainFormInstance(mainForm);
             EditTableForm.Text = "Edit or Delete Database Membership Item";
             EditTableForm.LoadTableEdit("DBMembership", "Edit", dBMembershipListBox.GetItemText(dBMembershipListBox.SelectedItem));
+            EditTableForm.TopMost = true;
             EditTableForm.Show();
         }
 
@@ -286,6 +304,7 @@ namespace TecanPartListManager
             EditTableForm.SetMainFormInstance(mainForm);
             EditTableForm.Text = "Edit or Delete Sales Type Item";
             EditTableForm.LoadTableEdit("SalesType", "Edit", salesTypeListBox.GetItemText(salesTypeListBox.SelectedItem));
+            EditTableForm.TopMost = true;
             EditTableForm.Show();
         }
 
@@ -297,6 +316,7 @@ namespace TecanPartListManager
             EditTableForm.SetMainFormInstance(mainForm);
             EditTableForm.Text = "Edit or Delete Compatibility Item";
             EditTableForm.LoadTableEdit("Compatibility", "Edit", compatibilityListBox.GetItemText(compatibilityListBox.SelectedItem));
+            EditTableForm.TopMost = true;
             EditTableForm.Show();
         }
 
@@ -399,6 +419,7 @@ namespace TecanPartListManager
             EditTableForm.SetMainFormInstance(mainForm);
             EditTableForm.Text = "Edit or Delete Supplemental Document";
             EditTableForm.LoadTableEdit("SuppumentalDocs", "Edit", selectedDocName);
+            EditTableForm.TopMost = true;
             EditTableForm.Show();
 
         }
@@ -536,32 +557,43 @@ namespace TecanPartListManager
 
             foreach (FileInfo file in tempFiles.GetFiles())
             {
-                file.Delete();
+                try
+                {
+                    file.Delete();
+                }
+                catch { }
             }
 
             String fullFilePathName = @tempFilePath + "\\" + selectedDocName;
-            System.IO.FileStream fs = System.IO.File.Create(fullFilePathName);
-            fs.Close();
-
-            // Write file contents into file
-            BinaryWriter Writer = null;
-
             try
             {
-                // Create a new stream to write to the file
-                Writer = new BinaryWriter(File.OpenWrite(fullFilePathName));
+                System.IO.FileStream fs = System.IO.File.Create(fullFilePathName);
+                fs.Close();
 
-                // Writer raw data                
-                Writer.Write(documentData);
-                Writer.Flush();
-                Writer.Close();
+                // Write file contents into file
+                BinaryWriter Writer = null;
+
+                try
+                {
+                    // Create a new stream to write to the file
+                    Writer = new BinaryWriter(File.OpenWrite(fullFilePathName));
+
+                    // Writer raw data                
+                    Writer.Write(documentData);
+                    Writer.Flush();
+                    Writer.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                Process.Start(fullFilePathName);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
-            Process.Start(fullFilePathName);
         }
 
         private void assoSuppDocButton_Click(object sender, EventArgs e)

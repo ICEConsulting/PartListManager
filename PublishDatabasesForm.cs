@@ -58,15 +58,17 @@ namespace TecanPartListManager
                 CreateQuoteLookupTables();
                 if (errorFoundDoExit) return;
                 CopyMasterDatabaseToQuoteDatabase();
-
-                publishProgressBar.Value = 0;
-                publishLabel.Text = "Creating Configurator Smart Start Database";
-                CleanExistingSmartStartQuoteDatabase();
-                getSmartStartDBMembership();
-                CreateSmartStartQuoteLookupTables();
-                if (errorFoundDoExit) return;
-                CopyMasterDatabaseToSmartStartQuoteDatabase();
                 SaveNewQuoteDatabaseToFolder();
+
+                // Smart Start Database
+                //publishProgressBar.Value = 0;
+                //publishLabel.Text = "Creating Configurator Smart Start Database";
+                //CleanExistingSmartStartQuoteDatabase();
+                //getSmartStartDBMembership();
+                //CreateSmartStartQuoteLookupTables();
+                //if (errorFoundDoExit) return;
+                //CopyMasterDatabaseToSmartStartQuoteDatabase();
+                //SaveNewQuoteDatabaseToFolder();
             }
 
             if (WhichDatabase == "Customer" || WhichDatabase == "Both")
@@ -997,31 +999,60 @@ namespace TecanPartListManager
             folderBrowserDialog1.ShowNewFolderButton = false;
 
             String sourceQuoteFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanQuoteGeneratorPartsList.sdf");
-            String sourceSmartStartQuoteFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanSmartStartQuoteGeneratorPartsList.sdf");
+            // String sourceSmartStartQuoteFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanSmartStartQuoteGeneratorPartsList.sdf");
             String sourceSuppFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanSuppDocs.sdf");
             String sourceAppDocFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "TecanAppDocs.sdf");
             String targetPath = "";
             String targetQuoteFile;
-            String targetSmartStartQuoteFile;
+            //String targetSmartStartQuoteFile;
             String targetSuppFile;
             String targetAppDocFile;
 
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 targetPath = folderBrowserDialog1.SelectedPath;
+                lastTargetPath = targetPath;
+                targetQuoteFile = System.IO.Path.Combine(targetPath, "TecanQuoteGeneratorPartsList.sdf");
+                System.IO.File.Copy(sourceQuoteFile, targetQuoteFile, true);
+                //targetSmartStartQuoteFile = System.IO.Path.Combine(targetPath, "TecanSmartStartQuoteGeneratorPartsList.sdf");
+                //System.IO.File.Copy(sourceSmartStartQuoteFile, targetSmartStartQuoteFile, true);
+                targetSuppFile = System.IO.Path.Combine(targetPath, "TecanSuppDocs.sdf");
+                System.IO.File.Copy(sourceSuppFile, targetSuppFile, true);
+                targetAppDocFile = System.IO.Path.Combine(targetPath, "TecanAppDocs.sdf");
+                System.IO.File.Copy(sourceAppDocFile, targetAppDocFile, true);
+
+                // Save the last Publish Date info
+                string publishPath = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "publishedDatabases.txt");
+                DateTime creation = File.GetLastWriteTime(targetQuoteFile);
+                if (!File.Exists(publishPath))
+                {
+                    // Create a file to write to.
+                    using (StreamWriter sw = File.CreateText(publishPath))
+                    {
+                        sw.WriteLine(creation.ToString());
+                    }
+                }
+                else
+                {
+                    using (StreamWriter sw = File.AppendText(publishPath))
+                    {
+                        sw.WriteLine(creation.ToString());
+                    }
+                }
+                mainForm.LastPublishLabel.Text = "Quote Database Last Publish Date: " + creation.ToString();
             }
-            lastTargetPath = targetPath;
-            targetQuoteFile = System.IO.Path.Combine(targetPath, "TecanQuoteGeneratorPartsList.sdf");
-            System.IO.File.Copy(sourceQuoteFile, targetQuoteFile, true);
-            targetSmartStartQuoteFile = System.IO.Path.Combine(targetPath, "TecanSmartStartQuoteGeneratorPartsList.sdf");
-            System.IO.File.Copy(sourceSmartStartQuoteFile, targetSmartStartQuoteFile, true);
-            targetSuppFile = System.IO.Path.Combine(targetPath, "TecanSuppDocs.sdf");
-            System.IO.File.Copy(sourceSuppFile, targetSuppFile, true);
-            targetAppDocFile = System.IO.Path.Combine(targetPath, "TecanAppDocs.sdf");
-            System.IO.File.Copy(sourceAppDocFile, targetAppDocFile, true);
+            else
+            {
+                if (MessageBox.Show("You did not select a distrubtion folder.\nDo you want abort publishing the database?", "Abort Publish?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    return;
+                }
+                else
+                {
+                    SaveNewQuoteDatabaseToFolder();
+                }
+            }
         }
-
-
 
         private void CreateCustomerLookupTables()
         {

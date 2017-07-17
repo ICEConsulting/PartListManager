@@ -638,7 +638,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(958, 1044);
             this.Controls.Add(this.CategoryListView);
             this.Controls.Add(this.CatPanel);

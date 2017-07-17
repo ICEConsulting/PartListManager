@@ -66,7 +66,105 @@ namespace TecanPartListManager
 
         private void ImportAccessDatabaseForm_Shown(Object sender, EventArgs e)
         {
+            DeletePartsListDatabase();
+            //TecanPartsDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            //TecanPartsDatabase.Open();
 
+            //SqlCeCommand pcmd = TecanPartsDatabase.CreateCommand();
+            //pcmd.CommandText = "DELETE FROM PartsList";
+            //pcmd.ExecuteNonQuery();
+            //pcmd.CommandText = "DELETE FROM Category";
+            //pcmd.ExecuteNonQuery();
+            //pcmd.CommandText = "DELETE FROM Compatibility";
+            //pcmd.ExecuteNonQuery();
+            //pcmd.CommandText = "DELETE FROM DBMembership";
+            //pcmd.ExecuteNonQuery();
+            //pcmd.CommandText = "DELETE FROM Instrument";
+            //pcmd.ExecuteNonQuery();
+            //pcmd.CommandText = "DELETE FROM PartImages";
+            //pcmd.ExecuteNonQuery();
+            //pcmd.CommandText = "DELETE FROM RequiredParts";
+            //pcmd.ExecuteNonQuery();
+            ////cmd.CommandText = "DELETE FROM OptionalParts";
+            ////cmd.ExecuteNonQuery();
+            //pcmd.CommandText = "DELETE FROM SalesType";
+            //pcmd.ExecuteNonQuery();
+            //pcmd.CommandText = "DELETE FROM SSPCategory";
+            //pcmd.ExecuteNonQuery();
+            //pcmd.CommandText = "DELETE FROM SubCategory";
+            //pcmd.ExecuteNonQuery();
+            //pcmd.CommandText = "DELETE FROM SuppumentalDocs";
+            //pcmd.ExecuteNonQuery();
+            //TecanPartsDatabase.Close();
+
+            //TecanSmartStartDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanSmartStartPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            //TecanSmartStartDatabase.Open();
+
+            //SqlCeCommand sscmd = TecanSmartStartDatabase.CreateCommand();
+            //sscmd.CommandText = "DELETE FROM PartsList";
+            //sscmd.ExecuteNonQuery();
+            //sscmd.CommandText = "DELETE FROM Category";
+            //sscmd.ExecuteNonQuery();
+            //sscmd.CommandText = "DELETE FROM Compatibility";
+            //sscmd.ExecuteNonQuery();
+            //sscmd.CommandText = "DELETE FROM DBMembership";
+            //sscmd.ExecuteNonQuery();
+            //sscmd.CommandText = "DELETE FROM Instrument";
+            //sscmd.ExecuteNonQuery();
+            //sscmd.CommandText = "DELETE FROM PartImages";
+            //sscmd.ExecuteNonQuery();
+            //sscmd.CommandText = "DELETE FROM RequiredParts";
+            //sscmd.ExecuteNonQuery();
+            ////cmd.CommandText = "DELETE FROM OptionalParts";
+            ////cmd.ExecuteNonQuery();
+            //sscmd.CommandText = "DELETE FROM SalesType";
+            //sscmd.ExecuteNonQuery();
+            //sscmd.CommandText = "DELETE FROM SSPCategory";
+            //sscmd.ExecuteNonQuery();
+            //sscmd.CommandText = "DELETE FROM SubCategory";
+            //sscmd.ExecuteNonQuery();
+            //sscmd.CommandText = "DELETE FROM SuppumentalDocs";
+            //sscmd.ExecuteNonQuery();
+            //TecanSmartStartDatabase.Close();
+
+
+            //TecanSuppDocsDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanSuppDocs.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            //TecanSuppDocsDatabase.Open();
+
+            //SqlCeCommand scmd = TecanSuppDocsDatabase.CreateCommand();
+            //scmd.CommandText = "DELETE FROM SuppumentalDocs";
+            //scmd.ExecuteNonQuery();
+            //TecanSuppDocsDatabase.Close();
+
+            //TecanAppDocsDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanAppDocs.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
+            //TecanAppDocsDatabase.Open();
+            //SqlCeCommand acmd = TecanAppDocsDatabase.CreateCommand();
+            //acmd.CommandText = "DELETE FROM ApplicationCategories";
+            //acmd.ExecuteNonQuery();
+            //acmd.CommandText = "DELETE FROM Documents";
+            //acmd.ExecuteNonQuery();
+
+
+            String myAccessDatabaseConnectionString;
+            myAccessDatabaseConnectionString = getConnection();
+            while (myAccessDatabaseConnectionString == "")
+            {
+                if (MessageBox.Show("All Data has already been Deleted!\r\n\r\nPlease select a Parts List File?", "Select an Import Database", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    myAccessDatabaseConnectionString = getConnection();
+                }
+                else
+                {
+                    this.Close();
+                    mainForm.Close();
+                    return;
+                }
+            }
+            loadDatabase(myAccessDatabaseConnectionString);
+        }
+
+        private void DeletePartsListDatabase()
+        {
             TecanPartsDatabase.ConnectionString = "Data Source=|DataDirectory|\\TecanPartsList.sdf;Max Database Size=4000;Max Buffer Size=1024;Persist Security Info=False";
             TecanPartsDatabase.Open();
 
@@ -143,29 +241,7 @@ namespace TecanPartListManager
             acmd.ExecuteNonQuery();
             acmd.CommandText = "DELETE FROM Documents";
             acmd.ExecuteNonQuery();
-
-
-            String myAccessDatabaseConnectionString;
-            myAccessDatabaseConnectionString = getConnection();
-            if (myAccessDatabaseConnectionString == "")
-            {
-                if (MessageBox.Show("All Data has already been Deleted!\r\n\r\nPlease select a Parts List File?", "Select an Import Database", MessageBoxButtons.YesNo) == DialogResult.No)
-                {
-                    this.Close();
-                }
-                else
-                {
-                    myAccessDatabaseConnectionString = getConnection();
-                }
-            }
-            if (myAccessDatabaseConnectionString != "")
-            {
-                loadDatabase(myAccessDatabaseConnectionString);
-            }
-            else
-            {
-                this.Close();
-            }
+            TecanAppDocsDatabase.Close();
         }
 
         public void SetForm1Instance(MainPartsListDisplay inst)
@@ -257,7 +333,7 @@ namespace TecanPartListManager
                 scmd.CommandText = "INSERT INTO DBMembership (DBID, DBName) Values (0, 'Any')";
                 scmd.ExecuteNonQuery();
 
-                string query = "SELECT DISTINCT [Database Membership] from Parts WHERE SSP_Category IS NULL ORDER BY [Database Membership]";
+                string query = "SELECT DISTINCT [Database Membership] from Parts ORDER BY [Database Membership]";
                 OdbcCommand command = new OdbcCommand(query, myConnection);
                 String rowData;
                 short rowCount;
@@ -330,7 +406,7 @@ namespace TecanPartListManager
                 scmd.CommandText = "INSERT INTO Instrument (InstrumentID, InstrumentName) Values (0, 'Any')";
                 scmd.ExecuteNonQuery();
 
-                query = "SELECT DISTINCT Platform from Parts WHERE SSP_Category IS NULL ORDER BY Platform";
+                query = "SELECT DISTINCT Platform from Parts ORDER BY Platform";
                 command = new OdbcCommand(query, myConnection);
                 try
                 {
@@ -398,7 +474,7 @@ namespace TecanPartListManager
                 scmd.CommandText = "INSERT INTO Category (CategoryID, CategoryName) Values (0, 'Any')";
                 scmd.ExecuteNonQuery();
 
-                query = "SELECT DISTINCT Category from Parts WHERE SSP_Category IS NULL ORDER BY Category";
+                query = "SELECT DISTINCT Category from Parts ORDER BY Category";
                 command = new OdbcCommand(query, myConnection);
                 try
                 {
@@ -466,7 +542,7 @@ namespace TecanPartListManager
                 scmd.CommandText = "INSERT INTO SubCategory (SubCategoryID, SubCategoryName) Values (0, 'Any')";
                 scmd.ExecuteNonQuery();
 
-                query = "SELECT DISTINCT Subcategory from Parts WHERE SSP_Category IS NULL ORDER BY Subcategory";
+                query = "SELECT DISTINCT Subcategory from Parts ORDER BY Subcategory";
                 command = new OdbcCommand(query, myConnection);
                 try
                 {
@@ -566,7 +642,7 @@ namespace TecanPartListManager
                 scmd.CommandText = "INSERT INTO SalesType (SalesTypeID, SalesTypeName) Values (0, 'Any')";
                 scmd.ExecuteNonQuery();
 
-                query = "SELECT DISTINCT [Sales Type] from Parts WHERE SSP_Category IS NULL ORDER BY [Sales Type]";
+                query = "SELECT DISTINCT [Sales Type] from Parts ORDER BY [Sales Type]";
                 command = new OdbcCommand(query, myConnection);
                 try
                 {
@@ -628,7 +704,7 @@ namespace TecanPartListManager
                 statusPanelLabel.Text = "SSP Categories";
                 statusProgressBar.Value = 0;
 
-                query = "SELECT DISTINCT [SSP_Category] from Parts WHERE SSP_Category IS NULL ORDER BY [SSP_Category]";
+                query = "SELECT DISTINCT [SSP_Category] from Parts ORDER BY [SSP_Category]";
                 command = new OdbcCommand(query, myConnection);
                 try
                 {
@@ -688,7 +764,7 @@ namespace TecanPartListManager
                 // Add Parts
                 statusPanelLabel.Text = "Adding Parts";
                 statusProgressBar.Value = 0;
-                statusProgressBar.Maximum = 6000; // todo find better way to set progress bar max value associated with record count
+                statusProgressBar.Maximum = 10000; // todo find better way to set progress bar max value associated with record count
 
 //                query = @"SELECT [Lab/Office], [SAP ID], [Old Part Number], [3rd Party Part Number], [Priority], [Platform], [Sales Type], [Category], [Subcategory], 
 //                                [Desc], [SAP Desc], [Detail Desc], [PL Desc], [PL Detail Desc], [PL Price], [grids], [Serial Ports], [USB Ports], [Standard Price], 
@@ -735,7 +811,7 @@ namespace TecanPartListManager
                 query = @"SELECT [Lab/Office], [SAP ID], [Old Part Number], [3rd Party Part Number], [Priority], [Platform], [Sales Type], [Category], [Subcategory], 
                                 [Desc], [SAP Desc], [Detail Desc], [PL Desc], [PL Detail Desc], [PL Price], [grids], [Serial Ports], [USB Ports], [Standard Price], 
                                 [ILP], [ASP], [Manuf Cost], [x_dimension], [y_dimension], [z_dimension], [createdate], [removaldate], [Database Membership], 
-                                [Not in Master Price List], [3rd Party], [Notes], [SSP_Category], [System Compatibility] from Parts WHERE SSP_Category IS NULL ORDER BY [SAP ID]";
+                                [Not in Master Price List], [3rd Party], [Notes], [SSP_Category], [System Compatibility] from Parts ORDER BY [SAP ID]";
 
                 command = new OdbcCommand(query, myConnection);
 
@@ -1420,7 +1496,21 @@ namespace TecanPartListManager
                 String[] fileList;
 
                 filePath = getNotesFilePath();
-
+                while (filePath == "")
+                {
+                    if (MessageBox.Show("Do you want to abort your database import?", "Abort Import Database", MessageBoxButtons.YesNo) == DialogResult.No)
+                    {
+                        filePath = getNotesFilePath();
+                    }
+                    else
+                    {
+                        TecanPartsDatabase.Close();
+                        TecanSmartStartDatabase.Close();
+                        DeletePartsListDatabase();
+                        this.Close();
+                        return;
+                    }
+                }
                 fileList = Directory.GetFiles(filePath);
 
                 int ExtPosition, NamePosition;
@@ -1466,7 +1556,21 @@ namespace TecanPartListManager
                 String[] imageList;
 
                 imagePath = getImagePath();
-
+                while (imagePath == "")
+                {
+                    if (MessageBox.Show("Do you want to abort your database import?", "Abort Import Database", MessageBoxButtons.YesNo) == DialogResult.No)
+                    {
+                        imagePath = getImagePath();
+                    }
+                    else
+                    {
+                        TecanPartsDatabase.Close();
+                        TecanSmartStartDatabase.Close();
+                        DeletePartsListDatabase();
+                        this.Close();
+                        return;
+                    }
+                }
                 imageList = Directory.GetFiles(imagePath);
 
                 int docID;
@@ -1613,33 +1717,36 @@ namespace TecanPartListManager
 
                 DataSet ds = new DataSet();
                 ds = ReadCADFile();
-                DataTable dt = new DataTable();
-                dt = ds.Tables[0];
-                String CADInfo;
-                
-                for (int i = 0; i < dt.Rows.Count; i++)
+                if (ds != null)
                 {
-                    DataRow drow = dt.Rows[i];
-                    CADInfo = drow["Description"].ToString() + "^" + drow["CAD"].ToString();
+                    DataTable dt = new DataTable();
+                    dt = ds.Tables[0];
+                    String CADInfo;
 
-                    pcmd.CommandText = "UPDATE PartsList SET [CADInfo] = @CAD WHERE [SAPId] = '" + drow["Material"].ToString() + "'";
-                    pcmd.Parameters.AddWithValue("@CAD", CADInfo);
-
-                    scmd.CommandText = "UPDATE PartsList SET [CADInfo] = @CAD WHERE [SAPId] = '" + drow["Material"].ToString() + "'";
-                    scmd.Parameters.AddWithValue("@CAD", CADInfo);
-
-                    try
+                    for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        pcmd.ExecuteNonQuery();
-                        scmd.ExecuteNonQuery();
+                        DataRow drow = dt.Rows[i];
+                        CADInfo = drow["Description"].ToString() + "^" + drow["CAD"].ToString();
+
+                        pcmd.CommandText = "UPDATE PartsList SET [CADInfo] = @CAD WHERE [SAPId] = '" + drow["Material"].ToString() + "'";
+                        pcmd.Parameters.AddWithValue("@CAD", CADInfo);
+
+                        scmd.CommandText = "UPDATE PartsList SET [CADInfo] = @CAD WHERE [SAPId] = '" + drow["Material"].ToString() + "'";
+                        scmd.Parameters.AddWithValue("@CAD", CADInfo);
+
+                        try
+                        {
+                            pcmd.ExecuteNonQuery();
+                            scmd.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("CAD " + ex.Message);
+                        }
+                        statusProgressBar.Value = statusProgressBar.Value + 1;
+                        pcmd.Parameters.Clear();
+                        scmd.Parameters.Clear();
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("CAD " + ex.Message);
-                    }
-                    statusProgressBar.Value = statusProgressBar.Value + 1;
-                    pcmd.Parameters.Clear();
-                    scmd.Parameters.Clear();
                 }
                 TecanPartsDatabase.Close();
                 TecanSmartStartDatabase.Close();
@@ -1718,6 +1825,22 @@ namespace TecanPartListManager
             String[] suppumentalList;
 
             suppumentalPath = getSuppumentalPath();
+            while (suppumentalPath == "")
+            {
+                if (MessageBox.Show("Do you want to abort your database import?", "Abort Import Database", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    suppumentalPath = getSuppumentalPath();
+                }
+                else
+                {
+                    TecanSuppDatabase.Close();
+                    TecanPartsDatabase.Close();
+                    TecanSmartStartDatabase.Close();
+                    DeletePartsListDatabase();
+                    this.Close();
+                    return;
+                }
+            }
             suppumentalList = Directory.GetFiles(suppumentalPath);
 
             foreach (string suppumentalPathandName in suppumentalList)
@@ -1762,7 +1885,7 @@ namespace TecanPartListManager
             DataSet ds = new DataSet();
 
             string connectionString = GetExcelConnection();
-
+            if (connectionString == "") return null;
             using (OleDbConnection conn = new OleDbConnection(connectionString))
             {
                 conn.Open();
@@ -1824,6 +1947,22 @@ namespace TecanPartListManager
             String[] AppDocsFolders;
 
             AppDocsPath = getTemplatePath();
+            while (AppDocsPath == "")
+            {
+                if (MessageBox.Show("Do you want to abort your database import?", "Abort Import Database", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    AppDocsPath = getTemplatePath();
+                }
+                else
+                {
+                    TecanAppDocsDatabase.Close();
+                    TecanPartsDatabase.Close();
+                    TecanSmartStartDatabase.Close();
+                    DeletePartsListDatabase();
+                    this.Close();
+                    return;
+                }
+            }
 
             // Get template file that are in the root folder (no Cataegory)
             cmd.CommandText = "INSERT INTO ApplicationCategories (AppCategoryID, AppCategoryName) Values (" + catID + ", 'No Category Associated')";
@@ -1947,7 +2086,23 @@ namespace TecanPartListManager
             // XLSX - Excel 2007, 2010, 2012, 2013
             props["Provider"] = "Microsoft.ACE.OLEDB.12.0;";
             props["Extended Properties"] = "Excel 12.0 XML";
-            props["Data Source"] = getCADFilePath(); ;
+            
+            props["Data Source"] = getCADFilePath();
+            while (props["Data Source"] == "")
+            {
+                if (MessageBox.Show("Do you want to abort your database import?", "Abort Import Database", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    props["Data Source"] = getCADFilePath();
+                }
+                else
+                {
+                    TecanPartsDatabase.Close();
+                    TecanSmartStartDatabase.Close();
+                    DeletePartsListDatabase();
+                    this.Close();
+                    return "";
+                }
+            }
 
             // XLS - Excel 2003 and Older
             //props["Provider"] = "Microsoft.Jet.OLEDB.4.0";
@@ -1964,7 +2119,6 @@ namespace TecanPartListManager
                 sb.Append(';');
             }
             return sb.ToString();
-
         }
 
         private string getCADFilePath()

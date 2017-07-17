@@ -39,11 +39,11 @@ namespace TecanPartListManager
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPartsListDisplay));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tecanPartsListDataSet = new TecanPartListManager.TecanPartsListDataSet();
             this.partsListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.partsListTableAdapter = new TecanPartListManager.TecanPartsListDataSetTableAdapters.PartsListTableAdapter();
@@ -159,6 +159,9 @@ namespace TecanPartListManager
             this.label13 = new System.Windows.Forms.Label();
             this.FindTextBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.LastPublishLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tecanPartsListDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partsListBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partsListBindingNavigator)).BeginInit();
@@ -256,7 +259,7 @@ namespace TecanPartListManager
             this.partsListBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.partsListBindingNavigator.Name = "partsListBindingNavigator";
             this.partsListBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.partsListBindingNavigator.Size = new System.Drawing.Size(1927, 25);
+            this.partsListBindingNavigator.Size = new System.Drawing.Size(1894, 25);
             this.partsListBindingNavigator.TabIndex = 0;
             this.partsListBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -455,17 +458,15 @@ namespace TecanPartListManager
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.partsListDataGridView.AutoGenerateColumns = false;
-            this.partsListDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.partsListDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.partsListDataGridView.BackgroundColor = System.Drawing.Color.Linen;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.partsListDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Tan;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.partsListDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.partsListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.partsListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.sAPIdDataGridViewTextBoxColumn,
@@ -475,30 +476,32 @@ namespace TecanPartListManager
             this.DBMembership,
             this.descriptionDataGridViewTextBoxColumn});
             this.partsListDataGridView.DataSource = this.partsListBindingSource;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.partsListDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.partsListDataGridView.DefaultCellStyle = dataGridViewCellStyle13;
             this.partsListDataGridView.EnableHeadersVisualStyles = false;
             this.partsListDataGridView.GridColor = System.Drawing.Color.White;
             this.partsListDataGridView.Location = new System.Drawing.Point(0, 48);
+            this.partsListDataGridView.MaximumSize = new System.Drawing.Size(1910, 815);
             this.partsListDataGridView.Name = "partsListDataGridView";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Linen;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.partsListDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            this.partsListDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.Linen;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.partsListDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            this.partsListDataGridView.RowHeadersVisible = false;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
+            this.partsListDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle15;
             this.partsListDataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.LightBlue;
-            this.partsListDataGridView.Size = new System.Drawing.Size(1919, 587);
+            this.partsListDataGridView.Size = new System.Drawing.Size(1867, 815);
             this.partsListDataGridView.TabIndex = 1;
             this.partsListDataGridView.TabStop = false;
             this.partsListDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.partsListDataGridView_CellDoubleClick);
@@ -588,11 +591,11 @@ namespace TecanPartListManager
             // 
             // descriptionDataGridViewTextBoxColumn
             // 
-            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "DetailDescription";
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.descriptionDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.descriptionDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
             this.descriptionDataGridViewTextBoxColumn.HeaderText = "Detail Description";
+            this.descriptionDataGridViewTextBoxColumn.MaxInputLength = 1200;
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
             this.descriptionDataGridViewTextBoxColumn.Width = 1200;
             // 
@@ -607,7 +610,7 @@ namespace TecanPartListManager
             this.editLogonToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1927, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1894, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1326,12 +1329,42 @@ namespace TecanPartListManager
             this.label12.TabIndex = 0;
             this.label12.Text = "Find / Replace";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 874);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(16, 14);
+            this.label16.TabIndex = 17;
+            this.label16.Text = "...";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(1878, 874);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(16, 14);
+            this.label17.TabIndex = 18;
+            this.label17.Text = "...";
+            // 
+            // LastPublishLabel
+            // 
+            this.LastPublishLabel.AutoSize = true;
+            this.LastPublishLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LastPublishLabel.Location = new System.Drawing.Point(1384, 30);
+            this.LastPublishLabel.Name = "LastPublishLabel";
+            this.LastPublishLabel.Size = new System.Drawing.Size(0, 15);
+            this.LastPublishLabel.TabIndex = 19;
+            // 
             // MainPartsListDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.Color.BlanchedAlmond;
-            this.ClientSize = new System.Drawing.Size(1927, 851);
+            this.BackColor = System.Drawing.Color.PowderBlue;
+            this.ClientSize = new System.Drawing.Size(1894, 884);
+            this.Controls.Add(this.LastPublishLabel);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.FindReplacePanel);
             this.Controls.Add(this.initalizePanel);
             this.Controls.Add(this.EditLogonPanel);
@@ -1491,13 +1524,16 @@ namespace TecanPartListManager
         private Button FindCancelButton;
         private Button FindAgainButton;
         private CheckBox DeleteFindCheckBox;
+        private ToolStripButton SmartStartToolStripButton;
         private DataGridViewTextBoxColumn sAPIdDataGridViewTextBoxColumn;
         private DataGridViewComboBoxColumn instrumentDataGridViewTextBoxColumn;
         private DataGridViewComboBoxColumn categoryDataGridViewTextBoxColumn;
         private DataGridViewComboBoxColumn subCategoryDataGridViewTextBoxColumn;
         private DataGridViewComboBoxColumn DBMembership;
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
-        private ToolStripButton SmartStartToolStripButton;
+        private Label label16;
+        private Label label17;
+        public Label LastPublishLabel;
 
     }
 }

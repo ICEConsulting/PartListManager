@@ -28,8 +28,8 @@
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT [CategoryID], [CategoryName] FROM [Category]</CommandText>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT [CategoryID], [CategoryName] FROM [Category] ORDER BY [CategoryName] </CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -1103,7 +1103,7 @@
   <xs:element name="TecanPartsListDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="TecanPartsListDataSet" msprop:Generator_UserDSName="TecanPartsListDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Category" msprop:Generator_TableClassName="CategoryDataTable" msprop:Generator_TableVarName="tableCategory" msprop:Generator_RowChangedName="CategoryRowChanged" msprop:Generator_TablePropName="Category" msprop:Generator_RowDeletingName="CategoryRowDeleting" msprop:Generator_RowChangingName="CategoryRowChanging" msprop:Generator_RowEvHandlerName="CategoryRowChangeEventHandler" msprop:Generator_RowDeletedName="CategoryRowDeleted" msprop:Generator_RowClassName="CategoryRow" msprop:Generator_UserTableName="Category" msprop:Generator_RowEvArgName="CategoryRowChangeEvent">
+        <xs:element name="Category" msprop:Generator_TableClassName="CategoryDataTable" msprop:Generator_TableVarName="tableCategory" msprop:Generator_TablePropName="Category" msprop:Generator_RowDeletingName="CategoryRowDeleting" msprop:Generator_RowChangingName="CategoryRowChanging" msprop:Generator_RowEvHandlerName="CategoryRowChangeEventHandler" msprop:Generator_RowDeletedName="CategoryRowDeleted" msprop:Generator_UserTableName="Category" msprop:Generator_RowChangedName="CategoryRowChanged" msprop:Generator_RowEvArgName="CategoryRowChangeEvent" msprop:Generator_RowClassName="CategoryRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CategoryID" msprop:Generator_ColumnVarNameInTable="columnCategoryID" msprop:Generator_ColumnPropNameInRow="CategoryID" msprop:Generator_ColumnPropNameInTable="CategoryIDColumn" msprop:Generator_UserColumnName="CategoryID" type="xs:int" />
@@ -1117,7 +1117,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DBMembership" msprop:Generator_TableClassName="DBMembershipDataTable" msprop:Generator_TableVarName="tableDBMembership" msprop:Generator_RowChangedName="DBMembershipRowChanged" msprop:Generator_TablePropName="DBMembership" msprop:Generator_RowDeletingName="DBMembershipRowDeleting" msprop:Generator_RowChangingName="DBMembershipRowChanging" msprop:Generator_RowEvHandlerName="DBMembershipRowChangeEventHandler" msprop:Generator_RowDeletedName="DBMembershipRowDeleted" msprop:Generator_RowClassName="DBMembershipRow" msprop:Generator_UserTableName="DBMembership" msprop:Generator_RowEvArgName="DBMembershipRowChangeEvent">
+        <xs:element name="DBMembership" msprop:Generator_TableClassName="DBMembershipDataTable" msprop:Generator_TableVarName="tableDBMembership" msprop:Generator_TablePropName="DBMembership" msprop:Generator_RowDeletingName="DBMembershipRowDeleting" msprop:Generator_RowChangingName="DBMembershipRowChanging" msprop:Generator_RowEvHandlerName="DBMembershipRowChangeEventHandler" msprop:Generator_RowDeletedName="DBMembershipRowDeleted" msprop:Generator_UserTableName="DBMembership" msprop:Generator_RowChangedName="DBMembershipRowChanged" msprop:Generator_RowEvArgName="DBMembershipRowChangeEvent" msprop:Generator_RowClassName="DBMembershipRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="DBID" msprop:Generator_ColumnVarNameInTable="columnDBID" msprop:Generator_ColumnPropNameInRow="DBID" msprop:Generator_ColumnPropNameInTable="DBIDColumn" msprop:Generator_UserColumnName="DBID" type="xs:int" />
@@ -1131,7 +1131,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Instrument" msprop:Generator_TableClassName="InstrumentDataTable" msprop:Generator_TableVarName="tableInstrument" msprop:Generator_RowChangedName="InstrumentRowChanged" msprop:Generator_TablePropName="Instrument" msprop:Generator_RowDeletingName="InstrumentRowDeleting" msprop:Generator_RowChangingName="InstrumentRowChanging" msprop:Generator_RowEvHandlerName="InstrumentRowChangeEventHandler" msprop:Generator_RowDeletedName="InstrumentRowDeleted" msprop:Generator_RowClassName="InstrumentRow" msprop:Generator_UserTableName="Instrument" msprop:Generator_RowEvArgName="InstrumentRowChangeEvent">
+        <xs:element name="Instrument" msprop:Generator_TableClassName="InstrumentDataTable" msprop:Generator_TableVarName="tableInstrument" msprop:Generator_TablePropName="Instrument" msprop:Generator_RowDeletingName="InstrumentRowDeleting" msprop:Generator_RowChangingName="InstrumentRowChanging" msprop:Generator_RowEvHandlerName="InstrumentRowChangeEventHandler" msprop:Generator_RowDeletedName="InstrumentRowDeleted" msprop:Generator_UserTableName="Instrument" msprop:Generator_RowChangedName="InstrumentRowChanged" msprop:Generator_RowEvArgName="InstrumentRowChangeEvent" msprop:Generator_RowClassName="InstrumentRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="InstrumentID" msprop:Generator_ColumnVarNameInTable="columnInstrumentID" msprop:Generator_ColumnPropNameInRow="InstrumentID" msprop:Generator_ColumnPropNameInTable="InstrumentIDColumn" msprop:Generator_UserColumnName="InstrumentID" type="xs:int" />
@@ -1145,7 +1145,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="PartImages" msprop:Generator_TableClassName="PartImagesDataTable" msprop:Generator_TableVarName="tablePartImages" msprop:Generator_RowChangedName="PartImagesRowChanged" msprop:Generator_TablePropName="PartImages" msprop:Generator_RowDeletingName="PartImagesRowDeleting" msprop:Generator_RowChangingName="PartImagesRowChanging" msprop:Generator_RowEvHandlerName="PartImagesRowChangeEventHandler" msprop:Generator_RowDeletedName="PartImagesRowDeleted" msprop:Generator_RowClassName="PartImagesRow" msprop:Generator_UserTableName="PartImages" msprop:Generator_RowEvArgName="PartImagesRowChangeEvent">
+        <xs:element name="PartImages" msprop:Generator_TableClassName="PartImagesDataTable" msprop:Generator_TableVarName="tablePartImages" msprop:Generator_TablePropName="PartImages" msprop:Generator_RowDeletingName="PartImagesRowDeleting" msprop:Generator_RowChangingName="PartImagesRowChanging" msprop:Generator_RowEvHandlerName="PartImagesRowChangeEventHandler" msprop:Generator_RowDeletedName="PartImagesRowDeleted" msprop:Generator_UserTableName="PartImages" msprop:Generator_RowChangedName="PartImagesRowChanged" msprop:Generator_RowEvArgName="PartImagesRowChangeEvent" msprop:Generator_RowClassName="PartImagesRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="DocID" msprop:Generator_ColumnVarNameInTable="columnDocID" msprop:Generator_ColumnPropNameInRow="DocID" msprop:Generator_ColumnPropNameInTable="DocIDColumn" msprop:Generator_UserColumnName="DocID" type="xs:int" />
@@ -1174,7 +1174,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="PartsList" msprop:Generator_TableClassName="PartsListDataTable" msprop:Generator_TableVarName="tablePartsList" msprop:Generator_RowChangedName="PartsListRowChanged" msprop:Generator_TablePropName="PartsList" msprop:Generator_RowDeletingName="PartsListRowDeleting" msprop:Generator_RowChangingName="PartsListRowChanging" msprop:Generator_RowEvHandlerName="PartsListRowChangeEventHandler" msprop:Generator_RowDeletedName="PartsListRowDeleted" msprop:Generator_RowClassName="PartsListRow" msprop:Generator_UserTableName="PartsList" msprop:Generator_RowEvArgName="PartsListRowChangeEvent">
+        <xs:element name="PartsList" msprop:Generator_TableClassName="PartsListDataTable" msprop:Generator_TableVarName="tablePartsList" msprop:Generator_TablePropName="PartsList" msprop:Generator_RowDeletingName="PartsListRowDeleting" msprop:Generator_RowChangingName="PartsListRowChanging" msprop:Generator_RowEvHandlerName="PartsListRowChangeEventHandler" msprop:Generator_RowDeletedName="PartsListRowDeleted" msprop:Generator_UserTableName="PartsList" msprop:Generator_RowChangedName="PartsListRowChanged" msprop:Generator_RowEvArgName="PartsListRowChangeEvent" msprop:Generator_RowClassName="PartsListRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Lab" msprop:Generator_ColumnVarNameInTable="columnLab" msprop:Generator_ColumnPropNameInRow="Lab" msprop:Generator_ColumnPropNameInTable="LabColumn" msprop:Generator_UserColumnName="Lab" type="xs:int" minOccurs="0" />
@@ -1298,7 +1298,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="RequiredParts" msprop:Generator_TableClassName="RequiredPartsDataTable" msprop:Generator_TableVarName="tableRequiredParts" msprop:Generator_RowChangedName="RequiredPartsRowChanged" msprop:Generator_TablePropName="RequiredParts" msprop:Generator_RowDeletingName="RequiredPartsRowDeleting" msprop:Generator_RowChangingName="RequiredPartsRowChanging" msprop:Generator_RowEvHandlerName="RequiredPartsRowChangeEventHandler" msprop:Generator_RowDeletedName="RequiredPartsRowDeleted" msprop:Generator_RowClassName="RequiredPartsRow" msprop:Generator_UserTableName="RequiredParts" msprop:Generator_RowEvArgName="RequiredPartsRowChangeEvent">
+        <xs:element name="RequiredParts" msprop:Generator_TableClassName="RequiredPartsDataTable" msprop:Generator_TableVarName="tableRequiredParts" msprop:Generator_TablePropName="RequiredParts" msprop:Generator_RowDeletingName="RequiredPartsRowDeleting" msprop:Generator_RowChangingName="RequiredPartsRowChanging" msprop:Generator_RowEvHandlerName="RequiredPartsRowChangeEventHandler" msprop:Generator_RowDeletedName="RequiredPartsRowDeleted" msprop:Generator_UserTableName="RequiredParts" msprop:Generator_RowChangedName="RequiredPartsRowChanged" msprop:Generator_RowEvArgName="RequiredPartsRowChangeEvent" msprop:Generator_RowClassName="RequiredPartsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="SAPId" msprop:Generator_ColumnVarNameInTable="columnSAPId" msprop:Generator_ColumnPropNameInRow="SAPId" msprop:Generator_ColumnPropNameInTable="SAPIdColumn" msprop:Generator_UserColumnName="SAPId" minOccurs="0">
@@ -1325,7 +1325,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SalesType" msprop:Generator_TableClassName="SalesTypeDataTable" msprop:Generator_TableVarName="tableSalesType" msprop:Generator_RowChangedName="SalesTypeRowChanged" msprop:Generator_TablePropName="SalesType" msprop:Generator_RowDeletingName="SalesTypeRowDeleting" msprop:Generator_RowChangingName="SalesTypeRowChanging" msprop:Generator_RowEvHandlerName="SalesTypeRowChangeEventHandler" msprop:Generator_RowDeletedName="SalesTypeRowDeleted" msprop:Generator_RowClassName="SalesTypeRow" msprop:Generator_UserTableName="SalesType" msprop:Generator_RowEvArgName="SalesTypeRowChangeEvent">
+        <xs:element name="SalesType" msprop:Generator_TableClassName="SalesTypeDataTable" msprop:Generator_TableVarName="tableSalesType" msprop:Generator_TablePropName="SalesType" msprop:Generator_RowDeletingName="SalesTypeRowDeleting" msprop:Generator_RowChangingName="SalesTypeRowChanging" msprop:Generator_RowEvHandlerName="SalesTypeRowChangeEventHandler" msprop:Generator_RowDeletedName="SalesTypeRowDeleted" msprop:Generator_UserTableName="SalesType" msprop:Generator_RowChangedName="SalesTypeRowChanged" msprop:Generator_RowEvArgName="SalesTypeRowChangeEvent" msprop:Generator_RowClassName="SalesTypeRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="SalesTypeID" msprop:Generator_ColumnVarNameInTable="columnSalesTypeID" msprop:Generator_ColumnPropNameInRow="SalesTypeID" msprop:Generator_ColumnPropNameInTable="SalesTypeIDColumn" msprop:Generator_UserColumnName="SalesTypeID" type="xs:int" />
@@ -1339,7 +1339,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SSPCategory" msprop:Generator_TableClassName="SSPCategoryDataTable" msprop:Generator_TableVarName="tableSSPCategory" msprop:Generator_RowChangedName="SSPCategoryRowChanged" msprop:Generator_TablePropName="SSPCategory" msprop:Generator_RowDeletingName="SSPCategoryRowDeleting" msprop:Generator_RowChangingName="SSPCategoryRowChanging" msprop:Generator_RowEvHandlerName="SSPCategoryRowChangeEventHandler" msprop:Generator_RowDeletedName="SSPCategoryRowDeleted" msprop:Generator_RowClassName="SSPCategoryRow" msprop:Generator_UserTableName="SSPCategory" msprop:Generator_RowEvArgName="SSPCategoryRowChangeEvent">
+        <xs:element name="SSPCategory" msprop:Generator_TableClassName="SSPCategoryDataTable" msprop:Generator_TableVarName="tableSSPCategory" msprop:Generator_TablePropName="SSPCategory" msprop:Generator_RowDeletingName="SSPCategoryRowDeleting" msprop:Generator_RowChangingName="SSPCategoryRowChanging" msprop:Generator_RowEvHandlerName="SSPCategoryRowChangeEventHandler" msprop:Generator_RowDeletedName="SSPCategoryRowDeleted" msprop:Generator_UserTableName="SSPCategory" msprop:Generator_RowChangedName="SSPCategoryRowChanged" msprop:Generator_RowEvArgName="SSPCategoryRowChangeEvent" msprop:Generator_RowClassName="SSPCategoryRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="SSPCategoryId" msprop:Generator_ColumnVarNameInTable="columnSSPCategoryId" msprop:Generator_ColumnPropNameInRow="SSPCategoryId" msprop:Generator_ColumnPropNameInTable="SSPCategoryIdColumn" msprop:Generator_UserColumnName="SSPCategoryId" type="xs:int" />
@@ -1353,7 +1353,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SubCategory" msprop:Generator_TableClassName="SubCategoryDataTable" msprop:Generator_TableVarName="tableSubCategory" msprop:Generator_RowChangedName="SubCategoryRowChanged" msprop:Generator_TablePropName="SubCategory" msprop:Generator_RowDeletingName="SubCategoryRowDeleting" msprop:Generator_RowChangingName="SubCategoryRowChanging" msprop:Generator_RowEvHandlerName="SubCategoryRowChangeEventHandler" msprop:Generator_RowDeletedName="SubCategoryRowDeleted" msprop:Generator_RowClassName="SubCategoryRow" msprop:Generator_UserTableName="SubCategory" msprop:Generator_RowEvArgName="SubCategoryRowChangeEvent">
+        <xs:element name="SubCategory" msprop:Generator_TableClassName="SubCategoryDataTable" msprop:Generator_TableVarName="tableSubCategory" msprop:Generator_TablePropName="SubCategory" msprop:Generator_RowDeletingName="SubCategoryRowDeleting" msprop:Generator_RowChangingName="SubCategoryRowChanging" msprop:Generator_RowEvHandlerName="SubCategoryRowChangeEventHandler" msprop:Generator_RowDeletedName="SubCategoryRowDeleted" msprop:Generator_UserTableName="SubCategory" msprop:Generator_RowChangedName="SubCategoryRowChanged" msprop:Generator_RowEvArgName="SubCategoryRowChangeEvent" msprop:Generator_RowClassName="SubCategoryRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="SubCategoryID" msprop:Generator_ColumnVarNameInTable="columnSubCategoryID" msprop:Generator_ColumnPropNameInRow="SubCategoryID" msprop:Generator_ColumnPropNameInTable="SubCategoryIDColumn" msprop:Generator_UserColumnName="SubCategoryID" type="xs:int" />
@@ -1367,7 +1367,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SuppumentalDocs" msprop:Generator_TableClassName="SuppumentalDocsDataTable" msprop:Generator_TableVarName="tableSuppumentalDocs" msprop:Generator_RowChangedName="SuppumentalDocsRowChanged" msprop:Generator_TablePropName="SuppumentalDocs" msprop:Generator_RowDeletingName="SuppumentalDocsRowDeleting" msprop:Generator_RowChangingName="SuppumentalDocsRowChanging" msprop:Generator_RowEvHandlerName="SuppumentalDocsRowChangeEventHandler" msprop:Generator_RowDeletedName="SuppumentalDocsRowDeleted" msprop:Generator_RowClassName="SuppumentalDocsRow" msprop:Generator_UserTableName="SuppumentalDocs" msprop:Generator_RowEvArgName="SuppumentalDocsRowChangeEvent">
+        <xs:element name="SuppumentalDocs" msprop:Generator_TableClassName="SuppumentalDocsDataTable" msprop:Generator_TableVarName="tableSuppumentalDocs" msprop:Generator_TablePropName="SuppumentalDocs" msprop:Generator_RowDeletingName="SuppumentalDocsRowDeleting" msprop:Generator_RowChangingName="SuppumentalDocsRowChanging" msprop:Generator_RowEvHandlerName="SuppumentalDocsRowChangeEventHandler" msprop:Generator_RowDeletedName="SuppumentalDocsRowDeleted" msprop:Generator_UserTableName="SuppumentalDocs" msprop:Generator_RowChangedName="SuppumentalDocsRowChanged" msprop:Generator_RowEvArgName="SuppumentalDocsRowChangeEvent" msprop:Generator_RowClassName="SuppumentalDocsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="SAPId" msprop:Generator_ColumnVarNameInTable="columnSAPId" msprop:Generator_ColumnPropNameInRow="SAPId" msprop:Generator_ColumnPropNameInTable="SAPIdColumn" msprop:Generator_UserColumnName="SAPId" minOccurs="0">
@@ -1424,12 +1424,12 @@
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="SetCategory" msdata:parent="Category" msdata:child="PartsList" msdata:parentkey="CategoryID" msdata:childkey="Category" msprop:Generator_UserChildTable="PartsList" msprop:Generator_ChildPropName="GetPartsListRows" msprop:Generator_UserRelationName="SetCategory" msprop:Generator_RelationVarName="relationSetCategory" msprop:Generator_UserParentTable="Category" msprop:Generator_ParentPropName="CategoryRow" />
-      <msdata:Relationship name="SetSubCategory" msdata:parent="SubCategory" msdata:child="PartsList" msdata:parentkey="SubCategoryID" msdata:childkey="SubCategory" msprop:Generator_UserChildTable="PartsList" msprop:Generator_ChildPropName="GetPartsListRows" msprop:Generator_UserRelationName="SetSubCategory" msprop:Generator_ParentPropName="SubCategoryRow" msprop:Generator_RelationVarName="relationSetSubCategory" msprop:Generator_UserParentTable="SubCategory" />
-      <msdata:Relationship name="SetInstrument" msdata:parent="Instrument" msdata:child="PartsList" msdata:parentkey="InstrumentID" msdata:childkey="Instrument" msprop:Generator_UserChildTable="PartsList" msprop:Generator_ChildPropName="GetPartsListRows" msprop:Generator_UserRelationName="SetInstrument" msprop:Generator_RelationVarName="relationSetInstrument" msprop:Generator_UserParentTable="Instrument" msprop:Generator_ParentPropName="InstrumentRow" />
-      <msdata:Relationship name="SetSalesType" msdata:parent="SalesType" msdata:child="PartsList" msdata:parentkey="SalesTypeID" msdata:childkey="SalesType" msprop:Generator_UserChildTable="PartsList" msprop:Generator_ChildPropName="GetPartsListRows" msprop:Generator_UserRelationName="SetSalesType" msprop:Generator_ParentPropName="SalesTypeRow" msprop:Generator_RelationVarName="relationSetSalesType" msprop:Generator_UserParentTable="SalesType" />
-      <msdata:Relationship name="SetDBMembership" msdata:parent="DBMembership" msdata:child="PartsList" msdata:parentkey="DBID" msdata:childkey="DBMembership" msprop:Generator_UserChildTable="PartsList" msprop:Generator_ChildPropName="GetPartsListRows" msprop:Generator_UserRelationName="SetDBMembership" msprop:Generator_RelationVarName="relationSetDBMembership" msprop:Generator_UserParentTable="DBMembership" msprop:Generator_ParentPropName="DBMembershipRow" />
-      <msdata:Relationship name="SetSSPCategory" msdata:parent="SSPCategory" msdata:child="PartsList" msdata:parentkey="SSPCategoryId" msdata:childkey="SSPCategory" msprop:Generator_UserChildTable="PartsList" msprop:Generator_ChildPropName="GetPartsListRows" msprop:Generator_UserRelationName="SetSSPCategory" msprop:Generator_ParentPropName="SSPCategoryRow" msprop:Generator_RelationVarName="relationSetSSPCategory" msprop:Generator_UserParentTable="SSPCategory" />
+      <msdata:Relationship name="SetCategory" msdata:parent="Category" msdata:child="PartsList" msdata:parentkey="CategoryID" msdata:childkey="Category" msprop:Generator_UserChildTable="PartsList" msprop:Generator_ChildPropName="GetPartsListRows" msprop:Generator_UserRelationName="SetCategory" msprop:Generator_ParentPropName="CategoryRow" msprop:Generator_RelationVarName="relationSetCategory" msprop:Generator_UserParentTable="Category" />
+      <msdata:Relationship name="SetSubCategory" msdata:parent="SubCategory" msdata:child="PartsList" msdata:parentkey="SubCategoryID" msdata:childkey="SubCategory" msprop:Generator_UserChildTable="PartsList" msprop:Generator_ChildPropName="GetPartsListRows" msprop:Generator_UserRelationName="SetSubCategory" msprop:Generator_RelationVarName="relationSetSubCategory" msprop:Generator_UserParentTable="SubCategory" msprop:Generator_ParentPropName="SubCategoryRow" />
+      <msdata:Relationship name="SetInstrument" msdata:parent="Instrument" msdata:child="PartsList" msdata:parentkey="InstrumentID" msdata:childkey="Instrument" msprop:Generator_UserChildTable="PartsList" msprop:Generator_ChildPropName="GetPartsListRows" msprop:Generator_UserRelationName="SetInstrument" msprop:Generator_ParentPropName="InstrumentRow" msprop:Generator_RelationVarName="relationSetInstrument" msprop:Generator_UserParentTable="Instrument" />
+      <msdata:Relationship name="SetSalesType" msdata:parent="SalesType" msdata:child="PartsList" msdata:parentkey="SalesTypeID" msdata:childkey="SalesType" msprop:Generator_UserChildTable="PartsList" msprop:Generator_ChildPropName="GetPartsListRows" msprop:Generator_UserRelationName="SetSalesType" msprop:Generator_RelationVarName="relationSetSalesType" msprop:Generator_UserParentTable="SalesType" msprop:Generator_ParentPropName="SalesTypeRow" />
+      <msdata:Relationship name="SetDBMembership" msdata:parent="DBMembership" msdata:child="PartsList" msdata:parentkey="DBID" msdata:childkey="DBMembership" msprop:Generator_UserChildTable="PartsList" msprop:Generator_ChildPropName="GetPartsListRows" msprop:Generator_UserRelationName="SetDBMembership" msprop:Generator_ParentPropName="DBMembershipRow" msprop:Generator_RelationVarName="relationSetDBMembership" msprop:Generator_UserParentTable="DBMembership" />
+      <msdata:Relationship name="SetSSPCategory" msdata:parent="SSPCategory" msdata:child="PartsList" msdata:parentkey="SSPCategoryId" msdata:childkey="SSPCategory" msprop:Generator_UserChildTable="PartsList" msprop:Generator_ChildPropName="GetPartsListRows" msprop:Generator_UserRelationName="SetSSPCategory" msprop:Generator_RelationVarName="relationSetSSPCategory" msprop:Generator_UserParentTable="SSPCategory" msprop:Generator_ParentPropName="SSPCategoryRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

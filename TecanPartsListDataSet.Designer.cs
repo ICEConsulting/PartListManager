@@ -6127,7 +6127,7 @@ namespace TecanPartListManager.TecanPartsListDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlServerCe.SqlCeCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlServerCe.SqlCeCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT [CategoryID], [CategoryName] FROM [Category]";
+            this._commandCollection[0].CommandText = "SELECT [CategoryID], [CategoryName] FROM [Category] ORDER BY [CategoryName] ";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

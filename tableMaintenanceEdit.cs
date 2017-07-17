@@ -260,8 +260,11 @@ namespace TecanPartListManager
                     indexFieldName = "CompatibilityID";
                     itemFieldName = "CompatibilityName";
                     break;
-                        
 
+                case "SuppumentalDocs":
+                    indexFieldName = "DocID";
+                    itemFieldName = "FileName";
+                    break;
             }
 
             if (currentTable != "SuppumentalDocs")
@@ -279,35 +282,41 @@ namespace TecanPartListManager
             {
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                short indexID;
-                String plIndexFieldName;
-                if (indexFieldName == "DBID")
+                short indexID = 0;
+                if (currentTable != "SuppumentalDocs")
                 {
-                    plIndexFieldName = "DBMembership";
+                    
+                    String plIndexFieldName;
+                    if (indexFieldName == "DBID")
+                    {
+                        plIndexFieldName = "DBMembership";
+                    }
+                    else
+                    {
+                        plIndexFieldName = indexFieldName.Substring(0, indexFieldName.Length - 2);
+                    }
+                    cmd.CommandText = "SELECT " + indexFieldName + " FROM " + currentTable + " WHERE " + itemFieldName + " = '" + deleteItem + "'";
+                    indexID = (short)(Int32)cmd.ExecuteScalar();
+                    cmd.CommandText = "SELECT SAPId, Description FROM PartsList WHERE " + plIndexFieldName + " = '" + indexID + "'";
+                    //SqlCeDataReader reader = cmd.ExecuteReader();
+                    //int partCount = 0;
+                    //ExceptionPanel.Visible = true;
+                    //ExceptionLabel.Text = "The following parts are associated with the " + currentTable + " you are attempting to delete. Please changed these parts association.";
+                    //while (reader.Read())
+                    //{
+                    //    ExceptionListView.Items.Add(reader[0].ToString());
+                    //    ExceptionListView.Items[partCount].SubItems.Add(reader[1].ToString());
+                    //    partCount++;
+                    //}
+                    //reader.Dispose();
                 }
-                else
-                {
-                    plIndexFieldName = indexFieldName.Substring(0, indexFieldName.Length - 2);
-                }
-                cmd.CommandText = "SELECT " + indexFieldName + " FROM " + currentTable + " WHERE " + itemFieldName + " = '" + deleteItem + "'";
-                indexID = (short)(Int32)cmd.ExecuteScalar();
-                cmd.CommandText = "SELECT SAPId, Description FROM PartsList WHERE " + plIndexFieldName + " = '" + indexID + "'";
-                //SqlCeDataReader reader = cmd.ExecuteReader();
-                //int partCount = 0;
-                //ExceptionPanel.Visible = true;
-                //ExceptionLabel.Text = "The following parts are associated with the " + currentTable + " you are attempting to delete. Please changed these parts association.";
-                //while (reader.Read())
-                //{
-                //    ExceptionListView.Items.Add(reader[0].ToString());
-                //    ExceptionListView.Items[partCount].SubItems.Add(reader[1].ToString());
-                //    partCount++;
-                //}
-                //reader.Dispose();
-                MessageBox.Show("Unable to delete the selected " + currentTable + " because there are parts associated with " + deleteItem + "\n\nThe main partslist display will list the parts with this association!", "Deletion Error");
                 associationForm.Close();
                 this.Close();
+                MessageBox.Show("Unable to delete the selected " + currentTable + " because there are parts associated with " + deleteItem + "\n\nThe main partslist display will list the parts with this association!", "Deletion Error");
+                //associationForm.Close();
+                //this.Close();
                 mainForm.associationTableError(currentTable, indexID);
             }
             TecanDatabase.Close();

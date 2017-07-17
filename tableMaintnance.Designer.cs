@@ -61,15 +61,11 @@
             this.suppumentalDocsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label7 = new System.Windows.Forms.Label();
             this.suppumentalDocsDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label8 = new System.Windows.Forms.Label();
             this.partsListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.partsListListBox = new System.Windows.Forms.ListBox();
             this.label9 = new System.Windows.Forms.Label();
             this.allSuppDocsDataGridView = new System.Windows.Forms.DataGridView();
-            this.DocID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -86,6 +82,10 @@
             this.compatibilityListBox = new System.Windows.Forms.ListBox();
             this.label12 = new System.Windows.Forms.Label();
             this.addCompatibilityButton = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DocID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tecanPartsListDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.instrumentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
@@ -365,23 +365,11 @@
             this.suppumentalDocsDataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.suppumentalDocsDataGridView.MultiSelect = false;
             this.suppumentalDocsDataGridView.Name = "suppumentalDocsDataGridView";
+            this.suppumentalDocsDataGridView.RowHeadersVisible = false;
             this.suppumentalDocsDataGridView.Size = new System.Drawing.Size(591, 318);
             this.suppumentalDocsDataGridView.TabIndex = 13;
             this.suppumentalDocsDataGridView.TabStop = false;
             this.suppumentalDocsDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.suppumentalDocsDataGridView_CellDoubleClick);
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "SAPId";
-            this.dataGridViewTextBoxColumn2.HeaderText = "SAPId";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "FileName";
-            this.dataGridViewTextBoxColumn3.HeaderText = "FileName";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 420;
             // 
             // label8
             // 
@@ -434,21 +422,11 @@
             this.allSuppDocsDataGridView.Location = new System.Drawing.Point(676, 394);
             this.allSuppDocsDataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.allSuppDocsDataGridView.Name = "allSuppDocsDataGridView";
+            this.allSuppDocsDataGridView.RowHeadersVisible = false;
             this.allSuppDocsDataGridView.Size = new System.Drawing.Size(591, 407);
             this.allSuppDocsDataGridView.TabIndex = 18;
             this.allSuppDocsDataGridView.TabStop = false;
             this.allSuppDocsDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.allSuppDocsDataGridView_CellDoubleClick);
-            // 
-            // DocID
-            // 
-            this.DocID.HeaderText = "DocID";
-            this.DocID.Name = "DocID";
-            // 
-            // FileName
-            // 
-            this.FileName.HeaderText = "Filename";
-            this.FileName.Name = "FileName";
-            this.FileName.Width = 420;
             // 
             // textBox1
             // 
@@ -663,11 +641,35 @@
             this.addCompatibilityButton.UseVisualStyleBackColor = false;
             this.addCompatibilityButton.Click += new System.EventHandler(this.addCompatibilityButton_Click);
             // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "SAPId";
+            this.dataGridViewTextBoxColumn2.HeaderText = "SAPId";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "FileName";
+            this.dataGridViewTextBoxColumn3.HeaderText = "FileName";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 475;
+            // 
+            // DocID
+            // 
+            this.DocID.HeaderText = "DocID";
+            this.DocID.Name = "DocID";
+            // 
+            // FileName
+            // 
+            this.FileName.HeaderText = "Filename";
+            this.FileName.Name = "FileName";
+            this.FileName.Width = 475;
+            // 
             // tableMaintnance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(1836, 894);
             this.Controls.Add(this.addCompatibilityButton);
             this.Controls.Add(this.label12);
@@ -708,6 +710,7 @@
             this.Name = "tableMaintnance";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Association Tables";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.tableMaintnance_Load);
             this.Disposed += new System.EventHandler(this.tableMaintnance_Close);
             ((System.ComponentModel.ISupportInitialize)(this.tecanPartsListDataSet)).EndInit();
@@ -761,13 +764,9 @@
         private System.Windows.Forms.Label label8;
         private TecanPartsListDataSetTableAdapters.PartsListTableAdapter partsListTableAdapter;
         private System.Windows.Forms.BindingSource partsListBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.ListBox partsListListBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridView allSuppDocsDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DocID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
@@ -784,5 +783,9 @@
         private System.Windows.Forms.ListBox compatibilityListBox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button addCompatibilityButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DocID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
     }
 }

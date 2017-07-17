@@ -74,7 +74,7 @@
             this.categoryListBox.ItemHeight = 15;
             this.categoryListBox.Location = new System.Drawing.Point(129, 72);
             this.categoryListBox.Name = "categoryListBox";
-            this.categoryListBox.Size = new System.Drawing.Size(107, 94);
+            this.categoryListBox.Size = new System.Drawing.Size(107, 259);
             this.categoryListBox.TabIndex = 0;
             // 
             // CatLabel
@@ -93,7 +93,7 @@
             this.instrumentListBox.ItemHeight = 15;
             this.instrumentListBox.Location = new System.Drawing.Point(17, 72);
             this.instrumentListBox.Name = "instrumentListBox";
-            this.instrumentListBox.Size = new System.Drawing.Size(107, 94);
+            this.instrumentListBox.Size = new System.Drawing.Size(107, 259);
             this.instrumentListBox.TabIndex = 2;
             // 
             // instrumentLabel
@@ -112,7 +112,7 @@
             this.subCategoryListBox.ItemHeight = 15;
             this.subCategoryListBox.Location = new System.Drawing.Point(242, 72);
             this.subCategoryListBox.Name = "subCategoryListBox";
-            this.subCategoryListBox.Size = new System.Drawing.Size(107, 94);
+            this.subCategoryListBox.Size = new System.Drawing.Size(107, 259);
             this.subCategoryListBox.TabIndex = 4;
             // 
             // SubCategoryLabel
@@ -156,7 +156,7 @@
             this.sspCategoryListBox.ItemHeight = 15;
             this.sspCategoryListBox.Location = new System.Drawing.Point(355, 72);
             this.sspCategoryListBox.Name = "sspCategoryListBox";
-            this.sspCategoryListBox.Size = new System.Drawing.Size(107, 94);
+            this.sspCategoryListBox.Size = new System.Drawing.Size(107, 259);
             this.sspCategoryListBox.TabIndex = 7;
             // 
             // SSPCategoryLabel
@@ -175,7 +175,7 @@
             this.dBMembershipListBox.ItemHeight = 15;
             this.dBMembershipListBox.Location = new System.Drawing.Point(467, 72);
             this.dBMembershipListBox.Name = "dBMembershipListBox";
-            this.dBMembershipListBox.Size = new System.Drawing.Size(107, 94);
+            this.dBMembershipListBox.Size = new System.Drawing.Size(107, 259);
             this.dBMembershipListBox.TabIndex = 9;
             // 
             // label2
@@ -194,7 +194,7 @@
             this.salesTypeListBox.ItemHeight = 15;
             this.salesTypeListBox.Location = new System.Drawing.Point(579, 72);
             this.salesTypeListBox.Name = "salesTypeListBox";
-            this.salesTypeListBox.Size = new System.Drawing.Size(107, 94);
+            this.salesTypeListBox.Size = new System.Drawing.Size(107, 259);
             this.salesTypeListBox.TabIndex = 11;
             // 
             // label3
@@ -211,135 +211,148 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(576, 215);
+            this.label4.Location = new System.Drawing.Point(616, 812);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(68, 15);
             this.label4.TabIndex = 24;
             this.label4.Text = "Sales Type";
+            this.label4.Visible = false;
             // 
             // salesTypeSSListBox
             // 
             this.salesTypeSSListBox.FormattingEnabled = true;
             this.salesTypeSSListBox.ItemHeight = 15;
-            this.salesTypeSSListBox.Location = new System.Drawing.Point(579, 235);
+            this.salesTypeSSListBox.Location = new System.Drawing.Point(619, 832);
             this.salesTypeSSListBox.Name = "salesTypeSSListBox";
             this.salesTypeSSListBox.Size = new System.Drawing.Size(107, 94);
             this.salesTypeSSListBox.TabIndex = 23;
+            this.salesTypeSSListBox.Visible = false;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(467, 215);
+            this.label5.Location = new System.Drawing.Point(507, 812);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(97, 15);
             this.label5.TabIndex = 22;
             this.label5.Text = "DB Membership";
+            this.label5.Visible = false;
             // 
             // dBMembershipSSListBox
             // 
             this.dBMembershipSSListBox.FormattingEnabled = true;
             this.dBMembershipSSListBox.ItemHeight = 15;
-            this.dBMembershipSSListBox.Location = new System.Drawing.Point(467, 235);
+            this.dBMembershipSSListBox.Location = new System.Drawing.Point(507, 832);
             this.dBMembershipSSListBox.Name = "dBMembershipSSListBox";
             this.dBMembershipSSListBox.Size = new System.Drawing.Size(107, 94);
             this.dBMembershipSSListBox.TabIndex = 21;
+            this.dBMembershipSSListBox.Visible = false;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(355, 215);
+            this.label6.Location = new System.Drawing.Point(395, 812);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(96, 15);
             this.label6.TabIndex = 20;
             this.label6.Text = "SSP Categories";
+            this.label6.Visible = false;
             // 
             // sspCategorySSListBox
             // 
             this.sspCategorySSListBox.FormattingEnabled = true;
             this.sspCategorySSListBox.ItemHeight = 15;
-            this.sspCategorySSListBox.Location = new System.Drawing.Point(355, 235);
+            this.sspCategorySSListBox.Location = new System.Drawing.Point(395, 832);
             this.sspCategorySSListBox.Name = "sspCategorySSListBox";
             this.sspCategorySSListBox.Size = new System.Drawing.Size(107, 94);
             this.sspCategorySSListBox.TabIndex = 19;
+            this.sspCategorySSListBox.Visible = false;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(242, 215);
+            this.label7.Location = new System.Drawing.Point(282, 812);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(91, 15);
             this.label7.TabIndex = 18;
             this.label7.Text = "SubCategories";
+            this.label7.Visible = false;
             // 
             // subCategorySSListBox
             // 
             this.subCategorySSListBox.FormattingEnabled = true;
             this.subCategorySSListBox.ItemHeight = 15;
-            this.subCategorySSListBox.Location = new System.Drawing.Point(242, 235);
+            this.subCategorySSListBox.Location = new System.Drawing.Point(282, 832);
             this.subCategorySSListBox.Name = "subCategorySSListBox";
             this.subCategorySSListBox.Size = new System.Drawing.Size(107, 94);
             this.subCategorySSListBox.TabIndex = 17;
+            this.subCategorySSListBox.Visible = false;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(17, 215);
+            this.label8.Location = new System.Drawing.Point(57, 812);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(79, 15);
             this.label8.TabIndex = 16;
             this.label8.Text = "Instruments:";
+            this.label8.Visible = false;
             // 
             // instrumentSSListBox
             // 
             this.instrumentSSListBox.FormattingEnabled = true;
             this.instrumentSSListBox.ItemHeight = 15;
-            this.instrumentSSListBox.Location = new System.Drawing.Point(17, 235);
+            this.instrumentSSListBox.Location = new System.Drawing.Point(57, 832);
             this.instrumentSSListBox.Name = "instrumentSSListBox";
             this.instrumentSSListBox.Size = new System.Drawing.Size(107, 94);
             this.instrumentSSListBox.TabIndex = 15;
+            this.instrumentSSListBox.Visible = false;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(129, 215);
+            this.label9.Location = new System.Drawing.Point(169, 812);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(72, 15);
             this.label9.TabIndex = 14;
             this.label9.Text = "Categories:";
+            this.label9.Visible = false;
             // 
             // categorySSListBox
             // 
             this.categorySSListBox.FormattingEnabled = true;
             this.categorySSListBox.ItemHeight = 15;
-            this.categorySSListBox.Location = new System.Drawing.Point(129, 235);
+            this.categorySSListBox.Location = new System.Drawing.Point(169, 832);
             this.categorySSListBox.Name = "categorySSListBox";
             this.categorySSListBox.Size = new System.Drawing.Size(107, 94);
             this.categorySSListBox.TabIndex = 13;
+            this.categorySSListBox.Visible = false;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(270, 24);
+            this.label10.Location = new System.Drawing.Point(327, 23);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(145, 16);
+            this.label10.Size = new System.Drawing.Size(112, 16);
             this.label10.TabIndex = 25;
-            this.label10.Text = "Non-Smart Start Parts";
+            this.label10.Text = "Parts Categories";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(287, 187);
+            this.label11.Location = new System.Drawing.Point(327, 784);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(116, 16);
             this.label11.TabIndex = 26;
             this.label11.Text = "Smart Start Parts";
+            this.label11.Visible = false;
             // 
             // partsListBox
             // 
@@ -347,14 +360,14 @@
             this.partsListBox.ItemHeight = 15;
             this.partsListBox.Location = new System.Drawing.Point(17, 384);
             this.partsListBox.Name = "partsListBox";
-            this.partsListBox.Size = new System.Drawing.Size(332, 259);
+            this.partsListBox.Size = new System.Drawing.Size(669, 259);
             this.partsListBox.TabIndex = 31;
             // 
             // SSpartsListBox
             // 
             this.SSpartsListBox.FormattingEnabled = true;
             this.SSpartsListBox.ItemHeight = 15;
-            this.SSpartsListBox.Location = new System.Drawing.Point(355, 384);
+            this.SSpartsListBox.Location = new System.Drawing.Point(696, 803);
             this.SSpartsListBox.Name = "SSpartsListBox";
             this.SSpartsListBox.Size = new System.Drawing.Size(331, 259);
             this.SSpartsListBox.TabIndex = 32;
@@ -363,17 +376,17 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(110, 365);
+            this.label14.Location = new System.Drawing.Point(337, 365);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(145, 16);
+            this.label14.Size = new System.Drawing.Size(78, 16);
             this.label14.TabIndex = 33;
-            this.label14.Text = "Non-Smart Start Parts";
+            this.label14.Text = "TecanParts";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(450, 365);
+            this.label15.Location = new System.Drawing.Point(791, 784);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(116, 16);
             this.label15.TabIndex = 34;
@@ -433,7 +446,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(1053, 797);
             this.Controls.Add(this.importAccessDatabaseCloseButton);
             this.Controls.Add(this.label17);
